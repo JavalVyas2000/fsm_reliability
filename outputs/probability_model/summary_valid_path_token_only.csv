@@ -1,0 +1,2 @@
+feature_group,n_rows,n_features,train_size,val_size,test_size,accuracy,roc_auc,brier_score,ece
+token_only,100,7,65,15,20,0.4,0.46875,0.2777564752980172,0.30046273080438113

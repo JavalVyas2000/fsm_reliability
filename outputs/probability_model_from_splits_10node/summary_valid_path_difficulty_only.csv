@@ -1,0 +1,2 @@
+feature_group,train_rows,val_rows,test_rows,n_features,accuracy,roc_auc,brier_score,ece
+difficulty_only,2959,495,499,4,0.8176352705410822,0.7431728232189974,0.15192166562658696,0.06254997980320827
