@@ -15,15 +15,37 @@ LIST_PATTERN = re.compile(r"\[[^\[\]]*\]")
 class PathResponse(BaseModel):
     path: list[int]
 
-    @field_validator("path")
+    @field_validator("path", mode="before")
     @classmethod
-    def validate_path(cls, value: list[int]) -> list[int]:
+    def validate_path(cls, value):
+        """
+        Accept both:
+        - [3, 4]
+        - ["3", "4"]
+
+        and convert numeric strings to integers.
+        """
+        if not isinstance(value, list):
+            raise ValueError("Path must be a list.")
+
+        cleaned: list[int] = []
         for item in value:
             if isinstance(item, bool):
                 raise ValueError("Boolean values are not allowed in path.")
-            if not isinstance(item, int):
-                raise ValueError("Path must contain integers only.")
-        return value
+
+            if isinstance(item, int):
+                cleaned.append(item)
+                continue
+
+            if isinstance(item, str):
+                stripped = item.strip()
+                if stripped.lstrip("-").isdigit():
+                    cleaned.append(int(stripped))
+                    continue
+
+            raise ValueError("Path must contain integers or numeric strings only.")
+
+        return cleaned
 
 
 class ParsedPathResult(BaseModel):
@@ -33,6 +55,9 @@ class ParsedPathResult(BaseModel):
 
 
 def _validate_int_list(obj) -> Optional[list[int]]:
+    """
+    Accept both raw ints and numeric strings, and coerce to int.
+    """
     if not isinstance(obj, list):
         return None
 
@@ -40,9 +65,19 @@ def _validate_int_list(obj) -> Optional[list[int]]:
     for item in obj:
         if isinstance(item, bool):
             return None
-        if not isinstance(item, int):
-            return None
-        cleaned.append(item)
+
+        if isinstance(item, int):
+            cleaned.append(item)
+            continue
+
+        if isinstance(item, str):
+            stripped = item.strip()
+            if stripped.lstrip("-").isdigit():
+                cleaned.append(int(stripped))
+                continue
+
+        return None
+
     return cleaned
 
 
@@ -79,8 +114,8 @@ def extract_first_list(text: str) -> Optional[str]:
 def parse_path_from_text(text: str) -> ParsedPathResult:
     """
     Try:
-    1. strict JSON: {"path": [0, 2, 5]}
-    2. fallback plain list: [0, 2, 5]
+    1. strict JSON: {"path": [0, 2, 5]} or {"path": ["0", "2", "5"]}
+    2. fallback plain list: [0, 2, 5] or ["0", "2", "5"]
     """
     json_str = extract_first_json_object(text)
     if json_str is not None:
