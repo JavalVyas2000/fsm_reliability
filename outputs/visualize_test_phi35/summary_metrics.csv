@@ -1,0 +1,2 @@
+n_samples,base_correct_rate,base_wrong_rate,auroc_correct,auprc_correct,brier_correct,ece_correct
+500,0.484,0.516,0.9443430072394131,0.9496945082650717,0.09474328303586847,0.05623034176416839

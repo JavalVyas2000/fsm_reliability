@@ -1,0 +1,21 @@
+feature_group,coverage,threshold_used,avg_confidence,selective_accuracy,risk
+Combined,0.101,0.685,0.744,0.755,0.245
+Combined,0.3,0.575,0.664,0.692,0.308
+Combined,0.5,0.488,0.611,0.621,0.379
+Combined,0.7,0.393,0.562,0.591,0.409
+Combined,1.0,0.151,0.487,0.498,0.502
+Token only,0.101,0.631,0.69,0.755,0.245
+Token only,0.3,0.553,0.621,0.671,0.329
+Token only,0.5,0.488,0.579,0.593,0.407
+Token only,0.7,0.419,0.545,0.562,0.438
+Token only,1.0,0.147,0.482,0.498,0.502
+Pooled attention,0.101,0.638,0.699,0.633,0.367
+Pooled attention,0.3,0.548,0.628,0.623,0.377
+Pooled attention,0.5,0.489,0.586,0.597,0.403
+Pooled attention,0.7,0.422,0.549,0.559,0.441
+Pooled attention,1.0,0.142,0.485,0.498,0.502
+Region summary,0.101,0.684,0.756,0.816,0.184
+Region summary,0.3,0.587,0.673,0.637,0.363
+Region summary,0.5,0.471,0.607,0.605,0.395
+Region summary,0.7,0.4,0.561,0.574,0.426
+Region summary,1.0,0.133,0.488,0.498,0.502

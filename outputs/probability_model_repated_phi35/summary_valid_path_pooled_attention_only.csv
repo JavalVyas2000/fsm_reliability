@@ -1,0 +1,2 @@
+feature_group,train_rows,val_rows,test_rows,n_features,accuracy,roc_auc,brier_score,ece
+pooled_attention_only,3000,482,486,71,0.6049382716049383,0.6329426906923182,0.23739165413300875,0.035606488099943705

@@ -1,0 +1,4 @@
+route,count,fraction,empirical_correct,empirical_wrong
+accept,75,0.15,1.0,0.0
+validate,17,0.034,0.7058823529411765,0.2941176470588235
+discard,408,0.816,0.08088235294117647,0.9191176470588235

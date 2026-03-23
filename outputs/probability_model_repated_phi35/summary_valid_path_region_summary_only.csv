@@ -1,0 +1,2 @@
+feature_group,train_rows,val_rows,test_rows,n_features,accuracy,roc_auc,brier_score,ece
+region_summary_only,3000,482,486,7,0.6069958847736625,0.6611570247933884,0.2308521826646597,0.060574664389363035

@@ -21,13 +21,25 @@ class ProbabilityEvalResult:
 
 
 def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
+    """
+    Internal-only feature groups.
+
+    Excluded on purpose:
+    - task metadata: num_nodes, num_edges, shortest_length
+    - output-derived structure: path_length
+    - region token counts: region_*_token_count
+
+    Included:
+    - token-confidence features
+    - pooled attention summaries
+    - region-attention summaries
+    - optional richer layerwise region-attention features
+    """
     cols = set(df.columns)
 
-    difficulty = [
-        c for c in ["num_nodes", "num_edges", "shortest_length", "path_length"]
-        if c in cols
-    ]
-
+    # ---------------------------
+    # Token-confidence features
+    # ---------------------------
     token = [
         c for c in [
             "num_generated_tokens",
@@ -41,6 +53,22 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         if c in cols
     ]
 
+    # Strict version excludes num_generated_tokens
+    token_strict = [
+        c for c in [
+            "mean_selected_logprob",
+            "min_selected_logprob",
+            "max_selected_logprob",
+            "mean_token_entropy",
+            "max_token_entropy",
+            "min_token_entropy",
+        ]
+        if c in cols
+    ]
+
+    # ---------------------------
+    # Pooled attention summaries
+    # ---------------------------
     pooled_attention = [
         c for c in df.columns
         if (
@@ -51,6 +79,7 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
             )
         )
         or c in {
+            "num_attention_layers",
             "mean_attention_entropy_all_layers",
             "min_attention_entropy_all_layers",
             "max_attention_entropy_all_layers",
@@ -60,6 +89,9 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         }
     ]
 
+    # ---------------------------
+    # Aggregate region summaries
+    # ---------------------------
     region_summary = [
         c for c in [
             "mean_output_to_graph_attn_all_layers",
@@ -69,26 +101,51 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
             "mean_output_to_output_attn_all_layers",
             "mean_output_prompt_vs_output_attn_ratio_all_layers",
             "mean_output_goal_vs_start_attn_ratio_all_layers",
-            "region_prompt_token_count",
-            "region_full_token_count",
-            "region_graph_token_count",
-            "region_start_token_count",
-            "region_goal_token_count",
-            "region_output_token_count",
         ]
         if c in cols
     ]
 
-    return {
-        "difficulty_only": sorted(set(difficulty)),
+    # ---------------------------
+    # Rich layerwise region-attention features
+    # Excludes region token counts
+    # ---------------------------
+    region_layerwise = [
+        c for c in df.columns
+        if (
+            c.startswith("layer_")
+            and (
+                "_output_to_graph_attn" in c
+                or "_output_to_start_attn" in c
+                or "_output_to_goal_attn" in c
+                or "_output_to_prompt_attn" in c
+                or "_output_to_output_attn" in c
+                or "_output_prompt_vs_output_attn_ratio" in c
+                or "_output_goal_vs_start_attn_ratio" in c
+            )
+        )
+    ]
+
+    groups = {
+        # Token groups
         "token_only": sorted(set(token)),
+        "token_only_strict": sorted(set(token_strict)),
+
+        # Attention groups
         "pooled_attention_only": sorted(set(pooled_attention)),
         "region_summary_only": sorted(set(region_summary)),
+        "attention_only_all": sorted(set(pooled_attention + region_summary)),
+        "region_attention_rich_only": sorted(set(region_layerwise)),
+
+        # Fusion groups
         "token_plus_region_summary": sorted(set(token + region_summary)),
-        "difficulty_plus_token": sorted(set(difficulty + token)),
-        "difficulty_plus_region_summary": sorted(set(difficulty + region_summary)),
-        "full_small_combined": sorted(set(difficulty + token + pooled_attention + region_summary)),
+        "token_strict_plus_region_summary": sorted(set(token_strict + region_summary)),
+        "internal_only_combined": sorted(set(token + pooled_attention + region_summary)),
+        "internal_only_combined_strict": sorted(set(token_strict + pooled_attention + region_summary)),
+        "internal_only_rich_attention": sorted(set(token + pooled_attention + region_layerwise)),
+        "internal_only_rich_attention_strict": sorted(set(token_strict + pooled_attention + region_layerwise)),
     }
+
+    return groups
 
 
 def expected_calibration_error(
@@ -99,6 +156,9 @@ def expected_calibration_error(
     bins = np.linspace(0.0, 1.0, n_bins + 1)
     ece = 0.0
     n = len(y_true)
+
+    if n == 0:
+        return float("nan")
 
     for i in range(n_bins):
         lo = bins[i]
@@ -332,3 +392,97 @@ def train_probability_model(
     )
 
     return result, pred_df, feature_cols, calibrator
+
+
+def evaluate_feature_groups(
+    train_df: pd.DataFrame,
+    val_df: pd.DataFrame,
+    test_df: pd.DataFrame,
+    target: str,
+    feature_groups_to_run: List[str] | None = None,
+) -> pd.DataFrame:
+    """
+    Compare all internal-only feature groups on the same train/val/test split.
+
+    This is useful as a one-shot sanity-check ablation. Your main repeated
+    experiment can still be run via 06_calibrate_probability_model.py.
+    """
+    groups = get_feature_groups(train_df)
+
+    if feature_groups_to_run is not None:
+        missing_groups = [g for g in feature_groups_to_run if g not in groups]
+        if missing_groups:
+            raise ValueError(f"Unknown feature groups requested: {missing_groups}")
+        groups = {k: v for k, v in groups.items() if k in feature_groups_to_run}
+
+    rows = []
+
+    for group_name, feature_cols in groups.items():
+        if len(feature_cols) == 0:
+            rows.append(
+                {
+                    "feature_group": group_name,
+                    "train_rows": None,
+                    "val_rows": None,
+                    "test_rows": None,
+                    "n_features": 0,
+                    "accuracy": None,
+                    "roc_auc": None,
+                    "brier_score": None,
+                    "ece": None,
+                    "error": "empty feature group",
+                }
+            )
+            continue
+
+        try:
+            result, _, used_feature_cols, _ = train_probability_model(
+                train_df=train_df,
+                val_df=val_df,
+                test_df=test_df,
+                feature_cols=feature_cols,
+                target=target,
+            )
+
+            result.feature_group = group_name
+
+            rows.append(
+                {
+                    "feature_group": result.feature_group,
+                    "train_rows": result.train_rows,
+                    "val_rows": result.val_rows,
+                    "test_rows": result.test_rows,
+                    "n_features": len(used_feature_cols),
+                    "accuracy": result.accuracy,
+                    "roc_auc": result.roc_auc,
+                    "brier_score": result.brier_score,
+                    "ece": result.ece,
+                    "error": None,
+                }
+            )
+        except Exception as e:
+            rows.append(
+                {
+                    "feature_group": group_name,
+                    "train_rows": None,
+                    "val_rows": None,
+                    "test_rows": None,
+                    "n_features": len(feature_cols),
+                    "accuracy": None,
+                    "roc_auc": None,
+                    "brier_score": None,
+                    "ece": None,
+                    "error": str(e),
+                }
+            )
+
+    out = pd.DataFrame(rows)
+
+    if len(out) > 0:
+        out = out.sort_values(
+            by=["roc_auc", "accuracy"],
+            ascending=[False, False],
+            na_position="last",
+        ).reset_index(drop=True)
+
+    return out
