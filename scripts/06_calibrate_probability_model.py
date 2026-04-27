@@ -3,12 +3,13 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import List
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-
 from sklearn.impute import SimpleImputer
+from sklearn.isotonic import IsotonicRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score,
@@ -17,30 +18,66 @@ from sklearn.metrics import (
 )
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.isotonic import IsotonicRegression
 
 
 DEFAULT_EXCLUDE = {
+    # targets / labels
     "valid_path",
+    "optimal_path",
     "is_correct",
     "correct",
     "label",
     "target",
-    "parsed_prediction",
-    "prediction_text",
-    "raw_output",
-    "gold_path",
-    "prompt",
+    "y_true",
+    # text / ids / prompt-ish columns
+    "instance_id",
     "sample_id",
     "id",
+    "prompt",
+    "graph_text",
+    "graph_json",
+    "generated_text",
+    "prediction_text",
+    "raw_output",
+    "output_format",
+    "parse_mode",
+    "ground_truth_shortest_path",
+    "gold_path",
+    # parsed outputs / posthoc predictions
+    "parsed_prediction",
+    "parsed_path",
     "prob_correct",
     "prob_wrong",
+    "route",
+    # task metadata we do NOT want the probability model to learn from
+    "split",
+    "start",
+    "goal",
+    "num_nodes",
+    "edge_prob",
+    "num_edges",
+    "shortest_length",
+    "path_length",
+    "length_gap",
+    "max_new_tokens_used",
+    # parse-related labels / quasi-labels
+    "parse_success",
+    "strict_json_success",
+    # region token counts / masks summaries
+    "prompt_token_count",
+    "full_token_count",
+    "region_prompt_token_count",
+    "region_full_token_count",
+    "region_graph_token_count",
+    "region_start_token_count",
+    "region_goal_token_count",
+    "region_output_token_count",
 }
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train risk model on train, calibrate/tune on val, report once on test."
+        description="Train probability model on train, calibrate on val, report once on test."
     )
     parser.add_argument("--train_path", type=str, required=True)
     parser.add_argument("--val_path", type=str, required=True)
@@ -49,23 +86,32 @@ def parse_args():
     parser.add_argument(
         "--feature_group",
         type=str,
-        default="all",
+        default="internal_only_combined",
         choices=[
             "all",
-            "token_confidence_only",
+            "token_only",
+            "token_only_strict",
             "pooled_attention_only",
-            "region_attention_only",
+            "region_summary_only",
+            "attention_only_all",
+            "region_attention_rich_only",
+            "token_plus_region_summary",
+            "token_strict_plus_region_summary",
+            "internal_only_combined",
+            "internal_only_combined_strict",
+            "internal_only_rich_attention",
+            "internal_only_rich_attention_strict",
         ],
     )
     parser.add_argument(
         "--parsed_only",
         action="store_true",
-        help="Keep only rows where parsed_prediction looks valid if such a column exists.",
+        help="Keep only rows where parsed_path is present if such a column exists.",
     )
     parser.add_argument(
         "--parsed_col",
         type=str,
-        default="parsed_prediction",
+        default="parsed_path",
         help="Column used with --parsed_only if present.",
     )
     parser.add_argument(
@@ -102,11 +148,18 @@ def safe_to_csv(df: pd.DataFrame, path: Path):
     print(f"[saved] {path}")
 
 
-def expected_calibration_error(y_true: np.ndarray, prob: np.ndarray, n_bins: int = 10) -> float:
+def expected_calibration_error(
+    y_true: np.ndarray,
+    prob: np.ndarray,
+    n_bins: int = 10,
+) -> float:
     bins = np.linspace(0.0, 1.0, n_bins + 1)
     ids = np.digitize(prob, bins) - 1
     ece = 0.0
     n = len(y_true)
+
+    if n == 0:
+        return float("nan")
 
     for b in range(n_bins):
         mask = ids == b
@@ -115,6 +168,7 @@ def expected_calibration_error(y_true: np.ndarray, prob: np.ndarray, n_bins: int
         acc = np.mean(y_true[mask])
         conf = np.mean(prob[mask])
         ece += (np.sum(mask) / n) * abs(acc - conf)
+
     return float(ece)
 
 
@@ -130,8 +184,10 @@ def wilson_interval(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
 
 def load_df(path: str, target: str, parsed_only: bool, parsed_col: str) -> pd.DataFrame:
     df = pd.read_csv(path).copy()
+
     if target not in df.columns:
         raise ValueError(f"Target column '{target}' not found in {path}")
+
     df = df[df[target].notna()].copy()
     df[target] = df[target].astype(int)
 
@@ -145,59 +201,146 @@ def load_df(path: str, target: str, parsed_only: bool, parsed_col: str) -> pd.Da
     return df.reset_index(drop=True)
 
 
+def get_feature_groups(df: pd.DataFrame) -> dict[str, List[str]]:
+    """
+    Internal-only feature groups.
+
+    Excluded on purpose:
+    - task metadata: num_nodes, num_edges, shortest_length, etc.
+    - output-derived structure: path_length, length_gap, etc.
+    - region token counts
+    """
+    cols = set(df.columns)
+
+    token = [
+        c for c in [
+            "num_generated_tokens",
+            "mean_selected_logprob",
+            "min_selected_logprob",
+            "max_selected_logprob",
+            "mean_token_entropy",
+            "max_token_entropy",
+            "min_token_entropy",
+        ]
+        if c in cols
+    ]
+
+    token_strict = [
+        c for c in [
+            "mean_selected_logprob",
+            "min_selected_logprob",
+            "max_selected_logprob",
+            "mean_token_entropy",
+            "max_token_entropy",
+            "min_token_entropy",
+        ]
+        if c in cols
+    ]
+
+    pooled_attention = [
+        c for c in df.columns
+        if (
+            c.startswith("layer_")
+            and (
+                c.endswith("_mean_attention_entropy")
+                or c.endswith("_mean_attention_maxprob")
+            )
+        )
+        or c in {
+            "num_attention_layers",
+            "mean_attention_entropy_all_layers",
+            "min_attention_entropy_all_layers",
+            "max_attention_entropy_all_layers",
+            "mean_attention_maxprob_all_layers",
+            "min_attention_maxprob_all_layers",
+            "max_attention_maxprob_all_layers",
+        }
+    ]
+
+    region_summary = [
+        c for c in [
+            "mean_output_to_graph_attn_all_layers",
+            "mean_output_to_start_attn_all_layers",
+            "mean_output_to_goal_attn_all_layers",
+            "mean_output_to_prompt_attn_all_layers",
+            "mean_output_to_output_attn_all_layers",
+            "mean_output_prompt_vs_output_attn_ratio_all_layers",
+            "mean_output_goal_vs_start_attn_ratio_all_layers",
+        ]
+        if c in cols
+    ]
+
+    region_layerwise = [
+        c for c in df.columns
+        if (
+            c.startswith("layer_")
+            and (
+                "_output_to_graph_attn" in c
+                or "_output_to_start_attn" in c
+                or "_output_to_goal_attn" in c
+                or "_output_to_prompt_attn" in c
+                or "_output_to_output_attn" in c
+                or "_output_prompt_vs_output_attn_ratio" in c
+                or "_output_goal_vs_start_attn_ratio" in c
+            )
+        )
+    ]
+
+    groups = {
+        "token_only": sorted(set(token)),
+        "token_only_strict": sorted(set(token_strict)),
+        "pooled_attention_only": sorted(set(pooled_attention)),
+        "region_summary_only": sorted(set(region_summary)),
+        "attention_only_all": sorted(set(pooled_attention + region_summary)),
+        "region_attention_rich_only": sorted(set(region_layerwise)),
+        "token_plus_region_summary": sorted(set(token + region_summary)),
+        "token_strict_plus_region_summary": sorted(set(token_strict + region_summary)),
+        "internal_only_combined": sorted(set(token + pooled_attention + region_summary)),
+        "internal_only_combined_strict": sorted(set(token_strict + pooled_attention + region_summary)),
+        "internal_only_rich_attention": sorted(set(token + pooled_attention + region_layerwise)),
+        "internal_only_rich_attention_strict": sorted(set(token_strict + pooled_attention + region_layerwise)),
+    }
+
+    return groups
+
+
 def choose_feature_columns(df: pd.DataFrame, target: str, feature_group: str) -> list[str]:
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    cols = [c for c in numeric_cols if c not in DEFAULT_EXCLUDE and c != target]
+
+    allowed_numeric = [
+        c for c in numeric_cols
+        if c not in DEFAULT_EXCLUDE and c != target
+    ]
 
     if feature_group == "all":
-        return cols
+        return sorted(allowed_numeric)
 
-    def has_any(name: str, patterns: tuple[str, ...]) -> bool:
-        name = name.lower()
-        return any(p in name for p in patterns)
-
-    if feature_group == "token_confidence_only":
-        patterns = (
-            "logprob",
-            "token_entropy",
-            "selected_logprob",
-            "confidence",
-            "num_generated_tokens",
-        )
-        filtered = [c for c in cols if has_any(c, patterns) and "attention" not in c.lower()]
-    elif feature_group == "pooled_attention_only":
-        patterns = (
-            "attention_entropy",
-            "attention_maxprob",
-            "mean_attention",
-            "min_attention",
-            "max_attention",
-            "layer_",
-            "attn",
-        )
-        filtered = [
-            c for c in cols
-            if has_any(c, patterns)
-            and "region" not in c.lower()
-            and "cross_region" not in c.lower()
-        ]
-    elif feature_group == "region_attention_only":
-        patterns = (
-            "region",
-            "attention_region",
-            "attn_region",
-            "cross_region",
-        )
-        filtered = [c for c in cols if has_any(c, patterns)]
-    else:
+    groups = get_feature_groups(df)
+    if feature_group not in groups:
         raise ValueError(f"Unknown feature_group: {feature_group}")
+
+    filtered = [
+        c for c in groups[feature_group]
+        if c in allowed_numeric
+    ]
 
     if not filtered:
         raise ValueError(
             f"No columns matched feature_group='{feature_group}'. "
-            f"Available numeric columns include: {cols[:25]}"
+            f"Available allowed numeric columns include: {allowed_numeric[:40]}"
         )
+
     return filtered
+
+
+def align_feature_columns(
+    train_df: pd.DataFrame,
+    val_df: pd.DataFrame,
+    test_df: pd.DataFrame,
+    feature_cols: list[str],
+) -> list[str]:
+    common = set(train_df.columns) & set(val_df.columns) & set(test_df.columns)
+    return [c for c in feature_cols if c in common]
 
 
 def fit_model(X_train: pd.DataFrame, y_train: np.ndarray) -> Pipeline:
@@ -212,14 +355,22 @@ def fit_model(X_train: pd.DataFrame, y_train: np.ndarray) -> Pipeline:
     return model
 
 
-def calibrate_on_val(base_model: Pipeline, X_val: pd.DataFrame, y_val: np.ndarray) -> IsotonicRegression:
+def calibrate_on_val(
+    base_model: Pipeline,
+    X_val: pd.DataFrame,
+    y_val: np.ndarray,
+) -> IsotonicRegression:
     raw_val = base_model.predict_proba(X_val)[:, 1]
     calibrator = IsotonicRegression(out_of_bounds="clip")
     calibrator.fit(raw_val, y_val)
     return calibrator
 
 
-def predict_prob_correct(base_model: Pipeline, calibrator: IsotonicRegression, X: pd.DataFrame) -> np.ndarray:
+def predict_prob_correct(
+    base_model: Pipeline,
+    calibrator: IsotonicRegression,
+    X: pd.DataFrame,
+) -> np.ndarray:
     raw = base_model.predict_proba(X)[:, 1]
     prob = calibrator.predict(raw)
     return np.clip(np.asarray(prob, dtype=float), 0.0, 1.0)
@@ -295,12 +446,19 @@ def route_samples(prob_wrong: np.ndarray, low_thr: float, high_thr: float) -> np
     )
 
 
-def routing_table(y_true: np.ndarray, prob_wrong: np.ndarray, low_thr: float, high_thr: float) -> pd.DataFrame:
+def routing_table(
+    y_true: np.ndarray,
+    prob_wrong: np.ndarray,
+    low_thr: float,
+    high_thr: float,
+) -> pd.DataFrame:
     route = route_samples(prob_wrong, low_thr, high_thr)
     rows = []
+
     for label in ["accept", "validate", "discard"]:
         mask = route == label
         n = int(np.sum(mask))
+
         if n == 0:
             rows.append(
                 {
@@ -332,13 +490,19 @@ def routing_table(y_true: np.ndarray, prob_wrong: np.ndarray, low_thr: float, hi
                 "wilson_high": hi,
             }
         )
+
     return pd.DataFrame(rows)
 
 
-def reliability_table(y_true: np.ndarray, prob_correct: np.ndarray, n_bins: int = 10) -> pd.DataFrame:
+def reliability_table(
+    y_true: np.ndarray,
+    prob_correct: np.ndarray,
+    n_bins: int = 10,
+) -> pd.DataFrame:
     bins = np.linspace(0.0, 1.0, n_bins + 1)
     ids = np.digitize(prob_correct, bins) - 1
     rows = []
+
     for b in range(n_bins):
         mask = ids == b
         if not np.any(mask):
@@ -353,10 +517,19 @@ def reliability_table(y_true: np.ndarray, prob_correct: np.ndarray, n_bins: int 
                 "empirical_wrong": float(np.mean(1 - y_true[mask])),
             }
         )
+
     if not rows:
         return pd.DataFrame(
-            columns=["bin_left", "bin_right", "count", "mean_pred_correct", "empirical_correct", "empirical_wrong"]
+            columns=[
+                "bin_left",
+                "bin_right",
+                "count",
+                "mean_pred_correct",
+                "empirical_correct",
+                "empirical_wrong",
+            ]
         )
+
     return pd.DataFrame(rows)
 
 
@@ -364,6 +537,7 @@ def plot_reliability(rel_df: pd.DataFrame, out_path: Path, title: str):
     if rel_df.empty:
         print(f"[warn] reliability dataframe empty, skipping plot: {out_path}")
         return
+
     plt.figure(figsize=(6, 6))
     plt.plot([0, 1], [0, 1], linestyle="--")
     plt.plot(rel_df["mean_pred_correct"], rel_df["empirical_correct"], marker="o")
@@ -408,8 +582,26 @@ def save_predictions(
     safe_to_csv(out, out_path)
 
 
+def summarize_node_mix(df: pd.DataFrame, split_name: str) -> pd.DataFrame:
+    if "num_nodes" not in df.columns:
+        return pd.DataFrame(columns=["split", "num_nodes", "count", "fraction"])
+
+    counts = df["num_nodes"].value_counts().sort_index()
+    total = counts.sum()
+
+    return pd.DataFrame(
+        {
+            "split": split_name,
+            "num_nodes": counts.index.astype(int),
+            "count": counts.values.astype(int),
+            "fraction": (counts.values / total).astype(float),
+        }
+    )
+
+
 def main():
     args = parse_args()
+
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     print(f"[info] output_dir resolved to: {output_dir}")
@@ -420,19 +612,30 @@ def main():
 
     print(f"[info] loaded train={train_df.shape}, val={val_df.shape}, test={test_df.shape}")
 
-    feature_cols = choose_feature_columns(train_df, args.target, args.feature_group)
-    print(f"[info] selected {len(feature_cols)} feature columns")
+    requested_feature_cols = choose_feature_columns(train_df, args.target, args.feature_group)
+    feature_cols = align_feature_columns(train_df, val_df, test_df, requested_feature_cols)
 
+    if len(feature_cols) == 0:
+        raise ValueError("No common feature columns across train / val / test after alignment.")
+
+    print(f"[info] selected {len(feature_cols)} aligned feature columns")
     safe_to_csv(pd.DataFrame({"feature_column": feature_cols}), output_dir / "feature_columns.csv")
 
-    X_train = train_df[feature_cols]
+    X_train = train_df[feature_cols].copy()
     y_train = train_df[args.target].values.astype(int)
 
-    X_val = val_df[feature_cols]
+    X_val = val_df[feature_cols].copy()
     y_val = val_df[args.target].values.astype(int)
 
-    X_test = test_df[feature_cols]
+    X_test = test_df[feature_cols].copy()
     y_test = test_df[args.target].values.astype(int)
+
+    if len(np.unique(y_train)) < 2:
+        raise ValueError("Train target has fewer than 2 classes.")
+    if len(np.unique(y_val)) < 2:
+        raise ValueError("Val target has fewer than 2 classes.")
+    if len(np.unique(y_test)) < 2:
+        raise ValueError("Test target has fewer than 2 classes.")
 
     base_model = fit_model(X_train, y_train)
     calibrator = calibrate_on_val(base_model, X_val, y_val)
@@ -477,6 +680,17 @@ def main():
     summary_df = pd.DataFrame(summary_rows)
     safe_to_csv(summary_df, output_dir / "summary_metrics.csv")
 
+    node_mix_df = pd.concat(
+        [
+            summarize_node_mix(train_df, "train"),
+            summarize_node_mix(val_df, "val"),
+            summarize_node_mix(test_df, "test"),
+        ],
+        ignore_index=True,
+    )
+    if not node_mix_df.empty:
+        safe_to_csv(node_mix_df, output_dir / "node_mix_summary.csv")
+
     val_routing = routing_table(y_val, 1.0 - prob_correct_val, low_thr, high_thr)
     test_routing = routing_table(y_test, 1.0 - prob_correct_test, low_thr, high_thr)
     safe_to_csv(val_routing, output_dir / "routing_table_val.csv")
@@ -514,7 +728,8 @@ def main():
         "selected_high_risk_threshold_prob_wrong": float(high_thr),
         "output_dir": str(output_dir),
         "threshold_selection_note": (
-            "Trained logistic model on train. Fitted isotonic calibrator on val. "
+            "Trained logistic model on pooled train split across all node sizes. "
+            "Fitted isotonic calibrator on pooled val split across all node sizes. "
             "Thresholds chosen on val unless fixed by user. Final report should use test only."
         ),
     }
@@ -524,6 +739,10 @@ def main():
 
     print("\nSummary metrics:")
     print(summary_df.to_string(index=False))
+
+    if not node_mix_df.empty:
+        print("\nNode mix summary:")
+        print(node_mix_df.to_string(index=False))
 
     print("\nValidation routing table:")
     print(val_routing.to_string(index=False))

@@ -4,7 +4,7 @@ import json
 import random
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional, Sequence, Union
 
 import pandas as pd
 
@@ -39,7 +39,7 @@ def build_instances(
     seed: int,
 ) -> List[FSMInstance]:
     """
-    Build a list of reachable FSM traversal instances.
+    Build a list of reachable FSM traversal instances for a fixed number of nodes.
     """
     rng = random.Random(seed)
     instances: List[FSMInstance] = []
@@ -60,8 +60,8 @@ def build_instances(
         if sampled is None:
             if trials > num_samples * 50:
                 raise RuntimeError(
-                    "Could not sample enough reachable instances. "
-                    "Try increasing edge_prob or reducing num_nodes."
+                    f"Could not sample enough reachable instances for num_nodes={num_nodes}, "
+                    f"edge_prob={edge_prob}. Try increasing edge_prob or reducing num_nodes."
                 )
             continue
 
@@ -98,38 +98,114 @@ def save_split(
     df.to_csv(output_path, index=False)
 
 
+def allocate_samples_across_node_counts(
+    total_samples: int,
+    num_nodes_list: Sequence[int],
+) -> Dict[int, int]:
+    """
+    Evenly distribute samples across node counts.
+    Any remainder is assigned to the first few node counts.
+    """
+    if not num_nodes_list:
+        raise ValueError("num_nodes_list must not be empty.")
+
+    base = total_samples // len(num_nodes_list)
+    remainder = total_samples % len(num_nodes_list)
+
+    allocation: Dict[int, int] = {}
+    for i, n in enumerate(num_nodes_list):
+        allocation[n] = base + (1 if i < remainder else 0)
+
+    return allocation
+
+
+def build_mixed_instances(
+    split: str,
+    num_samples: int,
+    num_nodes_list: Sequence[int],
+    edge_prob: Union[float, Dict[int, float]],
+    seed: int,
+) -> List[FSMInstance]:
+    """
+    Build a mixed dataset containing multiple graph sizes.
+
+    edge_prob can be:
+      - a single float applied to all node counts
+      - a dict mapping num_nodes -> edge_prob
+    """
+    if not num_nodes_list:
+        raise ValueError("num_nodes_list must not be empty.")
+
+    allocations = allocate_samples_across_node_counts(num_samples, num_nodes_list)
+    all_instances: List[FSMInstance] = []
+
+    for idx, num_nodes in enumerate(num_nodes_list):
+        if isinstance(edge_prob, dict):
+            if num_nodes not in edge_prob:
+                raise ValueError(f"Missing edge_prob for num_nodes={num_nodes}")
+            ep = edge_prob[num_nodes]
+        else:
+            ep = edge_prob
+
+        subset = build_instances(
+            split=split,
+            num_samples=allocations[num_nodes],
+            num_nodes=num_nodes,
+            edge_prob=ep,
+            seed=seed + idx,
+        )
+        all_instances.extend(subset)
+
+    rng = random.Random(seed + 999)
+    rng.shuffle(all_instances)
+
+    return all_instances
+
+
 def build_default_dataset(
     output_dir: str = "data/raw",
     train_samples: int = 1000,
     val_samples: int = 200,
     test_samples: int = 200,
-    num_nodes: int = 10,
-    edge_prob: float = 0.30,
+    num_nodes_list: Sequence[int] = (5, 10, 15, 20),
+    edge_prob: Union[float, Dict[int, float]] = 0.30,
     seed: int = 42,
 ) -> None:
     """
-    Build default train/val/test splits.
+    Build default train/val/test splits for multiple node counts.
+
+    Example:
+        build_default_dataset(
+            num_nodes_list=[5, 10, 15, 20],
+            edge_prob=0.30,
+        )
+
+    Or with node-specific edge probabilities:
+        build_default_dataset(
+            num_nodes_list=[5, 10, 15, 20],
+            edge_prob={5: 0.35, 10: 0.30, 15: 0.25, 20: 0.20},
+        )
     """
     output_root = Path(output_dir)
-
-    train = build_instances(
+    edge_prob={5: 0.35, 10: 0.30, 15: 0.25, 20: 0.20}
+    train = build_mixed_instances(
         split="train",
         num_samples=train_samples,
-        num_nodes=num_nodes,
+        num_nodes_list=num_nodes_list,
         edge_prob=edge_prob,
         seed=seed,
     )
-    val = build_instances(
+    val = build_mixed_instances(
         split="val",
         num_samples=val_samples,
-        num_nodes=num_nodes,
+        num_nodes_list=num_nodes_list,
         edge_prob=edge_prob,
         seed=seed + 1,
     )
-    test = build_instances(
+    test = build_mixed_instances(
         split="test",
         num_samples=test_samples,
-        num_nodes=num_nodes,
+        num_nodes_list=num_nodes_list,
         edge_prob=edge_prob,
         seed=seed + 2,
     )
@@ -140,3 +216,9 @@ def build_default_dataset(
 
     print(f"Saved dataset to: {output_root.resolve()}")
     print(f"Train: {len(train)} | Val: {len(val)} | Test: {len(test)}")
+
+    print("\nPer-split node-count breakdown:")
+    for split_name, split_data in [("train", train), ("val", val), ("test", test)]:
+        df = instances_to_dataframe(split_data)
+        counts = df["num_nodes"].value_counts().sort_index().to_dict()
+        print(f"{split_name}: {counts}")

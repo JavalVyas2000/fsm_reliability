@@ -1,4 +1,0 @@
-num_edges
-num_nodes
-path_length
-shortest_length

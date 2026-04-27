@@ -10,16 +10,24 @@ AdjacencyDict = Dict[int, List[int]]
 
 def generate_directed_graph(
     num_nodes: int,
-    edge_prob: float,
+    edge_prob: Optional[float] = None,
+    avg_out_degree: Optional[float] = None,
     seed: Optional[int] = None,
     allow_self_loops: bool = False,
 ) -> AdjacencyDict:
     """
     Generate a random directed graph as an adjacency dictionary.
 
+    You can control graph density in one of two ways:
+      - edge_prob: probability of creating a directed edge i -> j
+      - avg_out_degree: desired average outgoing degree per node
+
+    Exactly one of edge_prob or avg_out_degree should be provided.
+
     Args:
         num_nodes: Number of nodes in the graph.
         edge_prob: Probability of creating a directed edge i -> j.
+        avg_out_degree: Target average number of outbound neighbors per node.
         seed: Optional RNG seed for reproducibility.
         allow_self_loops: Whether to allow i -> i edges.
 
@@ -28,6 +36,19 @@ def generate_directed_graph(
     """
     if num_nodes <= 1:
         raise ValueError("num_nodes must be > 1")
+
+    if (edge_prob is None) == (avg_out_degree is None):
+        raise ValueError("Provide exactly one of edge_prob or avg_out_degree")
+
+    if avg_out_degree is not None:
+        max_possible = num_nodes if allow_self_loops else (num_nodes - 1)
+        if not (0.0 <= avg_out_degree <= max_possible):
+            raise ValueError(
+                f"avg_out_degree must be in [0, {max_possible}] for num_nodes={num_nodes}"
+            )
+        edge_prob = avg_out_degree / max_possible
+
+    assert edge_prob is not None
     if not (0.0 <= edge_prob <= 1.0):
         raise ValueError("edge_prob must be in [0, 1]")
 
@@ -74,7 +95,7 @@ def shortest_path(
     if start == goal:
         return [start]
 
-    visited = set([start])
+    visited = {start}
     queue = deque([(start, [start])])
 
     while queue:
@@ -83,9 +104,11 @@ def shortest_path(
         for neighbor in graph[current]:
             if neighbor in visited:
                 continue
+
             new_path = path + [neighbor]
             if neighbor == goal:
                 return new_path
+
             visited.add(neighbor)
             queue.append((neighbor, new_path))
 
@@ -117,9 +140,18 @@ def sample_reachable_start_goal(
     graph: AdjacencyDict,
     rng: random.Random,
     max_tries: int = 200,
+    min_path_length: int = 2,
+    max_path_length: Optional[int] = None,
 ) -> Optional[Tuple[int, int, List[int]]]:
     """
     Sample a (start, goal) pair with at least one reachable path.
+
+    Args:
+        graph: Adjacency dictionary.
+        rng: Random number generator.
+        max_tries: Number of random attempts.
+        min_path_length: Minimum number of nodes in the returned shortest path.
+        max_path_length: Optional maximum number of nodes in the returned shortest path.
 
     Returns:
         (start, goal, shortest_path) or None if no such pair is found.
@@ -128,10 +160,20 @@ def sample_reachable_start_goal(
     if len(nodes) < 2:
         return None
 
+    if min_path_length < 2:
+        raise ValueError("min_path_length must be >= 2")
+
     for _ in range(max_tries):
         start, goal = rng.sample(nodes, 2)
         sp = shortest_path(graph, start, goal)
-        if sp is not None:
-            return start, goal, sp
+
+        if sp is None:
+            continue
+        if len(sp) < min_path_length:
+            continue
+        if max_path_length is not None and len(sp) > max_path_length:
+            continue
+
+        return start, goal, sp
 
     return None

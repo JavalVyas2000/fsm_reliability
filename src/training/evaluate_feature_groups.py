@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pandas as pd
 
@@ -139,15 +139,43 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
     return groups
 
 
+def _safe_auc(y_true, probs) -> float:
+    if len(set(y_true)) < 2:
+        return float("nan")
+    from sklearn.metrics import roc_auc_score
+    return float(roc_auc_score(y_true, probs))
+
+
+def _build_joint_stratify_labels(work: pd.DataFrame, y: pd.Series) -> Optional[pd.Series]:
+    """
+    Build a joint stratification label so random train/test splits preserve both:
+    - class balance
+    - pooled node-size composition
+
+    Falls back to y if the joint groups are too small.
+    """
+    if "num_nodes" not in work.columns:
+        return y if y.value_counts().min() >= 2 else None
+
+    joint = work["num_nodes"].astype(str) + "__" + y.astype(str)
+
+    if joint.value_counts().min() >= 2:
+        return joint
+
+    return y if y.value_counts().min() >= 2 else None
+
+
 def run_logistic_eval(
     df: pd.DataFrame,
     feature_cols: List[str],
     target: str,
     random_state: int = 42,
+    test_size: float = 0.35,
+    stratify_by_num_nodes: bool = True,
 ) -> EvalResult:
     from sklearn.impute import SimpleImputer
     from sklearn.linear_model import LogisticRegression
-    from sklearn.metrics import accuracy_score, roc_auc_score
+    from sklearn.metrics import accuracy_score
     from sklearn.model_selection import train_test_split
     from sklearn.pipeline import Pipeline
     from sklearn.preprocessing import StandardScaler
@@ -168,12 +196,15 @@ def run_logistic_eval(
     if y.nunique() < 2:
         raise ValueError(f"Target '{target}' has fewer than 2 classes.")
 
-    stratify = y if y.value_counts().min() >= 2 else None
+    if stratify_by_num_nodes:
+        stratify = _build_joint_stratify_labels(work, y)
+    else:
+        stratify = y if y.value_counts().min() >= 2 else None
 
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
-        test_size=0.35,
+        test_size=test_size,
         random_state=random_state,
         stratify=stratify,
     )
@@ -191,7 +222,7 @@ def run_logistic_eval(
     preds = (probs >= 0.5).astype(int)
 
     acc = float(accuracy_score(y_test, preds))
-    auc = float(roc_auc_score(y_test, probs))
+    auc = _safe_auc(y_test, probs)
 
     return EvalResult(
         feature_group="",
@@ -209,9 +240,10 @@ def evaluate_feature_groups(
     target: str,
     random_state: int = 42,
     min_features: int = 1,
+    stratify_by_num_nodes: bool = True,
 ) -> pd.DataFrame:
     """
-    Quick internal-only ablation runner.
+    Quick internal-only ablation runner on one pooled dataframe.
 
     Parameters
     ----------
@@ -223,6 +255,8 @@ def evaluate_feature_groups(
         Train/test split seed.
     min_features : int
         Skip groups with fewer than this many available features.
+    stratify_by_num_nodes : bool
+        Preserve mixed node-size composition in random train/test splitting when possible.
     """
     groups = get_feature_groups(df)
     results = []
@@ -239,6 +273,7 @@ def evaluate_feature_groups(
                 feature_cols=feature_cols,
                 target=target,
                 random_state=random_state,
+                stratify_by_num_nodes=stratify_by_num_nodes,
             )
             res.feature_group = group_name
             results.append(res.__dict__)
@@ -265,3 +300,36 @@ def evaluate_feature_groups(
         ).reset_index(drop=True)
 
     return out
+
+
+def evaluate_per_num_nodes(
+    df: pd.DataFrame,
+    target: str,
+    random_state: int = 42,
+    min_features: int = 1,
+) -> pd.DataFrame:
+    """
+    Optional analysis helper: run the same ablation separately for each node count.
+
+    This does NOT change the main pooled-model workflow. It is only for reporting.
+    """
+    if "num_nodes" not in df.columns:
+        raise ValueError("num_nodes column not found in dataframe.")
+
+    outputs = []
+    for n in sorted(df["num_nodes"].dropna().unique()):
+        sub = df[df["num_nodes"] == n].copy()
+        res = evaluate_feature_groups(
+            df=sub,
+            target=target,
+            random_state=random_state,
+            min_features=min_features,
+            stratify_by_num_nodes=False,
+        )
+        res["eval_num_nodes"] = int(n)
+        outputs.append(res)
+
+    if not outputs:
+        return pd.DataFrame()
+
+    return pd.concat(outputs, ignore_index=True)

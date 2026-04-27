@@ -1,10 +1,73 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.isotonic import IsotonicRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, brier_score_loss, roc_auc_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+
+DEFAULT_EXCLUDE = {
+    # targets / labels
+    "valid_path",
+    "optimal_path",
+    "is_correct",
+    "correct",
+    "label",
+    "target",
+    "y_true",
+    # ids / text / prompt-like columns
+    "instance_id",
+    "sample_id",
+    "id",
+    "prompt",
+    "graph_text",
+    "graph_json",
+    "generated_text",
+    "prediction_text",
+    "raw_output",
+    "output_format",
+    "parse_mode",
+    "ground_truth_shortest_path",
+    "gold_path",
+    # parsed outputs / posthoc predictions
+    "parsed_prediction",
+    "parsed_path",
+    "prob_correct",
+    "prob_wrong",
+    "route",
+    "y_prob",
+    "y_pred",
+    # metadata we do NOT want as learned inputs
+    "split",
+    "start",
+    "goal",
+    "num_nodes",
+    "edge_prob",
+    "num_edges",
+    "shortest_length",
+    "path_length",
+    "length_gap",
+    "max_new_tokens_used",
+    # parse-related flags / quasi-labels
+    "parse_success",
+    "strict_json_success",
+    # region token counts
+    "prompt_token_count",
+    "full_token_count",
+    "region_prompt_token_count",
+    "region_full_token_count",
+    "region_graph_token_count",
+    "region_start_token_count",
+    "region_goal_token_count",
+    "region_output_token_count",
+}
 
 
 @dataclass
@@ -20,14 +83,38 @@ class ProbabilityEvalResult:
     ece: float
 
 
+def expected_calibration_error(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    n_bins: int = 10,
+) -> float:
+    bins = np.linspace(0.0, 1.0, n_bins + 1)
+    ids = np.digitize(y_prob, bins) - 1
+    ece = 0.0
+    n = len(y_true)
+
+    if n == 0:
+        return float("nan")
+
+    for b in range(n_bins):
+        mask = ids == b
+        if not np.any(mask):
+            continue
+        acc = np.mean(y_true[mask])
+        conf = np.mean(y_prob[mask])
+        ece += (np.sum(mask) / n) * abs(acc - conf)
+
+    return float(ece)
+
+
 def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
     """
     Internal-only feature groups.
 
     Excluded on purpose:
-    - task metadata: num_nodes, num_edges, shortest_length
-    - output-derived structure: path_length
-    - region token counts: region_*_token_count
+    - task metadata: num_nodes, num_edges, shortest_length, etc.
+    - output-derived structure: path_length, length_gap, etc.
+    - region token counts
 
     Included:
     - token-confidence features
@@ -37,9 +124,6 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
     """
     cols = set(df.columns)
 
-    # ---------------------------
-    # Token-confidence features
-    # ---------------------------
     token = [
         c for c in [
             "num_generated_tokens",
@@ -53,7 +137,6 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         if c in cols
     ]
 
-    # Strict version excludes num_generated_tokens
     token_strict = [
         c for c in [
             "mean_selected_logprob",
@@ -66,9 +149,6 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         if c in cols
     ]
 
-    # ---------------------------
-    # Pooled attention summaries
-    # ---------------------------
     pooled_attention = [
         c for c in df.columns
         if (
@@ -89,9 +169,6 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         }
     ]
 
-    # ---------------------------
-    # Aggregate region summaries
-    # ---------------------------
     region_summary = [
         c for c in [
             "mean_output_to_graph_attn_all_layers",
@@ -105,10 +182,6 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
         if c in cols
     ]
 
-    # ---------------------------
-    # Rich layerwise region-attention features
-    # Excludes region token counts
-    # ---------------------------
     region_layerwise = [
         c for c in df.columns
         if (
@@ -126,17 +199,12 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
     ]
 
     groups = {
-        # Token groups
         "token_only": sorted(set(token)),
         "token_only_strict": sorted(set(token_strict)),
-
-        # Attention groups
         "pooled_attention_only": sorted(set(pooled_attention)),
         "region_summary_only": sorted(set(region_summary)),
         "attention_only_all": sorted(set(pooled_attention + region_summary)),
         "region_attention_rich_only": sorted(set(region_layerwise)),
-
-        # Fusion groups
         "token_plus_region_summary": sorted(set(token + region_summary)),
         "token_strict_plus_region_summary": sorted(set(token_strict + region_summary)),
         "internal_only_combined": sorted(set(token + pooled_attention + region_summary)),
@@ -148,78 +216,34 @@ def get_feature_groups(df: pd.DataFrame) -> Dict[str, List[str]]:
     return groups
 
 
-def expected_calibration_error(
-    y_true: np.ndarray,
-    y_prob: np.ndarray,
-    n_bins: int = 10,
-) -> float:
-    bins = np.linspace(0.0, 1.0, n_bins + 1)
-    ece = 0.0
-    n = len(y_true)
+def choose_feature_columns(
+    df: pd.DataFrame,
+    target: str,
+    feature_group: str = "internal_only_combined",
+) -> List[str]:
+    numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 
-    if n == 0:
-        return float("nan")
+    allowed_numeric = [
+        c for c in numeric_cols
+        if c not in DEFAULT_EXCLUDE and c != target
+    ]
 
-    for i in range(n_bins):
-        lo = bins[i]
-        hi = bins[i + 1]
+    if feature_group == "all":
+        return sorted(allowed_numeric)
 
-        if i == n_bins - 1:
-            mask = (y_prob >= lo) & (y_prob <= hi)
-        else:
-            mask = (y_prob >= lo) & (y_prob < hi)
+    groups = get_feature_groups(df)
+    if feature_group not in groups:
+        raise ValueError(f"Unknown feature_group: {feature_group}")
 
-        if mask.sum() == 0:
-            continue
+    filtered = [c for c in groups[feature_group] if c in allowed_numeric]
 
-        bin_acc = y_true[mask].mean()
-        bin_conf = y_prob[mask].mean()
-        ece += (mask.sum() / n) * abs(bin_acc - bin_conf)
-
-    return float(ece)
-
-
-def build_reliability_table(
-    y_true: np.ndarray,
-    y_prob: np.ndarray,
-    n_bins: int = 10,
-) -> pd.DataFrame:
-    bins = np.linspace(0.0, 1.0, n_bins + 1)
-    rows = []
-
-    for i in range(n_bins):
-        lo = bins[i]
-        hi = bins[i + 1]
-
-        if i == n_bins - 1:
-            mask = (y_prob >= lo) & (y_prob <= hi)
-        else:
-            mask = (y_prob >= lo) & (y_prob < hi)
-
-        count = int(mask.sum())
-        if count == 0:
-            rows.append(
-                {
-                    "bin_left": lo,
-                    "bin_right": hi,
-                    "count": 0,
-                    "mean_confidence": np.nan,
-                    "empirical_accuracy": np.nan,
-                }
-            )
-            continue
-
-        rows.append(
-            {
-                "bin_left": lo,
-                "bin_right": hi,
-                "count": count,
-                "mean_confidence": float(y_prob[mask].mean()),
-                "empirical_accuracy": float(y_true[mask].mean()),
-            }
+    if not filtered:
+        raise ValueError(
+            f"No columns matched feature_group='{feature_group}'. "
+            f"Available allowed numeric columns include: {allowed_numeric[:40]}"
         )
 
-    return pd.DataFrame(rows)
+    return filtered
 
 
 def build_selective_table(
@@ -228,7 +252,7 @@ def build_selective_table(
     thresholds: List[float] | None = None,
 ) -> pd.DataFrame:
     if thresholds is None:
-        thresholds = [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45]
+        thresholds = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]
 
     rows = []
     n = len(y_true)
@@ -316,20 +340,49 @@ def _align_feature_columns(
     return [c for c in feature_cols if c in common]
 
 
+def fit_probability_model(
+    X_train: pd.DataFrame,
+    y_train: np.ndarray,
+) -> Pipeline:
+    model = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler", StandardScaler()),
+            ("clf", LogisticRegression(max_iter=5000, class_weight="balanced")),
+        ]
+    )
+    model.fit(X_train, y_train)
+    return model
+
+
+def fit_isotonic_calibrator(
+    base_model: Pipeline,
+    X_val: pd.DataFrame,
+    y_val: np.ndarray,
+) -> IsotonicRegression:
+    raw_val = base_model.predict_proba(X_val)[:, 1]
+    calibrator = IsotonicRegression(out_of_bounds="clip")
+    calibrator.fit(raw_val, y_val)
+    return calibrator
+
+
+def predict_calibrated_prob(
+    base_model: Pipeline,
+    calibrator: IsotonicRegression,
+    X: pd.DataFrame,
+) -> np.ndarray:
+    raw = base_model.predict_proba(X)[:, 1]
+    prob = calibrator.predict(raw)
+    return np.clip(np.asarray(prob, dtype=float), 0.0, 1.0)
+
+
 def train_probability_model(
     train_df: pd.DataFrame,
     val_df: pd.DataFrame,
     test_df: pd.DataFrame,
     feature_cols: List[str],
     target: str,
-):
-    from sklearn.calibration import CalibratedClassifierCV
-    from sklearn.impute import SimpleImputer
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.metrics import accuracy_score, brier_score_loss, roc_auc_score
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import StandardScaler
-
+) -> Tuple[ProbabilityEvalResult, pd.DataFrame, List[str], Tuple[Pipeline, IsotonicRegression]]:
     feature_cols = _align_feature_columns(train_df, val_df, test_df, feature_cols)
     if len(feature_cols) == 0:
         raise ValueError("No common feature columns across train/val/test.")
@@ -339,37 +392,27 @@ def train_probability_model(
     test_df = test_df.dropna(subset=[target]).copy()
 
     X_train = train_df[feature_cols].copy()
-    y_train = train_df[target].astype(int)
+    y_train = train_df[target].astype(int).to_numpy()
 
     X_val = val_df[feature_cols].copy()
-    y_val = val_df[target].astype(int)
+    y_val = val_df[target].astype(int).to_numpy()
 
     X_test = test_df[feature_cols].copy()
-    y_test = test_df[target].astype(int)
+    y_test = test_df[target].astype(int).to_numpy()
 
-    if y_train.nunique() < 2 or y_val.nunique() < 2 or y_test.nunique() < 2:
+    if len(np.unique(y_train)) < 2 or len(np.unique(y_val)) < 2 or len(np.unique(y_test)) < 2:
         raise ValueError("Target must contain both classes in train, val, and test.")
 
-    base_pipeline = Pipeline(
-        steps=[
-            ("imputer", SimpleImputer(strategy="median")),
-            ("scaler", StandardScaler()),
-            ("clf", LogisticRegression(max_iter=3000)),
-        ]
-    )
+    base_model = fit_probability_model(X_train, y_train)
+    calibrator = fit_isotonic_calibrator(base_model, X_val, y_val)
 
-    base_pipeline.fit(X_train, y_train)
-
-    calibrator = CalibratedClassifierCV(base_pipeline, method="sigmoid", cv="prefit")
-    calibrator.fit(X_val, y_val)
-
-    y_prob = calibrator.predict_proba(X_test)[:, 1]
+    y_prob = predict_calibrated_prob(base_model, calibrator, X_test)
     y_pred = (y_prob >= 0.5).astype(int)
 
     accuracy = float(accuracy_score(y_test, y_pred))
-    roc_auc = float(roc_auc_score(y_test, y_prob))
+    roc_auc = float(roc_auc_score(y_test, y_prob)) if len(np.unique(y_test)) > 1 else float("nan")
     brier = float(brier_score_loss(y_test, y_prob))
-    ece = expected_calibration_error(y_test.to_numpy(), y_prob, n_bins=10)
+    ece = expected_calibration_error(y_test, y_prob, n_bins=10)
 
     result = ProbabilityEvalResult(
         feature_group="",
@@ -383,15 +426,14 @@ def train_probability_model(
         ece=ece,
     )
 
-    pred_df = pd.DataFrame(
-        {
-            "y_true": y_test.to_numpy(),
-            "y_prob": y_prob,
-            "y_pred": y_pred,
-        }
-    )
+    pred_df = test_df.copy()
+    pred_df["y_true"] = y_test
+    pred_df["y_prob"] = y_prob
+    pred_df["y_pred"] = y_pred
+    pred_df["prob_correct"] = y_prob
+    pred_df["prob_wrong"] = 1.0 - y_prob
 
-    return result, pred_df, feature_cols, calibrator
+    return result, pred_df, feature_cols, (base_model, calibrator)
 
 
 def evaluate_feature_groups(
@@ -404,8 +446,8 @@ def evaluate_feature_groups(
     """
     Compare all internal-only feature groups on the same train/val/test split.
 
-    This is useful as a one-shot sanity-check ablation. Your main repeated
-    experiment can still be run via 06_calibrate_probability_model.py.
+    This is useful as a one-shot sanity-check ablation.
+    Main repeated runs can still be driven by 06_calibrate_probability_model.py.
     """
     groups = get_feature_groups(train_df)
 

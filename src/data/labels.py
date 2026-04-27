@@ -40,14 +40,22 @@ def is_valid_path(
 
 
 def is_optimal_path(
+    graph: AdjacencyDict,
     candidate_path: List[int],
+    start: int,
+    goal: int,
     shortest_path: List[int],
 ) -> bool:
     """
-    Check whether the candidate path has the same length as the shortest path.
+    Check whether the candidate path is valid and has the same length
+    as the known shortest path.
     """
     if not candidate_path or not shortest_path:
         return False
+
+    if not is_valid_path(graph, candidate_path, start, goal):
+        return False
+
     return len(candidate_path) == len(shortest_path)
 
 
@@ -74,7 +82,7 @@ def validate_path_label(
     Return a dictionary of labels for the candidate path.
     """
     valid = is_valid_path(graph, candidate_path, start, goal)
-    optimal = valid and is_optimal_path(candidate_path, shortest_path)
+    optimal = is_optimal_path(graph, candidate_path, start, goal, shortest_path)
 
     return {
         "valid_path": int(valid),
