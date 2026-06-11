@@ -16,8 +16,8 @@
     "min_token_entropy",
     "num_generated_tokens"
   ],
-  "selected_low_risk_threshold_prob_wrong": 0.0,
-  "selected_high_risk_threshold_prob_wrong": 0.769,
+  "selected_low_risk_threshold_prob_wrong": 0.2,
+  "selected_high_risk_threshold_prob_wrong": 0.7,
   "output_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\multiseed\\seed_44\\token_only",
   "threshold_selection_note": "Trained logistic model on pooled train split across all node sizes. Fitted isotonic calibrator on pooled val split across all node sizes. Thresholds chosen on val unless fixed by user. Final report should use test only."
 }
