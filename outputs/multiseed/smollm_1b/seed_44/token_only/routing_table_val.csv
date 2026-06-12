@@ -1,0 +1,4 @@
+route,count,fraction,empirical_correct,empirical_wrong,wilson_low,wilson_high
+accept,0,0.0,,,,
+validate,493,0.986,0.33468559837728196,0.665314401622718,0.2944507284059872,0.37747690406279166
+discard,7,0.014,0.0,1.0,0.6456611570247934,1.0
