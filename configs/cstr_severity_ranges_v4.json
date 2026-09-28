@@ -1,0 +1,31 @@
+{
+  "version": "cstr_severity_ranges_v4",
+  "frozen_on": "2026-09-28",
+  "description": "Varied nominal plant + varied fault onset + continuous fault severity, calibrated for prompt v3.1 (T_sp fixed at 310 K)",
+  "source": "outputs/cstr_calibration/20260928_142020_v31_moves (no LLM; 10 random plants per severity; 20 empirical v3.1 first-proposal moves of Qwen2.5-3B per episode, relative to each episode's own setpoints)",
+  "rule": "the model's first proposals should pass in roughly 25-40% of episodes overall, so that an ACCEPT decision can be trained and certified; no-change passes in a minority of episodes; a strong feed cut (x0.65 or x0.5) passes almost always, so every fault is fixable",
+  "finding": "v3.1-like moves pass almost only where no-change also passes (0.72-0.75 of moves); where no-change fails they pass in 0.01-0.15. Severity therefore sets how often the model passes but cannot create passes that need a real correction. Fouling almost never passes at any triggering severity and is kept as a source of hard failures.",
+  "expected": {"first_proposal_pass": 0.28, "nochange_pass": 0.33, "note": "estimates from the calibration table; checked with the real model on a pilot before the full build"},
+  "families": {
+    "fouling": {"params": {"fouling_max": [0.45, 0.62], "fouling_tau": [1500.0, 2500.0]}},
+    "pump_degrade": {"params": {"pump_degrade_factor": [0.40, 0.52]}},
+    "cool_stuck_closed": {"params": {"stuck_opening": [0.38, 0.50]}},
+    "outlet_block": {"params": {"outlet_block_factor": [0.43, 0.52]}}
+  },
+  "plant": {
+    "UA": [425.0, 575.0],
+    "Tin_base": [345.0, 355.0],
+    "Tc_base": [285.0, 295.0],
+    "CA_in_base": [0.09, 0.11],
+    "CD_in_base": [0.045, 0.055],
+    "Fc_max": [0.45, 0.55],
+    "L_sp": [8.0, 10.0],
+    "Fin_sp": [0.0267, 0.04]
+  },
+  "onset_s": [1500.0, 5000.0],
+  "family_sampling": "balanced: an equal number of episodes per family in every split",
+  "fixed": {"T_sp": 310.0, "reason": "CAR safety/validation thresholds are absolute (313 K limit, 310 K control target)"},
+  "privileged_never_features": ["family", "severity", "onset_s", "UA", "Tin_base", "Tc_base", "CA_in_base", "CD_in_base", "Fc_max"],
+  "observable_in_prompt": ["L_sp and Fin_sp appear as current setpoints"],
+  "excluded_episodes": "no trigger before SHUTDOWN, or a monitor trigger before fault onset; the slot is redrawn with the same family (scripts/35), so the realised severity distribution is conditional on triggering (mild fouling and mild stuck-closed trigger in 20-50% of plants)"
+}

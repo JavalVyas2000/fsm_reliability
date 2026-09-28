@@ -1,0 +1,20 @@
+{
+  "version": "cstr_severity_ranges_v2",
+  "frozen_on": "2026-09-24",
+  "supersedes": "configs/cstr_severity_ranges_v1.json",
+  "source": "outputs/cstr_calibration/20260924_092150_severity_grid plus the exploratory boundary check (scratchpad severity_llm_action_check.py, 3 seeds per severity)",
+  "rationale": "v1 ranges lie almost entirely where only large corrections recover; 3B/7B local models propose ~10% feed cuts and failed 0/30 there. v2 straddles the boundary: at the mild end unchanged setpoints or a ~10% cut recover, towards the severe end >15% cuts are needed, so outcomes depend on the instance and on the size of the proposed correction. Severity remains continuous per episode.",
+  "families": {
+    "fouling": {"params": {"fouling_max": [0.6, 0.7], "fouling_tau": [1500.0, 2500.0]}},
+    "pump_degrade": {"params": {"pump_degrade_factor": [0.35, 0.45]}},
+    "cool_stuck_closed": {"params": {"stuck_opening": [0.3, 0.45]}},
+    "outlet_block": {"params": {"outlet_block_factor": [0.35, 0.55]}}
+  },
+  "onset_s": [1800.0, 2200.0],
+  "family_sampling": "uniform over listed families",
+  "paper_scope": "claims hold for this declared population only; the v1 (more severe) ranges are reported separately as a regime where the tested local models do not produce recovering first proposals",
+  "excluded": {
+    "leak": "no grid action passed at any tested severity",
+    "note": "pump 0.45, stuck 0.45 and outlet 0.5-0.55 lie at or beyond the v1 actionable boundary (unchanged setpoints can pass there); included deliberately so the population contains episodes where no correction is needed"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "protocol_version": "0.1-draft",
+  "status": "pending_user_approval",
+  "created": "2026-09-23",
+  "documents": {
+    "research_plan": "docs/selective_verification_research_plan.md",
+    "audit": "docs/selective_verification_repo_audit.md",
+    "protocol": "docs/selective_verification_protocol.md"
+  },
+  "pending_decisions": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"],
+
+  "claims": {
+    "C1": {"level": "confirmatory", "domain": "fsm", "text": "internal signals add ranking information beyond context_action"},
+    "C2": {"level": "confirmatory", "domain": "fsm", "text": "frozen routing policy certified at risk <= alpha with non-trivial coverage"},
+    "C3": {"level": "exploratory_then_confirmatory", "domain": "cstr", "text": "positive online saving vs optimised verifier"},
+    "C4": {"level": "stretch", "domain": "cstr", "text": "closed-loop recovery not degraded"},
+    "C5": {"level": "stretch", "domain": "both", "text": "cross-model / OOD / transfer"}
+  },
+
+  "targets": {
+    "fsm": {
+      "primary_label": "candidate_invalid",
+      "definition": "schema_valid AND NOT valid_path",
+      "positive_class": "failure",
+      "secondary_labels": ["suboptimal_valid", "parse_success", "schema_valid"],
+      "legacy_compat_field": "valid_path"
+    },
+    "cstr": {
+      "primary_label": "rollout_unacceptable",
+      "outcome_contract_version": "v1",
+      "reference_label": "legacy_verifier_pass",
+      "positive_class": "failure"
+    }
+  },
+
+  "eligible_population": {
+    "semantic_probe": "schema_valid responses from a single (model, prompt_version, task_distribution)",
+    "operational": "all generated responses",
+    "pool_across_models": false
+  },
+
+  "cheap_checks": {
+    "fsm": ["parse_first_line", "list_of_int", "node_ids_in_range", "length_1_to_4x_num_nodes"],
+    "cstr": ["parse_structured", "finite_floats", "bounds", "grid"],
+    "format_failure_rule": "reprompt_once_then_reject",
+    "scoring_failure_rule": "route_verify"
+  },
+
+  "routing": {
+    "primary": "p_hat < tau -> DIRECT else VERIFY; VERIFY executes only on verifier pass",
+    "fsm_candidates_per_instance": 1,
+    "cstr_reprompt_max": 5,
+    "cstr_fallback_validated": true,
+    "secondary_policy": "reject_before_verify (separate evaluation)"
+  },
+
+  "prompt": {
+    "fsm_version": "v2",
+    "fsm_changes_from_v1": [
+      "use tokenizer chat template",
+      "remove always-wrong empty-path option",
+      "replace copyable few-shot example",
+      "stop at end of first JSON object or newline"
+    ],
+    "cstr_version": "car_action_propose_reference"
+  },
+
+  "models": {
+    "primary": {"hf_id": "Qwen/Qwen2.5-3B-Instruct", "revision": null, "dtype": "bfloat16", "quantization": null},
+    "secondary": {"hf_id": "meta-llama/Llama-3.2-3B-Instruct", "revision": null, "dtype": "bfloat16", "quantization": null},
+    "stretch_larger": {"hf_id": null, "note": "4-bit or other hardware; separate configuration"},
+    "revision_policy": "pin commit hash at first download and record in run_manifest",
+    "hardware": {"gpu": "NVIDIA GeForce RTX 4060 Laptop GPU", "vram_mib": 8188}
+  },
+
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens_rule": "fixed per task distribution, not from ground truth; recorded",
+    "stop": ["end_of_first_json_object", "newline"],
+    "collect": ["generated_ids", "raw_logits_selected_and_topk", "processed_scores_selected", "answer_span_indices", "latency_s", "peak_mem_bytes"]
+  },
+
+  "task_distribution": {
+    "fsm_pilot": {
+      "num_nodes": [5, 10, 15, 20],
+      "edge_prob": {"5": 0.35, "10": 0.30, "15": 0.25, "20": 0.20},
+      "min_path_nodes": 2,
+      "adjustment_policy": "may be adjusted once on pilot data to target failure prevalence 0.10-0.40, then frozen before confirmatory generation"
+    },
+    "fsm_ood_axes": [
+      {"name": "larger_graphs", "num_nodes": [25, 30]},
+      {"name": "edge_density_shift", "edge_prob_delta": -0.05}
+    ]
+  },
+
+  "splits": {
+    "group_key_query": "sha256(canonical_adjacency|start|goal)",
+    "group_key_graph": "sha256(canonical_adjacency)",
+    "disjoint_on": "graph",
+    "seed_policy": "numpy SeedSequence(root_seed).spawn per partition; root seed never used before",
+    "root_seed_pilot": null,
+    "root_seed_confirmatory": null,
+    "must_not_overlap_with": ["data/raw", "data/raw_10node_large", "data/raw_multi_node_large", "data/raw_seed_42", "data/raw_seed_43", "data/raw_seed_44"],
+    "fsm_pilot_sizes": {"train": 1500, "dev_cal": 500, "dev_thr": 500, "test_iid": 500},
+    "fsm_confirmatory_sizes": {"train": null, "dev_cal": null, "dev_thr": null, "cert": null, "test_iid": 1000, "test_ood_per_axis": 500},
+    "existing_data_status": "exploratory_only"
+  },
+
+  "feature_groups": {
+    "context_action": ["num_nodes", "num_edges", "edge_density", "shortest_length", "answer_length", "answer_is_two_node", "answer_repeats_node", "answer_endpoints_match"],
+    "context_action_noBFS": ["num_nodes", "num_edges", "edge_density", "answer_length", "answer_is_two_node", "answer_repeats_node", "answer_endpoints_match"],
+    "token_confidence": {
+      "span": "parsed_answer_tokens",
+      "distribution": "softmax(raw_logits)",
+      "features": ["tok_mean_logprob", "tok_min_logprob", "tok_mean_entropy", "tok_max_entropy", "tok_min_top2_margin"]
+    },
+    "hidden": {
+      "relative_layers": [0.25, 0.5, 0.75],
+      "pooling": ["mean_answer_span", "last_prompt_token"],
+      "reduction": {"method": "pca", "fit_on": "train", "max_components": 64}
+    },
+    "attention": {
+      "status": "optional",
+      "relative_layers": [0.25, 0.5, 0.75],
+      "queries": "answer_span",
+      "features": ["mass_to_graph", "mass_to_start", "mass_to_goal"],
+      "head_aggregation": "mean"
+    },
+    "combinations": ["context_action+token_confidence", "context_action+hidden", "context_action+token_confidence+hidden", "token_confidence+hidden"],
+    "selection_policy": "explicit allowlist only"
+  },
+
+  "models_fit": {
+    "primary": "logistic_regression",
+    "nonlinear_baseline": "gradient_boosting (bounded dev search, Stage 6 only)",
+    "preprocessing_fit_on": "train",
+    "calibration": {"method": ["none", "platt", "isotonic"], "fit_on": "dev_cal"},
+    "threshold_fit_on": "dev_thr"
+  },
+
+  "metrics": {
+    "predictive": ["auroc", "auprc_failure_positive", "prevalence", "brier", "ece"],
+    "ece": {"bins": 15, "binning": "equal_width", "include_p_equal_1_in_top_bin": true},
+    "routing": ["verifier_call_rate", "direct_coverage", "conditional_direct_risk", "escaped_error_rate_eligible", "escaped_error_rate_all", "counts"],
+    "paired_comparison": "grouped bootstrap over graph groups, 2000 resamples",
+    "cost": ["generation_s", "feature_extraction_s", "verifier_s_legacy", "verifier_s_optimised", "peak_mem_bytes"]
+  },
+
+  "risk_certification": {
+    "alpha_primary": [0.05, 0.02],
+    "alpha_secondary": [0.01],
+    "delta": 0.05,
+    "sidedness": "one-sided upper",
+    "bound": "clopper_pearson_exact",
+    "primary_quantity": "conditional_direct_risk",
+    "co_reported_quantity": "marginal_escaped_error_risk",
+    "independence_unit": "graph_group (one candidate per group in cert)",
+    "multiplicity": "bonferroni over declared policy set, or learn-then-test fixed sequence",
+    "min_direct_n_table_delta_0.05": {
+      "0.05": {"k0": 59, "k1": 93, "k2": 124, "k5": 208},
+      "0.02": {"k0": 149, "k1": 236, "k2": 313, "k5": 523},
+      "0.01": {"k0": 299, "k1": 473, "k2": 628, "k5": 1049},
+      "0.005": {"k0": 598, "k1": 947, "k2": 1258, "k5": 2100}
+    },
+    "cert_size_rule": "n_required / expected_direct_coverage(dev_thr) * 1.5"
+  },
+
+  "cstr": {
+    "reference_repo": "C:/Users/jv624/Desktop/ctrl-alt-recover",
+    "integration": "import simulator, checkers, prompt builder, SetpointPlan; do not copy; do not depend on LangGraph app",
+    "action_variables": ["T_sp", "L_sp", "Fin_sp"],
+    "faults_initial": ["cool_stuck_closed", "fouling", "pump_degrade"],
+    "snapshot_fields": ["plant_deepcopy", "rollout_rng_state", "fault_cfg", "fault_onset_s", "t0", "mode", "phase"],
+    "rng_isolation": true,
+    "outcome_contract_v1": {
+      "source": "ctrl-alt-recover/docs/recovery_gap_study.md",
+      "evaluate_on": "plant_truth",
+      "retain_sensor_verdict": true,
+      "T_true_max_K": 313.0,
+      "L_true_min": 2.0,
+      "L_true_max": 11.0,
+      "production_floor_Fin_sp_fraction_of_nominal": null,
+      "recovery_deadline_s": 600,
+      "hold_s": 60,
+      "evaluation_window_end": null,
+      "relapse_check": "through end of evaluation window"
+    },
+    "verifier_variants": ["legacy", "optimised_early_exit"],
+    "existing_traces_usable_as_labels": false,
+    "upstream_bugs_reported": ["F5_llm_model_dropped_from_GraphState", "F6_fallback_router_mutation_not_persisted", "F7_global_rng_verdict_dependence", "F8_near_shutdown_accepted"]
+  },
+
+  "compute_budget": {
+    "stage1_pilot_gpu_hours_estimate": 3,
+    "stage1_timing_subset": 200,
+    "note": "estimates to be replaced by measured values after timing subset"
+  },
+
+  "outputs": {
+    "layout": "outputs/<stage>/<run_id>/",
+    "manifest": "run_manifest.json",
+    "never_overwrite": true
+  }
+}

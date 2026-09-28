@@ -1,0 +1,29 @@
+{
+  "version": "cstr_severity_ranges_v3",
+  "frozen_on": "2026-09-26",
+  "description": "Varied nominal plant + varied fault onset + continuous fault severity (T_sp fixed at 310 K)",
+  "source": "outputs/cstr_calibration/20260926_181136_varied_plant (no LLM; 6 random plants per severity; actions relative to each episode's own setpoints)",
+  "rule": "no-change fails for most plants, the typical LLM move (feed x0.9) passes only for some, and some grid correction always passes",
+  "families": {
+    "fouling": {"params": {"fouling_max": [0.6, 0.75], "fouling_tau": [1500.0, 2500.0]}},
+    "pump_degrade": {"params": {"pump_degrade_factor": [0.3, 0.45]}},
+    "cool_stuck_closed": {"params": {"stuck_opening": [0.25, 0.45]}},
+    "outlet_block": {"params": {"outlet_block_factor": [0.35, 0.45]}}
+  },
+  "plant": {
+    "UA": [425.0, 575.0],
+    "Tin_base": [345.0, 355.0],
+    "Tc_base": [285.0, 295.0],
+    "CA_in_base": [0.09, 0.11],
+    "CD_in_base": [0.045, 0.055],
+    "Fc_max": [0.45, 0.55],
+    "L_sp": [8.0, 10.0],
+    "Fin_sp": [0.0267, 0.04]
+  },
+  "onset_s": [1500.0, 5000.0],
+  "family_sampling": "uniform over listed families",
+  "fixed": {"T_sp": 310.0, "reason": "CAR safety/validation thresholds are absolute (313 K limit, 310 K control target)"},
+  "privileged_never_features": ["family", "severity", "onset_s", "UA", "Tin_base", "Tc_base", "CA_in_base", "CD_in_base", "Fc_max"],
+  "observable_in_prompt": ["L_sp and Fin_sp appear as current setpoints"],
+  "excluded_episodes": "no trigger before SHUTDOWN, or a monitor trigger before fault onset (false alarm of the nominal plant)"
+}

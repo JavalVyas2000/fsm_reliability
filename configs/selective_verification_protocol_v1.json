@@ -1,0 +1,512 @@
+{
+  "protocol_version": "1.0",
+  "status": "frozen",
+  "frozen_on": "2026-09-23",
+  "supersedes": "configs/selective_verification_protocol_v0.json",
+  "documents": {
+    "research_plan": "docs/selective_verification_research_plan.md",
+    "audit": "docs/selective_verification_repo_audit.md",
+    "protocol": "docs/selective_verification_protocol.md"
+  },
+  "headline_claim": "fixed prompt template, varying instances: internal signals predict validator failure well enough to skip simulator calls at certified risk with measured wall-clock savings",
+  "claims": {
+    "C1": {
+      "level": "confirmatory",
+      "domains": [
+        "fsm",
+        "cstr"
+      ]
+    },
+    "C2": {
+      "level": "confirmatory",
+      "domains": [
+        "fsm",
+        "cstr"
+      ]
+    },
+    "C3": {
+      "level": "confirmatory_headline",
+      "domains": [
+        "cstr"
+      ]
+    },
+    "C4": {
+      "level": "stretch",
+      "domains": [
+        "cstr"
+      ]
+    },
+    "C5": {
+      "level": "stretch",
+      "domains": [
+        "fsm",
+        "cstr"
+      ]
+    }
+  },
+  "fsm_runtime_saving_claim": false,
+  "targets": {
+    "fsm": {
+      "label": "candidate_invalid",
+      "definition": "schema_valid AND NOT valid_path",
+      "secondary": [
+        "suboptimal_valid"
+      ],
+      "legacy_compat_field": "valid_path"
+    },
+    "cstr": {
+      "label": "verifier_reject",
+      "definition": "legacy rollout_validate_setpoints FAIL under deterministic replay",
+      "outcome_contract": null,
+      "diagnostics": [
+        "accepted_Fin_sp_fraction_of_nominal"
+      ]
+    },
+    "positive_class": "failure"
+  },
+  "population": {
+    "definition": "fixed (model, prompt_version, decoding, static_context); instances IID from declared distribution",
+    "semantic_probe": "schema_valid first-proposal candidates",
+    "operational": "all generated responses",
+    "candidates_per_instance": 1,
+    "pool_across_models": false
+  },
+  "cheap_checks": {
+    "fsm": [
+      "parse_first_json_object",
+      "list_of_int",
+      "node_ids_in_range",
+      "length_1_to_4x_num_nodes"
+    ],
+    "cstr": [
+      "parse_structured",
+      "finite_floats",
+      "admissible_bounds"
+    ],
+    "cstr_admissible_bounds": {
+      "T_sp": null,
+      "L_sp": null,
+      "Fin_sp": null,
+      "source": "limits stated in CAR action prompt; to be filled at Stage 4 from prompt text"
+    },
+    "format_failure_rule": "reprompt_once_then_reject",
+    "scoring_failure_rule": "route_verify"
+  },
+  "models": {
+    "primary": {
+      "hf_id": "Qwen/Qwen2.5-3B-Instruct",
+      "revision": null,
+      "dtype": "bfloat16"
+    },
+    "secondary": {
+      "hf_id": "meta-llama/Llama-3.2-3B-Instruct",
+      "revision": null,
+      "dtype": "bfloat16"
+    },
+    "revision_policy": "pin commit hash at first download",
+    "hardware": {
+      "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "vram_mib": 8188
+    }
+  },
+  "prompts": {
+    "fsm": {
+      "version": "v2",
+      "chat_template": true,
+      "empty_path_option": false,
+      "worked_example": "fixed graph excluded from all splits; non-copyable",
+      "stop": "end_of_first_json_object"
+    },
+    "cstr": {
+      "version": "car_action_propose_v1",
+      "chat_template": true,
+      "kg_context": "frozen from stored trace subgraph; hashed",
+      "symptoms_populated": true
+    }
+  },
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": {
+      "fsm": 96,
+      "cstr": null
+    },
+    "max_new_tokens_rule": "fixed per domain, never from ground truth; set at pilot",
+    "persist": [
+      "generated_ids",
+      "answer_span",
+      "raw_selected_logprobs",
+      "processed_selected_logprobs",
+      "features",
+      "gen_latency_s",
+      "feat_latency_s",
+      "peak_mem_bytes"
+    ],
+    "repetition_penalty": 1.0
+  },
+  "fsm_distribution": {
+    "num_nodes": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "edge_prob": {
+      "5": 0.35,
+      "10": 0.3,
+      "15": 0.25,
+      "20": 0.2
+    },
+    "reachable_only": true,
+    "prevalence_adjustment": "not used (user decision 2026-09-23): mix kept at 5/10/15/20",
+    "group_key": "sha256(canonical_adjacency)",
+    "must_not_overlap_with": [
+      "data/raw",
+      "data/raw_10node_large",
+      "data/raw_multi_node_large",
+      "data/raw_seed_42",
+      "data/raw_seed_43",
+      "data/raw_seed_44"
+    ]
+  },
+  "cstr_distribution": {
+    "instance": "one fault episode; snapshot at first action trigger",
+    "families": {
+      "fouling": {
+        "params": {
+          "fouling_max": [
+            0.3,
+            0.9
+          ],
+          "fouling_tau": [
+            1000,
+            3000
+          ]
+        },
+        "onset_s": [
+          1800,
+          2200
+        ]
+      },
+      "pump_degrade": {
+        "params": {
+          "pump_degrade_factor": [
+            0.2,
+            0.8
+          ]
+        },
+        "onset_s": [
+          1800,
+          2200
+        ]
+      },
+      "cool_stuck_closed": {
+        "params": {
+          "stuck_opening": [
+            0.0,
+            0.6
+          ]
+        },
+        "onset_s": [
+          1800,
+          2200
+        ],
+        "implementation": "FaultManager subclass in fsm_reliability; CAR unmodified"
+      }
+    },
+    "optional_families": [
+      "outlet_block",
+      "leak"
+    ],
+    "family_sampling": "uniform",
+    "ranges_status": "proposed; frozen after no-LLM severity calibration (protocol 5.3)",
+    "severity_calibration": {
+      "keep_region": "no-change action fails for most AND at least one grid action passes"
+    },
+    "independence_unit": "episode"
+  },
+  "seeds": {
+    "policy": "numpy SeedSequence(root).spawn per partition and per purpose (instance, rollout)",
+    "root_fsm_pilot": 20260923,
+    "root_fsm_confirmatory": null,
+    "root_cstr_pilot": null,
+    "root_cstr_confirmatory": null,
+    "root_fsm_cert": 20260924
+  },
+  "splits": {
+    "fsm_pilot": {
+      "train": 1500,
+      "dev_cal": 500,
+      "dev_thr": 500,
+      "test_iid": 500
+    },
+    "fsm_confirmatory": {
+      "train": 3000,
+      "dev_cal": 1000,
+      "dev_thr": 1000,
+      "cert": null,
+      "test_iid": 1000
+    },
+    "cstr_pilot": {
+      "train": 150,
+      "dev_cal": 50,
+      "dev_thr": 50,
+      "test_iid": 50
+    },
+    "cstr_confirmatory": {
+      "train": 1500,
+      "dev_cal": 400,
+      "dev_thr": 400,
+      "cert": 800,
+      "test_iid": 800
+    },
+    "confirmatory_sizes_status": "provisional; finalised from pilot via cert_size_rule before generation",
+    "existing_data_status": "exploratory_only"
+  },
+  "feature_groups": {
+    "attention": {
+      "role": "primary",
+      "relative_layers": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "queries": "answer_span",
+      "extraction": "kv-cache crop to prompt-1, eager re-run of decision positions; answer-query rows only",
+      "validation": "fp32: elementwise max abs diff <= 1e-3 vs full eager pass",
+      "regions": {
+        "fsm": [
+          "system",
+          "instruction",
+          "example",
+          "graph",
+          "query",
+          "generated"
+        ],
+        "cstr": [
+          "kg_context",
+          "plant_snapshot",
+          "feedback_goal",
+          "instruction"
+        ]
+      },
+      "features": [
+        "region_mass_headmean",
+        "region_mass_headmax",
+        "row_entropy"
+      ]
+    },
+    "token_confidence": {
+      "role": "primary",
+      "span": "answer_span",
+      "distribution": "softmax(raw_logits)",
+      "features": [
+        "tok_mean_logprob",
+        "tok_min_logprob",
+        "tok_mean_entropy",
+        "tok_max_entropy",
+        "tok_min_top2_margin",
+        "tok_num_mean_logprob",
+        "tok_num_min_logprob",
+        "tok_num_mean_entropy",
+        "tok_num_max_entropy",
+        "tok_num_min_top2_margin"
+      ]
+    },
+    "hidden": {
+      "role": "comparator",
+      "relative_layers": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "pooling": [
+        "mean_answer_span",
+        "last_prompt_token"
+      ],
+      "reduction": {
+        "method": "pca",
+        "fit_on": "train",
+        "max_components": 64
+      }
+    },
+    "context_action": {
+      "role": "baseline",
+      "fsm": [
+        "num_nodes",
+        "num_edges",
+        "edge_density",
+        "shortest_length",
+        "answer_length",
+        "answer_is_two_node",
+        "answer_repeats_node",
+        "answer_endpoints_match"
+      ],
+      "cstr": [
+        "T_meas",
+        "L_meas",
+        "u_cool",
+        "u_valve",
+        "u_pump",
+        "anomaly_ratio",
+        "control_zone",
+        "T_sp_current",
+        "L_sp_current",
+        "Fin_sp_current",
+        "dT_sp",
+        "dL_sp",
+        "dFin_sp"
+      ],
+      "cstr_excluded_privileged": [
+        "fault_family",
+        "severity",
+        "onset_s",
+        "true_state"
+      ]
+    },
+    "combinations": [
+      "attention",
+      "token_confidence",
+      "hidden",
+      "attention+token_confidence",
+      "all_internal",
+      "context_action",
+      "context_action+attention",
+      "context_action+all_internal"
+    ],
+    "selection_policy": "explicit allowlist only"
+  },
+  "fitting": {
+    "primary": "logistic_regression",
+    "nonlinear_baseline": "gradient_boosting (bounded dev search, Stage 6)",
+    "preprocessing_fit_on": "train",
+    "calibration": {
+      "methods": [
+        "none",
+        "platt",
+        "isotonic"
+      ],
+      "fit_on": "dev_cal"
+    },
+    "threshold_fit_on": "dev_thr"
+  },
+  "metrics": {
+    "predictive": [
+      "auroc",
+      "auprc_failure_positive",
+      "prevalence",
+      "brier",
+      "ece"
+    ],
+    "ece": {
+      "bins": 15,
+      "binning": "equal_width",
+      "p_equal_1_in_top_bin": true
+    },
+    "routing": [
+      "verifier_call_rate",
+      "direct_coverage",
+      "conditional_direct_risk",
+      "marginal_escaped_error_eligible",
+      "marginal_escaped_error_all",
+      "counts"
+    ],
+    "cost": [
+      "gen_s",
+      "feat_s",
+      "probe_s",
+      "verifier_s_legacy",
+      "verifier_s_early_exit",
+      "saving_vs_always_verify",
+      "peak_mem_bytes"
+    ],
+    "paired_comparison": {
+      "method": "grouped bootstrap",
+      "resamples": 2000,
+      "group": "independence_unit"
+    }
+  },
+  "verifier": {
+    "interface": "verify(snapshot, action, config) -> VerifierResult",
+    "semantics": "legacy rollout_validate_setpoints, imported from ctrl-alt-recover",
+    "determinism": "global numpy+python RNG seeded from snapshot rollout seed; caller RNG restored",
+    "required_tests": [
+      "replay_determinism",
+      "order_independence",
+      "no_executed_plant_perturbation",
+      "known_pass_fail_witness",
+      "simulator_error_path"
+    ],
+    "variants": {
+      "legacy": "headline cost baseline",
+      "early_exit": "sensitivity; must match legacy verdict 100% on pilot"
+    }
+  },
+  "risk_certification": {
+    "alpha_primary": [
+      0.05,
+      0.02
+    ],
+    "alpha_secondary": [
+      0.01
+    ],
+    "delta": 0.05,
+    "bound": "clopper_pearson_one_sided_upper",
+    "primary_quantity": "conditional_direct_risk",
+    "co_reported": "marginal_escaped_error_risk",
+    "min_direct_n": {
+      "0.05": {
+        "k0": 59,
+        "k1": 93,
+        "k2": 124,
+        "k5": 208
+      },
+      "0.02": {
+        "k0": 149,
+        "k1": 236,
+        "k2": 313,
+        "k5": 523
+      },
+      "0.01": {
+        "k0": 299,
+        "k1": 473,
+        "k2": 628,
+        "k5": 1049
+      }
+    },
+    "cert_size_rule": "n_required(k=2) / direct_coverage(dev_thr) * 1.5",
+    "multiplicity": "bonferroni over declared (model, domain, alpha) set",
+    "retuning_on_cert": false,
+    "declared_policies": [
+      "P1_all_internal",
+      "P2_attention_token",
+      "P3_agree_context_all_internal",
+      "P4_context_action_baseline"
+    ],
+    "delta_per_policy": 0.0125,
+    "cert_size_fsm": 3000,
+    "frozen_dir": "outputs/certification/20260923_230127_frozen_policies"
+  },
+  "gates": {
+    "stage1": "some internal family improves over context_action (grouped bootstrap 95% CI on dAUROC excludes 0), or documented decision to continue to CSTR",
+    "stage2": "routing beats random at matched budget",
+    "stage4": "CSTR failure prevalence 0.10-0.70; plausible positive saving; early-exit verdict agreement 100%"
+  },
+  "upstream_issues_not_fixed": [
+    "F5_llm_model_dropped_from_GraphState",
+    "F6_fallback_not_applied",
+    "dropped_state_keys_symptoms_detector"
+  ],
+  "outputs": {
+    "layout": "outputs/<stage>/<run_id>/",
+    "manifest": "run_manifest.json",
+    "never_overwrite": true
+  },
+  "routing": {
+    "type": "three-way ALLOW/VERIFY/DISALLOW",
+    "allow_selection": "point, alpha=0 on dev_thr",
+    "disallow_selection": "point, beta=0.10 on dev_thr",
+    "cost_metric": "time saved = avoided verifier time - router overhead"
+  }
+}

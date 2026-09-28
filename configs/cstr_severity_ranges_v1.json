@@ -1,0 +1,18 @@
+{
+  "version": "cstr_severity_ranges_v1",
+  "frozen_on": "2026-09-24",
+  "source": "outputs/cstr_calibration/20260924_092150_severity_grid (no-LLM grid; 3 seeds per severity; 16 grid actions)",
+  "rule": "only severities that were tested AND actionable (no-change fails for >50% of seeds and some grid action passes for >50%) are inside a range; endpoints are tested points",
+  "families": {
+    "fouling": {"params": {"fouling_max": [0.6, 0.9], "fouling_tau": [1500.0, 2500.0]}},
+    "pump_degrade": {"params": {"pump_degrade_factor": [0.2, 0.35]}},
+    "cool_stuck_closed": {"params": {"stuck_opening": [0.1, 0.4]}},
+    "outlet_block": {"params": {"outlet_block_factor": [0.2, 0.45]}}
+  },
+  "onset_s": [1800.0, 2200.0],
+  "family_sampling": "uniform over listed families",
+  "excluded": {
+    "leak": "no grid action passed at any tested severity (0.001-0.008); a failed search does not prove unrecoverability",
+    "note_fouling_tau": "calibrated at 2000 s only; the 1500-2500 s range is an untested extension that adds dynamic variation"
+  }
+}
