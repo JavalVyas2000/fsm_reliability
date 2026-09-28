@@ -1,0 +1,121 @@
+{
+  "created_utc": "2026-09-24T20:20:40.702429+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\25_cstr_collect.py",
+    "--dataset_dir",
+    "data/v2/cstr_main_seed20260927",
+    "--tag",
+    "main3000",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "model": {
+    "hf_id": "Qwen/Qwen2.5-3B-Instruct",
+    "resolved_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "dtype": "bfloat16",
+    "num_hidden_layers": 36
+  },
+  "prompt": {
+    "version": "cstr_prompt_v2.1",
+    "chat_template": true,
+    "chat_template_kwargs": {
+      "date_string": "23 Sep 2026"
+    },
+    "kg_sha256": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+    "shared_prefix_tokens": 4273
+  },
+  "decoding": {
+    "do_sample": false,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 256,
+    "stop": "end_of_first_json_object | eos | max_new_tokens"
+  },
+  "loop": {
+    "max_reprompts": 5,
+    "stop": "first pass | last reprompt | format failure",
+    "feedback": "upstream reprompting() text + previous proposal",
+    "scheduling": "round-major"
+  },
+  "internals": {
+    "relative_layers": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "collect_attention": true,
+    "collect_hidden": true
+  },
+  "data": {
+    "dataset_dir": "data\\v2\\cstr_main_seed20260927",
+    "partitions": [
+      "train",
+      "dev_cal",
+      "dev_thr",
+      "cert",
+      "test_iid"
+    ],
+    "limit": null,
+    "root_seed": 20260927,
+    "files_sha256": {
+      "kg_context.ttl": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+      "prompts_cert.jsonl": "4de91f238591bb74d44e17d3f53948be7f9210b09341b197d8c064cedbd70f35",
+      "prompts_dev_cal.jsonl": "dc33fc6457c8f422c538c54344cd5192e52e87201e111803868d47e150d22bc0",
+      "prompts_dev_thr.jsonl": "81432738b923c0f334f6a930fe894bb990049bdc40ec7a26715a871b4d9b29c6",
+      "prompts_test_iid.jsonl": "fa155de5d3e43b746500e1004e382f4f1ef7f406f0dad94144264336c0061519",
+      "prompts_train.jsonl": "16ae6055420bbd6bb963faf3f9032b24333f5571c90297360059998a57b77488",
+      "snapshots_cert.pkl": "cbc468647f9388545402009613454d6d7fb4eca33239e81df1cc55d09eb729d5",
+      "snapshots_dev_cal.pkl": "0a71449988a667656883ec56bac45c3d32066b590ac0357985c93b914f34ff87",
+      "snapshots_dev_thr.pkl": "65ef1ce02611f157c01897163ff5507f6f2b64c0a03e6db134d0b4624e7d35bc",
+      "snapshots_test_iid.pkl": "3ae582d7294b002ab978de742bb51bcf9fc86be1b152c14143cfa1eda8ebc442",
+      "snapshots_train.pkl": "8f195e51d500dbfda0291eae2534f3db6bed28f5d0a5577841421b5012c5dd11",
+      "specs.csv": "073fa58fe54aa270ffde47bae88ac43be901da95a512b73b8c75c9dbb9de0cc7"
+    }
+  },
+  "car": {
+    "repo": "C:\\Users\\jv624\\Desktop\\ctrl-alt-recover",
+    "commit": "4afe06c3eb21e4f61bef4901d4faac6bcf6d7cf5",
+    "dirty_files": [
+      "M case_studies/common/trace_logging.py",
+      " M case_studies/cstr_case/cstr_case.py",
+      " M case_studies/mixer_case/mixer_case.py",
+      "?? .claude/",
+      "?? assets/linkedin/",
+      "?? case_studies/analyze_failures.py",
+      "?? case_studies/common/llm_failures.py",
+      "?? docs/",
+      "?? results/",
+      "?? results_new/"
+    ],
+    "sha256": {
+      "cstr_case.py": "b6583a3a772990f11398989aecbd13bfb5cc2a5d575a4bd3313e61fe72ccc8f2",
+      "cstr_digital_twin.py": "19718421bf7904e904ad1aa8885ad27157b5756f4e7bffaa9187630aa460728b",
+      "cstr_anomaly_threshold_test.py": "c5198a134f107da8ebc5c0ba4157e8b7e7c821a5026808a22df562b504eb8d9d",
+      "graph_retrieval_code.py": "703f0041946e5633becfbc38ad630c061045710d87dff5cea59a210d10ee1f0f"
+    }
+  }
+}

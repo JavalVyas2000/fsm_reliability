@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-09-28T15:02:13.388947+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\33_cstr_episode_specs.py",
+    "--ranges",
+    "configs/cstr_severity_ranges_v4.json",
+    "--seed",
+    "20261004",
+    "--out",
+    "data/cstr/cstr_episode_specs_v4.xlsx"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "3777ce6069bfc10748100a4ddf69dce73c912a76",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "dataset": {
+    "type": "cstr_episode_specs",
+    "seed": 20261004,
+    "sizes": {
+      "train": 3000,
+      "val": 1000,
+      "test": 1000
+    },
+    "ranges_file": "configs/cstr_severity_ranges_v4.json",
+    "ranges_sha256": "33fb1a720944baf64bf97680b3979c42de97648cc5a5398c7c0b29aca205e883",
+    "output": "data/cstr/cstr_episode_specs_v4.xlsx"
+  }
+}

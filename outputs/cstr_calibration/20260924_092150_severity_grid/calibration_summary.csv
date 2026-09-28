@@ -1,0 +1,32 @@
+family,severity,seeds,triggered,actionable,nochange_fail_rate,any_pass_rate,mean_pass_frac_of_grid
+fouling,"{""fouling_max"": 0.3, ""fouling_tau"": 2000.0}",3,0,False,,,
+fouling,"{""fouling_max"": 0.5, ""fouling_tau"": 2000.0}",3,0,False,,,
+fouling,"{""fouling_max"": 0.4, ""fouling_tau"": 2000.0}",3,0,False,,,
+pump_degrade,"{""pump_degrade_factor"": 0.65}",3,0,False,,,
+pump_degrade,"{""pump_degrade_factor"": 0.8}",3,0,False,,,
+fouling,"{""fouling_max"": 0.6, ""fouling_tau"": 2000.0}",3,3,True,1.0,1.0,0.7333333333333333
+fouling,"{""fouling_max"": 0.7, ""fouling_tau"": 2000.0}",3,3,True,1.0,1.0,0.6666666666666666
+fouling,"{""fouling_max"": 0.8, ""fouling_tau"": 2000.0}",3,3,True,1.0,1.0,0.4000000000000001
+fouling,"{""fouling_max"": 0.9, ""fouling_tau"": 2000.0}",3,3,True,1.0,1.0,0.26666666666666666
+cool_stuck_closed,"{""stuck_opening"": 0.6}",3,0,False,,,
+cool_stuck_closed,"{""stuck_opening"": 0.5}",3,0,False,,,
+pump_degrade,"{""pump_degrade_factor"": 0.5}",3,3,False,0.0,1.0,0.9333333333333332
+pump_degrade,"{""pump_degrade_factor"": 0.35}",3,3,True,1.0,1.0,0.5333333333333333
+pump_degrade,"{""pump_degrade_factor"": 0.2}",3,3,True,1.0,1.0,0.13333333333333333
+pump_degrade,"{""pump_degrade_factor"": 0.1}",3,3,False,1.0,0.0,0.0
+outlet_block,"{""outlet_block_factor"": 0.8}",3,0,False,,,
+cool_stuck_closed,"{""stuck_opening"": 0.4}",3,3,True,1.0,1.0,0.8000000000000002
+cool_stuck_closed,"{""stuck_opening"": 0.3}",3,3,True,1.0,1.0,0.6666666666666666
+cool_stuck_closed,"{""stuck_opening"": 0.2}",3,3,True,1.0,1.0,0.26666666666666666
+cool_stuck_closed,"{""stuck_opening"": 0.1}",3,3,True,1.0,1.0,0.13333333333333333
+cool_stuck_closed,"{""stuck_opening"": 0.0}",3,3,False,1.0,0.0,0.0
+outlet_block,"{""outlet_block_factor"": 0.6}",3,3,False,0.0,1.0,1.0
+outlet_block,"{""outlet_block_factor"": 0.45}",3,3,True,1.0,1.0,0.8000000000000002
+outlet_block,"{""outlet_block_factor"": 0.3}",3,3,True,1.0,1.0,0.4000000000000001
+outlet_block,"{""outlet_block_factor"": 0.2}",3,3,True,1.0,1.0,0.13333333333333333
+outlet_block,"{""outlet_block_factor"": 0.1}",3,3,False,1.0,0.0,0.0
+leak,"{""leak_k"": 0.001}",3,3,False,1.0,0.0,0.0
+leak,"{""leak_k"": 0.002}",3,3,False,1.0,0.0,0.0
+leak,"{""leak_k"": 0.003}",3,3,False,1.0,0.0,0.0
+leak,"{""leak_k"": 0.005}",3,3,False,1.0,0.0,0.0
+leak,"{""leak_k"": 0.008}",3,3,False,1.0,0.0,0.0

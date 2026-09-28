@@ -1,0 +1,97 @@
+{
+  "train": {
+    "n": 1400,
+    "families": {
+      "outlet_block": 352,
+      "fouling": 328,
+      "cool_stuck_closed": 365,
+      "pump_degrade": 355
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 1400,
+    "distinct_trigger_times": 725,
+    "distinct_snapshot_tuples": 1400,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 707,
+      "T_meas_error>2.0": 365,
+      "entered_UNSAFE(control_zone)": 290,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 38
+    }
+  },
+  "dev_cal": {
+    "n": 300,
+    "families": {
+      "pump_degrade": 73,
+      "cool_stuck_closed": 79,
+      "outlet_block": 73,
+      "fouling": 75
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 300,
+    "distinct_trigger_times": 254,
+    "distinct_snapshot_tuples": 300,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 146,
+      "T_meas_error>2.0": 80,
+      "entered_UNSAFE(control_zone)": 68,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 6
+    }
+  },
+  "dev_thr": {
+    "n": 300,
+    "families": {
+      "pump_degrade": 71,
+      "fouling": 86,
+      "outlet_block": 71,
+      "cool_stuck_closed": 72
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 300,
+    "distinct_trigger_times": 249,
+    "distinct_snapshot_tuples": 300,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 142,
+      "entered_UNSAFE(control_zone)": 80,
+      "T_meas_error>2.0": 72,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 6
+    }
+  },
+  "cert": {
+    "n": 700,
+    "families": {
+      "pump_degrade": 159,
+      "cool_stuck_closed": 196,
+      "outlet_block": 185,
+      "fouling": 160
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 700,
+    "distinct_trigger_times": 465,
+    "distinct_snapshot_tuples": 700,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 344,
+      "T_meas_error>2.0": 197,
+      "entered_UNSAFE(control_zone)": 135,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 24
+    }
+  },
+  "test_iid": {
+    "n": 300,
+    "families": {
+      "pump_degrade": 80,
+      "fouling": 79,
+      "cool_stuck_closed": 64,
+      "outlet_block": 77
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 300,
+    "distinct_trigger_times": 258,
+    "distinct_snapshot_tuples": 300,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 157,
+      "entered_UNSAFE(control_zone)": 68,
+      "T_meas_error>2.0": 66,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 9
+    }
+  }
+}

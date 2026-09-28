@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-09-28T10:46:57.343653+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\33_cstr_episode_specs.py"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "3777ce6069bfc10748100a4ddf69dce73c912a76",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.8.0+cu129",
+    "transformers": "4.52.4",
+    "accelerate": "1.10.0",
+    "tokenizers": "0.21.1",
+    "numpy": "2.2.4",
+    "pandas": "2.2.3",
+    "scipy": "1.15.2",
+    "scikit-learn": "1.7.1",
+    "pyarrow": "19.0.1"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.12.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.9"
+  },
+  "dataset": {
+    "type": "cstr_episode_specs",
+    "seed": 20260929,
+    "sizes": {
+      "train": 3000,
+      "val": 1000,
+      "test": 1000
+    },
+    "ranges_file": "configs/cstr_severity_ranges_v3.json",
+    "ranges_sha256": "79bb817319e7a7ab3f265780ac18a69de0e0bb786d4361574a2100829e80c6ec",
+    "output": "data/cstr/cstr_episode_specs.xlsx"
+  }
+}

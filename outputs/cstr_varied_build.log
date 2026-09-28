@@ -1,0 +1,102 @@
+{
+  "out_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\data\\v2\\cstr_varied_seed20260928",
+  "diversity": {
+    "train": {
+      "n": 1400,
+      "families": {
+        "fouling": 263,
+        "outlet_block": 419,
+        "cool_stuck_closed": 331,
+        "pump_degrade": 387
+      },
+      "distinct_system_prompts": 1,
+      "distinct_user_prompts": 1400,
+      "distinct_trigger_times": 1191,
+      "distinct_snapshot_tuples": 1400,
+      "trigger_reasons": {
+        "level_error_large(|L_meas-L_sp|>0.7)": 806,
+        "T_meas_error>2.0": 345,
+        "entered_UNSAFE(control_zone)": 192,
+        "T_meas_error>2.0; entered_UNSAFE(control_zone)": 55,
+        "cool_limited(u_cool<=0.3 & T_err>2.0K)": 2
+      }
+    },
+    "dev_cal": {
+      "n": 300,
+      "families": {
+        "outlet_block": 95,
+        "pump_degrade": 84,
+        "cool_stuck_closed": 69,
+        "fouling": 52
+      },
+      "distinct_system_prompts": 1,
+      "distinct_user_prompts": 300,
+      "distinct_trigger_times": 289,
+      "distinct_snapshot_tuples": 300,
+      "trigger_reasons": {
+        "level_error_large(|L_meas-L_sp|>0.7)": 179,
+        "T_meas_error>2.0": 70,
+        "entered_UNSAFE(control_zone)": 37,
+        "T_meas_error>2.0; entered_UNSAFE(control_zone)": 14
+      }
+    },
+    "dev_thr": {
+      "n": 300,
+      "families": {
+        "outlet_block": 92,
+        "cool_stuck_closed": 74,
+        "pump_degrade": 85,
+        "fouling": 49
+      },
+      "distinct_system_prompts": 1,
+      "distinct_user_prompts": 300,
+      "distinct_trigger_times": 289,
+      "distinct_snapshot_tuples": 300,
+      "trigger_reasons": {
+        "level_error_large(|L_meas-L_sp|>0.7)": 177,
+        "T_meas_error>2.0": 78,
+        "entered_UNSAFE(control_zone)": 34,
+        "T_meas_error>2.0; entered_UNSAFE(control_zone)": 11
+      }
+    },
+    "cert": {
+      "n": 700,
+      "families": {
+        "outlet_block": 195,
+        "pump_degrade": 199,
+        "fouling": 126,
+        "cool_stuck_closed": 180
+      },
+      "distinct_system_prompts": 1,
+      "distinct_user_prompts": 700,
+      "distinct_trigger_times": 645,
+      "distinct_snapshot_tuples": 700,
+      "trigger_reasons": {
+        "level_error_large(|L_meas-L_sp|>0.7)": 394,
+        "T_meas_error>2.0": 187,
+        "entered_UNSAFE(control_zone)": 90,
+        "T_meas_error>2.0; entered_UNSAFE(control_zone)": 27,
+        "cool_limited(u_cool<=0.3 & T_err>2.0K)": 2
+      }
+    },
+    "test_iid": {
+      "n": 300,
+      "families": {
+        "outlet_block": 90,
+        "pump_degrade": 91,
+        "cool_stuck_closed": 57,
+        "fouling": 62
+      },
+      "distinct_system_prompts": 1,
+      "distinct_user_prompts": 300,
+      "distinct_trigger_times": 287,
+      "distinct_snapshot_tuples": 300,
+      "trigger_reasons": {
+        "level_error_large(|L_meas-L_sp|>0.7)": 181,
+        "T_meas_error>2.0": 60,
+        "entered_UNSAFE(control_zone)": 44,
+        "T_meas_error>2.0; entered_UNSAFE(control_zone)": 15
+      }
+    }
+  }
+}

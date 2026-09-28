@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-09-24T10:22:46.899519+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\23_cstr_label.py",
+    "--inference_dir",
+    "outputs/cstr_inference_smoke/20260924_111142_qwen25-7b-instruct_4bit_smoke30_v21",
+    "--workers",
+    "12",
+    "--out_root",
+    "outputs/cstr_labeled_smoke"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "inference_dir": "outputs\\cstr_inference_smoke\\20260924_111142_qwen25-7b-instruct_4bit_smoke30_v21",
+  "verifier": "legacy rollout_validate_setpoints, deterministic replay",
+  "n_records": 30,
+  "n_verified": 30,
+  "n_known": 30,
+  "workers": 12,
+  "wall_s": 77.2
+}

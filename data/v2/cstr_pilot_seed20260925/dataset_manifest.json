@@ -1,0 +1,153 @@
+{
+  "created_utc": "2026-09-24T08:49:42.230675+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\21_cstr_build_snapshots.py",
+    "--ranges",
+    "configs/cstr_severity_ranges_v1.json",
+    "--root_seed",
+    "20260925",
+    "--tag",
+    "cstr_pilot",
+    "--sizes",
+    "train=150",
+    "dev_cal=50",
+    "dev_thr=50",
+    "test_iid=50",
+    "--workers",
+    "16"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "dataset": {
+    "type": "cstr_snapshots",
+    "root_seed": 20260925,
+    "sizes": {
+      "train": 150,
+      "dev_cal": 50,
+      "dev_thr": 50,
+      "test_iid": 50
+    },
+    "ranges_file": "configs/cstr_severity_ranges_v1.json",
+    "ranges": {
+      "version": "cstr_severity_ranges_v1",
+      "frozen_on": "2026-09-24",
+      "source": "outputs/cstr_calibration/20260924_092150_severity_grid (no-LLM grid; 3 seeds per severity; 16 grid actions)",
+      "rule": "only severities that were tested AND actionable (no-change fails for >50% of seeds and some grid action passes for >50%) are inside a range; endpoints are tested points",
+      "families": {
+        "fouling": {
+          "params": {
+            "fouling_max": [
+              0.6,
+              0.9
+            ],
+            "fouling_tau": [
+              1500.0,
+              2500.0
+            ]
+          }
+        },
+        "pump_degrade": {
+          "params": {
+            "pump_degrade_factor": [
+              0.2,
+              0.35
+            ]
+          }
+        },
+        "cool_stuck_closed": {
+          "params": {
+            "stuck_opening": [
+              0.1,
+              0.4
+            ]
+          }
+        },
+        "outlet_block": {
+          "params": {
+            "outlet_block_factor": [
+              0.2,
+              0.45
+            ]
+          }
+        }
+      },
+      "onset_s": [
+        1800.0,
+        2200.0
+      ],
+      "family_sampling": "uniform over listed families",
+      "excluded": {
+        "leak": "no grid action passed at any tested severity (0.001-0.008); a failed search does not prove unrecoverability",
+        "note_fouling_tau": "calibrated at 2000 s only; the 1500-2500 s range is an untested extension that adds dynamic variation"
+      }
+    },
+    "kg_source": "graphdb",
+    "kg_sha256": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+    "n_drawn": 420,
+    "n_triggered": 420,
+    "trigger_rate_by_family": {
+      "cool_stuck_closed": 1.0,
+      "fouling": 1.0,
+      "outlet_block": 1.0,
+      "pump_degrade": 1.0
+    },
+    "files_sha256": {
+      "kg_context.ttl": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+      "prompts_dev_cal.jsonl": "8f99577cb44e56371ba5bb658b4d2c596580f6337c56d479441841eed75cc571",
+      "prompts_dev_thr.jsonl": "d09e4dbb2650d092729b7c0d2f9d87bfb11de7f75bb4f0df713a3acd9c1fba4d",
+      "prompts_test_iid.jsonl": "0787d5c110bc2d015a3efd72376b2faa5ed2f6f291c1425080ee35583e3ed087",
+      "prompts_train.jsonl": "c5a9515013721f094ca069cb5c516adaf3b24e423d05f6dd5915a9ef93056e7a",
+      "snapshots_dev_cal.pkl": "8bee401a631b978255c3b9c13a7f8bf27ce6fb419ab251f80504079444fba43c",
+      "snapshots_dev_thr.pkl": "7366c49036ac02b919bac15b7f4c1c62c52d2ee1201d7a7d244ebda29439e538",
+      "snapshots_test_iid.pkl": "2dcd723956e5d7a5f6e00ff93ab0415f3d2089a7f5b1916b89b08d92e943f430",
+      "snapshots_train.pkl": "a058c3f008871ef6fc34fefdf5c7421eca68e5573c5630fd20ae21d9de359cae",
+      "specs.csv": "0370b63fac9ec2861b4f1bd96c222a58a7fb04e22885eb7b098fb5e2c48e3c3f"
+    },
+    "car": {
+      "repo": "C:\\Users\\jv624\\Desktop\\ctrl-alt-recover",
+      "commit": "4afe06c3eb21e4f61bef4901d4faac6bcf6d7cf5",
+      "dirty_files": [
+        "M case_studies/common/trace_logging.py",
+        " M case_studies/cstr_case/cstr_case.py",
+        " M case_studies/mixer_case/mixer_case.py",
+        "?? .claude/",
+        "?? assets/linkedin/",
+        "?? case_studies/analyze_failures.py",
+        "?? case_studies/common/llm_failures.py",
+        "?? docs/",
+        "?? results/",
+        "?? results_new/"
+      ],
+      "sha256": {
+        "cstr_case.py": "b6583a3a772990f11398989aecbd13bfb5cc2a5d575a4bd3313e61fe72ccc8f2",
+        "cstr_digital_twin.py": "19718421bf7904e904ad1aa8885ad27157b5756f4e7bffaa9187630aa460728b",
+        "cstr_anomaly_threshold_test.py": "c5198a134f107da8ebc5c0ba4157e8b7e7c821a5026808a22df562b504eb8d9d",
+        "graph_retrieval_code.py": "703f0041946e5633becfbc38ad630c061045710d87dff5cea59a210d10ee1f0f"
+      }
+    },
+    "wall_s": 201.1,
+    "checks": {
+      "episodes_disjoint": true
+    }
+  }
+}

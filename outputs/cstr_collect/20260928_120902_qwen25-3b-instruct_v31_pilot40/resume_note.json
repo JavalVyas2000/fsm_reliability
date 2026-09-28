@@ -1,0 +1,4 @@
+{
+  "note": "Round 0 was generated with --max_reprompts 0 (see run_manifest.json). The run was then resumed on 2026-09-28 with --max_reprompts 5 --prompt v3.1 --max_new_tokens 512 (log: outputs/cstr_v31_retry.log); rounds 1-5 come from that session. The neutral feedback stored with each failed round-0 record was used for round 1.",
+  "resume_argv": "python -m scripts.25_cstr_collect --dataset_dir data/v2/cstr_varied_seed20260928 --partitions dev_cal dev_thr --limit 20 --max_reprompts 5 --prompt v3.1 --max_new_tokens 512 --run_dir outputs/cstr_collect/20260928_120902_qwen25-3b-instruct_v31_pilot40 --local_files_only"
+}

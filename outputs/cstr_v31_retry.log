@@ -1,0 +1,35 @@
+﻿python.exe : 
+At line:2 char:1
++ & $py -m scripts.25_cstr_collect --dataset_dir data/v2/cstr_varied_se ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<02:08,  3.38it/s]
+Loading weights:   5%|▌         | 23/434 [00:00<00:05, 73.07it/s]
+Loading weights:   9%|▉         | 41/434 [00:00<00:03, 103.97it/s]
+Loading weights:  14%|█▍        | 62/434 [00:00<00:02, 128.75it/s]
+Loading weights:  20%|██        | 87/434 [00:00<00:02, 156.69it/s]
+Loading weights:  24%|██▍       | 105/434 [00:00<00:02, 162.88it/s]
+Loading weights:  29%|██▊       | 124/434 [00:00<00:01, 166.12it/s]
+Loading weights:  34%|███▍      | 147/434 [00:01<00:01, 178.94it/s]
+Loading weights:  39%|███▉      | 171/434 [00:01<00:01, 186.91it/s]
+Loading weights:  44%|████▍     | 191/434 [00:01<00:01, 183.69it/s]
+Loading weights:  48%|████▊     | 210/434 [00:01<00:01, 172.18it/s]
+Loading weights:  53%|█████▎    | 232/434 [00:01<00:01, 177.94it/s]
+Loading weights:  59%|█████▉    | 255/434 [00:01<00:00, 183.37it/s]
+Loading weights:  63%|██████▎   | 274/434 [00:01<00:00, 176.95it/s]
+Loading weights:  67%|██████▋   | 292/434 [00:01<00:00, 174.31it/s]
+Loading weights:  73%|███████▎  | 315/434 [00:01<00:00, 183.82it/s]
+Loading weights:  77%|███████▋  | 334/434 [00:02<00:00, 180.41it/s]
+Loading weights:  81%|████████▏ | 353/434 [00:02<00:00, 173.44it/s]
+Loading weights:  87%|████████▋ | 376/434 [00:02<00:00, 183.95it/s]
+Loading weights:  92%|█████████▏| 398/434 [00:02<00:00, 188.49it/s]
+Loading weights:  96%|█████████▌| 417/434 [00:02<00:00, 183.14it/s]
+Loading weights: 100%|██████████| 434/434 [00:02<00:00, 165.12it/s]
+
+first proposals: 100%|██████████| 40/40 [00:00<?, ?ep/s]
+first proposals: 100%|██████████| 40/40 [28:17<?, ?ep/s, cand 164 | r0 pass 8/40 | episodes solved 10 | queue r0 0 
+reprompt 0 | verifying 0 | 13.1 s/proposal]
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_collect\\20260928_120902_qwen25-3b-instruct_v31_pilot40", "generated_this_session": 124, "stopped_by_time": false, "remaining_in_queue": 0, "hours": 0.47}

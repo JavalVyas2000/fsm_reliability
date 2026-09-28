@@ -1,0 +1,99 @@
+{
+  "created_utc": "2026-09-24T10:11:57.577343+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\22_cstr_inference.py",
+    "--dataset_dir",
+    "data/v2/cstr_pilot_seed20260925",
+    "--partitions",
+    "train",
+    "--limit",
+    "30",
+    "--prompt_version",
+    "v2",
+    "--model",
+    "Qwen/Qwen2.5-7B-Instruct",
+    "--quantization",
+    "4bit",
+    "--tag",
+    "smoke30_v21",
+    "--out_root",
+    "outputs/cstr_inference_smoke",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "model": {
+    "hf_id": "Qwen/Qwen2.5-7B-Instruct",
+    "resolved_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "dtype": "bfloat16",
+    "quantization": "4bit",
+    "num_hidden_layers": 28
+  },
+  "prompt": {
+    "version": "cstr_prompt_v2.1",
+    "chat_template": true,
+    "chat_template_kwargs": {
+      "date_string": "23 Sep 2026"
+    },
+    "kg_sha256": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69"
+  },
+  "decoding": {
+    "do_sample": false,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 256,
+    "stop": "end_of_first_json_object | eos | max_new_tokens"
+  },
+  "internals": {
+    "relative_layers": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "collect_attention": true,
+    "collect_hidden": true
+  },
+  "data": {
+    "dataset_dir": "data\\v2\\cstr_pilot_seed20260925",
+    "partitions": [
+      "train"
+    ],
+    "limit": 30,
+    "root_seed": 20260925,
+    "files_sha256": {
+      "kg_context.ttl": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+      "prompts_dev_cal.jsonl": "8f99577cb44e56371ba5bb658b4d2c596580f6337c56d479441841eed75cc571",
+      "prompts_dev_thr.jsonl": "d09e4dbb2650d092729b7c0d2f9d87bfb11de7f75bb4f0df713a3acd9c1fba4d",
+      "prompts_test_iid.jsonl": "0787d5c110bc2d015a3efd72376b2faa5ed2f6f291c1425080ee35583e3ed087",
+      "prompts_train.jsonl": "c5a9515013721f094ca069cb5c516adaf3b24e423d05f6dd5915a9ef93056e7a",
+      "snapshots_dev_cal.pkl": "8bee401a631b978255c3b9c13a7f8bf27ce6fb419ab251f80504079444fba43c",
+      "snapshots_dev_thr.pkl": "7366c49036ac02b919bac15b7f4c1c62c52d2ee1201d7a7d244ebda29439e538",
+      "snapshots_test_iid.pkl": "2dcd723956e5d7a5f6e00ff93ab0415f3d2089a7f5b1916b89b08d92e943f430",
+      "snapshots_train.pkl": "a058c3f008871ef6fc34fefdf5c7421eca68e5573c5630fd20ae21d9de359cae",
+      "specs.csv": "0370b63fac9ec2861b4f1bd96c222a58a7fb04e22885eb7b098fb5e2c48e3c3f"
+    }
+  }
+}

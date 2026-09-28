@@ -1,0 +1,147 @@
+{
+  "created_utc": "2026-09-28T13:19:51.026220+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\34_cstr_move_calibration.py",
+    "--moves_run",
+    "outputs/cstr_collect/20260928_120902_qwen25-3b-instruct_v31_pilot40",
+    "--plants_per_severity",
+    "1",
+    "--moves_per_episode",
+    "2",
+    "--workers",
+    "20"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "3777ce6069bfc10748100a4ddf69dce73c912a76",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "moves_run": "outputs/cstr_collect/20260928_120902_qwen25-3b-instruct_v31_pilot40",
+  "ranges_file": "configs/cstr_severity_ranges_v3.json",
+  "grids": {
+    "fouling": [
+      {
+        "fouling_max": 0.4,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.45,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.5,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.55,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.6,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.65,
+        "fouling_tau": 2000.0
+      },
+      {
+        "fouling_max": 0.7,
+        "fouling_tau": 2000.0
+      }
+    ],
+    "pump_degrade": [
+      {
+        "pump_degrade_factor": 0.65
+      },
+      {
+        "pump_degrade_factor": 0.6
+      },
+      {
+        "pump_degrade_factor": 0.55
+      },
+      {
+        "pump_degrade_factor": 0.5
+      },
+      {
+        "pump_degrade_factor": 0.45
+      },
+      {
+        "pump_degrade_factor": 0.4
+      },
+      {
+        "pump_degrade_factor": 0.35
+      }
+    ],
+    "cool_stuck_closed": [
+      {
+        "stuck_opening": 0.6
+      },
+      {
+        "stuck_opening": 0.55
+      },
+      {
+        "stuck_opening": 0.5
+      },
+      {
+        "stuck_opening": 0.45
+      },
+      {
+        "stuck_opening": 0.4
+      },
+      {
+        "stuck_opening": 0.35
+      },
+      {
+        "stuck_opening": 0.3
+      }
+    ],
+    "outlet_block": [
+      {
+        "outlet_block_factor": 0.65
+      },
+      {
+        "outlet_block_factor": 0.6
+      },
+      {
+        "outlet_block_factor": 0.55
+      },
+      {
+        "outlet_block_factor": 0.5
+      },
+      {
+        "outlet_block_factor": 0.45
+      },
+      {
+        "outlet_block_factor": 0.4
+      },
+      {
+        "outlet_block_factor": 0.35
+      }
+    ]
+  },
+  "fix_checks": {
+    "feed_x0.65": 0.65,
+    "feed_x0.5": 0.5
+  },
+  "plants_per_severity": 1,
+  "moves_per_episode": 2,
+  "seed": 20260930,
+  "wall_s": 116.6
+}

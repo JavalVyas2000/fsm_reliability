@@ -1,0 +1,78 @@
+{
+  "train": {
+    "n": 150,
+    "families": {
+      "outlet_block": 41,
+      "pump_degrade": 37,
+      "fouling": 35,
+      "cool_stuck_closed": 37
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 150,
+    "distinct_trigger_times": 136,
+    "distinct_snapshot_tuples": 150,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 78,
+      "T_meas_error>2.0": 37,
+      "entered_UNSAFE(control_zone)": 31,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 4
+    }
+  },
+  "dev_cal": {
+    "n": 50,
+    "families": {
+      "fouling": 15,
+      "outlet_block": 17,
+      "cool_stuck_closed": 10,
+      "pump_degrade": 8
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 47,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 25,
+      "entered_UNSAFE(control_zone)": 14,
+      "T_meas_error>2.0": 10,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 1
+    }
+  },
+  "dev_thr": {
+    "n": 50,
+    "families": {
+      "fouling": 9,
+      "pump_degrade": 12,
+      "cool_stuck_closed": 20,
+      "outlet_block": 9
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 50,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 21,
+      "T_meas_error>2.0": 20,
+      "entered_UNSAFE(control_zone)": 8,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 1
+    }
+  },
+  "test_iid": {
+    "n": 50,
+    "families": {
+      "fouling": 16,
+      "cool_stuck_closed": 17,
+      "outlet_block": 11,
+      "pump_degrade": 6
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 50,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "T_meas_error>2.0": 17,
+      "level_error_large(|L_meas-L_sp|>0.7)": 17,
+      "entered_UNSAFE(control_zone)": 15,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 1
+    }
+  }
+}

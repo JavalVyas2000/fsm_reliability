@@ -1,0 +1,14 @@
+{
+  "pairwise_graph_overlap": {
+    "train|dev_cal": 0,
+    "train|dev_thr": 0,
+    "train|test_iid": 0,
+    "dev_cal|dev_thr": 0,
+    "dev_cal|test_iid": 0,
+    "dev_thr|test_iid": 0
+  },
+  "dataset_generation_checks": {
+    "episodes_disjoint": true
+  },
+  "instance_id_unique": true
+}

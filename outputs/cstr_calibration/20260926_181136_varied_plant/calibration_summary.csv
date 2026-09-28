@@ -1,0 +1,25 @@
+family,severity,n,triggered,pre_fault_trigger,nochange_fail,x09_pass,any_pass,mean_pass_share
+fouling,"{""fouling_max"": 0.5, ""fouling_tau"": 2000.0}",6,2,0,1.0,0.5,1.0,0.75
+fouling,"{""fouling_max"": 0.55, ""fouling_tau"": 2000.0}",6,2,0,1.0,0.5,1.0,0.8333333333333333
+fouling,"{""fouling_max"": 0.6, ""fouling_tau"": 2000.0}",6,2,0,1.0,0.5,1.0,0.75
+fouling,"{""fouling_max"": 0.65, ""fouling_tau"": 2000.0}",6,5,0,1.0,0.0,1.0,0.5999999999999999
+fouling,"{""fouling_max"": 0.7, ""fouling_tau"": 2000.0}",6,5,0,1.0,0.2,1.0,0.7
+fouling,"{""fouling_max"": 0.8, ""fouling_tau"": 2000.0}",6,6,0,1.0,0.0,1.0,0.5277777777777778
+pump_degrade,"{""pump_degrade_factor"": 0.5}",6,6,0,0.3333333333333333,1.0,1.0,0.9722222222222222
+pump_degrade,"{""pump_degrade_factor"": 0.45}",6,6,0,0.6666666666666666,0.5,1.0,0.8333333333333334
+pump_degrade,"{""pump_degrade_factor"": 0.4}",6,6,0,0.8333333333333334,0.3333333333333333,1.0,0.7222222222222222
+pump_degrade,"{""pump_degrade_factor"": 0.35}",6,6,0,1.0,0.5,1.0,0.6666666666666666
+pump_degrade,"{""pump_degrade_factor"": 0.3}",6,6,0,1.0,0.0,1.0,0.4444444444444444
+pump_degrade,"{""pump_degrade_factor"": 0.25}",6,6,0,1.0,0.0,1.0,0.3055555555555555
+cool_stuck_closed,"{""stuck_opening"": 0.5}",6,2,0,0.5,1.0,1.0,1.0
+cool_stuck_closed,"{""stuck_opening"": 0.45}",6,3,0,1.0,0.6666666666666666,1.0,0.8888888888888888
+cool_stuck_closed,"{""stuck_opening"": 0.4}",6,3,0,0.6666666666666666,1.0,1.0,1.0
+cool_stuck_closed,"{""stuck_opening"": 0.35}",6,5,0,0.8,0.2,1.0,0.6333333333333333
+cool_stuck_closed,"{""stuck_opening"": 0.3}",6,5,0,1.0,0.2,1.0,0.5666666666666667
+cool_stuck_closed,"{""stuck_opening"": 0.25}",6,6,0,1.0,0.16666666666666666,1.0,0.5833333333333334
+outlet_block,"{""outlet_block_factor"": 0.6}",6,5,0,0.0,1.0,1.0,1.0
+outlet_block,"{""outlet_block_factor"": 0.55}",6,6,0,0.0,1.0,1.0,1.0
+outlet_block,"{""outlet_block_factor"": 0.5}",6,6,0,0.16666666666666666,1.0,1.0,1.0
+outlet_block,"{""outlet_block_factor"": 0.45}",6,6,0,0.3333333333333333,0.8333333333333334,1.0,0.9166666666666666
+outlet_block,"{""outlet_block_factor"": 0.4}",6,6,0,0.6666666666666666,0.5,1.0,0.7222222222222223
+outlet_block,"{""outlet_block_factor"": 0.35}",6,6,0,1.0,0.0,1.0,0.47222222222222227

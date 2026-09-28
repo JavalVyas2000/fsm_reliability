@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-09-28T10:14:13.062223+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\32_cstr_shift_test.py",
+    "--fixed",
+    "outputs/cstr_collect/20260924_212031_qwen25-3b-instruct_main3000",
+    "--varied",
+    "outputs/cstr_collect/20260926_200509_qwen25-3b-instruct_varied3000_r0"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "fixed": "outputs/cstr_collect/20260924_212031_qwen25-3b-instruct_main3000",
+  "varied": "outputs/cstr_collect/20260926_200509_qwen25-3b-instruct_varied3000_r0",
+  "families": [
+    "context_action",
+    "context_only_no_action",
+    "token_confidence",
+    "attention",
+    "hidden",
+    "all_internal",
+    "context_action+all_internal"
+  ],
+  "added_internals_under_shift": {
+    "delta_auroc": -0.045670519821289224,
+    "ci95_lo": -0.07488836206401432,
+    "ci95_hi": -0.01906704620495079,
+    "n_boot_used": 2000
+  }
+}

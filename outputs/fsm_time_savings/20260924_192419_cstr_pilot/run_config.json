@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-09-24T18:24:27.608097+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\14_time_savings.py",
+    "--routing_dir",
+    "outputs/fsm_selective_verification/20260924_192410_cstr_pilot",
+    "--tag",
+    "cstr_pilot",
+    "--cstr_verifier_timing",
+    "outputs/cstr_labeled/20260924_184632_20260924_175326_qwen25-3b-instruct_pilot300_v21/verifier_timing_sequential_test_iid.json"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "routing_dir": "outputs\\fsm_selective_verification\\20260924_192410_cstr_pilot",
+  "inference_dir": "outputs\\cstr_labeled\\20260924_184632_20260924_175326_qwen25-3b-instruct_pilot300_v21",
+  "measured": {
+    "C_gen_mean_s": 9.726961330000195,
+    "C_feat_mean_s": 0.2664889980049338,
+    "C_v_fsm_mean_s": 7.602110981998266,
+    "C_v_mean_s": 7.602110981998266,
+    "C_v_source": "CSTR legacy verifier, sequential re-timing (outputs/cstr_labeled/20260924_184632_20260924_175326_qwen25-3b-instruct_pilot300_v21/verifier_timing_sequential_test_iid.json)",
+    "domain": "cstr",
+    "probe_scoring_median_s": {
+      "context_action": 0.0007952000014483929,
+      "token_confidence": 0.0007430499972542748,
+      "attention": 0.0008782000077189878,
+      "attention+token_confidence": 0.000862600005348213,
+      "all_internal": 0.013945899991085753,
+      "context_action+all_internal": 0.013670099986484274,
+      "neg_mean_logprob (untrained)": 0.0,
+      "token_entropy (untrained)": 0.0
+    },
+    "verifier_repeats": 2000
+  },
+  "cstr_reference_verifier_s": 6.95,
+  "accounting": "saved = sum_{ALLOW,DISALLOW} C_v - sum_all C_f; C_f = feature pass (internal families) + probe scoring"
+}

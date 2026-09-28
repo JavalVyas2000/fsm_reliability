@@ -1,0 +1,70 @@
+﻿python.exe : 
+At line:1 char:333
++ ... NG="utf-8"; & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<03:32,  2.04it/s]
+Loading weights:   4%|▎         | 16/434 [00:00<00:12, 33.45it/s]
+Loading weights:   6%|▋         | 28/434 [00:00<00:07, 53.56it/s]
+Loading weights:   9%|▉         | 39/434 [00:00<00:06, 62.88it/s]
+Loading weights:  12%|█▏        | 53/434 [00:00<00:04, 80.25it/s]
+Loading weights:  15%|█▍        | 65/434 [00:01<00:04, 88.35it/s]
+Loading weights:  18%|█▊        | 76/434 [00:01<00:03, 92.76it/s]
+Loading weights:  21%|██        | 89/434 [00:01<00:03, 100.91it/s]
+Loading weights:  23%|██▎       | 101/434 [00:01<00:03, 105.30it/s]
+Loading weights:  26%|██▌       | 113/434 [00:01<00:03, 106.61it/s]
+Loading weights:  29%|██▉       | 125/434 [00:01<00:02, 107.94it/s]
+Loading weights:  32%|███▏      | 137/434 [00:01<00:02, 109.20it/s]
+Loading weights:  34%|███▍      | 149/434 [00:01<00:02, 110.17it/s]
+Loading weights:  37%|███▋      | 161/434 [00:01<00:02, 110.81it/s]
+Loading weights:  40%|███▉      | 173/434 [00:02<00:02, 111.54it/s]
+Loading weights:  43%|████▎     | 185/434 [00:02<00:02, 106.97it/s]
+Loading weights:  45%|████▌     | 197/434 [00:02<00:02, 103.94it/s]
+Loading weights:  48%|████▊     | 208/434 [00:02<00:02, 100.73it/s]
+Loading weights:  51%|█████     | 221/434 [00:02<00:02, 99.18it/s] 
+Loading weights:  53%|█████▎    | 232/434 [00:02<00:01, 101.46it/s]
+Loading weights:  56%|█████▌    | 243/434 [00:02<00:02, 85.39it/s] 
+Loading weights:  59%|█████▉    | 256/434 [00:02<00:01, 96.14it/s]
+Loading weights:  62%|██████▏   | 267/434 [00:03<00:02, 83.40it/s]
+Loading weights:  65%|██████▍   | 281/434 [00:03<00:01, 89.85it/s]
+Loading weights:  67%|██████▋   | 292/434 [00:03<00:01, 87.61it/s]
+Loading weights:  70%|███████   | 305/434 [00:03<00:01, 90.61it/s]
+Loading weights:  73%|███████▎  | 317/434 [00:03<00:01, 90.33it/s]
+Loading weights:  76%|███████▌  | 329/434 [00:03<00:01, 90.51it/s]
+Loading weights:  79%|███████▊  | 341/434 [00:03<00:01, 89.49it/s]
+Loading weights:  81%|████████▏ | 353/434 [00:04<00:00, 88.79it/s]
+Loading weights:  84%|████████▍ | 365/434 [00:04<00:00, 89.20it/s]
+Loading weights:  87%|████████▋ | 377/434 [00:04<00:00, 89.60it/s]
+Loading weights:  90%|████████▉ | 389/434 [00:04<00:00, 90.54it/s]
+Loading weights:  92%|█████████▏| 401/434 [00:04<00:00, 91.55it/s]
+Loading weights:  95%|█████████▍| 412/434 [00:04<00:00, 95.91it/s]
+Loading weights:  98%|█████████▊| 424/434 [00:04<00:00, 93.60it/s]
+Loading weights: 100%|██████████| 434/434 [00:04<00:00, 89.65it/s]
+
+first proposals:   0%|          | 0/200 [00:00<?, ?ep/s]
+first proposals:   0%|          | 1/200 [01:06<3:42:00, 66.93s/ep]
+first proposals:   2%|▏         | 3/200 [01:42<1:40:23, 30.57s/ep, cand 2 | r0 pass 0/2 | episodes solved 0 | queue r0 
+196 reprompt 0 | verifying 2 | 16.7 s/proposal]
+first proposals:   3%|▎         | 6/200 [02:38<1:15:06, 23.23s/ep, cand 5 | r0 pass 0/4 | episodes solved 0 | queue r0 
+195 reprompt 0 | verifying 0 | 20.2 s/proposal]
+first proposals:   4%|▍         | 8/200 [02:57<58:18, 18.22s/ep, cand 7 | r0 pass 1/6 | episodes solved 1 | queue r0 
+192 reprompt 0 | verifying 1 | 19.6 s/proposal]  
+first proposals:   4%|▍         | 9/200 [03:36<1:11:29, 22.46s/ep, cand 8 | r0 pass 1/7 | episodes solved 1 | queue r0 
+191 reprompt 0 | verifying 1 | 19.6 s/proposal]
+first proposals:   6%|▌         | 11/200 [04:34<1:18:28, 24.91s/ep, cand 10 | r0 pass 1/8 | episodes solved 1 | queue 
+r0 190 reprompt 0 | verifying 0 | 21.4 s/proposal]
+first proposals:   6%|▌         | 12/200 [04:51<1:12:59, 23.29s/ep, cand 11 | r0 pass 1/9 | episodes solved 1 | queue 
+r0 187 reprompt 0 | verifying 2 | 20.9 s/proposal]
+first proposals:   7%|▋         | 14/200 [05:49<1:18:33, 25.34s/ep, cand 13 | r0 pass 1/11 | episodes solved 1 | queue 
+r0 186 reprompt 0 | verifying 1 | 20.7 s/proposal]
+first proposals:   8%|▊         | 17/200 [06:51<1:10:56, 23.26s/ep, cand 16 | r0 pass 1/13 | episodes solved 1 | queue 
+r0 184 reprompt 0 | verifying 0 | 21.7 s/proposal]
+first proposals:   9%|▉         | 18/200 [07:18<1:12:38, 23.95s/ep, cand 17 | r0 pass 1/14 | episodes solved 1 | queue 
+r0 181 reprompt 0 | verifying 2 | 21.5 s/proposal]
+first proposals:  10%|▉         | 19/200 [07:38<1:10:00, 23.21s/ep, cand 18 | r0 pass 1/15 | episodes solved 1 | queue 
+r0 180 reprompt 0 | verifying 2 | 21.8 s/proposal]
+first proposals:  10%|█         | 20/200 [07:59<1:08:03, 22.69s/ep, cand 19 | r0 pass 1/16 | episodes solved 1 | queue 
+r0 179 reprompt 0 | verifying 2 | 21.7 s/proposal]

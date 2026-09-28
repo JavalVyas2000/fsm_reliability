@@ -1,0 +1,96 @@
+﻿python.exe : 
+At line:3 char:1
++ & $py -m scripts.25_cstr_collect --dataset_dir data/v2/cstr_varied_se ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<02:02,  3.52it/s]
+Loading weights:   6%|▌         | 27/434 [00:00<00:04, 86.30it/s]
+Loading weights:   9%|▉         | 41/434 [00:00<00:04, 84.44it/s]
+Loading weights:  12%|█▏        | 53/434 [00:00<00:04, 89.00it/s]
+Loading weights:  15%|█▍        | 65/434 [00:00<00:04, 90.34it/s]
+Loading weights:  18%|█▊        | 77/434 [00:00<00:03, 97.69it/s]
+Loading weights:  21%|██        | 89/434 [00:01<00:03, 101.10it/s]
+Loading weights:  23%|██▎       | 101/434 [00:01<00:03, 102.74it/s]
+Loading weights:  26%|██▌       | 113/434 [00:01<00:03, 97.33it/s] 
+Loading weights:  30%|██▉       | 129/434 [00:01<00:02, 113.64it/s]
+Loading weights:  34%|███▍      | 147/434 [00:01<00:02, 130.12it/s]
+Loading weights:  37%|███▋      | 161/434 [00:01<00:02, 126.41it/s]
+Loading weights:  41%|████      | 179/434 [00:01<00:01, 138.89it/s]
+Loading weights:  45%|████▍     | 194/434 [00:01<00:01, 131.16it/s]
+Loading weights:  48%|████▊     | 209/434 [00:01<00:01, 132.53it/s]
+Loading weights:  53%|█████▎    | 232/434 [00:02<00:01, 153.05it/s]
+Loading weights:  59%|█████▉    | 255/434 [00:02<00:01, 167.34it/s]
+Loading weights:  63%|██████▎   | 272/434 [00:02<00:01, 161.41it/s]
+Loading weights:  67%|██████▋   | 291/434 [00:02<00:00, 167.29it/s]
+Loading weights:  73%|███████▎  | 315/434 [00:02<00:00, 181.23it/s]
+Loading weights:  78%|███████▊  | 339/434 [00:02<00:00, 188.74it/s]
+Loading weights:  83%|████████▎ | 359/434 [00:02<00:00, 191.83it/s]
+Loading weights:  87%|████████▋ | 379/434 [00:02<00:00, 184.02it/s]
+Loading weights:  92%|█████████▏| 400/434 [00:02<00:00, 189.63it/s]
+Loading weights:  97%|█████████▋| 423/434 [00:03<00:00, 196.56it/s]
+Loading weights: 100%|██████████| 434/434 [00:03<00:00, 140.12it/s]
+
+first proposals:   0%|          | 0/40 [00:00<?, ?ep/s]
+first proposals:   2%|▎         | 1/40 [00:51<33:31, 51.59s/ep]
+first proposals:   8%|▊         | 3/40 [01:02<10:45, 17.44s/ep, cand 2 | r0 pass 0/2 | episodes solved 0 | queue r0 35 
+reprompt 2 | verifying 3 | 10.3 s/proposal]
+first proposals:  12%|█▎        | 5/40 [01:12<06:24, 11.00s/ep, cand 4 | r0 pass 0/4 | episodes solved 0 | queue r0 34 
+reprompt 4 | verifying 2 | 10.4 s/proposal]
+first proposals:  15%|█▌        | 6/40 [01:23<06:13, 11.00s/ep, cand 6 | r0 pass 0/6 | episodes solved 0 | queue r0 32 
+reprompt 6 | verifying 2 | 10.4 s/proposal]
+first proposals:  18%|█▊        | 7/40 [01:32<05:49, 10.58s/ep, cand 6 | r0 pass 0/6 | episodes solved 0 | queue r0 32 
+reprompt 6 | verifying 2 | 10.4 s/proposal]
+first proposals:  20%|██        | 8/40 [01:42<05:36, 10.51s/ep, cand 7 | r0 pass 1/7 | episodes solved 1 | queue r0 31 
+reprompt 6 | verifying 2 | 10.2 s/proposal]
+first proposals:  22%|██▎       | 9/40 [02:01<06:27, 12.49s/ep, cand 8 | r0 pass 1/8 | episodes solved 1 | queue r0 30 
+reprompt 7 | verifying 2 | 10.2 s/proposal]
+first proposals:  25%|██▌       | 10/40 [02:15<06:26, 12.88s/ep, cand 9 | r0 pass 2/9 | episodes solved 2 | queue r0 
+28 reprompt 7 | verifying 3 | 10.1 s/proposal]
+first proposals:  28%|██▊       | 11/40 [02:27<06:11, 12.81s/ep, cand 10 | r0 pass 2/10 | episodes solved 2 | queue r0 
+27 reprompt 8 | verifying 3 | 10.4 s/proposal]
+first proposals:  32%|███▎      | 13/40 [02:37<04:11,  9.32s/ep, cand 12 | r0 pass 4/12 | episodes solved 4 | queue r0 
+26 reprompt 8 | verifying 2 | 10.5 s/proposal]
+first proposals:  32%|███▎      | 13/40 [02:50<04:11,  9.32s/ep, cand 13 | r0 pass 4/13 | episodes solved 4 | queue r0 
+25 reprompt 9 | verifying 2 | 10.5 s/proposal]
+first proposals:  35%|███▌      | 14/40 [03:05<05:56, 13.72s/ep, cand 13 | r0 pass 4/13 | episodes solved 4 | queue r0 
+25 reprompt 9 | verifying 2 | 10.5 s/proposal]
+first proposals:  38%|███▊      | 15/40 [03:19<05:48, 13.94s/ep, cand 14 | r0 pass 4/14 | episodes solved 4 | queue r0 
+22 reprompt 10 | verifying 4 | 10.3 s/proposal]
+first proposals:  45%|████▌     | 18/40 [03:45<04:06, 11.23s/ep, cand 17 | r0 pass 5/17 | episodes solved 5 | queue r0 
+21 reprompt 12 | verifying 2 | 10.5 s/proposal]
+first proposals:  55%|█████▌    | 22/40 [03:57<02:08,  7.12s/ep, cand 21 | r0 pass 5/20 | episodes solved 5 | queue r0 
+18 reprompt 15 | verifying 1 | 10.2 s/proposal]
+first proposals:  55%|█████▌    | 22/40 [04:10<02:08,  7.12s/ep, cand 22 | r0 pass 6/21 | episodes solved 6 | queue r0 
+17 reprompt 15 | verifying 1 | 10.3 s/proposal]
+first proposals:  57%|█████▊    | 23/40 [04:25<02:53, 10.22s/ep, cand 22 | r0 pass 6/21 | episodes solved 6 | queue r0 
+17 reprompt 15 | verifying 1 | 10.3 s/proposal]
+first proposals:  62%|██████▎   | 25/40 [04:38<02:15,  9.06s/ep, cand 24 | r0 pass 6/23 | episodes solved 6 | queue r0 
+14 reprompt 17 | verifying 2 | 10.2 s/proposal]
+first proposals:  65%|██████▌   | 26/40 [04:48<02:08,  9.20s/ep, cand 25 | r0 pass 6/24 | episodes solved 6 | queue r0 
+13 reprompt 18 | verifying 2 | 10.3 s/proposal]
+first proposals:  68%|██████▊   | 27/40 [04:55<01:54,  8.79s/ep, cand 26 | r0 pass 6/25 | episodes solved 6 | queue r0 
+12 reprompt 19 | verifying 2 | 10.3 s/proposal]
+first proposals:  70%|███████   | 28/40 [05:06<01:51,  9.30s/ep, cand 27 | r0 pass 6/26 | episodes solved 6 | queue r0 
+11 reprompt 20 | verifying 2 | 10.1 s/proposal]
+first proposals:  72%|███████▎  | 29/40 [05:15<01:41,  9.20s/ep, cand 28 | r0 pass 6/27 | episodes solved 6 | queue r0 
+10 reprompt 21 | verifying 2 | 10.2 s/proposal]
+first proposals:  75%|███████▌  | 30/40 [05:34<01:57, 11.77s/ep, cand 29 | r0 pass 6/28 | episodes solved 6 | queue r0 
+9 reprompt 22 | verifying 2 | 10.1 s/proposal] 
+first proposals:  80%|████████  | 32/40 [05:58<01:35, 11.88s/ep, cand 31 | r0 pass 7/30 | episodes solved 7 | queue r0 
+7 reprompt 23 | verifying 2 | 10.1 s/proposal]
+first proposals:  82%|████████▎ | 33/40 [06:08<01:19, 11.33s/ep, cand 32 | r0 pass 7/31 | episodes solved 7 | queue r0 
+5 reprompt 24 | verifying 3 | 10.2 s/proposal]
+first proposals:  90%|█████████ | 36/40 [06:31<00:38,  9.62s/ep, cand 35 | r0 pass 8/34 | episodes solved 8 | queue r0 
+4 reprompt 26 | verifying 1 | 10.2 s/proposal]
+first proposals:  92%|█████████▎| 37/40 [06:50<00:33, 11.33s/ep, cand 36 | r0 pass 8/35 | episodes solved 8 | queue r0 
+2 reprompt 27 | verifying 2 | 10.3 s/proposal]
+first proposals:  95%|█████████▌| 38/40 [07:01<00:22, 11.32s/ep, cand 37 | r0 pass 8/36 | episodes solved 8 | queue r0 
+0 reprompt 28 | verifying 3 | 10.2 s/proposal]
+first proposals: 100%|██████████| 40/40 [07:17<00:00, 10.07s/ep, cand 39 | r0 pass 9/38 | episodes solved 9 | queue r0 
+0 reprompt 28 | verifying 2 | 10.2 s/proposal]
+first proposals: 100%|██████████| 40/40 [19:51<00:00, 29.78s/ep, cand 120 | r0 pass 9/39 | episodes solved 11 | queue 
+r0 0 reprompt 0 | verifying 0 | 9.6 s/proposal]
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_collect\\20260928_131014_qwen25-3b-instruct_v21_retry40", "generated_this_session": 120, "stopped_by_time": false, "remaining_in_queue": 0, "hours": 0.33}

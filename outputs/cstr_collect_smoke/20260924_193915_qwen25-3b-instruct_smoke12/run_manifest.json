@@ -1,0 +1,123 @@
+{
+  "created_utc": "2026-09-24T18:39:22.795311+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\25_cstr_collect.py",
+    "--dataset_dir",
+    "data/v2/cstr_pilot_v2ranges_seed20260926",
+    "--partitions",
+    "train",
+    "--limit",
+    "12",
+    "--workers",
+    "6",
+    "--tag",
+    "smoke12",
+    "--out_root",
+    "outputs/cstr_collect_smoke",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "model": {
+    "hf_id": "Qwen/Qwen2.5-3B-Instruct",
+    "resolved_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "dtype": "bfloat16",
+    "num_hidden_layers": 36
+  },
+  "prompt": {
+    "version": "cstr_prompt_v2.1",
+    "chat_template": true,
+    "chat_template_kwargs": {
+      "date_string": "23 Sep 2026"
+    },
+    "kg_sha256": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+    "shared_prefix_tokens": 4273
+  },
+  "decoding": {
+    "do_sample": false,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 256,
+    "stop": "end_of_first_json_object | eos | max_new_tokens"
+  },
+  "loop": {
+    "max_reprompts": 5,
+    "stop": "first pass | last reprompt | format failure",
+    "feedback": "upstream reprompting() text + previous proposal",
+    "scheduling": "round-major"
+  },
+  "internals": {
+    "relative_layers": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "collect_attention": true,
+    "collect_hidden": true
+  },
+  "data": {
+    "dataset_dir": "data\\v2\\cstr_pilot_v2ranges_seed20260926",
+    "partitions": [
+      "train"
+    ],
+    "limit": 12,
+    "root_seed": 20260926,
+    "files_sha256": {
+      "kg_context.ttl": "60fa8ab640f3ff516da4c933f7eea3e71908e41e2c325e7c37a967df221ddc69",
+      "prompts_dev_cal.jsonl": "7ba833ff8444ccc40215900de32b36935eec6cd6484dbe76d525ca2dd655477b",
+      "prompts_dev_thr.jsonl": "18c9a832a6b00a5715fc9c5917fa2579c2089fee5b9b992d690aa09b8ecf5f78",
+      "prompts_test_iid.jsonl": "02825c22c7b4bcd548a23c784680bcb9a8f7df870737a52a5e415fce0a4b4952",
+      "prompts_train.jsonl": "7c8c664fa9dcc496ddefe60ce0e64ac0ff023278c513161e6efd10328941e811",
+      "snapshots_dev_cal.pkl": "aab0ecb4d5a4cf27ab7c4047f19cb99814095f5a536c12ba63075f5f8d711123",
+      "snapshots_dev_thr.pkl": "576b943ac73a9fa6dad2d7339424c6a98be55d38027fb20abb078e25c8212988",
+      "snapshots_test_iid.pkl": "3dfd2d30fb0a07a3081bf2d7e76ad964da6704f8d10d7f65eaa635ff31326cb3",
+      "snapshots_train.pkl": "9384f8fb3ef99beaaf62fca4aff0f1ef3b6440ad0f7135cd1ecbf4a673a3a78a",
+      "specs.csv": "d037076af23b2e79cadedf4eeeba29b544a2d3a8dca6b8e388082a72e6f3838b"
+    }
+  },
+  "car": {
+    "repo": "C:\\Users\\jv624\\Desktop\\ctrl-alt-recover",
+    "commit": "4afe06c3eb21e4f61bef4901d4faac6bcf6d7cf5",
+    "dirty_files": [
+      "M case_studies/common/trace_logging.py",
+      " M case_studies/cstr_case/cstr_case.py",
+      " M case_studies/mixer_case/mixer_case.py",
+      "?? .claude/",
+      "?? assets/linkedin/",
+      "?? case_studies/analyze_failures.py",
+      "?? case_studies/common/llm_failures.py",
+      "?? docs/",
+      "?? results/",
+      "?? results_new/"
+    ],
+    "sha256": {
+      "cstr_case.py": "b6583a3a772990f11398989aecbd13bfb5cc2a5d575a4bd3313e61fe72ccc8f2",
+      "cstr_digital_twin.py": "19718421bf7904e904ad1aa8885ad27157b5756f4e7bffaa9187630aa460728b",
+      "cstr_anomaly_threshold_test.py": "c5198a134f107da8ebc5c0ba4157e8b7e7c821a5026808a22df562b504eb8d9d",
+      "graph_retrieval_code.py": "703f0041946e5633becfbc38ad630c061045710d87dff5cea59a210d10ee1f0f"
+    }
+  }
+}

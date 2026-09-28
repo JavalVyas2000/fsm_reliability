@@ -1,0 +1,79 @@
+{
+  "train": {
+    "n": 150,
+    "families": {
+      "cool_stuck_closed": 38,
+      "pump_degrade": 38,
+      "outlet_block": 38,
+      "fouling": 36
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 150,
+    "distinct_trigger_times": 136,
+    "distinct_snapshot_tuples": 150,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 76,
+      "T_meas_error>2.0": 43,
+      "entered_UNSAFE(control_zone)": 24,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 7
+    }
+  },
+  "dev_cal": {
+    "n": 50,
+    "families": {
+      "cool_stuck_closed": 8,
+      "outlet_block": 16,
+      "pump_degrade": 12,
+      "fouling": 14
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 47,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 28,
+      "T_meas_error>2.0": 10,
+      "entered_UNSAFE(control_zone)": 9,
+      "cool_limited(u_cool<=0.3 & T_err>2.0K)": 2,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 1
+    }
+  },
+  "dev_thr": {
+    "n": 50,
+    "families": {
+      "pump_degrade": 17,
+      "cool_stuck_closed": 14,
+      "outlet_block": 10,
+      "fouling": 9
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 49,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 27,
+      "T_meas_error>2.0": 19,
+      "entered_UNSAFE(control_zone)": 4
+    }
+  },
+  "test_iid": {
+    "n": 50,
+    "families": {
+      "cool_stuck_closed": 14,
+      "pump_degrade": 17,
+      "outlet_block": 15,
+      "fouling": 4
+    },
+    "distinct_system_prompts": 1,
+    "distinct_user_prompts": 50,
+    "distinct_trigger_times": 50,
+    "distinct_snapshot_tuples": 50,
+    "trigger_reasons": {
+      "level_error_large(|L_meas-L_sp|>0.7)": 32,
+      "T_meas_error>2.0": 13,
+      "entered_UNSAFE(control_zone)": 2,
+      "cool_limited(u_cool<=0.3 & T_err>2.0K)": 2,
+      "T_meas_error>2.0; entered_UNSAFE(control_zone)": 1
+    }
+  }
+}
