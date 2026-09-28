@@ -1,0 +1,93 @@
+{
+  "created_utc": "2026-09-23T22:01:44.109157+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\10_generate_fsm_v2.py",
+    "--root_seed",
+    "20260924",
+    "--tag",
+    "fsm_cert",
+    "--sizes",
+    "cert=3000"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "dataset": {
+    "generator_version": "fsm_dataset_v2.0",
+    "root_seed": 20260924,
+    "sizes": {
+      "cert": 3000
+    },
+    "num_nodes": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "edge_prob": {
+      "5": 0.35,
+      "10": 0.3,
+      "15": 0.25,
+      "20": 0.2
+    },
+    "files": {
+      "cert": {
+        "path": "data\\v2\\fsm_cert_seed20260924\\cert.csv",
+        "rows": 3000,
+        "sha256": "935a1c7a56d4e003c0516b2208067f014be2524a57aaf719d4063702888784f9"
+      }
+    },
+    "generation_stats": {
+      "rejected_duplicate_or_excluded": 14,
+      "rejected_no_reachable_pair": 0
+    },
+    "checks": {
+      "graph_disjoint_across_partitions": true,
+      "overlap_with_excluded": 0,
+      "excluded_graph_count": 15989,
+      "excluded_files": [
+        "data\\raw\\test.csv",
+        "data\\raw\\train.csv",
+        "data\\raw\\val.csv",
+        "data\\raw_10node_large\\test.csv",
+        "data\\raw_10node_large\\train.csv",
+        "data\\raw_10node_large\\val.csv",
+        "data\\raw_multi_node_large\\test.csv",
+        "data\\raw_multi_node_large\\train.csv",
+        "data\\raw_multi_node_large\\val.csv",
+        "data\\raw_seed_42\\test.csv",
+        "data\\raw_seed_42\\train.csv",
+        "data\\raw_seed_42\\val.csv",
+        "data\\raw_seed_43\\test.csv",
+        "data\\raw_seed_43\\train.csv",
+        "data\\raw_seed_43\\val.csv",
+        "data\\raw_seed_44\\test.csv",
+        "data\\raw_seed_44\\train.csv",
+        "data\\raw_seed_44\\val.csv",
+        "data\\v2\\fsm_pilot_seed20260923\\dev_cal.csv",
+        "data\\v2\\fsm_pilot_seed20260923\\dev_thr.csv",
+        "data\\v2\\fsm_pilot_seed20260923\\test_iid.csv",
+        "data\\v2\\fsm_pilot_seed20260923\\train.csv"
+      ]
+    }
+  }
+}

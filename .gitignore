@@ -1,1 +1,3 @@
 outputs/*.zip
+__pycache__/
+*.pyc
