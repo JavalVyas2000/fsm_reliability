@@ -1,0 +1,189 @@
+{
+  "partitions": {
+    "train": {
+      "n_total": 1500,
+      "parse_fail": 3,
+      "schema_fail": 0,
+      "format_failure_reasons": {
+        "no_complete_json_object": 3
+      },
+      "stop_reason": {
+        "json_object": 1497,
+        "max_new_tokens": 3
+      },
+      "feature_status": {
+        "ok": 1500
+      },
+      "n_eligible": 1497,
+      "n_fail": 784,
+      "prevalence_fail": 0.5237140948563794,
+      "suboptimal_valid_rate": 0.21442885771543085,
+      "unknown_label": 0,
+      "all_response_fail_or_format_rate": 0.5246666666666666,
+      "by_num_nodes": {
+        "5.0": {
+          "n": 375,
+          "prevalence_fail": 0.27466666666666667
+        },
+        "10.0": {
+          "n": 375,
+          "prevalence_fail": 0.42933333333333334
+        },
+        "15.0": {
+          "n": 373,
+          "prevalence_fail": 0.675603217158177
+        },
+        "20.0": {
+          "n": 374,
+          "prevalence_fail": 0.7165775401069518
+        }
+      }
+    },
+    "dev_cal": {
+      "n_total": 500,
+      "parse_fail": 3,
+      "schema_fail": 0,
+      "format_failure_reasons": {
+        "no_complete_json_object": 2,
+        "json_decode_error": 1
+      },
+      "stop_reason": {
+        "json_object": 498,
+        "max_new_tokens": 2
+      },
+      "feature_status": {
+        "ok": 500
+      },
+      "n_eligible": 497,
+      "n_fail": 272,
+      "prevalence_fail": 0.5472837022132797,
+      "suboptimal_valid_rate": 0.22132796780684105,
+      "unknown_label": 0,
+      "all_response_fail_or_format_rate": 0.55,
+      "by_num_nodes": {
+        "5.0": {
+          "n": 125,
+          "prevalence_fail": 0.336
+        },
+        "10.0": {
+          "n": 125,
+          "prevalence_fail": 0.448
+        },
+        "15.0": {
+          "n": 125,
+          "prevalence_fail": 0.696
+        },
+        "20.0": {
+          "n": 122,
+          "prevalence_fail": 0.7131147540983607
+        }
+      }
+    },
+    "dev_thr": {
+      "n_total": 500,
+      "parse_fail": 0,
+      "schema_fail": 0,
+      "format_failure_reasons": {},
+      "stop_reason": {
+        "json_object": 500
+      },
+      "feature_status": {
+        "ok": 500
+      },
+      "n_eligible": 500,
+      "n_fail": 268,
+      "prevalence_fail": 0.536,
+      "suboptimal_valid_rate": 0.212,
+      "unknown_label": 0,
+      "all_response_fail_or_format_rate": 0.536,
+      "by_num_nodes": {
+        "5.0": {
+          "n": 125,
+          "prevalence_fail": 0.368
+        },
+        "10.0": {
+          "n": 125,
+          "prevalence_fail": 0.464
+        },
+        "15.0": {
+          "n": 125,
+          "prevalence_fail": 0.584
+        },
+        "20.0": {
+          "n": 125,
+          "prevalence_fail": 0.728
+        }
+      }
+    },
+    "test_iid": {
+      "n_total": 500,
+      "parse_fail": 0,
+      "schema_fail": 0,
+      "format_failure_reasons": {},
+      "stop_reason": {
+        "json_object": 500
+      },
+      "feature_status": {
+        "ok": 500
+      },
+      "n_eligible": 500,
+      "n_fail": 243,
+      "prevalence_fail": 0.486,
+      "suboptimal_valid_rate": 0.24,
+      "unknown_label": 0,
+      "all_response_fail_or_format_rate": 0.486,
+      "by_num_nodes": {
+        "5.0": {
+          "n": 125,
+          "prevalence_fail": 0.248
+        },
+        "10.0": {
+          "n": 125,
+          "prevalence_fail": 0.432
+        },
+        "15.0": {
+          "n": 125,
+          "prevalence_fail": 0.552
+        },
+        "20.0": {
+          "n": 125,
+          "prevalence_fail": 0.712
+        }
+      }
+    }
+  },
+  "cost": {
+    "gen_latency_s": {
+      "mean": 1.4539019512000038,
+      "median": 1.2693260999949416,
+      "p95": 2.853541045001473,
+      "n": 3000
+    },
+    "feat_latency_s": {
+      "mean": 0.0904167296000087,
+      "median": 0.0917048999981489,
+      "p95": 0.11188160999809038,
+      "n": 3000
+    },
+    "peak_mem_gb_max": 6.671910912,
+    "prompt_tokens": {
+      "mean": 395.248,
+      "median": 381.0,
+      "p95": 571.0,
+      "n": 3000
+    },
+    "answer_token_count": {
+      "mean": 19.272333333333332,
+      "median": 17.0,
+      "p95": 37.0,
+      "n": 3000
+    },
+    "gen_vs_tf_logprob_maxdiff": {
+      "mean": 0.09701719241358603,
+      "median": 0.07282067835330963,
+      "p95": 0.2937201827764508,
+      "n": 3000
+    },
+    "greedy_consistent_rate": 1.0
+  }
+}

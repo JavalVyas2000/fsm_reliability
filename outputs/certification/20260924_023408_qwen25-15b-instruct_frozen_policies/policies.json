@@ -1,0 +1,81 @@
+{
+  "declared_before_certification_data": true,
+  "policies": [
+    {
+      "id": "P1_all_internal",
+      "type": "single",
+      "allow": [
+        "all_internal"
+      ],
+      "disallow": "all_internal",
+      "tau_allow": [
+        0.06970314207452766
+      ],
+      "tau_disallow": 0.8333510463768302
+    },
+    {
+      "id": "P2_attention_token",
+      "type": "single",
+      "allow": [
+        "attention+token_confidence"
+      ],
+      "disallow": "attention+token_confidence",
+      "tau_allow": [
+        0.0753667828383071
+      ],
+      "tau_disallow": 0.8242985009080706
+    },
+    {
+      "id": "P3_agree_context_all_internal",
+      "type": "agree",
+      "allow": [
+        "context_action",
+        "all_internal"
+      ],
+      "disallow": "all_internal",
+      "tau_allow": [
+        0.09787274245157221,
+        0.07978087380644629
+      ],
+      "tau_disallow": 0.8333510463768302
+    },
+    {
+      "id": "P4_context_action_baseline",
+      "type": "single",
+      "allow": [
+        "context_action"
+      ],
+      "disallow": "context_action",
+      "tau_allow": [
+        0.043290952727111726
+      ],
+      "tau_disallow": 0.7601279165328442
+    }
+  ],
+  "selection": {
+    "allow": "point rule, alpha=0.0 on dev_thr",
+    "disallow": "point rule, beta=0.1 on dev_thr"
+  },
+  "certification": {
+    "alphas": [
+      0.05,
+      0.02
+    ],
+    "delta_family": 0.05,
+    "m_policies": 4,
+    "delta_per_policy": 0.0125,
+    "bound": "clopper_pearson_one_sided_upper",
+    "unit": "one candidate per graph (graph-disjoint cert partition)"
+  },
+  "probe_outputs": "Platt-calibrated failure probability",
+  "hidden_keys": [
+    "hid_L025_last_prompt",
+    "hid_L025_mean_answer",
+    "hid_L050_last_prompt",
+    "hid_L050_mean_answer",
+    "hid_L075_last_prompt",
+    "hid_L075_mean_answer",
+    "hid_L100_last_prompt",
+    "hid_L100_mean_answer"
+  ]
+}

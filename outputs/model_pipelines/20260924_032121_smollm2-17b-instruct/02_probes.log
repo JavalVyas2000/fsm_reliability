@@ -1,0 +1,59 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\fsm_baseline\\20260924_035510_smollm2-17b-instruct_pilot",
+  "stage1_gate_test_iid": {
+    "token_confidence - context_action": {
+      "delta_auroc": -0.07914960536466686,
+      "ci95_lo": -0.11026590568929287,
+      "ci95_hi": -0.04977879798439833,
+      "n_boot_used": 2000
+    },
+    "attention - context_action": {
+      "delta_auroc": -0.02938994718414334,
+      "ci95_lo": -0.04910301786655856,
+      "ci95_hi": -0.011729722180967794,
+      "n_boot_used": 2000
+    },
+    "hidden - context_action": {
+      "delta_auroc": -0.021170850394635288,
+      "ci95_lo": -0.04258545686275038,
+      "ci95_hi": -0.0002473058856037958,
+      "n_boot_used": 2000
+    },
+    "attention+token_confidence - context_action": {
+      "delta_auroc": -0.031912052697169346,
+      "ci95_lo": -0.05205841498610128,
+      "ci95_hi": -0.014070228494623636,
+      "n_boot_used": 2000
+    },
+    "all_internal - context_action": {
+      "delta_auroc": -0.022832472850275898,
+      "ci95_lo": -0.04400446881961175,
+      "ci95_hi": -0.0017820388553744584,
+      "n_boot_used": 2000
+    },
+    "context_action+token_confidence - context_action": {
+      "delta_auroc": -0.0029523470417187614,
+      "ci95_lo": -0.00729768355713831,
+      "ci95_hi": 0.0015843776239441302,
+      "n_boot_used": 2000
+    },
+    "context_action+attention - context_action": {
+      "delta_auroc": 0.00428757937214419,
+      "ci95_lo": -0.006197201909989747,
+      "ci95_hi": 0.014611242068433972,
+      "n_boot_used": 2000
+    },
+    "context_action+hidden - context_action": {
+      "delta_auroc": 0.004584297667794113,
+      "ci95_lo": -0.009672606749414949,
+      "ci95_hi": 0.01899923079414449,
+      "n_boot_used": 2000
+    },
+    "context_action+all_internal - context_action": {
+      "delta_auroc": 0.0027446442347635047,
+      "ci95_lo": -0.012076687910800193,
+      "ci95_hi": 0.01838063433223758,
+      "n_boot_used": 2000
+    }
+  }
+}

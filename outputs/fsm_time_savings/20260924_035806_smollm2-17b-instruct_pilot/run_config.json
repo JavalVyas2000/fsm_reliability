@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-09-24T02:58:18.973801+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\14_time_savings.py",
+    "--routing_dir",
+    "outputs\\fsm_selective_verification\\20260924_035756_smollm2-17b-instruct_pilot",
+    "--tag",
+    "smollm2-17b-instruct_pilot"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "routing_dir": "outputs\\fsm_selective_verification\\20260924_035756_smollm2-17b-instruct_pilot",
+  "inference_dir": "outputs\\fsm_inference\\20260924_032202_smollm2-17b-instruct_pilot3000",
+  "measured": {
+    "C_gen_mean_s": 0.5896545774857117,
+    "C_feat_mean_s": 0.048591492292445256,
+    "C_v_fsm_mean_s": 2.3486561828002933e-07,
+    "probe_scoring_median_s": {
+      "context_action": 0.0006161000055726618,
+      "token_confidence": 0.0006007500051055104,
+      "attention": 0.0006463500030804425,
+      "attention+token_confidence": 0.0008763500081840903,
+      "all_internal": 0.01357815001392737,
+      "context_action+all_internal": 0.008892750003724359,
+      "neg_mean_logprob (untrained)": 0.0,
+      "token_entropy (untrained)": 0.0
+    },
+    "verifier_repeats": 2000
+  },
+  "cstr_reference_verifier_s": 6.95,
+  "accounting": "saved = sum_{ALLOW,DISALLOW} C_v - sum_all C_f; C_f = feature pass (internal families) + probe scoring"
+}

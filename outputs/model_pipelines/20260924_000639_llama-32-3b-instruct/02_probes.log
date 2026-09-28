@@ -1,0 +1,59 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\fsm_baseline\\20260924_005248_llama-32-3b-instruct_pilot",
+  "stage1_gate_test_iid": {
+    "token_confidence - context_action": {
+      "delta_auroc": -0.05661089661089658,
+      "ci95_lo": -0.08809221853771691,
+      "ci95_hi": -0.024929984990204733,
+      "n_boot_used": 2000
+    },
+    "attention - context_action": {
+      "delta_auroc": -0.016868296868296717,
+      "ci95_lo": -0.03820229525483741,
+      "ci95_hi": 0.004877704590924052,
+      "n_boot_used": 2000
+    },
+    "hidden - context_action": {
+      "delta_auroc": -0.029257829257829382,
+      "ci95_lo": -0.05475201541501308,
+      "ci95_hi": -0.0052038772991715694,
+      "n_boot_used": 2000
+    },
+    "attention+token_confidence - context_action": {
+      "delta_auroc": -0.008888888888888835,
+      "ci95_lo": -0.032080558227879974,
+      "ci95_hi": 0.015693201976110793,
+      "n_boot_used": 2000
+    },
+    "all_internal - context_action": {
+      "delta_auroc": -0.023303303303303324,
+      "ci95_lo": -0.0510901106437929,
+      "ci95_hi": 0.005303037513481516,
+      "n_boot_used": 2000
+    },
+    "context_action+token_confidence - context_action": {
+      "delta_auroc": 0.003775203775203795,
+      "ci95_lo": -0.009208906720007801,
+      "ci95_hi": 0.017267808038702277,
+      "n_boot_used": 2000
+    },
+    "context_action+attention - context_action": {
+      "delta_auroc": 0.0078421278421279,
+      "ci95_lo": -0.00831007136482989,
+      "ci95_hi": 0.024768301208428888,
+      "n_boot_used": 2000
+    },
+    "context_action+hidden - context_action": {
+      "delta_auroc": -0.007687687687687683,
+      "ci95_lo": -0.0262548623315679,
+      "ci95_hi": 0.010421164750346594,
+      "n_boot_used": 2000
+    },
+    "context_action+all_internal - context_action": {
+      "delta_auroc": 0.006486486486486642,
+      "ci95_lo": -0.01635113128554031,
+      "ci95_hi": 0.030560360866543214,
+      "n_boot_used": 2000
+    }
+  }
+}

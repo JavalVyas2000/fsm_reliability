@@ -1,0 +1,49 @@
+{
+  "created_utc": "2026-09-26T15:32:39.467988+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\16_freeze_policies.py",
+    "--baseline_dir",
+    "outputs/fsm_baseline/20260926_154347_grounding_llama-32-3b-instruct_pilot3000",
+    "--policy_set",
+    "grounding",
+    "--tag",
+    "llama-32-3b-instruct_grounding_frozen"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "baseline_dir": "outputs\\fsm_baseline\\20260926_154347_grounding_llama-32-3b-instruct_pilot3000",
+  "inference_dir": "outputs\\fsm_grounding\\20260926_152900_20260924_000726_llama-32-3b-instruct_pilot3000\\aug",
+  "reproduction_max_abs_diff": {
+    "context_action": 1.1102230246251565e-16,
+    "grounding": 1.1102230246251565e-16,
+    "context_action+grounding": 1.1102230246251565e-16,
+    "context_action+all_internal+grounding": 1.1102230246251565e-16
+  },
+  "sha256": {
+    "policies.json": "be801d7c27617aa9824efcfe57db5bf115f2af18d66a86cbbb6f2b460e192c2e",
+    "probes.joblib": "5271a38f8fb48a84163ca8dd0b31c2dc5ff302dfd8f96435c2aab2e10bba44f4"
+  }
+}

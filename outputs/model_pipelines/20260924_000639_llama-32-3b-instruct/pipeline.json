@@ -1,0 +1,60 @@
+{
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "steps": [
+    {
+      "step": "smoke",
+      "returncode": 0,
+      "wall_s": 40.6,
+      "output_dir": "outputs\\fsm_inference_smoke\\20260924_000706_llama-32-3b-instruct_smoke5"
+    },
+    {
+      "step": "pilot_inference",
+      "returncode": 0,
+      "wall_s": 2724.4,
+      "output_dir": "outputs\\fsm_inference\\20260924_000726_llama-32-3b-instruct_pilot3000"
+    },
+    {
+      "step": "probes",
+      "returncode": 0,
+      "wall_s": 172.0,
+      "output_dir": "outputs\\fsm_baseline\\20260924_005248_llama-32-3b-instruct_pilot"
+    },
+    {
+      "step": "routing",
+      "returncode": 0,
+      "wall_s": 11.9,
+      "output_dir": "outputs\\fsm_selective_verification\\20260924_005540_llama-32-3b-instruct_pilot"
+    },
+    {
+      "step": "time_savings",
+      "returncode": 0,
+      "wall_s": 21.3,
+      "output_dir": "outputs\\fsm_time_savings\\20260924_005551_llama-32-3b-instruct_pilot"
+    },
+    {
+      "step": "agreement",
+      "returncode": 0,
+      "wall_s": 4.2,
+      "output_dir": "outputs\\fsm_agreement_routing\\20260924_005612_llama-32-3b-instruct_pilot"
+    },
+    {
+      "step": "freeze",
+      "returncode": 0,
+      "wall_s": 7.9,
+      "output_dir": "outputs\\certification\\20260924_005616_llama-32-3b-instruct_frozen_policies"
+    },
+    {
+      "step": "cert_inference",
+      "returncode": 0,
+      "wall_s": 2837.9,
+      "output_dir": "outputs\\fsm_inference\\20260924_005648_llama-32-3b-instruct_cert3000"
+    },
+    {
+      "step": "certify",
+      "returncode": 0,
+      "wall_s": 12.0,
+      "output_dir": "outputs\\certification\\20260924_014343_llama-32-3b-instruct_certify"
+    }
+  ],
+  "status": "complete"
+}

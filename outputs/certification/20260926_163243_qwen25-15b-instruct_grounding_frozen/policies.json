@@ -1,0 +1,80 @@
+{
+  "declared_before_certification_data": true,
+  "policy_set": "grounding",
+  "policies": [
+    {
+      "id": "G1_context_grounding",
+      "type": "single",
+      "allow": [
+        "context_action+grounding"
+      ],
+      "disallow": "context_action+grounding",
+      "tau_allow": [
+        0.062489264886550676
+      ],
+      "tau_disallow": 0.7730011434938032
+    },
+    {
+      "id": "G2_context_allinternal_grounding",
+      "type": "single",
+      "allow": [
+        "context_action+all_internal+grounding"
+      ],
+      "disallow": "context_action+all_internal+grounding",
+      "tau_allow": [
+        0.0328018477164342
+      ],
+      "tau_disallow": 0.7961903076715511
+    },
+    {
+      "id": "G3_grounding_only",
+      "type": "single",
+      "allow": [
+        "grounding"
+      ],
+      "disallow": "grounding",
+      "tau_allow": [
+        0.045434998729603854
+      ],
+      "tau_disallow": 0.855990818972888
+    },
+    {
+      "id": "G4_context_action_baseline",
+      "type": "single",
+      "allow": [
+        "context_action"
+      ],
+      "disallow": "context_action",
+      "tau_allow": [
+        0.043290952727111726
+      ],
+      "tau_disallow": 0.7601279165328442
+    }
+  ],
+  "selection": {
+    "allow": "point rule, alpha=0.0 on dev_thr",
+    "disallow": "point rule, beta=0.1 on dev_thr"
+  },
+  "certification": {
+    "alphas": [
+      0.05,
+      0.02
+    ],
+    "delta_family": 0.05,
+    "m_policies": 4,
+    "delta_per_policy": 0.0125,
+    "bound": "clopper_pearson_one_sided_upper",
+    "unit": "one candidate per graph (graph-disjoint cert partition)"
+  },
+  "probe_outputs": "Platt-calibrated failure probability",
+  "hidden_keys": [
+    "hid_L025_last_prompt",
+    "hid_L025_mean_answer",
+    "hid_L050_last_prompt",
+    "hid_L050_mean_answer",
+    "hid_L075_last_prompt",
+    "hid_L075_mean_answer",
+    "hid_L100_last_prompt",
+    "hid_L100_mean_answer"
+  ]
+}

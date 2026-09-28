@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-09-24T03:32:30.501675+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\17_certify.py",
+    "--frozen_dir",
+    "outputs\\certification\\20260924_035825_smollm2-17b-instruct_frozen_policies",
+    "--inference_dir",
+    "outputs\\fsm_inference\\20260924_035855_smollm2-17b-instruct_cert3000",
+    "--tag",
+    "smollm2-17b-instruct_certify"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "frozen_dir": "outputs\\certification\\20260924_035825_smollm2-17b-instruct_frozen_policies",
+  "inference_dir": "outputs\\fsm_inference\\20260924_035855_smollm2-17b-instruct_cert3000",
+  "frozen_sha256": {
+    "policies.json": "12ddcf05c163b4ddf8c19519e9100be4dc1b181bf0eabd11e2b1cb55bfb858ee",
+    "probes.joblib": "cfaaa83ad170b78e8d557531f506d0004d49a2b2fbecf02b426825f4ecb46d0c"
+  },
+  "partition": "cert"
+}

@@ -1,0 +1,8 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "status": "complete",
+  "probes": "outputs/fsm_baseline/20260923_221755_qwen25_3b_pilot",
+  "time": "outputs/fsm_time_savings/20260923_223713_pilot_zero_escape",
+  "agreement": "outputs/fsm_agreement_routing/20260923_225028_pilot",
+  "certify": "outputs/certification/20260924_000632_qwen25-3b-instruct_certify"
+}

@@ -1,0 +1,59 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\fsm_baseline\\20260924_023058_qwen25-15b-instruct_pilot",
+  "stage1_gate_test_iid": {
+    "token_confidence - context_action": {
+      "delta_auroc": -0.04486034044954368,
+      "ci95_lo": -0.07344080166036623,
+      "ci95_hi": -0.01653847420811848,
+      "n_boot_used": 2000
+    },
+    "attention - context_action": {
+      "delta_auroc": -0.001617605567572511,
+      "ci95_lo": -0.0196672890593556,
+      "ci95_hi": 0.01736403569889977,
+      "n_boot_used": 2000
+    },
+    "hidden - context_action": {
+      "delta_auroc": -0.03295401109752649,
+      "ci95_lo": -0.05688235772718528,
+      "ci95_hi": -0.009539604494484516,
+      "n_boot_used": 2000
+    },
+    "attention+token_confidence - context_action": {
+      "delta_auroc": 0.0021442678453871267,
+      "ci95_lo": -0.019324886429259832,
+      "ci95_hi": 0.02460735791253483,
+      "n_boot_used": 2000
+    },
+    "all_internal - context_action": {
+      "delta_auroc": -0.023850277438164036,
+      "ci95_lo": -0.05096632836686816,
+      "ci95_hi": 0.0017404082791867023,
+      "n_boot_used": 2000
+    },
+    "context_action+token_confidence - context_action": {
+      "delta_auroc": 0.010552054923351872,
+      "ci95_lo": 0.0024539530720831732,
+      "ci95_hi": 0.019709065081193154,
+      "n_boot_used": 2000
+    },
+    "context_action+attention - context_action": {
+      "delta_auroc": 0.006752562776262683,
+      "ci95_lo": -0.00906687181398368,
+      "ci95_hi": 0.02361371352164003,
+      "n_boot_used": 2000
+    },
+    "context_action+hidden - context_action": {
+      "delta_auroc": -0.02121696604909229,
+      "ci95_lo": -0.04080465286715283,
+      "ci95_hi": -0.002095903720488058,
+      "n_boot_used": 2000
+    },
+    "context_action+all_internal - context_action": {
+      "delta_auroc": -0.012959653907645863,
+      "ci95_lo": -0.036944559800664564,
+      "ci95_hi": 0.010752950438447796,
+      "n_boot_used": 2000
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-09-26T16:00:26.719777+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\17_certify.py",
+    "--frozen_dir",
+    "outputs/certification/20260926_163234_llama-32-3b-instruct_grounding_frozen",
+    "--inference_dir",
+    "outputs/fsm_grounding/20260926_164726_20260924_005648_llama-32-3b-instruct_cert3000/aug",
+    "--tag",
+    "llama-32-3b_grounding_certify"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "frozen_dir": "outputs\\certification\\20260926_163234_llama-32-3b-instruct_grounding_frozen",
+  "inference_dir": "outputs\\fsm_grounding\\20260926_164726_20260924_005648_llama-32-3b-instruct_cert3000\\aug",
+  "frozen_sha256": {
+    "policies.json": "be801d7c27617aa9824efcfe57db5bf115f2af18d66a86cbbb6f2b460e192c2e",
+    "probes.joblib": "5271a38f8fb48a84163ca8dd0b31c2dc5ff302dfd8f96435c2aab2e10bba44f4"
+  },
+  "partition": "cert"
+}

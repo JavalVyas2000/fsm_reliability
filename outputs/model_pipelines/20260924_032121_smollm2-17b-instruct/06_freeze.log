@@ -1,0 +1,39 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\certification\\20260924_035825_smollm2-17b-instruct_frozen_policies",
+  "policies": [
+    {
+      "id": "P1_all_internal",
+      "tau_allow": [
+        0.1695676006621379
+      ],
+      "tau_disallow": 0.5848870125110325
+    },
+    {
+      "id": "P2_attention_token",
+      "tau_allow": [
+        0.13007071194541225
+      ],
+      "tau_disallow": 0.5983473299235432
+    },
+    {
+      "id": "P3_agree_context_all_internal",
+      "tau_allow": [
+        0.10647677551455845,
+        0.6685396536840091
+      ],
+      "tau_disallow": 0.5848870125110325
+    },
+    {
+      "id": "P4_context_action_baseline",
+      "tau_allow": [
+        0.10647677551455845
+      ],
+      "tau_disallow": 0.5774390014459475
+    }
+  ],
+  "repro": {
+    "context_action": 1.1102230246251565e-16,
+    "attention+token_confidence": 1.1102230246251565e-16,
+    "all_internal": 1.1102230246251565e-16
+  }
+}

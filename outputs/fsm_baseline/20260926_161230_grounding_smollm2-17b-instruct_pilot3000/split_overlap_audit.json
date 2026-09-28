@@ -1,0 +1,16 @@
+{
+  "pairwise_graph_overlap": {
+    "train|dev_cal": 0,
+    "train|dev_thr": 0,
+    "train|test_iid": 0,
+    "dev_cal|dev_thr": 0,
+    "dev_cal|test_iid": 0,
+    "dev_thr|test_iid": 0
+  },
+  "dataset_generation_checks": {
+    "graph_disjoint_across_partitions": true,
+    "overlap_with_excluded": 0,
+    "excluded_graph_count": 12989
+  },
+  "instance_id_unique": true
+}

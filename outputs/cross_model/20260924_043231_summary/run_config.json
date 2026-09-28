@@ -1,0 +1,64 @@
+{
+  "created_utc": "2026-09-24T03:32:32.161524+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\19_cross_model_summary.py",
+    "--manual",
+    "outputs/cross_model/qwen25_3b_manual.json"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "entries": [
+    {
+      "model": "Qwen/Qwen2.5-3B-Instruct",
+      "status": "complete",
+      "probes": "outputs/fsm_baseline/20260923_221755_qwen25_3b_pilot",
+      "time": "outputs/fsm_time_savings/20260923_223713_pilot_zero_escape",
+      "agreement": "outputs/fsm_agreement_routing/20260923_225028_pilot",
+      "certify": "outputs/certification/20260924_000632_qwen25-3b-instruct_certify"
+    },
+    {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "status": "complete",
+      "probes": "outputs\\fsm_baseline\\20260924_005248_llama-32-3b-instruct_pilot",
+      "time": "outputs\\fsm_time_savings\\20260924_005551_llama-32-3b-instruct_pilot",
+      "agreement": "outputs\\fsm_agreement_routing\\20260924_005612_llama-32-3b-instruct_pilot",
+      "certify": "outputs\\certification\\20260924_014343_llama-32-3b-instruct_certify"
+    },
+    {
+      "model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "status": "complete",
+      "probes": "outputs\\fsm_baseline\\20260924_023058_qwen25-15b-instruct_pilot",
+      "time": "outputs\\fsm_time_savings\\20260924_023350_qwen25-15b-instruct_pilot",
+      "agreement": "outputs\\fsm_agreement_routing\\20260924_023404_qwen25-15b-instruct_pilot",
+      "certify": "outputs\\certification\\20260924_032113_qwen25-15b-instruct_certify"
+    },
+    {
+      "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+      "status": "complete",
+      "probes": "outputs\\fsm_baseline\\20260924_035510_smollm2-17b-instruct_pilot",
+      "time": "outputs\\fsm_time_savings\\20260924_035806_smollm2-17b-instruct_pilot",
+      "agreement": "outputs\\fsm_agreement_routing\\20260924_035822_smollm2-17b-instruct_pilot",
+      "certify": "outputs\\certification\\20260924_043224_smollm2-17b-instruct_certify"
+    }
+  ]
+}

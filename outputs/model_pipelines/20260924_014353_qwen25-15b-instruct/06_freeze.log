@@ -1,0 +1,39 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\certification\\20260924_023408_qwen25-15b-instruct_frozen_policies",
+  "policies": [
+    {
+      "id": "P1_all_internal",
+      "tau_allow": [
+        0.06970314207452766
+      ],
+      "tau_disallow": 0.8333510463768302
+    },
+    {
+      "id": "P2_attention_token",
+      "tau_allow": [
+        0.0753667828383071
+      ],
+      "tau_disallow": 0.8242985009080706
+    },
+    {
+      "id": "P3_agree_context_all_internal",
+      "tau_allow": [
+        0.09787274245157221,
+        0.07978087380644629
+      ],
+      "tau_disallow": 0.8333510463768302
+    },
+    {
+      "id": "P4_context_action_baseline",
+      "tau_allow": [
+        0.043290952727111726
+      ],
+      "tau_disallow": 0.7601279165328442
+    }
+  ],
+  "repro": {
+    "context_action": 1.1102230246251565e-16,
+    "attention+token_confidence": 1.1102230246251565e-16,
+    "all_internal": 1.1102230246251565e-16
+  }
+}

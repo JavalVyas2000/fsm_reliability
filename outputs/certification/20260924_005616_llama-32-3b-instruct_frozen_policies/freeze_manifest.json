@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-09-23T23:56:20.823828+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\16_freeze_policies.py",
+    "--baseline_dir",
+    "outputs\\fsm_baseline\\20260924_005248_llama-32-3b-instruct_pilot",
+    "--tag",
+    "llama-32-3b-instruct_frozen_policies"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "baseline_dir": "outputs\\fsm_baseline\\20260924_005248_llama-32-3b-instruct_pilot",
+  "inference_dir": "outputs\\fsm_inference\\20260924_000726_llama-32-3b-instruct_pilot3000",
+  "reproduction_max_abs_diff": {
+    "context_action": 1.1102230246251565e-16,
+    "attention+token_confidence": 1.1102230246251565e-16,
+    "all_internal": 1.1102230246251565e-16
+  },
+  "sha256": {
+    "policies.json": "fe6b62674f1ce1463fe8e7ccc26f9880ed837ff1e28c512ba64196b5c769efa7",
+    "probes.joblib": "290a107591a2516bac485abd1cd746e6b26f1f32e41d59509a6e7a8c53a3b3ea"
+  }
+}

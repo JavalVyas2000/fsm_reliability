@@ -1,0 +1,12 @@
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_selective_verification\20260926_162923_grounding_qwen25-3b-instruct_pilot3000
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_time_savings\20260926_162936_grounding_qwen25-3b-instruct_pilot3000
+done outputs/fsm_baseline/20260926_152318_grounding_qwen25-3b-instruct_pilot3000 -> outputs/fsm_selective_verification/20260926_162923_grounding_qwen25-3b-instruct_pilot3000 outputs/fsm_time_savings/20260926_162936_grounding_qwen25-3b-instruct_pilot3000/
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_selective_verification\20260926_162959_grounding_llama-32-3b-instruct_pilot3000
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_time_savings\20260926_163011_grounding_llama-32-3b-instruct_pilot3000
+done outputs/fsm_baseline/20260926_154347_grounding_llama-32-3b-instruct_pilot3000 -> outputs/fsm_selective_verification/20260926_162959_grounding_llama-32-3b-instruct_pilot3000 outputs/fsm_time_savings/20260926_163011_grounding_llama-32-3b-instruct_pilot3000/
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_selective_verification\20260926_163039_grounding_qwen25-15b-instruct_pilot3000
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_time_savings\20260926_163050_grounding_qwen25-15b-instruct_pilot3000
+done outputs/fsm_baseline/20260926_155839_grounding_qwen25-15b-instruct_pilot3000 -> outputs/fsm_selective_verification/20260926_163039_grounding_qwen25-15b-instruct_pilot3000 outputs/fsm_time_savings/20260926_163050_grounding_qwen25-15b-instruct_pilot3000/
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_selective_verification\20260926_163110_grounding_smollm2-17b-instruct_pilot3000
+Run dir: C:\Users\jv624\Desktop\fsm_reliability\outputs\fsm_time_savings\20260926_163121_grounding_smollm2-17b-instruct_pilot3000
+done outputs/fsm_baseline/20260926_161230_grounding_smollm2-17b-instruct_pilot3000 -> outputs/fsm_selective_verification/20260926_163110_grounding_smollm2-17b-instruct_pilot3000 outputs/fsm_time_savings/20260926_163121_grounding_smollm2-17b-instruct_pilot3000/

@@ -1,0 +1,92 @@
+{
+  "created_utc": "2026-09-23T23:56:52.826377+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\11_run_fsm_inference_v2.py",
+    "--dataset_dir",
+    "data/v2/fsm_cert_seed20260924",
+    "--partitions",
+    "cert",
+    "--tag",
+    "cert3000",
+    "--model",
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "--max_new_tokens",
+    "96",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "8ee1429850e206611e04efc1df0a45430d3e1ea6",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "model": {
+    "hf_id": "meta-llama/Llama-3.2-3B-Instruct",
+    "requested_revision": null,
+    "resolved_revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+    "dtype": "bfloat16",
+    "num_hidden_layers": 28,
+    "tokenizer_class": "TokenizersBackend"
+  },
+  "prompt": {
+    "version": "fsm_v2.0",
+    "template_hash": "e2125455c2330c80a1994c0c8cf83b82f3eaff225a962020bd509587aac6d421",
+    "chat_template": true,
+    "chat_template_kwargs": {
+      "date_string": "23 Sep 2026"
+    }
+  },
+  "decoding": {
+    "do_sample": false,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 96,
+    "stop": "end_of_first_json_object | eos | max_new_tokens",
+    "generation_attn_implementation": "sdpa",
+    "feature_attn_implementation": "eager"
+  },
+  "internals": {
+    "relative_layers": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "collect_attention": true,
+    "collect_hidden": true,
+    "decision_positions": "last prompt token + answer tokens except the last"
+  },
+  "data": {
+    "dataset_dir": "data\\v2\\fsm_cert_seed20260924",
+    "partitions": [
+      "cert"
+    ],
+    "limit": null,
+    "dataset_files": {
+      "cert": {
+        "path": "data\\v2\\fsm_cert_seed20260924\\cert.csv",
+        "rows": 3000,
+        "sha256": "935a1c7a56d4e003c0516b2208067f014be2524a57aaf719d4063702888784f9"
+      }
+    },
+    "root_seed": 20260924
+  }
+}

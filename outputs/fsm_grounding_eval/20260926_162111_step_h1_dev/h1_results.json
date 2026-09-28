@@ -1,0 +1,86 @@
+{
+  "outputs/fsm_grounding/20260926_150747_20260923_205804_qwen25-3b-instruct_pilot3000/": {
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "n_steps": 9797,
+    "n_invalid": 2243,
+    "mean_share_valid": 0.11369842312092808,
+    "mean_share_invalid": 0.07633130781951102,
+    "auroc_neg_share": 0.6437618827898781,
+    "ci95": [
+      0.6307564523937947,
+      0.6562886482475215
+    ],
+    "auroc_by_layer": {
+      "L025": 0.6188450143658776,
+      "L050": 0.6590593793936149,
+      "L075": 0.6484393360522326,
+      "L100": 0.5931341598626314
+    },
+    "auroc_neg_share_hmax": 0.6139789945738874,
+    "top1_rate_valid": 0.15485173418056658,
+    "top1_rate_invalid": 0.07066428889879625
+  },
+  "outputs/fsm_grounding/20260926_152900_20260924_000726_llama-32-3b-instruct_pilot3000/": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "n_steps": 9299,
+    "n_invalid": 2354,
+    "mean_share_valid": 0.22253651899867943,
+    "mean_share_invalid": 0.12464978560201385,
+    "auroc_neg_share": 0.8131729886417923,
+    "ci95": [
+      0.8035404261562771,
+      0.8229053417051998
+    ],
+    "auroc_by_layer": {
+      "L025": 0.5956069444775769,
+      "L050": 0.7557991146604619,
+      "L075": 0.8441949215005875,
+      "L100": 0.748033003578915
+    },
+    "auroc_neg_share_hmax": 0.7686044555687881,
+    "top1_rate_valid": 0.5064074874010079,
+    "top1_rate_invalid": 0.20167799490229396
+  },
+  "outputs/fsm_grounding/20260926_154919_20260924_014439_qwen25-15b-instruct_pilot3000/": {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "n_steps": 9515,
+    "n_invalid": 3378,
+    "mean_share_valid": 0.1880577963959031,
+    "mean_share_invalid": 0.10186843566186125,
+    "auroc_neg_share": 0.7569895806169626,
+    "ci95": [
+      0.7468952212472776,
+      0.7672845270198215
+    ],
+    "auroc_by_layer": {
+      "L025": 0.6560482077235278,
+      "L050": 0.6329329722471689,
+      "L075": 0.7623199380862838,
+      "L100": 0.7453522505128364
+    },
+    "auroc_neg_share_hmax": 0.7124426444805325,
+    "top1_rate_valid": 0.3218592145999674,
+    "top1_rate_invalid": 0.13432504440497336
+  },
+  "outputs/fsm_grounding/20260926_160357_20260924_032202_smollm2-17b-instruct_pilot3000/": {
+    "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "n_steps": 10192,
+    "n_invalid": 5505,
+    "mean_share_valid": 0.13838051842417656,
+    "mean_share_invalid": 0.07680106611395184,
+    "auroc_neg_share": 0.7458288302795896,
+    "ci95": [
+      0.7361396528478358,
+      0.7558806646410046
+    ],
+    "auroc_by_layer": {
+      "L025": 0.6547924409545254,
+      "L050": 0.6940858117811707,
+      "L075": 0.7822809025757177,
+      "L100": 0.6791203256654975
+    },
+    "auroc_neg_share_hmax": 0.6595833219485283,
+    "top1_rate_valid": 0.20935566460422445,
+    "top1_rate_invalid": 0.07070844686648502
+  }
+}

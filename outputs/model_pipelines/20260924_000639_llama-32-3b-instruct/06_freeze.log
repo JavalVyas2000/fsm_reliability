@@ -1,0 +1,39 @@
+{
+  "run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\certification\\20260924_005616_llama-32-3b-instruct_frozen_policies",
+  "policies": [
+    {
+      "id": "P1_all_internal",
+      "tau_allow": [
+        0.0612699567419255
+      ],
+      "tau_disallow": 0.7685911881168459
+    },
+    {
+      "id": "P2_attention_token",
+      "tau_allow": [
+        0.057652044735038106
+      ],
+      "tau_disallow": 0.8162317514715367
+    },
+    {
+      "id": "P3_agree_context_all_internal",
+      "tau_allow": [
+        0.13958328998736683,
+        0.10523753306364694
+      ],
+      "tau_disallow": 0.7685911881168459
+    },
+    {
+      "id": "P4_context_action_baseline",
+      "tau_allow": [
+        0.0683516540246112
+      ],
+      "tau_disallow": 0.7642911572960598
+    }
+  ],
+  "repro": {
+    "context_action": 1.1102230246251565e-16,
+    "attention+token_confidence": 1.1102230246251565e-16,
+    "all_internal": 1.1102230246251565e-16
+  }
+}
