@@ -160,6 +160,42 @@ Features (each averaged over the four layers):
 - **Reason:** a smoke test on 5 pilot proposals showed that the line rule missed the `rdfs:label` line holding the operator's equation, which is the most decisive text.
 - **Implementation:** `_statement_span` in `src/features/grounding_cstr.py`.
 
+**Amendment 2 (2026-09-29): primary endpoint = validator calls skipped.**
+
+- **Timing:** written after the development results (`docs/cstr_v4_results.md` Part A) and before test_iid or cert were examined. At that point:
+  - no test_iid metric or prediction had been computed (the probe run used `--seal_test`);
+  - no cert grounding feature had been computed.
+- **Reason:** the question of the study is how many validator calls each signal lets us skip, and how safely. That was the research plan's primary routing endpoint. AUROC (H1–H3) is kept as secondary.
+
+**Signals** (one probe each, fitted as in `scripts/12`: train fit, Platt calibration on dev_cal):
+- plant readings only (context_only_no_action);
+- plant readings + proposed change (context_action, the baseline);
+- token_confidence;
+- attention;
+- grounding_v31;
+- hidden;
+- all_internal;
+- all_internal + grounding_v31;
+- context_action + all_internal + grounding_v31.
+
+**Rules** (thresholds on the Platt risk, chosen on dev_cal + dev_thr pooled, frozen in `scripts/39`):
+- **ACCEPT** (execute without validation): risk ≤ t_acc. t_acc is the largest threshold whose accepted dev set has a failure rate ≤ X, with **X = 10% (primary)** and X = 5% (secondary).
+- **REJECT** (send back to the model without validation): risk ≥ t_rej. t_rej is the smallest threshold whose rejected dev set is ≥ 95% failures.
+- **Otherwise:** validate.
+
+**Outcomes on test_iid** (examined once; `scripts/40`), per signal:
+- share of validator calls skipped (ACCEPT + REJECT);
+- failures executed without validation (count and rate among ACCEPTs);
+- good proposals rejected without validation (count, and share of all good proposals);
+- paired Δ(calls skipped) against context_action, with a bootstrap 95% CI over episodes.
+
+**Certification on cert** (examined once, after the freeze), per signal:
+- one-sided Clopper–Pearson upper bound on the failure rate among ACCEPTs at δ = 0.05 / 9 (Bonferroni over the 9 signals);
+- a signal is certified at X if the bound ≤ X;
+- calls skipped on cert are reported alongside.
+
+**Unchanged:** the population, labels, features and partitions. H1–H3 are reported on test_iid as secondary.
+
 ## Reporting rules
 
 - All four hypotheses are reported whatever the outcome.

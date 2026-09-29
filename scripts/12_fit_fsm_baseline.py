@@ -61,6 +61,9 @@ def parse_args():
                    help="CSTR reprompt data: which rounds to fit on (train partition)")
     p.add_argument("--eval_rounds", choices=["all", "0"], default="all",
                    help="CSTR reprompt data: which rounds dev_cal/dev_thr/test use (0 = first proposals)")
+    p.add_argument("--seal_test", action="store_true",
+                   help="fit and calibrate as usual but compute, write and print nothing for test_iid "
+                        "(pre-registered designs: dev results are written down before test is examined)")
     return p.parse_args()
 
 
@@ -132,6 +135,7 @@ def feature_groups(df: pd.DataFrame, domain: str = "fsm") -> Dict[str, Dict[str,
             "attention+grounding": {"scalar": att + grd, "hidden": False},
             "context_action+grounding": {"scalar": FSM + grd, "hidden": False},
             "context_action+all_internal+grounding": {"scalar": FSM + att + tok + grd, "hidden": True},
+            "all_internal+grounding": {"scalar": att + tok + grd, "hidden": True},
         })
     # Pre-registered CSTR field-grounding family (docs/grounding_cstr_prereg.md).
     fld = sorted(c for c in df.columns if c.startswith("fld_"))
@@ -141,6 +145,16 @@ def feature_groups(df: pd.DataFrame, domain: str = "fsm") -> Dict[str, Dict[str,
             "field_grounding_primary_only": {"scalar": ["fld_min_share"], "hidden": False},
             "context_action+field_grounding": {"scalar": FSM + fld, "hidden": False},
             "context_action+all_internal+field_grounding": {"scalar": FSM + att + tok + fld, "hidden": True},
+        })
+    # Pre-registered v3.1 grounding family (docs/cstr_v4_prereg.md; policies P2-P4).
+    g31 = sorted(c for c in df.columns if c.startswith("g31_"))
+    if g31:
+        base.update({
+            "grounding_v31": {"scalar": g31, "hidden": False},
+            "grounding_v31_primary_only": {"scalar": ["g31_min_share"], "hidden": False},
+            "context_action+grounding_v31": {"scalar": FSM + g31, "hidden": False},
+            "context_action+all_internal+grounding_v31": {"scalar": FSM + att + tok + g31, "hidden": True},
+            "all_internal+grounding_v31": {"scalar": att + tok + g31, "hidden": True},
         })
     return base
 
@@ -335,6 +349,8 @@ def main():
     if missing:
         raise SystemExit(f"Missing partitions in inference records: {missing}")
 
+    eval_parts = ["dev_cal", "dev_thr"] + ([] if args.seal_test else ["test_iid"])
+    report_parts = [p for p in ("dev_thr", "test_iid") if p in eval_parts]
     group_col = "num_nodes" if args.domain == "fsm" else "family"
     preds = elig[["instance_id", "partition", "graph_hash", group_col, "y"]].copy()
     metrics: Dict = {"target": "candidate_invalid", "positive_class": "failure", "groups": {}, "score_baselines": {}}
@@ -363,7 +379,7 @@ def main():
         tau = float(cands[int(np.argmax(bal))])
 
         gm: Dict = {"n_features_scalar": len(cols), "uses_hidden": spec["hidden"], "threshold_dev_thr_platt": tau}
-        for p in ["dev_cal", "dev_thr", "test_iid"]:
+        for p in eval_parts:
             y = split[p]["y"].to_numpy()
             entry = {c: predictive_metrics(y, cal[c][p]) for c in cal}
             entry["auroc_ci"] = bootstrap_auroc_ci(y, raw[p], n_boot=args.n_boot, seed=SEED)
@@ -389,7 +405,7 @@ def main():
     }
     for sname, fn in score_defs.items():
         metrics["score_baselines"][sname] = {}
-        for p in ["dev_thr", "test_iid"]:
+        for p in report_parts:
             y = split[p]["y"].to_numpy()
             s = fn(split[p]).to_numpy()
             metrics["score_baselines"][sname][p] = {
@@ -400,7 +416,7 @@ def main():
 
     # Paired incremental value vs context_action (the gate) and vs token confidence.
     comparisons = {}
-    for p in ["dev_thr", "test_iid"]:
+    for p in report_parts:
         y = split[p]["y"].to_numpy()
         g = split[p]["graph_hash"].to_numpy()
         base_ca = preds.loc[split[p].index, "p_context_action_raw"].to_numpy()
@@ -411,13 +427,13 @@ def main():
                 continue
             pa = preds.loc[split[p].index, f"p_{name}_raw"].to_numpy()
             comparisons[p][f"{name} - context_action"] = bootstrap_delta_auroc(y, pa, base_ca, g, args.n_boot, SEED)
-        extra = [g for g in ("grounding", "grounding+token_confidence", "attention+grounding", "field_grounding") if g in groups]
+        extra = [g for g in ("grounding", "grounding+token_confidence", "attention+grounding", "field_grounding", "grounding_v31") if g in groups]
         for name in ["attention", "hidden", "attention+token_confidence", "all_internal"] + extra:
             pa = preds.loc[split[p].index, f"p_{name}_raw"].to_numpy()
             comparisons[p][f"{name} - token_confidence"] = bootstrap_delta_auroc(y, pa, base_tok, g, args.n_boot, SEED)
     metrics["paired_delta_auroc"] = comparisons
     metrics["stage1_gate_test_iid"] = {
-        k: v for k, v in comparisons["test_iid"].items()
+        k: v for k, v in comparisons.get("test_iid", {}).items()
         if k.startswith(("token_confidence -", "attention -", "hidden -", "attention+token_confidence -", "all_internal -", "context_action+"))
         and k.endswith("- context_action")
     }
@@ -427,6 +443,8 @@ def main():
     write_json(run_dir / "dataset_summary.json", {"partitions": dataset_summary(df, args.domain), "cost": cost_summary(df)})
     write_json(run_dir / "feature_availability.json", feature_availability(df, groups))
     write_json(run_dir / "split_overlap_audit.json", overlap_audit(df, dataset_dir))
+    if args.seal_test:
+        preds = preds[preds["partition"] != "test_iid"]
     preds.to_csv(run_dir / "predictions.csv", index=False)
     write_json(
         run_dir / "run_config.json",
@@ -442,11 +460,11 @@ def main():
                 "calibration": "none / Platt / isotonic fit on dev_cal",
                 "threshold": "max balanced accuracy on dev_thr (Platt)", "bootstrap": args.n_boot, "seed": SEED,
                 "feature_groups": {k: {"scalar": v["scalar"], "hidden": v["hidden"]} for k, v in groups.items()},
-                "test_iid_status": "exploratory (pilot)",
+                "test_iid_status": "sealed (not evaluated)" if args.seal_test else "evaluated",
             },
         ),
     )
-    for p in ["dev_thr", "test_iid"]:
+    for p in report_parts:
         plot_auroc(metrics, run_dir / f"auroc_by_group_{p}.pdf", p)
         tables = {g: metrics["groups"][g][p]["reliability_platt"] for g in
                   ["context_action", "token_confidence", "attention", "context_action+all_internal"]}
