@@ -1,0 +1,209 @@
+{
+  "rule": {
+    "probe_dir": "outputs/fsm_baseline/20260929_212511_cstr_v4_v31_dev",
+    "max_accept_fail": 0.2,
+    "min_reject_fail": 0.95
+  },
+  "dev_thr_n": 493,
+  "dev_thr_failure_rate": 0.7038539553752535,
+  "rows": [
+    {
+      "signal": "plant readings only (no action)",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 22.515212981744423,
+      "accepted": 8,
+      "failures_executed": 0,
+      "rejected": 103,
+      "good_rejected": 8,
+      "validated": 382,
+      "skipped_by_accept_pct": 1.6227180527383367
+    },
+    {
+      "signal": "plant readings only (no action)",
+      "variant": "accept 0 failures",
+      "skipped_pct": 21.29817444219067,
+      "accepted": 2,
+      "failures_executed": 0,
+      "rejected": 103,
+      "good_rejected": 8,
+      "validated": 388,
+      "skipped_by_accept_pct": 0.4056795131845842
+    },
+    {
+      "signal": "plant readings + proposed change",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 74.64503042596348,
+      "accepted": 93,
+      "failures_executed": 14,
+      "rejected": 275,
+      "good_rejected": 22,
+      "validated": 125,
+      "skipped_by_accept_pct": 18.864097363083165
+    },
+    {
+      "signal": "plant readings + proposed change",
+      "variant": "accept 0 failures",
+      "skipped_pct": 56.18661257606491,
+      "accepted": 2,
+      "failures_executed": 0,
+      "rejected": 275,
+      "good_rejected": 22,
+      "validated": 216,
+      "skipped_by_accept_pct": 0.4056795131845842
+    },
+    {
+      "signal": "token confidence",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 0.0,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 0,
+      "good_rejected": 0,
+      "validated": 493,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "token confidence",
+      "variant": "accept 0 failures",
+      "skipped_pct": 0.0,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 0,
+      "good_rejected": 0,
+      "validated": 493,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "attention by prompt region",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 24.746450304259636,
+      "accepted": 5,
+      "failures_executed": 2,
+      "rejected": 117,
+      "good_rejected": 12,
+      "validated": 371,
+      "skipped_by_accept_pct": 1.0141987829614605
+    },
+    {
+      "signal": "attention by prompt region",
+      "variant": "accept 0 failures",
+      "skipped_pct": 23.732251521298174,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 117,
+      "good_rejected": 12,
+      "validated": 376,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "region-based attention grounding",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 12.170385395537526,
+      "accepted": 9,
+      "failures_executed": 5,
+      "rejected": 51,
+      "good_rejected": 4,
+      "validated": 433,
+      "skipped_by_accept_pct": 1.8255578093306288
+    },
+    {
+      "signal": "region-based attention grounding",
+      "variant": "accept 0 failures",
+      "skipped_pct": 11.561866125760648,
+      "accepted": 6,
+      "failures_executed": 3,
+      "rejected": 51,
+      "good_rejected": 4,
+      "validated": 436,
+      "skipped_by_accept_pct": 1.2170385395537526
+    },
+    {
+      "signal": "hidden states",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 25.35496957403651,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 125,
+      "good_rejected": 13,
+      "validated": 368,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "hidden states",
+      "variant": "accept 0 failures",
+      "skipped_pct": 25.35496957403651,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 125,
+      "good_rejected": 13,
+      "validated": 368,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "all internals",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 20.28397565922921,
+      "accepted": 3,
+      "failures_executed": 1,
+      "rejected": 97,
+      "good_rejected": 9,
+      "validated": 393,
+      "skipped_by_accept_pct": 0.6085192697768763
+    },
+    {
+      "signal": "all internals",
+      "variant": "accept 0 failures",
+      "skipped_pct": 19.675456389452332,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 97,
+      "good_rejected": 9,
+      "validated": 396,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "all internals + grounding",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 13.184584178498985,
+      "accepted": 5,
+      "failures_executed": 2,
+      "rejected": 60,
+      "good_rejected": 3,
+      "validated": 428,
+      "skipped_by_accept_pct": 1.0141987829614605
+    },
+    {
+      "signal": "all internals + grounding",
+      "variant": "accept 0 failures",
+      "skipped_pct": 12.170385395537526,
+      "accepted": 0,
+      "failures_executed": 0,
+      "rejected": 60,
+      "good_rejected": 3,
+      "validated": 433,
+      "skipped_by_accept_pct": 0.0
+    },
+    {
+      "signal": "readings+change + all internals + grounding",
+      "variant": "accept <= 20% failures",
+      "skipped_pct": 69.1683569979716,
+      "accepted": 64,
+      "failures_executed": 6,
+      "rejected": 277,
+      "good_rejected": 23,
+      "validated": 152,
+      "skipped_by_accept_pct": 12.981744421906694
+    },
+    {
+      "signal": "readings+change + all internals + grounding",
+      "variant": "accept 0 failures",
+      "skipped_pct": 58.8235294117647,
+      "accepted": 13,
+      "failures_executed": 0,
+      "rejected": 277,
+      "good_rejected": 23,
+      "validated": 203,
+      "skipped_by_accept_pct": 2.636916835699797
+    }
+  ]
+}

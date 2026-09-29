@@ -1,0 +1,5 @@
+{
+  "partition": "test_iid",
+  "aug_dir": "outputs/fsm_grounding/20260926_150747_20260923_205804_qwen25-3b-instruct_pilot3000/aug",
+  "n": 500
+}

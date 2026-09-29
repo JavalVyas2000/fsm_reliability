@@ -1,0 +1,140 @@
+{
+  "created_utc": "2026-09-28T19:13:10.476971+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\25_cstr_collect.py",
+    "--dataset_dir",
+    "data/cstr/episodes_v4",
+    "--partitions",
+    "train",
+    "dev_cal",
+    "dev_thr",
+    "test_iid",
+    "cert",
+    "--max_reprompts",
+    "0",
+    "--prompt",
+    "v3.1",
+    "--max_new_tokens",
+    "512",
+    "--tag",
+    "v4_v31_r0",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "c72336ec510636a6bb1092a38df32114997597a2",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "model": {
+    "hf_id": "Qwen/Qwen2.5-3B-Instruct",
+    "resolved_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "num_hidden_layers": 36
+  },
+  "prompt": {
+    "version": "cstr_prompt_v3.1",
+    "chat_template": true,
+    "chat_template_kwargs": {
+      "date_string": "23 Sep 2026"
+    },
+    "kg_sha256": "6aa42725c5f05bfc1ef61e39eb20647603054c29abbbafeea13d0eb34e59d7bd",
+    "shared_prefix_tokens": 4328
+  },
+  "decoding": {
+    "do_sample": false,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 512,
+    "stop": "end_of_first_json_object | eos | max_new_tokens"
+  },
+  "loop": {
+    "max_reprompts": 0,
+    "stop": "first pass | last reprompt | format failure",
+    "feedback": "verifier summary, fail reason and measured metrics (no hint) + previous proposal",
+    "scheduling": "round-major"
+  },
+  "internals": {
+    "relative_layers": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "collect_attention": true,
+    "collect_hidden": true
+  },
+  "data": {
+    "dataset_dir": "data\\cstr\\episodes_v4",
+    "partitions": [
+      "train",
+      "dev_cal",
+      "dev_thr",
+      "test_iid",
+      "cert"
+    ],
+    "limit": null,
+    "root_seed": 20261005,
+    "files_sha256": {
+      "cstr_episodes.xlsx": "4d4d322a23ecf970e91e0f1d0a7741fbd1f5c66463c3ebb0af0a69633a3386e2",
+      "kg_context.ttl": "6aa42725c5f05bfc1ef61e39eb20647603054c29abbbafeea13d0eb34e59d7bd",
+      "partitions.csv": "305fc46963a1d4384380c50b6ce541c2adeba692c324963761d4407816361b47",
+      "snapshots_cert.pkl": "2ebb571283c464575032a36da9bf5e05de120c6d288d931eca37f72ba28e8712",
+      "snapshots_dev_cal.pkl": "dbd2536b1249a1df583cf5ae468e0f73dcd08e982ac737680bbdcb9e424a1910",
+      "snapshots_dev_thr.pkl": "25aca33bf9bd27207e0f10bc2f389a4d8040797c0b90cb4cbcf614c0cffdbe17",
+      "snapshots_test.pkl": "05e65c434b00e20c873b4b6ef1fc8071b49023d621c468f1f02fb34319009d74",
+      "snapshots_test_iid.pkl": "51485aee93dac9f9fc19694c78ee67a15d56c79aa8fce592486cb5d705276e73",
+      "snapshots_train.pkl": "a81e2ac7bfcd0102ce2c907b1325aac3ab7369758c6f465713d0edd629f63216",
+      "snapshots_val.pkl": "dee32a6def36649af82473d2c0d8503315a95a7d31157e498545744d8bee807d"
+    }
+  },
+  "car": {
+    "repo": "C:\\Users\\jv624\\Desktop\\ctrl-alt-recover",
+    "commit": "4afe06c3eb21e4f61bef4901d4faac6bcf6d7cf5",
+    "dirty_files": [
+      "M case_studies/common/trace_logging.py",
+      " M case_studies/cstr_case/cstr_case.py",
+      " M case_studies/mixer_case/mixer_case.py",
+      "?? .claude/",
+      "?? assets/linkedin/",
+      "?? case_studies/analyze_failures.py",
+      "?? case_studies/common/llm_failures.py",
+      "?? docs/",
+      "?? results/",
+      "?? results_new/"
+    ],
+    "sha256": {
+      "cstr_case.py": "b6583a3a772990f11398989aecbd13bfb5cc2a5d575a4bd3313e61fe72ccc8f2",
+      "cstr_digital_twin.py": "19718421bf7904e904ad1aa8885ad27157b5756f4e7bffaa9187630aa460728b",
+      "cstr_anomaly_threshold_test.py": "c5198a134f107da8ebc5c0ba4157e8b7e7c821a5026808a22df562b504eb8d9d",
+      "graph_retrieval_code.py": "703f0041946e5633becfbc38ad630c061045710d87dff5cea59a210d10ee1f0f"
+    }
+  },
+  "grounding": {
+    "source_collect_dir": "outputs\\cstr_collect\\20260928_201301_qwen25-3b-instruct_v4_v31_r0",
+    "prereg": "docs/cstr_v4_prereg.md",
+    "rounds": "0 only",
+    "partitions": [
+      "cert"
+    ]
+  }
+}

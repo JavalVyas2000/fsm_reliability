@@ -1,0 +1,17 @@
+signal,tolerance,dev_n,accepted,accepted_failures,rejected,rejected_good,skipped_pct
+task context + proposed path,0.1,988,104,8,293,14,40.2
+task context + proposed path,0.05,988,101,5,293,14,39.9
+token confidence,0.1,988,22,2,135,6,15.9
+token confidence,0.05,988,4,0,135,6,14.1
+attention by prompt region,0.1,988,101,10,291,14,39.7
+attention by prompt region,0.05,988,64,3,291,14,35.9
+region-based attention grounding,0.1,988,106,10,234,11,34.4
+region-based attention grounding,0.05,988,64,3,234,11,30.2
+hidden states,0.1,988,111,11,224,11,33.9
+hidden states,0.05,988,87,4,224,11,31.5
+all internals,0.1,988,101,10,189,9,29.4
+all internals,0.05,988,64,3,189,9,25.6
+all internals + grounding,0.1,988,110,11,282,14,39.7
+all internals + grounding,0.05,988,77,3,282,14,36.3
+context + path + all internals + grounding,0.1,988,127,12,296,14,42.8
+context + path + all internals + grounding,0.05,988,86,4,296,14,38.7

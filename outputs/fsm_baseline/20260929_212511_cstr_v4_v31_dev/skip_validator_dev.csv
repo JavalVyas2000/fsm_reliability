@@ -1,0 +1,19 @@
+signal,variant,skipped_pct,accepted,failures_executed,rejected,good_rejected,validated,skipped_by_accept_pct
+plant readings only (no action),accept <= 20% failures,22.515212981744423,8,0,103,8,382,1.6227180527383367
+plant readings only (no action),accept 0 failures,21.29817444219067,2,0,103,8,388,0.4056795131845842
+plant readings + proposed change,accept <= 20% failures,74.64503042596348,93,14,275,22,125,18.864097363083165
+plant readings + proposed change,accept 0 failures,56.18661257606491,2,0,275,22,216,0.4056795131845842
+token confidence,accept <= 20% failures,0.0,0,0,0,0,493,0.0
+token confidence,accept 0 failures,0.0,0,0,0,0,493,0.0
+attention by prompt region,accept <= 20% failures,24.746450304259636,5,2,117,12,371,1.0141987829614605
+attention by prompt region,accept 0 failures,23.732251521298174,0,0,117,12,376,0.0
+region-based attention grounding,accept <= 20% failures,12.170385395537526,9,5,51,4,433,1.8255578093306288
+region-based attention grounding,accept 0 failures,11.561866125760648,6,3,51,4,436,1.2170385395537526
+hidden states,accept <= 20% failures,25.35496957403651,0,0,125,13,368,0.0
+hidden states,accept 0 failures,25.35496957403651,0,0,125,13,368,0.0
+all internals,accept <= 20% failures,20.28397565922921,3,1,97,9,393,0.6085192697768763
+all internals,accept 0 failures,19.675456389452332,0,0,97,9,396,0.0
+all internals + grounding,accept <= 20% failures,13.184584178498985,5,2,60,3,428,1.0141987829614605
+all internals + grounding,accept 0 failures,12.170385395537526,0,0,60,3,433,0.0
+readings+change + all internals + grounding,accept <= 20% failures,69.1683569979716,64,6,277,23,152,12.981744421906694
+readings+change + all internals + grounding,accept 0 failures,58.8235294117647,13,0,277,23,203,2.636916835699797

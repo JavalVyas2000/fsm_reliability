@@ -1,0 +1,15 @@
+tolerance,signal,delta_skipped_pts,ci95_lo,ci95_hi
+0.1,token confidence,-0.6,-4.6,3.4000000000000004
+0.1,attention by prompt region,4.0,0.4,7.6
+0.1,region-based attention grounding,-4.6,-8.799999999999999,-0.6
+0.1,hidden states,1.6,-2.0,5.0
+0.1,all internals,7.8,3.5999999999999996,12.0
+0.1,all internals + grounding,7.6,3.2,11.799999999999999
+0.1,context + path + all internals + grounding,15.4,11.4,19.400000000000002
+0.05,token confidence,1.0,-2.605,4.8
+0.05,attention by prompt region,2.8000000000000003,0.0,5.6000000000000005
+0.05,region-based attention grounding,-9.4,-13.200000000000001,-5.6000000000000005
+0.05,hidden states,2.6,-0.8,6.0
+0.05,all internals,4.2,0.6,7.8
+0.05,all internals + grounding,4.2,0.5950000000000003,7.8
+0.05,context + path + all internals + grounding,12.6,9.2,16.400000000000002

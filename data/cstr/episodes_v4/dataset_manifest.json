@@ -1,0 +1,261 @@
+{
+  "created_utc": "2026-09-28T19:11:11.193012+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\35_cstr_build_from_specs.py",
+    "--specs",
+    "data/cstr/cstr_episode_specs_v4.xlsx",
+    "--ranges",
+    "configs/cstr_severity_ranges_v4.json",
+    "--out_dir",
+    "data/cstr/episodes_v4",
+    "--replace_seed",
+    "20261005",
+    "--workers",
+    "20"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "c72336ec510636a6bb1092a38df32114997597a2",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "dataset": {
+    "type": "cstr_snapshots_from_specs",
+    "root_seed": 20261005,
+    "specs_file": "data/cstr/cstr_episode_specs_v4.xlsx",
+    "specs_sha256": "62eb6bb5707647b90862ad4a5195aabe578b096df05843696df0cebb6741c527",
+    "ranges_file": "configs/cstr_severity_ranges_v4.json",
+    "ranges": {
+      "version": "cstr_severity_ranges_v4",
+      "frozen_on": "2026-09-28",
+      "description": "Varied nominal plant + varied fault onset + continuous fault severity, calibrated for prompt v3.1 (T_sp fixed at 310 K)",
+      "source": "outputs/cstr_calibration/20260928_142020_v31_moves (no LLM; 10 random plants per severity; 20 empirical v3.1 first-proposal moves of Qwen2.5-3B per episode, relative to each episode's own setpoints)",
+      "rule": "the model's first proposals should pass in roughly 25-40% of episodes overall, so that an ACCEPT decision can be trained and certified; no-change passes in a minority of episodes; a strong feed cut (x0.65 or x0.5) passes almost always, so every fault is fixable",
+      "finding": "v3.1-like moves pass almost only where no-change also passes (0.72-0.75 of moves); where no-change fails they pass in 0.01-0.15. Severity therefore sets how often the model passes but cannot create passes that need a real correction. Fouling almost never passes at any triggering severity and is kept as a source of hard failures.",
+      "expected": {
+        "first_proposal_pass": 0.28,
+        "nochange_pass": 0.33,
+        "note": "estimates from the calibration table; checked with the real model on a pilot before the full build"
+      },
+      "families": {
+        "fouling": {
+          "params": {
+            "fouling_max": [
+              0.45,
+              0.62
+            ],
+            "fouling_tau": [
+              1500.0,
+              2500.0
+            ]
+          }
+        },
+        "pump_degrade": {
+          "params": {
+            "pump_degrade_factor": [
+              0.4,
+              0.52
+            ]
+          }
+        },
+        "cool_stuck_closed": {
+          "params": {
+            "stuck_opening": [
+              0.38,
+              0.5
+            ]
+          }
+        },
+        "outlet_block": {
+          "params": {
+            "outlet_block_factor": [
+              0.43,
+              0.52
+            ]
+          }
+        }
+      },
+      "plant": {
+        "UA": [
+          425.0,
+          575.0
+        ],
+        "Tin_base": [
+          345.0,
+          355.0
+        ],
+        "Tc_base": [
+          285.0,
+          295.0
+        ],
+        "CA_in_base": [
+          0.09,
+          0.11
+        ],
+        "CD_in_base": [
+          0.045,
+          0.055
+        ],
+        "Fc_max": [
+          0.45,
+          0.55
+        ],
+        "L_sp": [
+          8.0,
+          10.0
+        ],
+        "Fin_sp": [
+          0.0267,
+          0.04
+        ]
+      },
+      "onset_s": [
+        1500.0,
+        5000.0
+      ],
+      "family_sampling": "balanced: an equal number of episodes per family in every split",
+      "fixed": {
+        "T_sp": 310.0,
+        "reason": "CAR safety/validation thresholds are absolute (313 K limit, 310 K control target)"
+      },
+      "privileged_never_features": [
+        "family",
+        "severity",
+        "onset_s",
+        "UA",
+        "Tin_base",
+        "Tc_base",
+        "CA_in_base",
+        "CD_in_base",
+        "Fc_max"
+      ],
+      "observable_in_prompt": [
+        "L_sp and Fin_sp appear as current setpoints"
+      ],
+      "excluded_episodes": "no trigger before SHUTDOWN, or a monitor trigger before fault onset; the slot is redrawn with the same family (scripts/35), so the realised severity distribution is conditional on triggering (mild fouling and mild stuck-closed trigger in 20-50% of plants)"
+    },
+    "sizes": {
+      "train": 3000,
+      "val": 1000,
+      "test": 1000
+    },
+    "kg_file": "data/v2/cstr_varied_seed20260928/kg_context.ttl",
+    "kg_sha256": "6aa42725c5f05bfc1ef61e39eb20647603054c29abbbafeea13d0eb34e59d7bd",
+    "redraws": 2961,
+    "redraws_by_family": {
+      "fouling": 1899,
+      "cool_stuck_closed": 1059,
+      "outlet_block": 2,
+      "pump_degrade": 1
+    },
+    "redraw_reasons": {
+      "no_trigger": 2951,
+      "pre_fault_trigger": 10
+    },
+    "unusable_rate_first_draw_by_family": {
+      "cool_stuck_closed": 0.459,
+      "fouling": 0.606,
+      "outlet_block": 0.002,
+      "pump_degrade": 0.001
+    },
+    "checks": {
+      "episode_ids_unique": true,
+      "noise_seeds_unique": true,
+      "family_counts": {
+        "cool_stuck_closed": {
+          "test": 250,
+          "train": 750,
+          "val": 250
+        },
+        "fouling": {
+          "test": 250,
+          "train": 750,
+          "val": 250
+        },
+        "outlet_block": {
+          "test": 250,
+          "train": 750,
+          "val": 250
+        },
+        "pump_degrade": {
+          "test": 250,
+          "train": 750,
+          "val": 250
+        }
+      }
+    },
+    "files_sha256": {
+      "cstr_episodes.xlsx": "4d4d322a23ecf970e91e0f1d0a7741fbd1f5c66463c3ebb0af0a69633a3386e2",
+      "kg_context.ttl": "6aa42725c5f05bfc1ef61e39eb20647603054c29abbbafeea13d0eb34e59d7bd",
+      "partitions.csv": "305fc46963a1d4384380c50b6ce541c2adeba692c324963761d4407816361b47",
+      "snapshots_cert.pkl": "2ebb571283c464575032a36da9bf5e05de120c6d288d931eca37f72ba28e8712",
+      "snapshots_dev_cal.pkl": "dbd2536b1249a1df583cf5ae468e0f73dcd08e982ac737680bbdcb9e424a1910",
+      "snapshots_dev_thr.pkl": "25aca33bf9bd27207e0f10bc2f389a4d8040797c0b90cb4cbcf614c0cffdbe17",
+      "snapshots_test.pkl": "05e65c434b00e20c873b4b6ef1fc8071b49023d621c468f1f02fb34319009d74",
+      "snapshots_test_iid.pkl": "51485aee93dac9f9fc19694c78ee67a15d56c79aa8fce592486cb5d705276e73",
+      "snapshots_train.pkl": "a81e2ac7bfcd0102ce2c907b1325aac3ab7369758c6f465713d0edd629f63216",
+      "snapshots_val.pkl": "dee32a6def36649af82473d2c0d8503315a95a7d31157e498545744d8bee807d"
+    },
+    "wall_s": 14920.7,
+    "partitions": {
+      "rule": "train->train; val->dev_cal/dev_thr; test->test_iid/cert; alternate within family in slot order",
+      "sizes": {
+        "train": 3000,
+        "dev_cal": 500,
+        "dev_thr": 500,
+        "test_iid": 500,
+        "cert": 500
+      },
+      "family_counts": {
+        "cool_stuck_closed": {
+          "cert": 125,
+          "dev_cal": 125,
+          "dev_thr": 125,
+          "test_iid": 125,
+          "train": 750
+        },
+        "fouling": {
+          "cert": 125,
+          "dev_cal": 125,
+          "dev_thr": 125,
+          "test_iid": 125,
+          "train": 750
+        },
+        "outlet_block": {
+          "cert": 125,
+          "dev_cal": 125,
+          "dev_thr": 125,
+          "test_iid": 125,
+          "train": 750
+        },
+        "pump_degrade": {
+          "cert": 125,
+          "dev_cal": 125,
+          "dev_thr": 125,
+          "test_iid": 125,
+          "train": 750
+        }
+      }
+    },
+    "prereg": {
+      "file": "docs/cstr_v4_prereg.md",
+      "sha256": "cffc8e2eb451017dc308b7e5a558b4a025c178a54184758af07f37fb4bd45b55"
+    }
+  }
+}

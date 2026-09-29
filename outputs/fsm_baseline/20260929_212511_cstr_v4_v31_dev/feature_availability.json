@@ -1,0 +1,18 @@
+{
+  "train": {
+    "n_schema_valid": 2965,
+    "nan_counts": {}
+  },
+  "dev_cal": {
+    "n_schema_valid": 496,
+    "nan_counts": {}
+  },
+  "dev_thr": {
+    "n_schema_valid": 493,
+    "nan_counts": {}
+  },
+  "test_iid": {
+    "n_schema_valid": 493,
+    "nan_counts": {}
+  }
+}

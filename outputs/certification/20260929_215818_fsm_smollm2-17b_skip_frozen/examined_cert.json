@@ -1,0 +1,5 @@
+{
+  "partition": "cert",
+  "aug_dir": "outputs/fsm_grounding/20260926_171115_20260924_035855_smollm2-17b-instruct_cert3000/aug",
+  "n": 2935
+}

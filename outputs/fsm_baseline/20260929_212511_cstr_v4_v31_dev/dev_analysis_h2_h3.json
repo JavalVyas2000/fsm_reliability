@@ -1,0 +1,125 @@
+{
+  "H2": {
+    "nochange_fails": {
+      "n": 326,
+      "failure_rate": 0.9141104294478528,
+      "auroc_context_action": 0.811960690316395,
+      "context_action+all_internal+grounding_v31 - context_action": {
+        "delta_auroc": 0.014860977948226273,
+        "ci95_lo": -0.035248941143337806,
+        "ci95_hi": 0.059155038237752984,
+        "n_boot_used": 2000
+      },
+      "context_action+token_confidence - context_action": {
+        "delta_auroc": 0.00431447746883995,
+        "ci95_lo": -0.010101010101010055,
+        "ci95_hi": 0.01973135767089824,
+        "n_boot_used": 2000
+      },
+      "context_action+hidden - context_action": {
+        "delta_auroc": 0.014141898370086392,
+        "ci95_lo": -0.03125,
+        "ci95_hi": 0.05693012943432402,
+        "n_boot_used": 2000
+      },
+      "context_action+grounding_v31 - context_action": {
+        "delta_auroc": 0.0,
+        "ci95_lo": -0.014207940743968164,
+        "ci95_hi": 0.014164634854289876,
+        "n_boot_used": 2000
+      },
+      "context_action+all_internal - context_action": {
+        "delta_auroc": 0.020134228187919545,
+        "ci95_lo": -0.029372093023255802,
+        "ci95_hi": 0.06527091751129971,
+        "n_boot_used": 2000
+      }
+    },
+    "nochange_passes": {
+      "n": 167,
+      "failure_rate": 0.2934131736526946,
+      "auroc_context_action": 0.9290902801798686,
+      "context_action+all_internal+grounding_v31 - context_action": {
+        "delta_auroc": 0.007436873054306403,
+        "ci95_lo": -0.01575645320991075,
+        "ci95_hi": 0.03282051282051279,
+        "n_boot_used": 2000
+      },
+      "context_action+token_confidence - context_action": {
+        "delta_auroc": -0.003804911795226573,
+        "ci95_lo": -0.011907217875897616,
+        "ci95_hi": 0.0034093337218338363,
+        "n_boot_used": 2000
+      },
+      "context_action+hidden - context_action": {
+        "delta_auroc": 0.0031131096506398226,
+        "ci95_lo": -0.018522677366550964,
+        "ci95_hi": 0.025689269097820537,
+        "n_boot_used": 2000
+      },
+      "context_action+grounding_v31 - context_action": {
+        "delta_auroc": 0.0027672085783465583,
+        "ci95_lo": -0.009704042984554717,
+        "ci95_hi": 0.01685092491738836,
+        "n_boot_used": 2000
+      },
+      "context_action+all_internal - context_action": {
+        "delta_auroc": 0.0032860601867865658,
+        "ci95_lo": -0.017427453310852728,
+        "ci95_hi": 0.025164856549781383,
+        "n_boot_used": 2000
+      }
+    }
+  },
+  "H3": {
+    "all proposals (pre-registered)": {
+      "n": 3954,
+      "n_against": 339,
+      "mean_share_against": 0.01688387847663821,
+      "mean_share_other": 0.01571662957728699,
+      "auroc_neg_share": 0.309921378066643
+    },
+    "failing proposals only (sensitivity)": {
+      "n": 2779,
+      "n_against": 319,
+      "mean_share_against": 0.01689838969612532,
+      "mean_share_other": 0.015772428763242405,
+      "auroc_neg_share": 0.31569182149501746
+    },
+    "against_pass_rate": 0.05899705014749268
+  },
+  "manifest": {
+    "created_utc": "2026-09-29T20:29:52.755649+00:00",
+    "argv": [
+      "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\37_cstr_v4_dev_analysis.py",
+      "--probe_dir",
+      "outputs/fsm_baseline/20260929_212511_cstr_v4_v31_dev",
+      "--aug_dir",
+      "outputs/cstr_grounding/20260929_204745_20260928_201301_qwen25-3b-instruct_v4_v31_r0/aug"
+    ],
+    "git": {
+      "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+      "commit": "c72336ec510636a6bb1092a38df32114997597a2",
+      "dirty": true
+    },
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "5.9.0",
+      "accelerate": "1.13.0",
+      "tokenizers": "0.22.2",
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.8.0",
+      "pyarrow": "18.1.0"
+    },
+    "hardware": {
+      "platform": "Windows-11-10.0.26100-SP0",
+      "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+      "python": "3.13.1",
+      "cuda_available": null
+    },
+    "probe_dir": "outputs/fsm_baseline/20260929_212511_cstr_v4_v31_dev",
+    "aug_dir": "outputs/cstr_grounding/20260929_204745_20260928_201301_qwen25-3b-instruct_v4_v31_r0/aug"
+  }
+}

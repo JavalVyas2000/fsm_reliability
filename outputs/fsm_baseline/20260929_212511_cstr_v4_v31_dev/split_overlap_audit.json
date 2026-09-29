@@ -1,0 +1,37 @@
+{
+  "pairwise_graph_overlap": {
+    "train|dev_cal": 0,
+    "train|dev_thr": 0,
+    "train|test_iid": 0,
+    "dev_cal|dev_thr": 0,
+    "dev_cal|test_iid": 0,
+    "dev_thr|test_iid": 0
+  },
+  "dataset_generation_checks": {
+    "episode_ids_unique": true,
+    "noise_seeds_unique": true,
+    "family_counts": {
+      "cool_stuck_closed": {
+        "test": 250,
+        "train": 750,
+        "val": 250
+      },
+      "fouling": {
+        "test": 250,
+        "train": 750,
+        "val": 250
+      },
+      "outlet_block": {
+        "test": 250,
+        "train": 750,
+        "val": 250
+      },
+      "pump_degrade": {
+        "test": 250,
+        "train": 750,
+        "val": 250
+      }
+    }
+  },
+  "instance_id_unique": true
+}
