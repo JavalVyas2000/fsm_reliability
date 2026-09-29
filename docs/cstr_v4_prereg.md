@@ -196,6 +196,29 @@ Features (each averaged over the four layers):
 
 **Unchanged:** the population, labels, features and partitions. H1–H3 are reported on test_iid as secondary.
 
+**Amendment 3 (2026-09-29): threshold rule and signals for the new data.**
+
+- **Scope:** CSTR Llama-3.2-3B, Qwen2.5-1.5B and Qwen2.5-7B (4-bit) on the same v4 episodes, and the fresh FSM certification set `data/v2/fsm_cert2_seed20260930` for the four FSM models.
+- **Timing:** written before any of that data was analysed; the collections were still running.
+
+**Why the rule changes:**
+- Under Amendment 2 the ACCEPT thresholds came from the dev point estimate. For CSTR Qwen2.5-3B they turned out too loose: accepted sets had 11–15% failures on cert.
+- An exploratory re-analysis of Qwen2.5-3B tested an upper-bound rule. Its test_iid and cert had already been used, so it was exploratory only (`outputs/certification/20260929_221853_cstr_v4_qwen25-3b_skip_ucb_EXPLORATORY`).
+  - With that rule, observables alone accept nothing and skip 41–44% of calls by rejection.
+  - Observables + internals (± grounding) accept 38–49 proposals, 8–12% of them failures, and skip 50–54% of calls.
+
+**Changes:**
+1. **Primary ACCEPT rule: `--threshold_rule ucb`.** The threshold is the largest t whose dev accepted set has a one-sided Clopper–Pearson upper bound (δ_sel = 0.05) on its failure rate ≤ X. The Amendment 2 point rule is reported as secondary. REJECT is unchanged.
+2. **Two added signals,** to isolate grounding from the other internals: observables + grounding, and observables + all internals. There are then 11 CSTR signals and 10 FSM signals. The Bonferroni δ = 0.05 / (number of signals).
+3. **Evaluation:**
+   - CSTR models: test_iid once, then cert once, per model.
+   - FSM: the fresh cert2 set once per model, with probes and rules frozen on the FSM pilot train/dev as before. The earlier FSM test_iid and cert are not re-used for claims.
+4. **Power limitation, stated in advance:**
+   - Certifying at X = 10% needs at least about 52 accepted proposals with zero failures (δ = 0.05/11). This holds for either tolerance: the point is that a certified bound needs a large accept set.
+   - CSTR cert has 500 episodes. If a probe accepts about 10% of proposals, certification at 10% is infeasible from sample size alone.
+   - CSTR certification results are therefore reported with this limitation. Calls skipped and the observed failure rate among ACCEPTs, with the bound, are the main CSTR outcomes.
+   - A larger CSTR cert set is the remedy, for the closed-loop stage or later work.
+
 ## Reporting rules
 
 - All four hypotheses are reported whatever the outcome.

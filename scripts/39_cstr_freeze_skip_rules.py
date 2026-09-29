@@ -25,6 +25,7 @@ import json
 import joblib
 import numpy as np
 import pandas as pd
+from scipy.stats import beta
 from sklearn.linear_model import LogisticRegression
 
 from src.utils.manifest import REPO_ROOT, build_manifest, make_run_dir, sha256_file, write_json
@@ -41,6 +42,9 @@ SIGNALS_CSTR = {  # label -> scripts/12 feature group
     "all internals": "all_internal",
     "all internals + grounding": "all_internal+grounding_v31",
     "readings + change + all internals + grounding": "context_action+all_internal+grounding_v31",
+    # Amendment 3: isolate grounding and the other internals within the combined probe
+    "readings + change + grounding": "context_action+grounding_v31",
+    "readings + change + all internals": "context_action+all_internal",
 }
 SIGNALS_FSM = {
     "task context + proposed path": "context_action",
@@ -51,6 +55,8 @@ SIGNALS_FSM = {
     "all internals": "all_internal",
     "all internals + grounding": "all_internal+grounding",
     "context + path + all internals + grounding": "context_action+all_internal+grounding",
+    "context + path + grounding": "context_action+grounding",
+    "context + path + all internals": "context_action+all_internal",
 }
 SIGNALS = {"cstr": SIGNALS_CSTR, "fsm": SIGNALS_FSM}
 BASELINE = {"cstr": "plant readings + proposed change", "fsm": "task context + proposed path"}
@@ -70,6 +76,23 @@ def accept_threshold(p, y, max_fail):
     best = None
     for i in range(len(ps)):
         if (i == len(ps) - 1 or ps[i + 1] > ps[i]) and rate[i] <= max_fail:
+            best = float(ps[i])
+    return best
+
+
+def accept_threshold_ucb(p, y, max_fail, delta_sel):
+    """Largest t whose accepted set has a one-sided Clopper-Pearson upper bound (level 1 - delta_sel)
+    on its failure rate <= max_fail (Amendment 3). None if no such t."""
+    order = np.argsort(p, kind="stable")
+    ps, ys = p[order], y[order]
+    k = np.cumsum(ys)
+    best = None
+    for i in range(len(ps)):
+        if not (i == len(ps) - 1 or ps[i + 1] > ps[i]):
+            continue
+        n = i + 1
+        ub = 1.0 if k[i] >= n else float(beta.ppf(1 - delta_sel, k[i] + 1, n - k[i]))
+        if ub <= max_fail:
             best = float(ps[i])
     return best
 
@@ -102,6 +125,10 @@ def parse_args():
     p.add_argument("--tag", type=str, required=True)
     p.add_argument("--min_reject_fail", type=float, default=0.95)
     p.add_argument("--domain", choices=["cstr", "fsm"], default="cstr")
+    p.add_argument("--threshold_rule", choices=["point", "ucb"], default="point",
+                   help="ACCEPT threshold from the dev point estimate (Amendment 2) or from its "
+                        "Clopper-Pearson upper bound (Amendment 3)")
+    p.add_argument("--delta_sel", type=float, default=0.05, help="level of the dev bound for --threshold_rule ucb")
     p.add_argument("--prereg", type=str, default="docs/cstr_v4_prereg.md")
     return p.parse_args()
 
@@ -130,7 +157,9 @@ def main():
         y = dev["y"].to_numpy()
         r = {"group": name, "scalar": cols, "hidden": spec["hidden"],
              "t_reject": reject_threshold(risk, y, args.min_reject_fail),
-             **{f"t_accept_{int(x * 100):02d}": accept_threshold(risk, y, x) for x in TOLERANCES}}
+             **{f"t_accept_{int(x * 100):02d}": (accept_threshold(risk, y, x) if args.threshold_rule == "point"
+                                                  else accept_threshold_ucb(risk, y, x, args.delta_sel))
+                for x in TOLERANCES}}
         rules[label] = r
         probes[label] = {"pipeline": pipe, "platt": platt}
         for x in TOLERANCES:
@@ -144,6 +173,7 @@ def main():
 
     joblib.dump(probes, out / "probes.joblib")
     write_json(out / "rules.json", {"domain": args.domain, "baseline": BASELINE[args.domain], "tolerances": TOLERANCES,
+                                    "threshold_rule": args.threshold_rule, "delta_sel": args.delta_sel,
                                     "min_reject_fail": args.min_reject_fail, "rules": rules})
     pd.DataFrame(rows).to_csv(out / "dev_routing.csv", index=False)
     write_json(out / "freeze_manifest.json", build_manifest(

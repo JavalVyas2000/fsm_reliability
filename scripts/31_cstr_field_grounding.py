@@ -82,8 +82,10 @@ def main():
     if args.limit:
         recs = recs[: args.limit]
 
+    # same weights as the collection run (4-bit if it was quantized)
     model, tok = load_hf_model_and_tokenizer(man["model"]["hf_id"], device_map="cuda", torch_dtype="bfloat16",
-                                             attn_implementation="sdpa", local_files_only=True)
+                                             attn_implementation="sdpa", local_files_only=True,
+                                             quantization=man["model"].get("quantization"))
     cfg = InternalsConfig(max_new_tokens=0, collect_hidden=False)
     blocks = selected_layers(model.config.num_hidden_layers, cfg.relative_layers)
     kwargs = {"date_string": FIXED_TEMPLATE_DATE}
