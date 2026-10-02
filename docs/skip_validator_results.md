@@ -91,3 +91,50 @@ On CSTR the internals cost more time than they save beyond observables.
 - **Isolating grounding's contribution:** "observables + grounding" and "observables + all internals" are not in this table. They separate grounding's contribution from the other internals within the combined probe. The earlier FSM study had them (`docs/grounding_results.md`: grounding added +7 to +15 points certified for Llama and Qwen2.5-1.5B).
 - **Rejecting without validation** saves most calls on CSTR. Its effect on recovery (the extra retries) needs the closed-loop experiment.
 - **Validator timing** is wall time with 4 parallel workers. A sequential re-timing earlier gave 6.95 s per call.
+
+## Update 2026-10-02: confirmatory FSM (fresh cert2) and more CSTR models
+
+Rules as in `docs/cstr_v4_prereg.md` Amendment 3: upper-bound ACCEPT rule (δ_sel = 0.05), 10 FSM / 11 CSTR signals, Bonferroni.
+
+### FSM, fresh certification set
+
+- **Data:** `data/v2/fsm_cert2_seed20260930`, 3000 graphs per model, never used before.
+- **Probes and rules:** frozen on the FSM pilot train/dev.
+- **Runs:** `outputs/certification/*_fsm_*_skip_ucb_cert2`.
+
+Calls skipped at X = 10%. Bracketed: Δ against observables in points, paired bootstrap 95% CI. Accepted counts are failures/accepted. CERT = certified at 10%.
+
+| Signal | Qwen2.5-3B | Llama-3.2-3B | Qwen2.5-1.5B | SmolLM2-1.7B |
+|---|---|---|---|---|
+| **Observables (context + path)** | 21% (15/335 CERT) | 43% (26/333) | 40% (7/284 CERT) | 85% (15/166) |
+| Observables + all internals + grounding | **34%** +14.0 [+12.4, +15.5] CERT | **58%** +15.0 [+13.2, +16.9] CERT | 40% −0.4 [−2.0, +1.3] CERT | **91%** +6.2 [+4.8, +7.5] |
+| Observables + grounding | 21% +0.2 [−0.8, +1.3] CERT | **59%** +15.5 [+13.8, +17.3] CERT | **46%** +5.1 [+3.7, +6.6] CERT (1/228) | 85% +0.6 |
+| Observables + all internals | 32% +11.2 [+9.7, +12.6] CERT | 47% +3.7 [+2.2, +5.3] CERT | 37% −3.7 | 79% −5.6 |
+| Internals alone (best of hidden / attention / all) | 21–25% | 17–36% | 22–38% | 74–79% |
+| Token confidence | 18% | 14% | 13% | 56% |
+
+At X = 5% the pattern holds:
+- Llama, observables + internals + grounding: +13.1 points, CERT, 3/329 failures among accepts.
+- Qwen2.5-1.5B, observables + grounding: +7.3 points, CERT, 0/204.
+
+**Confirmed on fresh data.** In FSM, internals added to observables skip more validator calls at a certified failure rate for 3 of 4 models, by +6 to +15 points:
+- **Region-based grounding** carries the whole gain for Llama-3.2-3B and Qwen2.5-1.5B.
+- **Hidden states and attention** carry it for Qwen2.5-3B.
+- **SmolLM2:** the gain is not certifiable, because too few of its proposals pass to build a large enough accept set.
+
+### CSTR, further models (test_iid evaluated once; cert where noted)
+
+| Model (pass rate) | Observables | + all internals + grounding | + all internals | + grounding | Internals alone |
+|---|---|---|---|---|---|
+| Qwen2.5-3B (30%), exploratory UCB re-analysis | 41–44%, 0 accepts | 50–52%, 43–49 accepts, 8–12% failures | 51–54% | 39–40% | 12–15% |
+| Llama-3.2-3B (17%), cert | 70.7%, 16/79 good rejected | 74.1%, 10/79 good rejected | 71.5%, **8/79** (Δ −8 [−15, −2]) | 74.9%, 16/79 | 33–53% |
+| Qwen2.5-1.5B (34%), test_iid | **63.8%**, 108 accepts, 8% failures | 59.9% (−3.9 [−6.9, −0.6]) | 62.1% | 64.6% | 28–32% |
+
+**CSTR across 3 models:**
+- Grounding never helps.
+- Internals help on one side of the decision for some models:
+  - Qwen2.5-3B, accepting: internals make unchecked accepts possible at all;
+  - Llama, rejecting: half as many good proposals rejected.
+- For Qwen2.5-1.5B observables are sufficient. Even the plant readings alone, without the proposed change, skip 63%.
+
+**Still to come:** Qwen2.5-7B (collecting), Qwen2.5-1.5B cert (needs a GPU gap for cert grounding), the closed loop.

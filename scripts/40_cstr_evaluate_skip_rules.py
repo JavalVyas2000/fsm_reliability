@@ -113,6 +113,14 @@ def main():
                          "good_rejected_pct_of_good": 100 * (rej & (y == 0)).sum() / max(1, (y == 0).sum()),
                          "validated": int((~acc & ~rej).sum())})
     R = pd.DataFrame(rows)
+    # per-proposal risks and decisions, for paired analyses (e.g. good proposals rejected)
+    dec = pd.DataFrame({"instance_id": df["instance_id"].to_numpy(), "y": y})
+    for label, r in rules.items():
+        dec[f"risk::{label}"] = risks[label]
+        for x in tolerances:
+            acc, rej = decide(risks[label], r[f"t_accept_{int(x * 100):02d}"], r["t_reject"])
+            dec[f"decision::{x:.2f}::{label}"] = np.where(acc, "accept", np.where(rej, "reject", "validate"))
+    dec.to_csv(fz / f"decisions_{args.partition}.csv", index=False)
 
     if args.partition in ("test_iid", "dev_thr"):
         rng = np.random.default_rng(0)
