@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-10-02T04:43:54.321110+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\27_fsm_grounding.py",
+    "--inference_dir",
+    "outputs/fsm_inference/20261002_042446_qwen25-3b-instruct_cert2_3000"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "c635d9b13b2191be20b5805509e4b3d9fd88ebe2",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "inference_dir": "outputs\\fsm_inference\\20261002_042446_qwen25-3b-instruct_cert2_3000",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "blocks": [
+    9,
+    18,
+    27,
+    36
+  ],
+  "relative_layers": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "status_counts": {
+    "ok": 2991,
+    "no_step": 9
+  },
+  "teacher_forced_argmax_agreement": 0.9935795105692483,
+  "prereg": "docs/grounding_attention_prereg.md"
+}

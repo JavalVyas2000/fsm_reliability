@@ -1,0 +1,11 @@
+﻿closedloop: 290/400 usable this pass, 110 redrawn, 1482 s
+closedloop: 56/110 usable this pass, 54 redrawn, 1829 s
+closedloop: 19/54 usable this pass, 35 redrawn, 1980 s
+closedloop: 17/35 usable this pass, 18 redrawn, 2087 s
+closedloop: 7/18 usable this pass, 11 redrawn, 2183 s
+closedloop: 5/11 usable this pass, 6 redrawn, 2251 s
+closedloop: 3/6 usable this pass, 3 redrawn, 2317 s
+closedloop: 0/3 usable this pass, 3 redrawn, 2377 s
+closedloop: 2/3 usable this pass, 1 redrawn, 2426 s
+closedloop: 1/1 usable this pass, 0 redrawn, 2442 s
+{"out_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\data\\cstr\\closedloop_v4", "sizes": {"closedloop": 400}, "redraws": 241}

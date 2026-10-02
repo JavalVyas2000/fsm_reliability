@@ -1,0 +1,11 @@
+﻿python.exe : 
+At line:1 char:363
++ ... NG="utf-8"; & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:  44%|████▍     | 192/434 [00:00<00:00, 1900.90it/s]
+Loading weights:  88%|████████▊ | 383/434 [00:00<00:00, 1746.35it/s]
+Loading weights: 100%|██████████| 434/434 [00:00<00:00, 1826.53it/s]

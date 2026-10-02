@@ -1,0 +1,23 @@
+tolerance,signal,n,skipped_pct,accepted,accepted_failures,accepted_failure_rate,cp_upper_delta_0.0045,certified,rejected,rejected_good,good_rejected_pct_of_good,validated
+0.1,plant readings only,473,5.07399577167019,0,0,,1.0,False,24,2,2.6666666666666665,449
+0.1,plant readings + proposed change,473,75.8985200845666,0,0,,1.0,False,359,22,29.333333333333332,114
+0.1,token confidence,473,36.57505285412262,0,0,,1.0,False,173,9,12.0,300
+0.1,attention by prompt region,473,53.06553911205074,0,0,,1.0,False,251,6,8.0,222
+0.1,region-based attention grounding,473,40.38054968287527,0,0,,1.0,False,191,7,9.333333333333334,282
+0.1,hidden states,473,53.69978858350951,0,0,,1.0,False,254,4,5.333333333333333,219
+0.1,all internals,473,56.65961945031712,0,0,,1.0,False,268,5,6.666666666666667,205
+0.1,all internals + grounding,473,56.65961945031712,0,0,,1.0,False,268,5,6.666666666666667,205
+0.1,readings + change + all internals + grounding,473,75.05285412262155,0,0,,1.0,False,355,8,10.666666666666666,118
+0.1,readings + change + grounding,473,77.80126849894292,0,0,,1.0,False,368,18,24.0,105
+0.1,readings + change + all internals,473,72.93868921775899,0,0,,1.0,False,345,8,10.666666666666666,128
+0.05,plant readings only,473,5.07399577167019,0,0,,1.0,False,24,2,2.6666666666666665,449
+0.05,plant readings + proposed change,473,75.8985200845666,0,0,,1.0,False,359,22,29.333333333333332,114
+0.05,token confidence,473,36.57505285412262,0,0,,1.0,False,173,9,12.0,300
+0.05,attention by prompt region,473,53.06553911205074,0,0,,1.0,False,251,6,8.0,222
+0.05,region-based attention grounding,473,40.38054968287527,0,0,,1.0,False,191,7,9.333333333333334,282
+0.05,hidden states,473,53.69978858350951,0,0,,1.0,False,254,4,5.333333333333333,219
+0.05,all internals,473,56.65961945031712,0,0,,1.0,False,268,5,6.666666666666667,205
+0.05,all internals + grounding,473,56.65961945031712,0,0,,1.0,False,268,5,6.666666666666667,205
+0.05,readings + change + all internals + grounding,473,75.05285412262155,0,0,,1.0,False,355,8,10.666666666666666,118
+0.05,readings + change + grounding,473,77.80126849894292,0,0,,1.0,False,368,18,24.0,105
+0.05,readings + change + all internals,473,72.93868921775899,0,0,,1.0,False,345,8,10.666666666666666,128

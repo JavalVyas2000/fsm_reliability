@@ -1,0 +1,5 @@
+{
+  "partition": "cert",
+  "aug_dir": "outputs/cstr_grounding/20261001_112727_20260929_214136_llama-32-3b-instruct_v4_v31_r0_withcert/aug",
+  "n": 474
+}

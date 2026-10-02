@@ -1,0 +1,23 @@
+signal,tolerance,dev_n,accepted,accepted_failures,rejected,rejected_good,skipped_pct
+plant readings only,0.1,956,0,0,60,3,6.3
+plant readings only,0.05,956,0,0,60,3,6.3
+plant readings + proposed change,0.1,956,0,0,715,35,74.8
+plant readings + proposed change,0.05,956,0,0,715,35,74.8
+token confidence,0.1,956,0,0,329,16,34.4
+token confidence,0.05,956,0,0,329,16,34.4
+attention by prompt region,0.1,956,0,0,452,22,47.3
+attention by prompt region,0.05,956,0,0,452,22,47.3
+region-based attention grounding,0.1,956,0,0,367,18,38.4
+region-based attention grounding,0.05,956,0,0,367,18,38.4
+hidden states,0.1,956,0,0,469,23,49.1
+hidden states,0.05,956,0,0,469,23,49.1
+all internals,0.1,956,0,0,522,26,54.6
+all internals,0.05,956,0,0,522,26,54.6
+all internals + grounding,0.1,956,0,0,520,26,54.4
+all internals + grounding,0.05,956,0,0,520,26,54.4
+readings + change + all internals + grounding,0.1,956,0,0,722,36,75.5
+readings + change + all internals + grounding,0.05,956,0,0,722,36,75.5
+readings + change + grounding,0.1,956,0,0,728,36,76.2
+readings + change + grounding,0.05,956,0,0,728,36,76.2
+readings + change + all internals,0.1,956,0,0,694,34,72.6
+readings + change + all internals,0.05,956,0,0,694,34,72.6

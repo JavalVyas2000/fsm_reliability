@@ -1,0 +1,33 @@
+﻿2026-09-29T22:14:17 waiting for outputs/cstr_collect/20260929_214136_llama-32-3b-instruct_v4_v31_r0
+2026-10-01T06:56:22 START llama_cstr_grounding
+2026-10-01T11:20:00 END   llama_cstr_grounding (exit 0)
+2026-10-01T11:20:00 START qwen15_cstr_collect
+2026-10-01T11:20:06 [pause] queues stopped after Llama grounding for the laptop restart
+2026-10-01T11:26:50 RESUME after laptop restart
+2026-10-01T11:26:50 START llama_cstr_cert_grounding
+2026-10-01T11:51:32 END   llama_cstr_cert_grounding (exit 0)
+2026-10-01T11:51:32 START llama_cstr_cert_eval
+2026-10-01T11:51:43 END   llama_cstr_cert_eval (exit 0)
+2026-10-01T11:51:43 START qwen15_cstr_collect
+2026-10-01T11:58:00 RESUME (detached) after background-job time limit
+2026-10-01T11:58:00 START qwen15_cstr_collect
+2026-10-02T04:06:02 END   qwen15_cstr_collect (exit 0)
+2026-10-02T04:06:02 START qwen15_cstr_grounding
+2026-10-02T04:24:20 END   qwen15_cstr_grounding (exit 0)
+2026-10-02T04:24:20 START fsm_cert2_qwen25-3b-instruct
+2026-10-02T05:30:32 END   fsm_cert2_qwen25-3b-instruct (exit 0)
+2026-10-02T05:30:32 START fsm_cert2_grounding_qwen25-3b-instruct
+2026-10-02T05:43:55 END   fsm_cert2_grounding_qwen25-3b-instruct (exit 0)
+2026-10-02T05:43:55 START fsm_cert2_llama-32-3b-instruct
+2026-10-02T06:33:51 END   fsm_cert2_llama-32-3b-instruct (exit 0)
+2026-10-02T06:33:51 START fsm_cert2_grounding_llama-32-3b-instruct
+2026-10-02T06:46:28 END   fsm_cert2_grounding_llama-32-3b-instruct (exit 0)
+2026-10-02T06:46:28 START fsm_cert2_qwen25-15b-instruct
+2026-10-02T07:37:37 END   fsm_cert2_qwen25-15b-instruct (exit 0)
+2026-10-02T07:37:37 START fsm_cert2_grounding_qwen25-15b-instruct
+2026-10-02T07:46:17 END   fsm_cert2_grounding_qwen25-15b-instruct (exit 0)
+2026-10-02T07:46:17 START fsm_cert2_smollm2-17b-instruct
+2026-10-02T08:23:06 END   fsm_cert2_smollm2-17b-instruct (exit 0)
+2026-10-02T08:23:06 START fsm_cert2_grounding_smollm2-17b-instruct
+2026-10-02T08:31:17 END   fsm_cert2_grounding_smollm2-17b-instruct (exit 0)
+2026-10-02T08:31:17 START qwen7_cstr_collect
