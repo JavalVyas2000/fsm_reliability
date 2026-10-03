@@ -67,7 +67,8 @@ def main():
         recs = recs[: args.limit]
 
     model, tok = load_hf_model_and_tokenizer(model_id, device_map="cuda", torch_dtype=man["model"].get("dtype", "bfloat16"),
-                                             attn_implementation="sdpa", local_files_only=True)
+                                             attn_implementation="sdpa", local_files_only=True,
+                                             quantization=man["model"].get("quantization"))
     cfg = InternalsConfig(max_new_tokens=0, collect_hidden=False)
     blocks = selected_layers(model.config.num_hidden_layers, cfg.relative_layers)
 

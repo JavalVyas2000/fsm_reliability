@@ -54,6 +54,7 @@ def parse_args():
     p.add_argument("--tag", type=str, default="run")
     p.add_argument("--run_dir", type=str, default=None, help="resume an existing run")
     p.add_argument("--local_files_only", action="store_true")
+    p.add_argument("--quantization", choices=["4bit"], default=None, help="4bit: NF4 weights, bf16 compute")
     return p.parse_args()
 
 
@@ -88,6 +89,7 @@ def main():
         revision=args.revision,
         attn_implementation="sdpa",
         local_files_only=args.local_files_only,
+        quantization=args.quantization,
     )
     cfg = InternalsConfig(
         max_new_tokens=args.max_new_tokens,
@@ -106,6 +108,7 @@ def main():
                     "requested_revision": args.revision,
                     "resolved_revision": resolved_revision(model),
                     "dtype": args.dtype,
+                    "quantization": args.quantization,
                     "num_hidden_layers": model.config.num_hidden_layers,
                     "tokenizer_class": type(tok).__name__,
                 },

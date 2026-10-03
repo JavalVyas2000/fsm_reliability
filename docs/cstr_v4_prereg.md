@@ -231,3 +231,13 @@ Features (each averaged over the four layers):
 - **FSM:** grounding adds +0.03 to +0.05 AUROC over observables, for all 4 models, when failures are retrieval errors.
 - **CSTR v2.1:** internals and field grounding add nothing in distribution, where failures were magnitude errors caused partly by the prompt's anchoring. Under plant shift, observables collapse while token confidence and hidden states transfer better.
 - **v4 / v3.1** tests whether removing the prompt-induced anchoring changes that picture.
+
+**Amendment 4 (2026-10-03): same model set in both domains.** Written before any of the data below existed.
+
+**Qwen2.5-7B (4-bit) on FSM:**
+- Data: the FSM pilot (`data/v2/fsm_pilot_seed20260923`), then the fresh cert2 set, with the same arguments as the other FSM models plus `--quantization 4bit`.
+- Rules: frozen on the pilot train/dev with the Amendment 3 rules (FSM signal set), then evaluated once on cert2.
+
+**SmolLM2-1.7B on CSTR**, gated by a pilot of 100 separate episodes (`data/cstr/pilot_v4`, first proposals only):
+- The full collection runs only if at least 5% of schema-valid first proposals pass and at most 50% are format failures. Otherwise SmolLM2 is reported as "too weak for the CSTR task" with the pilot numbers.
+- If it runs: collection on `data/cstr/episodes_v4`, grounding, freeze with the Amendment 3 rules, test_iid once, then cert grounding and cert once.
