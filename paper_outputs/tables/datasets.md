@@ -1,0 +1,16 @@
+# Evaluation sets
+
+| domain | model | set | eligible proposals | format failures | failure rate |
+|---|---|---|---|---|---|
+| FSM | Qwen2.5-3B | cert2 (fresh) | 2992 | 8 | 0.51 |
+| FSM | Llama-3.2-3B | cert2 (fresh) | 2995 | 5 | 0.626 |
+| FSM | Qwen2.5-1.5B | cert2 (fresh) | 2945 | 55 | 0.675 |
+| FSM | SmolLM2-1.7B | cert2 (fresh) | 2946 | 54 | 0.834 |
+| CSTR | Qwen2.5-1.5B | test_iid | 494 | 6 | 0.666 |
+| CSTR | Qwen2.5-1.5B | cert | 492 | 8 | 0.663 |
+| CSTR | Qwen2.5-3B* | test_iid | 493 | 7 | 0.71 |
+| CSTR | Qwen2.5-3B* | cert | 498 | 2 | 0.671 |
+| CSTR | Qwen2.5-7B (4-bit) | test_iid | 499 | 1 | 0.792 |
+| CSTR | Qwen2.5-7B (4-bit) | cert | 498 | 2 | 0.803 |
+| CSTR | Llama-3.2-3B | test_iid | 473 | 27 | 0.841 |
+| CSTR | Llama-3.2-3B | cert | 474 | 26 | 0.833 |

@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-10-03T16:58:07.202923+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\44_paper_outputs.py"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "1c8c28a6b8f27b789a1f1fcaf50875a1f29939ea",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": null
+  },
+  "sources": {
+    "fsm": {
+      "Qwen2.5-3B": "outputs\\certification\\20261002_094657_fsm_qwen25-3b_skip_ucb_cert2",
+      "Llama-3.2-3B": "outputs\\certification\\20261002_094741_fsm_llama-32-3b_skip_ucb_cert2",
+      "Qwen2.5-1.5B": "outputs\\certification\\20261002_094835_fsm_qwen25-15b_skip_ucb_cert2",
+      "SmolLM2-1.7B": "outputs\\certification\\20261002_094915_fsm_smollm2-17b_skip_ucb_cert2"
+    },
+    "cstr": {
+      "Qwen2.5-1.5B": "outputs\\certification\\20261002_094601_cstr_v4_qwen25-15b_skip_ucb",
+      "Qwen2.5-3B*": "outputs\\certification\\20260929_221853_cstr_v4_qwen25-3b_skip_ucb_EXPLORATORY",
+      "Qwen2.5-7B (4-bit)": "outputs\\certification\\20261003_164452_cstr_v4_qwen25-7b_skip_ucb",
+      "Llama-3.2-3B": "outputs\\certification\\20261001_112113_cstr_v4_llama-32-3b_skip_ucb"
+    },
+    "closed_loop": "outputs/cstr_closed_loop/20261003_033144_qwen25-3b"
+  },
+  "notes": {
+    "cstr_qwen25-3b": "exploratory UCB re-analysis (its test_iid/cert had been used under Amendment 2)"
+  }
+}
