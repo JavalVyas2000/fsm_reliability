@@ -31,3 +31,12 @@
 2026-10-02T08:23:06 START fsm_cert2_grounding_smollm2-17b-instruct
 2026-10-02T08:31:17 END   fsm_cert2_grounding_smollm2-17b-instruct (exit 0)
 2026-10-02T08:31:17 START qwen7_cstr_collect
+2026-10-03T02:27:05 END   qwen7_cstr_collect (exit 0)
+2026-10-03T02:27:05 START qwen7_cstr_grounding
+2026-10-03T03:30:16 END   qwen7_cstr_grounding (exit 0)
+2026-10-03T03:30:16 QUEUE DONE
+2026-10-03T03:30:16 START smoke
+2026-10-03T03:31:36 END   smoke (10 episode rows)
+2026-10-03T03:31:36 START closed-loop qwen25-3b (400 episodes)
+2026-10-03T16:39:13 END   closed-loop qwen25-3b (exit 0)
+2026-10-03T16:39:13 CLOSED LOOP DONE

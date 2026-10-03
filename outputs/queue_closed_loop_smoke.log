@@ -1,0 +1,46 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\pipeline_detached.ps1:67 char:1
++ & $py @($common + @("--dataset_dir", "data/cstr/pilot_v4", "--limit", ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<03:04,  2.35it/s]
+Loading weights:   3%|ΓûÄ         | 15/434 [00:00<00:11, 34.98it/s]
+Loading weights:   6%|Γûî         | 26/434 [00:00<00:08, 49.78it/s]
+Loading weights:   9%|Γûë         | 39/434 [00:00<00:05, 69.54it/s]
+Loading weights:  12%|ΓûêΓûÅ        | 52/434 [00:00<00:04, 83.64it/s]
+Loading weights:  15%|ΓûêΓûì        | 64/434 [00:00<00:03, 93.00it/s]
+Loading weights:  18%|ΓûêΓûè        | 76/434 [00:01<00:03, 99.65it/s]
+Loading weights:  20%|ΓûêΓûê        | 88/434 [00:01<00:03, 103.66it/s]
+Loading weights:  23%|ΓûêΓûêΓûÄ       | 100/434 [00:01<00:03, 104.25it/s]
+Loading weights:  26%|ΓûêΓûêΓûî       | 112/434 [00:01<00:03, 106.83it/s]
+Loading weights:  29%|ΓûêΓûêΓûè       | 124/434 [00:01<00:02, 108.57it/s]
+Loading weights:  31%|ΓûêΓûêΓûêΓûÅ      | 136/434 [00:01<00:02, 110.97it/s]
+Loading weights:  34%|ΓûêΓûêΓûêΓûì      | 148/434 [00:01<00:02, 101.48it/s]
+Loading weights:  38%|ΓûêΓûêΓûêΓûè      | 165/434 [00:01<00:02, 118.08it/s]
+Loading weights:  41%|ΓûêΓûêΓûêΓûê      | 178/434 [00:01<00:02, 119.92it/s]
+Loading weights:  44%|ΓûêΓûêΓûêΓûêΓûì     | 191/434 [00:02<00:02, 119.17it/s]
+Loading weights:  47%|ΓûêΓûêΓûêΓûêΓûï     | 204/434 [00:02<00:01, 119.54it/s]
+Loading weights:  50%|ΓûêΓûêΓûêΓûêΓûê     | 217/434 [00:02<00:01, 118.80it/s]
+Loading weights:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 229/434 [00:02<00:01, 113.00it/s]
+Loading weights:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 241/434 [00:02<00:01, 111.24it/s]
+Loading weights:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 253/434 [00:02<00:01, 111.87it/s]
+Loading weights:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 265/434 [00:02<00:01, 112.48it/s]
+Loading weights:  64%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 278/434 [00:02<00:01, 109.06it/s]
+Loading weights:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 291/434 [00:02<00:01, 113.99it/s]
+Loading weights:  70%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûê   | 304/434 [00:03<00:01, 102.00it/s]
+Loading weights:  73%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ  | 315/434 [00:03<00:01, 103.13it/s]
+Loading weights:  76%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 329/434 [00:03<00:00, 112.69it/s]
+Loading weights:  79%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 344/434 [00:03<00:00, 121.20it/s]
+Loading weights:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 359/434 [00:03<00:00, 127.37it/s]
+Loading weights:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 372/434 [00:03<00:00, 127.25it/s]
+Loading weights:  89%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè | 385/434 [00:03<00:00, 127.36it/s]
+Loading weights:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 398/434 [00:03<00:00, 127.54it/s]
+Loading weights:  95%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 411/434 [00:04<00:00, 112.56it/s]
+Loading weights:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 423/434 [00:04<00:00, 101.49it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 434/434 [00:04<00:00, 103.31it/s]
+[1/2] cstr_pilot_00000 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1} | cache 1 gens | 0.3 min
+[2/2] cstr_pilot_00001 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0} | cache 2 gens | 0.8 min
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_closed_loop\\20261003_033041_SMOKE_gpu", "hours": 0.01}
