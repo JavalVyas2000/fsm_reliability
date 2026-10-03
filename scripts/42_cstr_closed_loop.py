@@ -87,6 +87,7 @@ def parse_args():
     p.add_argument("--limit", type=int, default=None)
     p.add_argument("--workers", type=int, default=6)
     p.add_argument("--device", type=str, default="cuda")
+    p.add_argument("--quantization", choices=["4bit"], default=None, help="must match the model's collection run")
     p.add_argument("--seed", type=int, default=20261012)
     p.add_argument("--tag", type=str, default="run")
     p.add_argument("--run_dir", type=str, default=None)
@@ -110,7 +111,8 @@ class Runner:
         self.p_acc, self.p_rej = r.accepted / r.dev_n, r.rejected / r.dev_n
 
         self.model, self.tok = load_hf_model_and_tokenizer(args.model, device_map=args.device, torch_dtype="bfloat16",
-                                                           attn_implementation="sdpa", local_files_only=args.local_files_only)
+                                                           attn_implementation="sdpa", local_files_only=args.local_files_only,
+                                                           quantization=args.quantization)
         self.cfg = InternalsConfig(max_new_tokens=args.max_new_tokens)
         self.cfg_g = InternalsConfig(max_new_tokens=0, collect_hidden=False)
         self.blocks = selected_layers(self.model.config.num_hidden_layers, self.cfg_g.relative_layers)
@@ -188,7 +190,8 @@ def main():
     if not (run_dir / "run_manifest.json").exists():
         write_json(run_dir / "run_manifest.json", build_manifest(
             prereg={"file": "docs/cstr_closed_loop_prereg.md", "sha256": sha256_file(REPO_ROOT / "docs/cstr_closed_loop_prereg.md")},
-            model={"hf_id": args.model, "resolved_revision": resolved_revision(R.model)}, prompt=VERSION,
+            model={"hf_id": args.model, "resolved_revision": resolved_revision(R.model), "quantization": args.quantization},
+            prompt=VERSION,
             frozen_dir=args.frozen_dir, tolerance=args.tolerance, policies=POLICIES, probe_signal=PROBE_SIGNAL,
             random_rates={"accept": R.p_acc, "reject": R.p_rej}, max_proposals=args.max_proposals,
             dataset_dir=args.dataset_dir, n_episodes=len(snaps), seed=args.seed))

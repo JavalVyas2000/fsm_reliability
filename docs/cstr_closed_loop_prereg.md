@@ -57,3 +57,14 @@ Each policy handles up to **6 proposals per episode** (rounds 0–5).
 - The probe policies should need clearly fewer validator calls than always-validate.
   - Some recovery may be lost through unchecked executions of failing proposals, and through unchecked rejections of good proposals (extra retries).
   - How much is the open question.
+
+## Amendment 1 (2026-10-03): the other three CSTR models
+
+Added after the Qwen2.5-3B closed-loop result, at the author's request:
+- **Models and frozen probes** (Amendment 3 rules; each evaluated once on its own test_iid/cert):
+  - Qwen2.5-1.5B: `outputs/certification/20261002_094601_cstr_v4_qwen25-15b_skip_ucb`;
+  - Llama-3.2-3B: `outputs/certification/20261001_112113_cstr_v4_llama-32-3b_skip_ucb`;
+  - Qwen2.5-7B (4-bit): `outputs/certification/20261003_164452_cstr_v4_qwen25-7b_skip_ucb`.
+- **Unchanged:** the same 400 episodes, policies, rules and outcomes.
+- **Random routing** uses each model's own combined-probe dev rates.
+- **Reporting:** each model is reported separately. No pooling across models.
