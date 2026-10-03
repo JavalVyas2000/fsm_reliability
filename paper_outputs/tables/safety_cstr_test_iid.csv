@@ -1,0 +1,89 @@
+model,signal,tolerance,n,calls_avoided,skipped_pct,accepted_correct,accepted_failures,rejected_correct,rejected_good,good_total,certified
+Qwen2.5-1.5B,Plant readings only,0.1,494,312,63.1578947368421,96,10,201,5,165,False
+Qwen2.5-1.5B,Observables,0.1,494,315,63.76518218623482,99,9,202,5,165,False
+Qwen2.5-1.5B,Token confidence,0.1,494,16,3.2388663967611335,0,0,15,1,165,False
+Qwen2.5-1.5B,Attention (regions),0.1,494,143,28.947368421052634,0,0,137,6,165,False
+Qwen2.5-1.5B,Region grounding,0.1,494,138,27.93522267206478,0,0,132,6,165,False
+Qwen2.5-1.5B,Hidden states,0.1,494,159,32.18623481781376,0,0,147,12,165,False
+Qwen2.5-1.5B,All internals,0.1,494,158,31.983805668016196,0,0,147,11,165,False
+Qwen2.5-1.5B,All internals + grounding,0.1,494,151,30.5668016194332,0,0,140,11,165,False
+Qwen2.5-1.5B,Obs. + internals + grounding,0.1,494,296,59.91902834008097,93,9,188,6,165,False
+Qwen2.5-1.5B,Obs. + grounding,0.1,494,319,64.5748987854251,92,7,213,7,165,False
+Qwen2.5-1.5B,Obs. + all internals,0.1,494,307,62.145748987854255,94,7,200,6,165,False
+Qwen2.5-1.5B,Plant readings only,0.05,494,273,55.26315789473685,67,0,201,5,165,False
+Qwen2.5-1.5B,Observables,0.05,494,288,58.2995951417004,80,1,202,5,165,False
+Qwen2.5-1.5B,Token confidence,0.05,494,16,3.2388663967611335,0,0,15,1,165,False
+Qwen2.5-1.5B,Attention (regions),0.05,494,143,28.947368421052634,0,0,137,6,165,False
+Qwen2.5-1.5B,Region grounding,0.05,494,138,27.93522267206478,0,0,132,6,165,False
+Qwen2.5-1.5B,Hidden states,0.05,494,159,32.18623481781376,0,0,147,12,165,False
+Qwen2.5-1.5B,All internals,0.05,494,158,31.983805668016196,0,0,147,11,165,False
+Qwen2.5-1.5B,All internals + grounding,0.05,494,151,30.5668016194332,0,0,140,11,165,False
+Qwen2.5-1.5B,Obs. + internals + grounding,0.05,494,230,46.558704453441294,36,0,188,6,165,False
+Qwen2.5-1.5B,Obs. + grounding,0.05,494,291,58.906882591093115,70,1,213,7,165,False
+Qwen2.5-1.5B,Obs. + all internals,0.05,494,273,55.26315789473685,65,2,200,6,165,False
+Qwen2.5-3B*,Plant readings only,0.1,493,7,1.4198782961460445,0,0,7,0,143,False
+Qwen2.5-3B*,Observables,0.1,493,215,43.6105476673428,0,0,210,5,143,False
+Qwen2.5-3B*,Token confidence,0.1,493,0,0.0,0,0,0,0,143,False
+Qwen2.5-3B*,Attention (regions),0.1,493,72,14.60446247464503,0,0,65,7,143,False
+Qwen2.5-3B*,Region grounding,0.1,493,56,11.359026369168356,0,0,50,6,143,False
+Qwen2.5-3B*,Hidden states,0.1,493,70,14.198782961460447,0,0,67,3,143,False
+Qwen2.5-3B*,All internals,0.1,493,69,13.995943204868155,0,0,68,1,143,False
+Qwen2.5-3B*,All internals + grounding,0.1,493,60,12.170385395537526,0,0,60,0,143,False
+Qwen2.5-3B*,Obs. + internals + grounding,0.1,493,256,51.926977687626774,45,4,201,6,143,False
+Qwen2.5-3B*,Obs. + grounding,0.1,493,198,40.16227180527384,0,0,194,4,143,False
+Qwen2.5-3B*,Obs. + all internals,0.1,493,268,54.361054766734284,40,4,215,9,143,False
+Qwen2.5-3B*,Plant readings only,0.05,493,7,1.4198782961460445,0,0,7,0,143,False
+Qwen2.5-3B*,Observables,0.05,493,215,43.6105476673428,0,0,210,5,143,False
+Qwen2.5-3B*,Token confidence,0.05,493,0,0.0,0,0,0,0,143,False
+Qwen2.5-3B*,Attention (regions),0.05,493,72,14.60446247464503,0,0,65,7,143,False
+Qwen2.5-3B*,Region grounding,0.05,493,56,11.359026369168356,0,0,50,6,143,False
+Qwen2.5-3B*,Hidden states,0.05,493,70,14.198782961460447,0,0,67,3,143,False
+Qwen2.5-3B*,All internals,0.05,493,69,13.995943204868155,0,0,68,1,143,False
+Qwen2.5-3B*,All internals + grounding,0.05,493,60,12.170385395537526,0,0,60,0,143,False
+Qwen2.5-3B*,Obs. + internals + grounding,0.05,493,207,41.98782961460446,0,0,201,6,143,False
+Qwen2.5-3B*,Obs. + grounding,0.05,493,198,40.16227180527384,0,0,194,4,143,False
+Qwen2.5-3B*,Obs. + all internals,0.05,493,224,45.436105476673426,0,0,215,9,143,False
+Qwen2.5-7B (4-bit),Plant readings only,0.1,499,411,82.36472945891784,45,2,344,20,104,False
+Qwen2.5-7B (4-bit),Observables,0.1,499,441,88.37675350701403,58,0,365,18,104,True
+Qwen2.5-7B (4-bit),Token confidence,0.1,499,96,19.238476953907817,0,0,92,4,104,False
+Qwen2.5-7B (4-bit),Attention (regions),0.1,499,245,49.09819639278557,0,0,233,12,104,False
+Qwen2.5-7B (4-bit),Region grounding,0.1,499,237,47.49498997995992,0,0,226,11,104,False
+Qwen2.5-7B (4-bit),Hidden states,0.1,499,250,50.1002004008016,0,0,238,12,104,False
+Qwen2.5-7B (4-bit),All internals,0.1,499,244,48.897795591182366,0,0,232,12,104,False
+Qwen2.5-7B (4-bit),All internals + grounding,0.1,499,247,49.498997995991985,0,0,236,11,104,False
+Qwen2.5-7B (4-bit),Obs. + internals + grounding,0.1,499,417,83.56713426853707,37,0,360,20,104,False
+Qwen2.5-7B (4-bit),Obs. + grounding,0.1,499,443,88.77755511022045,63,0,365,15,104,True
+Qwen2.5-7B (4-bit),Obs. + all internals,0.1,499,430,86.17234468937876,50,0,361,19,104,False
+Qwen2.5-7B (4-bit),Plant readings only,0.05,499,364,72.94589178356713,0,0,344,20,104,False
+Qwen2.5-7B (4-bit),Observables,0.05,499,430,86.17234468937876,47,0,365,18,104,False
+Qwen2.5-7B (4-bit),Token confidence,0.05,499,96,19.238476953907817,0,0,92,4,104,False
+Qwen2.5-7B (4-bit),Attention (regions),0.05,499,245,49.09819639278557,0,0,233,12,104,False
+Qwen2.5-7B (4-bit),Region grounding,0.05,499,237,47.49498997995992,0,0,226,11,104,False
+Qwen2.5-7B (4-bit),Hidden states,0.05,499,250,50.1002004008016,0,0,238,12,104,False
+Qwen2.5-7B (4-bit),All internals,0.05,499,244,48.897795591182366,0,0,232,12,104,False
+Qwen2.5-7B (4-bit),All internals + grounding,0.05,499,247,49.498997995991985,0,0,236,11,104,False
+Qwen2.5-7B (4-bit),Obs. + internals + grounding,0.05,499,413,82.76553106212425,33,0,360,20,104,False
+Qwen2.5-7B (4-bit),Obs. + grounding,0.05,499,407,81.56312625250501,27,0,365,15,104,False
+Qwen2.5-7B (4-bit),Obs. + all internals,0.05,499,421,84.3687374749499,41,0,361,19,104,False
+Llama-3.2-3B,Plant readings only,0.1,473,24,5.07399577167019,0,0,22,2,75,False
+Llama-3.2-3B,Observables,0.1,473,359,75.8985200845666,0,0,337,22,75,False
+Llama-3.2-3B,Token confidence,0.1,473,173,36.57505285412262,0,0,164,9,75,False
+Llama-3.2-3B,Attention (regions),0.1,473,251,53.06553911205074,0,0,245,6,75,False
+Llama-3.2-3B,Region grounding,0.1,473,191,40.38054968287527,0,0,184,7,75,False
+Llama-3.2-3B,Hidden states,0.1,473,254,53.69978858350951,0,0,250,4,75,False
+Llama-3.2-3B,All internals,0.1,473,268,56.65961945031712,0,0,263,5,75,False
+Llama-3.2-3B,All internals + grounding,0.1,473,268,56.65961945031712,0,0,263,5,75,False
+Llama-3.2-3B,Obs. + internals + grounding,0.1,473,355,75.05285412262155,0,0,347,8,75,False
+Llama-3.2-3B,Obs. + grounding,0.1,473,368,77.80126849894292,0,0,350,18,75,False
+Llama-3.2-3B,Obs. + all internals,0.1,473,345,72.93868921775899,0,0,337,8,75,False
+Llama-3.2-3B,Plant readings only,0.05,473,24,5.07399577167019,0,0,22,2,75,False
+Llama-3.2-3B,Observables,0.05,473,359,75.8985200845666,0,0,337,22,75,False
+Llama-3.2-3B,Token confidence,0.05,473,173,36.57505285412262,0,0,164,9,75,False
+Llama-3.2-3B,Attention (regions),0.05,473,251,53.06553911205074,0,0,245,6,75,False
+Llama-3.2-3B,Region grounding,0.05,473,191,40.38054968287527,0,0,184,7,75,False
+Llama-3.2-3B,Hidden states,0.05,473,254,53.69978858350951,0,0,250,4,75,False
+Llama-3.2-3B,All internals,0.05,473,268,56.65961945031712,0,0,263,5,75,False
+Llama-3.2-3B,All internals + grounding,0.05,473,268,56.65961945031712,0,0,263,5,75,False
+Llama-3.2-3B,Obs. + internals + grounding,0.05,473,355,75.05285412262155,0,0,347,8,75,False
+Llama-3.2-3B,Obs. + grounding,0.05,473,368,77.80126849894292,0,0,350,18,75,False
+Llama-3.2-3B,Obs. + all internals,0.05,473,345,72.93868921775899,0,0,337,8,75,False

@@ -152,6 +152,38 @@ def skip_tables(domain, models, part):
     return T
 
 
+def safety_tables(T, domain, part, models):
+    """Where the skipped validator calls go: correct / unsafe accepts, correct / wasted rejects."""
+    S = T.copy()
+    S["calls_avoided"] = S["accepted"] + S["rejected"]
+    S["accepted_correct"] = S["accepted"] - S["accepted_failures"]
+    S["rejected_correct"] = S["rejected"] - S["rejected_good"]
+    S["good_total"] = (S["n"] * (1 - S["failure_rate"])).round().astype(int)
+    cols = ["model", "signal", "tolerance", "n", "calls_avoided", "skipped_pct", "accepted_correct", "accepted_failures",
+            "rejected_correct", "rejected_good", "good_total", "certified"]
+    S[cols].to_csv(OUT / "tables" / f"safety_{domain}_{part}.csv", index=False)
+    md = [f"# {domain.upper()} ({part}): what happens to the skipped validator calls", "",
+          "Per proposal set of n: calls avoided = accepted + rejected without validation.",
+          "Accepted unchecked: correct actions let through / **failing actions let through (unsafe)**.",
+          "Rejected unchecked: failing actions correctly stopped / good actions wrongly rejected (of all good actions).", ""]
+    for x in (0.10, 0.05):
+        md += [f"## X = {x:.0%}", ""]
+        for m in models:
+            sub = S[(S.model == m) & np.isclose(S.tolerance, x)].set_index("signal")
+            sub = sub.reindex([o for o in ORDER if o in sub.index])
+            n = int(sub.n.iloc[0])
+            md += [f"### {m} (n = {n}, {int(round(n * sub.failure_rate.iloc[0]))} failing, {int(sub.good_total.iloc[0])} good)", "",
+                   "| signal | calls avoided | correct let through | **failing let through** | failing stopped | good rejected | certified |",
+                   "|---|---|---|---|---|---|---|"]
+            for sig, r in sub.iterrows():
+                md.append(f"| {sig} | {int(r.calls_avoided)} ({r.skipped_pct:.0f}%) | {int(r.accepted_correct)} | "
+                          f"**{int(r.accepted_failures)}** | {int(r.rejected_correct)} | {int(r.rejected_good)} / {int(r.good_total)} | "
+                          f"{'yes' if r.certified else ''} |")
+            md.append("")
+    (OUT / "tables" / f"safety_{domain}_{part}.md").write_text("\n".join(md), encoding="utf-8")
+    return S
+
+
 def fig_skip(T, models, domain, title):
     sub = T[np.isclose(T.tolerance, 0.10)]
     sigs = [o for o in ORDER if o in set(sub.signal)]
@@ -359,7 +391,10 @@ def main():
     D = datasets()
     T_fsm = skip_tables("fsm", FSM, "cert")
     T_cstr = skip_tables("cstr", CSTR, "cert")
-    skip_tables("cstr", {k: v for k, v in CSTR.items()}, "test_iid")
+    T_cstr_test = skip_tables("cstr", {k: v for k, v in CSTR.items()}, "test_iid")
+    safety_tables(T_fsm, "fsm", "cert", list(FSM))
+    safety_tables(T_cstr, "cstr", "cert", list(CSTR))
+    safety_tables(T_cstr_test, "cstr", "test_iid", list(CSTR))
     fig_skip(T_fsm, list(FSM), "fsm", "FSM: validator calls skipped per signal (fresh certification set, X = 10%)")
     fig_skip(T_cstr, list(CSTR), "cstr", "CSTR: validator calls skipped per signal (certification set, X = 10%)")
     fig_delta(T_fsm, T_cstr)
