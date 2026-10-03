@@ -54,9 +54,11 @@ S12 = importlib.import_module("scripts.12_fit_fsm_baseline")
 S25 = importlib.import_module("scripts.25_cstr_collect")
 
 VERSION = "cstr_prompt_v3.1"
-POLICIES = ["always_validate", "never_validate", "observables_probe", "combined_probe", "random_matched"]
+POLICIES = ["always_validate", "never_validate", "observables_probe", "combined_probe", "random_matched", "internals_probe"]
 PROBE_SIGNAL = {"observables_probe": "plant readings + proposed change",
-                "combined_probe": "readings + change + all internals + grounding"}
+                "combined_probe": "readings + change + all internals + grounding",
+                # Amendment 2 of docs/cstr_closed_loop_prereg.md: model internals only, no plant readings or action
+                "internals_probe": "all internals + grounding"}
 REJECT_MSG = "The previous proposal was rejected by a risk screen before validation."
 
 
@@ -89,6 +91,8 @@ def parse_args():
     p.add_argument("--device", type=str, default="cuda")
     p.add_argument("--quantization", choices=["4bit"], default=None, help="must match the model's collection run")
     p.add_argument("--seed", type=int, default=20261012)
+    p.add_argument("--policies", nargs="+", choices=POLICIES, default=POLICIES,
+                   help="subset of policies (supplementary runs pair with an earlier run by episode)")
     p.add_argument("--tag", type=str, default="run")
     p.add_argument("--run_dir", type=str, default=None)
     p.add_argument("--local_files_only", action="store_true")
@@ -192,7 +196,7 @@ def main():
             prereg={"file": "docs/cstr_closed_loop_prereg.md", "sha256": sha256_file(REPO_ROOT / "docs/cstr_closed_loop_prereg.md")},
             model={"hf_id": args.model, "resolved_revision": resolved_revision(R.model), "quantization": args.quantization},
             prompt=VERSION,
-            frozen_dir=args.frozen_dir, tolerance=args.tolerance, policies=POLICIES, probe_signal=PROBE_SIGNAL,
+            frozen_dir=args.frozen_dir, tolerance=args.tolerance, policies=args.policies, probe_signal=PROBE_SIGNAL,
             random_rates={"accept": R.p_acc, "reject": R.p_rej}, max_proposals=args.max_proposals,
             dataset_dir=args.dataset_dir, n_episodes=len(snaps), seed=args.seed))
     for var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
@@ -216,10 +220,10 @@ def main():
             state = {p: {"fb": None, "prev": None, "prev_reason": None, "seen": set(), "calls": 0, "proposals": 0,
                          "t_gen": 0.0, "t_feat": 0.0, "t_grd": 0.0, "t_ver": 0.0, "done": False, "outcome": None,
                          "executed": None, "exec_round": None, "unchecked_rejects": 0, "good_rejected": 0}
-                     for p in POLICIES}
+                     for p in args.policies}
             steps = []
             for rnd in range(args.max_proposals):
-                active = [p for p in POLICIES if not state[p]["done"]]
+                active = [p for p in args.policies if not state[p]["done"]]
                 if not active:
                     break
                 cands = {}
@@ -233,7 +237,7 @@ def main():
                     st, c = state[p], cands[p]
                     st["proposals"] += 1
                     st["t_gen"] += c["gen_s"]
-                    st["t_feat"] += c["feat_s"] if p == "combined_probe" else 0.0  # only this policy needs internals
+                    st["t_feat"] += c["feat_s"] if p in ("combined_probe", "internals_probe") else 0.0  # need internals
                     step = {"episode_id": e, "policy": p, "round": rnd, "prompt_sha": c["sha"],
                             "schema_valid": c["parsed"]["schema_valid"], "action": c["parsed"]["action"]}
                     if c["parsed"]["schema_valid"] != 1:  # CAR aborts on an unparseable answer
@@ -252,7 +256,7 @@ def main():
                     elif p in PROBE_SIGNAL:
                         lab = PROBE_SIGNAL[p]
                         risk = R.risk(lab, c, s, rnd, st["prev_reason"])
-                        if lab == PROBE_SIGNAL["combined_probe"]:
+                        if any(col.startswith("g31_") for col in R.rules[lab]["scalar"]):  # grounding pass needed
                             st["t_grd"] += c["grd_s"] or 0.0
                         ta, tr = R.rules[lab][R.tkey], R.rules[lab]["t_reject"]
                         decision = "accept" if ta is not None and risk <= ta else (
@@ -277,7 +281,7 @@ def main():
                     steps.append(step)
             nc = nochange.result()
             ep_rows = []
-            for p in POLICIES:
+            for p in args.policies:
                 st = state[p]
                 if not st["done"]:
                     st["outcome"] = "unresolved_fallback"
@@ -296,7 +300,7 @@ def main():
             with open(run_dir / "episodes.jsonl", "a", encoding="utf-8") as f:
                 for row in ep_rows:
                     f.write(json.dumps(row) + "\n")
-            rec = {p: sum(1 for r in ep_rows if r["policy"] == p and r["recovered"]) for p in POLICIES}
+            rec = {p: sum(1 for r in ep_rows if r["policy"] == p and r["recovered"]) for p in args.policies}
             print(f"[{ei + 1}/{len(snaps)}] {e} {s.spec.family}: recovered {rec} | cache {len(R.gen_cache)} gens | "
                   f"{(time.time() - t_start) / 60:.1f} min", flush=True)
             R.gen_cache.clear()  # prompts contain the snapshot, so generations are shared only within an episode

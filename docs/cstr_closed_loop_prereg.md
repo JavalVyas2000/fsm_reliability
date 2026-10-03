@@ -68,3 +68,15 @@ Added after the Qwen2.5-3B closed-loop result, at the author's request:
 - **Unchanged:** the same 400 episodes, policies, rules and outcomes.
 - **Random routing** uses each model's own combined-probe dev rates.
 - **Reporting:** each model is reported separately. No pooling across models.
+
+## Amendment 2 (2026-10-03): internals-only policy
+
+Written before any internals-only closed-loop result existed.
+
+- **New policy `internals_probe`:** risk from model internals only (token confidence, attention, hidden states, region grounding). It sees no plant readings and no proposed-action features, and uses the same frozen rules as the other probes (signal "all internals + grounding" in each model's freeze).
+- **Purpose:** it measures how many simulator calls the agent's own internal state can avoid without any learned model of the plant, which answers the concern that the observable probe is merely a surrogate of the CSTR dynamics.
+- **Runs:**
+  - Llama-3.2-3B and Qwen2.5-7B: included in their closed-loop runs.
+  - Qwen2.5-3B (done) and Qwen2.5-1.5B (already running): supplementary runs of this policy only (`--policies internals_probe`) on the same 400 episodes, paired with the main runs by episode.
+- **Determinism:** generation is greedy and the verifier is deterministic, so an episode's trajectory under a given policy does not depend on which other policies run alongside it.
+- **Outcomes:** as for the other policies.
