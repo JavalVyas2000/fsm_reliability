@@ -1,0 +1,5 @@
+{
+  "partition": "cert",
+  "aug_dir": "outputs/cstr_grounding/20261003_164149_20261001_115207_qwen25-15b-instruct_v4_v31_r0_withcert/aug",
+  "n": 492
+}

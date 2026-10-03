@@ -1,0 +1,5 @@
+{
+  "partition": "test_iid",
+  "aug_dir": "outputs/cstr_grounding/20261003_022728_20261002_083124_qwen25-7b-instruct_v4_v31_r0/aug",
+  "n": 499
+}

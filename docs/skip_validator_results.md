@@ -138,3 +138,25 @@ At X = 5% the pattern holds:
 - For Qwen2.5-1.5B observables are sufficient. Even the plant readings alone, without the proposed change, skip 63%.
 
 **Still to come:** Qwen2.5-7B (collecting), Qwen2.5-1.5B cert (needs a GPU gap for cert grounding), the closed loop.
+
+## Update 2026-10-03: all CSTR models complete
+
+CSTR, calls skipped at X = 10%. Cert unless noted; Δ against observables, paired bootstrap 95% CI.
+
+| Model (failure rate) | Observables | + all internals + grounding | + all internals | + grounding | Internals alone | Token confidence |
+|---|---|---|---|---|---|---|
+| Qwen2.5-1.5B (66%) | 62.8% (14/121 accepted) | 60.6% (−2.2 [−5.5, +1.0]) | 61.4% (−1.4) | 60.0% (−2.8 [−5.3, −0.4]) | 27–30% | 4% |
+| Qwen2.5-3B (67%), exploratory UCB | 41–44% (no accepts) | 50–52% (+8 to +10) | 51–54% | 39–40% | 12–15% | 0% |
+| Llama-3.2-3B (83%) | 70.7% | 74.1%; good rejected 16 → 10 | 71.5%; good rejected 16 → **8** [−15, −2] | 74.9% | 33–53% | 34% |
+| Qwen2.5-7B, 4-bit (80%) | **85.5%** (2/54 accepted; test_iid 0/58, certified) | 79.9% (−5.6 [−8.6, −2.6]) | 82.7% (−2.8) | 85.7% (+0.2) | 47–50% | 17% |
+
+**CSTR across 4 models:**
+- Region-based grounding never adds to the observables.
+- Internals add for 2 of 4 models, on one side of the decision each:
+  - Qwen2.5-3B: they make unchecked accepts possible;
+  - Llama: they halve the good proposals wrongly rejected.
+- For Qwen2.5-1.5B and Qwen2.5-7B the observables are as good or better.
+
+**FSM (fresh cert2):** internals + grounding add +6 to +15 points for 3 of 4 models, certified. Grounding alone carries the gain for Llama and Qwen2.5-1.5B.
+
+The cross-domain boundary therefore holds across all models: grounding helps where failures are retrieval errors, and not where they are reasoning errors.
