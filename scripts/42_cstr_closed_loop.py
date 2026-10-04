@@ -164,6 +164,11 @@ class Runner:
                                     attn_blocks=self.blocks)
             fg = grounding_v31(attn, self.blocks, self.cfg_g.relative_layers, masks, rows, P)
             feats = candidate_features_v31(fg, self.cfg_g.relative_layers)
+            # release the cache copy and attention maps at once: on an 8 GB card the allocator otherwise keeps
+            # them reserved and the next generation spills into shared system memory (10x slower)
+            del cache, attn, ids
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
         cand["g31"], cand["grd_s"] = feats, time.perf_counter() - t0
         return feats
 
@@ -304,6 +309,8 @@ def main():
             print(f"[{ei + 1}/{len(snaps)}] {e} {s.spec.family}: recovered {rec} | cache {len(R.gen_cache)} gens | "
                   f"{(time.time() - t_start) / 60:.1f} min", flush=True)
             R.gen_cache.clear()  # prompts contain the snapshot, so generations are shared only within an episode
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
     print(json.dumps({"run_dir": str(run_dir), "hours": round((time.time() - t_start) / 3600, 2)}))
 
 
