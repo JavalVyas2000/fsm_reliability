@@ -54,3 +54,13 @@
 2026-10-03T16:53:53 [followup] START qwen7_cstr_cert_eval
 2026-10-03T16:54:10 [followup] END   qwen7_cstr_cert_eval (exit 0)
 2026-10-03T16:54:10 [followup] FOLLOWUP DONE
+2026-10-03T18:18:42 [closed-loop models] START closed-loop qwen25-15b
+2026-10-03T21:27:50 [closed-loop models] END   closed-loop qwen25-15b (exit 0)
+2026-10-03T21:27:50 [closed-loop models] START closed-loop llama-32-3b
+2026-10-04T15:19:05 [closed-loop models] RESTART after GPU-memory fix (Llama run aborted at 66/400 episodes)
+2026-10-04T15:19:05 [closed-loop models] START closed-loop llama-32-3b
+2026-10-04T22:52:36 [closed-loop models] END   closed-loop llama-32-3b (exit 1)
+2026-10-04T22:52:36 [closed-loop models] START closed-loop qwen25-7b
+2026-10-05T11:06:55 [closed-loop models] END   closed-loop qwen25-7b (exit 0)
+2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
+2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79

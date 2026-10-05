@@ -33,6 +33,8 @@ def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--run_dir", type=str, required=True)
     p.add_argument("--n_boot", type=int, default=2000)
+    p.add_argument("--extra_run_dirs", nargs="*", default=[],
+                   help="supplementary runs (e.g. --policies internals_probe) on the same episodes, merged by episode")
     return p.parse_args()
 
 
@@ -40,6 +42,11 @@ def main():
     args = parse_args()
     d = REPO_ROOT / args.run_dir
     e = pd.DataFrame([json.loads(l) for l in open(d / "episodes.jsonl", encoding="utf-8")])
+    for extra in args.extra_run_dirs:
+        x = pd.DataFrame([json.loads(l) for l in open(REPO_ROOT / extra / "episodes.jsonl", encoding="utf-8")])
+        e = pd.concat([e, x[~x.policy.isin(e.policy.unique())]], ignore_index=True)
+    order = [p for p in ORDER if p in set(e.policy)]
+    e = e[e.episode_id.isin(e[e.policy == BASE].episode_id)]
     e["executed_failure"] = e["outcome"].str.startswith("executed_failure")
     e["unresolved"] = e["outcome"].str.startswith("unresolved")
     n_ep = e["episode_id"].nunique()
@@ -49,14 +56,14 @@ def main():
         unchecked_rejects=("unchecked_rejects", "mean"), good_rejected=("good_rejected", "mean"),
         t_generation_s=("t_generation_s", "mean"), t_internals_s=("t_internals_s", "mean"),
         t_grounding_s=("t_grounding_s", "mean"), t_validator_s=("t_validator_s", "mean"), t_total_s=("t_total_s", "mean"),
-    ).reindex(ORDER)
+    ).reindex(order)
 
     wide = {m: e.pivot(index="episode_id", columns="policy", values=m) for m in ("recovered", "validator_calls", "t_total_s",
                                                                                 "t_validator_s", "executed_failure")}
     rng = np.random.default_rng(0)
     idx = rng.integers(0, n_ep, size=(args.n_boot, n_ep))
     deltas = {}
-    for p in ORDER:
+    for p in order:
         if p == BASE:
             continue
         deltas[p] = {}
@@ -65,9 +72,9 @@ def main():
             b = dv[idx].mean(axis=1)
             deltas[p][m] = {"delta": float(dv.mean()), "ci95": [float(np.percentile(b, 2.5)), float(np.percentile(b, 97.5))]}
 
-    strata = e.groupby(["nochange_pass", "policy"])["recovered"].mean().unstack().reindex(columns=ORDER)
-    family = e.groupby(["family", "policy"])["recovered"].mean().unstack().reindex(columns=ORDER)
-    outcomes = e.groupby(["policy", "outcome"]).size().unstack(fill_value=0).reindex(ORDER)
+    strata = e.groupby(["nochange_pass", "policy"])["recovered"].mean().unstack().reindex(columns=order)
+    family = e.groupby(["family", "policy"])["recovered"].mean().unstack().reindex(columns=order)
+    outcomes = e.groupby(["policy", "outcome"]).size().unstack(fill_value=0).reindex(order)
 
     f = lambda v: f"{v:+.3f}"  # noqa: E731
     lines = [f"# Closed-loop CSTR summary ({n_ep} episodes, run `{args.run_dir}`)", "",
