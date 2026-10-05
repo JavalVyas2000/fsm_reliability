@@ -132,7 +132,19 @@ class Runner:
         h = hashlib.sha256(json.dumps(msgs).encode()).hexdigest()
         if h in self.gen_cache:
             return self.gen_cache[h]
-        out = run_candidate(self.model, self.tok, msgs, lambda rendered: region_char_spans(rendered, msgs), self.cfg)
+        out = None
+        for attempt in range(2):  # CUDA out-of-memory on the 8 GB card: free cached blocks and retry once
+            try:
+                out = run_candidate(self.model, self.tok, msgs, lambda rendered: region_char_spans(rendered, msgs), self.cfg)
+                break
+            except (torch.cuda.OutOfMemoryError, RuntimeError) as exc:
+                if "out of memory" not in str(exc).lower():
+                    raise
+                print(f"CUDA out of memory (attempt {attempt + 1}); emptying cache and retrying", flush=True)
+                torch.cuda.empty_cache()
+        if out is None:  # both attempts failed: treated as an unparseable answer (the episode ends unresolved)
+            out = {"feature_status": "oom", "answer_text": "", "generated_ids": [], "answer_token_count": 0,
+                   "gen_latency_s": 0.0, "feat_latency_s": 0.0}
         hid = out.pop("hidden", {}) or {}
         vec = np.concatenate([hid[k].astype(np.float32) for k in sorted(hid) if k.startswith("hid_")]) if hid else None
         parsed = parse_action(out.get("answer_text", ""))
