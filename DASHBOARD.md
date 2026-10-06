@@ -1,12 +1,12 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-06 20:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b5a370a Add a campaign dashboard (DASHBOARD.md) regenerated on every commit`._
+_Generated 2026-10-06 22:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `0149bdd Dashboard: automatic status update`._
 
 ## Campaign status
 
 | Step | Status |
 |---|---|
-| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 324/400, ~11.1 min/episode, ETA Wed 07 Oct 10:32 |
+| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 334/400, ~12.5 min/episode, ETA Wed 07 Oct 12:11 |
 | FSM Qwen2.5-7B: pilot inference | 🕓 waiting |
 | FSM Qwen2.5-7B: pilot grounding | 🕓 waiting |
 | FSM Qwen2.5-7B: cert2 inference | 🕓 waiting |
@@ -56,16 +56,16 @@ _Generated 2026-10-06 20:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
 | Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
 
-**Llama-3.2-3B** — **in progress: 324/400 episodes** (`20261004_151943_llama-32-3b`)
+**Llama-3.2-3B** — **in progress: 334/400 episodes** (`20261004_151943_llama-32-3b`)
 
 | Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
 |---|---|---|---|---|---|
-| Always validate | 324 | 53.4% | 0 | 1.81 | 182 s |
-| Observables probe | 324 | 34.3% (-19.1) | 0 | 0.64 (-65%) | 254 s |
-| Obs. + internals + grounding | 324 | 44.8% (-8.6) | 0 | 1.01 (-44%) | 253 s |
-| Internals only | 324 | 50.0% (-3.4) | 0 | 1.30 (-28%) | 233 s |
-| Random routing | 324 | 29.3% (-24.1) | 0 | 0.57 (-69%) | 302 s |
-| Never validate | 324 | 14.5% (-38.9) | 256 | 0.00 (-100%) | 56 s |
+| Always validate | 334 | 53.3% | 0 | 1.82 | 185 s |
+| Observables probe | 334 | 33.8% (-19.5) | 0 | 0.64 (-65%) | 258 s |
+| Obs. + internals + grounding | 334 | 44.3% (-9.0) | 0 | 1.00 (-45%) | 258 s |
+| Internals only | 334 | 49.4% (-3.9) | 0 | 1.30 (-29%) | 238 s |
+| Random routing | 334 | 29.3% (-24.0) | 0 | 0.57 (-69%) | 307 s |
+| Never validate | 334 | 14.1% (-39.2) | 266 | 0.00 (-100%) | 57 s |
 
 **Qwen2.5-7B (4-bit)** — complete (`20261004_225258_qwen25-7b`)
 
