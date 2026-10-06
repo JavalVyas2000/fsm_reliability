@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-06 20:25 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `8294144 Add closed-loop results for Qwen2.5-1.5B and Qwen2.5-7B and the cross-model cost analysis`._
+_Generated 2026-10-06 20:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b5a370a Add a campaign dashboard (DASHBOARD.md) regenerated on every commit`._
 
 ## Campaign status
 
