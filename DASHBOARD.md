@@ -1,0 +1,150 @@
+# Selective verification — campaign dashboard
+
+_Generated 2026-10-06 20:25 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `8294144 Add closed-loop results for Qwen2.5-1.5B and Qwen2.5-7B and the cross-model cost analysis`._
+
+## Campaign status
+
+| Step | Status |
+|---|---|
+| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 324/400, ~11.1 min/episode, ETA Wed 07 Oct 10:32 |
+| FSM Qwen2.5-7B: pilot inference | 🕓 waiting |
+| FSM Qwen2.5-7B: pilot grounding | 🕓 waiting |
+| FSM Qwen2.5-7B: cert2 inference | 🕓 waiting |
+| FSM Qwen2.5-7B: cert2 grounding | 🕓 waiting |
+| FSM Qwen2.5-7B: freeze + cert evaluation | 🕓 waiting |
+| CSTR SmolLM2-1.7B: 100-episode pilot (gate) | 🕓 waiting |
+| CSTR SmolLM2-1.7B: full run + certification (if gate met) | 🕓 waiting |
+| Closed loop, internals only: Qwen2.5-3B | 🕓 waiting |
+| Closed loop, internals only: Qwen2.5-1.5B | 🕓 waiting |
+
+<details><summary>Last 8 queue-log lines · 1 failure/skip line(s) in the log</summary>
+
+```
+2026-10-03T21:27:50 [closed-loop models] START closed-loop llama-32-3b
+2026-10-04T15:19:05 [closed-loop models] RESTART after GPU-memory fix (Llama run aborted at 66/400 episodes)
+2026-10-04T15:19:05 [closed-loop models] START closed-loop llama-32-3b
+2026-10-04T22:52:36 [closed-loop models] END   closed-loop llama-32-3b (exit 1)
+2026-10-04T22:52:36 [closed-loop models] START closed-loop qwen25-7b
+2026-10-05T11:06:55 [closed-loop models] END   closed-loop qwen25-7b (exit 0)
+2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
+2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79
+```
+
+</details>
+
+## Closed-loop CSTR (400 fresh episodes per model; live)
+
+Δ = change vs always-validate on the same episodes. Failing executed = failing actions executed without validation.
+
+**Qwen2.5-1.5B** — complete (`20261003_181911_qwen25-15b`)
+
+| Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
+|---|---|---|---|---|---|
+| Always validate | 400 | 34.5% | 0 | 1.05 | 47 s |
+| Observables probe | 400 | 33.0% (-1.5) | 12 | 0.35 (-67%) | 43 s |
+| Obs. + internals + grounding | 400 | 33.2% (-1.2) | 9 | 0.38 (-64%) | 46 s |
+| Random routing | 400 | 33.8% (-0.7) | 186 | 0.42 (-60%) | 33 s |
+| Never validate | 400 | 34.5% (+0.0) | 259 | 0.00 (-100%) | 11 s |
+
+**Qwen2.5-3B** — complete (`20261003_033144_qwen25-3b`)
+
+| Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
+|---|---|---|---|---|---|
+| Always validate | 400 | 43.8% | 0 | 2.45 | 75 s |
+| Observables probe | 400 | 41.0% (-2.8) | 0 | 1.30 (-47%) | 73 s |
+| Obs. + internals + grounding | 400 | 37.0% (-6.8) | 1 | 0.69 (-72%) | 77 s |
+| Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
+| Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
+
+**Llama-3.2-3B** — **in progress: 324/400 episodes** (`20261004_151943_llama-32-3b`)
+
+| Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
+|---|---|---|---|---|---|
+| Always validate | 324 | 53.4% | 0 | 1.81 | 182 s |
+| Observables probe | 324 | 34.3% (-19.1) | 0 | 0.64 (-65%) | 254 s |
+| Obs. + internals + grounding | 324 | 44.8% (-8.6) | 0 | 1.01 (-44%) | 253 s |
+| Internals only | 324 | 50.0% (-3.4) | 0 | 1.30 (-28%) | 233 s |
+| Random routing | 324 | 29.3% (-24.1) | 0 | 0.57 (-69%) | 302 s |
+| Never validate | 324 | 14.5% (-38.9) | 256 | 0.00 (-100%) | 56 s |
+
+**Qwen2.5-7B (4-bit)** — complete (`20261004_225258_qwen25-7b`)
+
+| Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
+|---|---|---|---|---|---|
+| Always validate | 400 | 34.0% | 0 | 2.50 | 71 s |
+| Observables probe | 400 | 25.0% (-9.0) | 8 | 0.24 (-90%) | 60 s |
+| Obs. + internals + grounding | 400 | 26.5% (-7.5) | 165 | 0.62 (-75%) | 49 s |
+| Internals only | 400 | 30.0% (-4.0) | 0 | 1.41 (-44%) | 73 s |
+| Random routing | 400 | 19.2% (-14.8) | 107 | 0.55 (-78%) | 59 s |
+| Never validate | 400 | 19.2% (-14.8) | 318 | 0.00 (-100%) | 12 s |
+
+## Headline findings so far
+
+- **FSM (fresh cert2, 4 models):** adding internals to observables skips +6 to +15 points more validator calls for 3 of 4 models at a certified failure rate; region grounding carries the gain for Llama and Qwen2.5-1.5B.
+- **CSTR (4 models):** grounding never adds to observables; internals help only Qwen2.5-3B (accepts) and Llama (fewer good proposals rejected); internals alone skip 10–53% with 0 failing actions let through.
+- **Shift:** internals are not more robust than observables to plant / fault shift (`docs/cstr_shift_results.md`).
+- **Closed loop:** trained screens avoid 44–90% of validator calls with far fewer unsafe executions than random skipping; Qwen2.5-7B's combined probe fails on retries (accept unchecked only on first proposals fixes it); time savings grow with validator cost (`paper_outputs/tables/closed_loop_costs_all.md`).
+
+## Validator calls skipped per signal (certification sets, X = 10%)
+
+`*` = failure rate among unchecked accepts certified ≤ 10%. Full tables: `paper_outputs/tables/`.
+
+**FSM (fresh cert2)** — cell: calls skipped (failing / accepted unchecked)
+
+| Signal | Qwen2.5-3B | Llama-3.2-3B | Qwen2.5-1.5B | SmolLM2-1.7B |
+|---|---|---|---|---|
+| Observables | 21%* (15/335) | 43% (26/333) | 40%* (7/284) | 85% (15/166) |
+| Obs. + grounding | 21%* (11/339) | 59%* (20/444) | 46%* (1/228) | 85% (0/0) |
+| Obs. + all internals | 32%* (35/599) | 47%* (7/308) | 37%* (6/262) | 79% (0/0) |
+| Obs. + internals + grounding | 34%* (27/603) | 58%* (29/532) | 40%* (5/259) | 91% (7/146) |
+| Region grounding | 14%* (18/367) | 31%* (2/102) | 31%* (5/178) | 80% (0/0) |
+| Hidden states | 24%* (26/506) | 27% (13/204) | 22% (0/0) | 74% (0/0) |
+| All internals | 25%* (31/526) | 31%* (8/240) | 25%* (6/196) | 76% (0/0) |
+| All internals + grounding | 23%* (21/483) | 36%* (13/371) | 38%* (8/240) | 79% (0/0) |
+| Token confidence | 18% (28/329) | 14% (12/140) | 13% (0/0) | 56% (0/0) |
+
+**CSTR (cert)** — cell: calls skipped (failing / accepted unchecked)
+
+| Signal | Qwen2.5-1.5B | Qwen2.5-3B* | Qwen2.5-7B (4-bit) | Llama-3.2-3B |
+|---|---|---|---|---|
+| Observables | 63% (14/121) | 41% (0/0) | 86% (2/54) | 71% (0/0) |
+| Obs. + grounding | 60% (7/102) | 39% (0/0) | 86% (4/57) | 75% (0/0) |
+| Obs. + all internals | 61% (13/110) | 51% (4/38) | 83% (3/46) | 72% (0/0) |
+| Obs. + internals + grounding | 61% (14/111) | 50% (5/43) | 80% (2/35) | 74% (0/0) |
+| Region grounding | 27% (0/0) | 10% (0/0) | 47% (0/0) | 38% (0/0) |
+| Hidden states | 29% (0/0) | 13% (0/0) | 50% (0/0) | 48% (0/0) |
+| All internals | 29% (0/0) | 15% (0/0) | 47% (0/0) | 53% (0/0) |
+| All internals + grounding | 28% (0/0) | 12% (0/0) | 48% (0/0) | 53% (0/0) |
+| Token confidence | 4% (0/0) | 0% (0/0) | 17% (0/0) | 34% (0/0) |
+
+## Figures
+
+**Compute vs validator cost (closed loop)**
+
+![Compute vs validator cost (closed loop)](paper_outputs/figures/closed_loop_compute_all.png)
+
+**Gain over observables**
+
+![Gain over observables](paper_outputs/figures/delta_vs_observables.png)
+
+**FSM calls skipped per signal**
+
+![FSM calls skipped per signal](paper_outputs/figures/skip_fsm.png)
+
+**CSTR calls skipped per signal**
+
+![CSTR calls skipped per signal](paper_outputs/figures/skip_cstr.png)
+
+**Grounding vs failure**
+
+![Grounding vs failure](paper_outputs/figures/mechanism_grounding.png)
+
+**Shift: AUROC change**
+
+![Shift: AUROC change](paper_outputs/figures/shift_auroc_change.png)
+
+## Documents
+
+- Pre-registration: `docs/cstr_v4_prereg.md`, `docs/cstr_closed_loop_prereg.md`, `docs/cstr_shift_prereg.md`
+- Results: `docs/skip_validator_results.md`, `docs/cstr_closed_loop_results.md`, `docs/cstr_shift_results.md`, `docs/cstr_v4_results.md`, `docs/grounding_results.md`
+
