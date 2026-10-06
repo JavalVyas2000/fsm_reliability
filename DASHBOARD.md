@@ -1,12 +1,12 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-06 22:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `0149bdd Dashboard: automatic status update`._
+_Generated 2026-10-07 00:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `362216f Dashboard: automatic status update`._
 
 ## Campaign status
 
 | Step | Status |
 |---|---|
-| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 334/400, ~12.5 min/episode, ETA Wed 07 Oct 12:11 |
+| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 347/400, ~11.6 min/episode, ETA Wed 07 Oct 10:39 |
 | FSM Qwen2.5-7B: pilot inference | 🕓 waiting |
 | FSM Qwen2.5-7B: pilot grounding | 🕓 waiting |
 | FSM Qwen2.5-7B: cert2 inference | 🕓 waiting |
@@ -56,16 +56,16 @@ _Generated 2026-10-06 22:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
 | Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
 
-**Llama-3.2-3B** — **in progress: 334/400 episodes** (`20261004_151943_llama-32-3b`)
+**Llama-3.2-3B** — **in progress: 347/400 episodes** (`20261004_151943_llama-32-3b`)
 
 | Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
 |---|---|---|---|---|---|
-| Always validate | 334 | 53.3% | 0 | 1.82 | 185 s |
-| Observables probe | 334 | 33.8% (-19.5) | 0 | 0.64 (-65%) | 258 s |
-| Obs. + internals + grounding | 334 | 44.3% (-9.0) | 0 | 1.00 (-45%) | 258 s |
-| Internals only | 334 | 49.4% (-3.9) | 0 | 1.30 (-29%) | 238 s |
-| Random routing | 334 | 29.3% (-24.0) | 0 | 0.57 (-69%) | 307 s |
-| Never validate | 334 | 14.1% (-39.2) | 266 | 0.00 (-100%) | 57 s |
+| Always validate | 347 | 53.0% | 0 | 1.82 | 186 s |
+| Observables probe | 347 | 34.0% (-19.0) | 0 | 0.64 (-65%) | 258 s |
+| Obs. + internals + grounding | 347 | 43.8% (-9.2) | 0 | 0.99 (-45%) | 260 s |
+| Internals only | 347 | 49.0% (-4.0) | 0 | 1.29 (-29%) | 239 s |
+| Random routing | 347 | 28.8% (-24.2) | 0 | 0.57 (-68%) | 312 s |
+| Never validate | 347 | 13.8% (-39.2) | 278 | 0.00 (-100%) | 57 s |
 
 **Qwen2.5-7B (4-bit)** — complete (`20261004_225258_qwen25-7b`)
 
