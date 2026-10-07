@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 19:13 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `41ea1c4 Dashboard: automatic status update`._
+_Generated 2026-10-07 21:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `12c9aab SmolLM2 CSTR: collection crashed at 1073/5000 (simulator worker died); queue a guarded resume`._
 
 ## Campaign status
 
@@ -16,7 +16,7 @@ _Generated 2026-10-07 19:13 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | 🕓 waiting |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | 🕓 waiting |
-| Closed loop, internals only: Qwen2.5-3B | ⏳ running — episode 12/400 |
+| Closed loop, internals only: Qwen2.5-3B | ⏳ running — episode 67/400 |
 | Closed loop, internals only: Qwen2.5-1.5B | 🕓 waiting |
 
 <details><summary>Last 8 queue-log lines · 6 failure/skip line(s) in the log</summary>
@@ -55,7 +55,7 @@ _Generated 2026-10-07 19:13 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Always validate | 400 | 43.8% | 0 | 2.45 | 75 s |
 | Observables probe | 400 | 41.0% (-2.8) | 0 | 1.30 (-47%) | 73 s |
 | Obs. + internals + grounding | 400 | 37.0% (-6.8) | 1 | 0.69 (-72%) | 77 s |
-| Internals only | 12 | 41.7% (-2.1) | 0 | 0.83 (-66%) | 182 s |
+| Internals only | 67 | 29.9% (-13.9) | 0 | 0.88 (-64%) | 142 s |
 | Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
 | Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
 
