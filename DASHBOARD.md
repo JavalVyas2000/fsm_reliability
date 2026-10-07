@@ -1,13 +1,13 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 04:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `d5f9b89 Dashboard: automatic status update`._
+_Generated 2026-10-07 06:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `7320320 Dashboard: automatic status update`._
 
 ## Campaign status
 
 | Step | Status |
 |---|---|
-| Llama-3.2-3B closed loop (resumed) | ⏳ running — episode 386/400, ~5.6 min/episode, ETA Wed 07 Oct 05:44 |
-| FSM Qwen2.5-7B: pilot inference | 🕓 waiting |
+| Llama-3.2-3B closed loop (resumed) | ✅ done |
+| FSM Qwen2.5-7B: pilot inference | ⏳ running |
 | FSM Qwen2.5-7B: pilot grounding | 🕓 waiting |
 | FSM Qwen2.5-7B: cert2 inference | 🕓 waiting |
 | FSM Qwen2.5-7B: cert2 grounding | 🕓 waiting |
@@ -20,14 +20,14 @@ _Generated 2026-10-07 04:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 <details><summary>Last 8 queue-log lines · 1 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-03T21:27:50 [closed-loop models] START closed-loop llama-32-3b
-2026-10-04T15:19:05 [closed-loop models] RESTART after GPU-memory fix (Llama run aborted at 66/400 episodes)
 2026-10-04T15:19:05 [closed-loop models] START closed-loop llama-32-3b
 2026-10-04T22:52:36 [closed-loop models] END   closed-loop llama-32-3b (exit 1)
 2026-10-04T22:52:36 [closed-loop models] START closed-loop qwen25-7b
 2026-10-05T11:06:55 [closed-loop models] END   closed-loop qwen25-7b (exit 0)
 2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
 2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79
+2026-10-07T05:25:24 [llama resume] END   resume closed-loop llama-32-3b (exit 0)
+2026-10-07T05:25:24 [model set] START fsm_qwen7_pilot
 ```
 
 </details>
@@ -56,16 +56,16 @@ _Generated 2026-10-07 04:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
 | Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
 
-**Llama-3.2-3B** — **in progress: 386/400 episodes** (`20261004_151943_llama-32-3b`)
+**Llama-3.2-3B** — complete (`20261004_151943_llama-32-3b`)
 
 | Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
 |---|---|---|---|---|---|
-| Always validate | 386 | 54.7% | 0 | 1.82 | 181 s |
-| Observables probe | 386 | 35.8% (-18.9) | 0 | 0.68 (-63%) | 255 s |
-| Obs. + internals + grounding | 386 | 44.6% (-10.1) | 0 | 0.98 (-46%) | 255 s |
-| Internals only | 386 | 50.0% (-4.7) | 0 | 1.27 (-30%) | 236 s |
-| Random routing | 386 | 30.1% (-24.6) | 0 | 0.59 (-68%) | 308 s |
-| Never validate | 386 | 15.8% (-38.9) | 302 | 0.00 (-100%) | 57 s |
+| Always validate | 400 | 53.8% | 0 | 1.80 | 182 s |
+| Observables probe | 400 | 35.2% (-18.5) | 0 | 0.68 (-62%) | 254 s |
+| Obs. + internals + grounding | 400 | 44.5% (-9.2) | 0 | 0.99 (-45%) | 253 s |
+| Internals only | 400 | 49.8% (-4.0) | 0 | 1.27 (-29%) | 233 s |
+| Random routing | 400 | 29.5% (-24.2) | 0 | 0.58 (-68%) | 305 s |
+| Never validate | 400 | 15.2% (-38.5) | 312 | 0.00 (-100%) | 57 s |
 
 **Qwen2.5-7B (4-bit)** — complete (`20261004_225258_qwen25-7b`)
 
