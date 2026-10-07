@@ -1,0 +1,38 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\model_set_queue.ps1:11 char:5
++     & $py @pyArgs 2>&1 | Out-File -Encoding utf8 "outputs\queue_$name ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/218 [00:00<?, ?it/s]
+Loading weights:   4%|Γûì         | 9/218 [00:00<00:02, 88.49it/s]
+Loading weights:  10%|Γûê         | 22/218 [00:00<00:01, 108.77it/s]
+Loading weights:  18%|ΓûêΓûè        | 39/218 [00:00<00:01, 127.04it/s]
+Loading weights:  24%|ΓûêΓûêΓûì       | 52/218 [00:00<00:01, 125.72it/s]
+Loading weights:  30%|ΓûêΓûêΓûë       | 65/218 [00:00<00:01, 106.13it/s]
+Loading weights:  37%|ΓûêΓûêΓûêΓûï      | 80/218 [00:00<00:01, 118.15it/s]
+Loading weights:  43%|ΓûêΓûêΓûêΓûêΓûÄ     | 93/218 [00:00<00:01, 89.52it/s] 
+Loading weights:  51%|ΓûêΓûêΓûêΓûêΓûê     | 111/218 [00:01<00:00, 107.97it/s]
+Loading weights:  57%|ΓûêΓûêΓûêΓûêΓûêΓûï    | 124/218 [00:01<00:00, 109.40it/s]
+Loading weights:  63%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ   | 138/218 [00:01<00:00, 116.51it/s]
+Loading weights:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 151/218 [00:01<00:00, 117.15it/s]
+Loading weights:  75%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 164/218 [00:01<00:00, 119.90it/s]
+Loading weights:  81%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê  | 177/218 [00:01<00:00, 114.19it/s]
+Loading weights:  88%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè | 192/218 [00:01<00:00, 122.45it/s]
+Loading weights:  94%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 205/218 [00:01<00:00, 117.66it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë| 217/218 [00:01<00:00, 118.26it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 218/218 [00:01<00:00, 114.44it/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\31_cstr_field_grounding.py", line 150, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\utils\_contextlib.py", line 
+124, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\31_cstr_field_grounding.py", line 93, in main
+    m0 = build_messages(snaps[recs[0]["graph_hash"]])
+                              ~~~~^^^
+IndexError: list index out of range

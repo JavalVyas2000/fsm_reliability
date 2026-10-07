@@ -81,3 +81,16 @@
 2026-10-07T09:40:12 [model set] END   cstr_smollm_pilot (exit 0)
 2026-10-07T09:40:12 [model set] SmolLM2 CSTR pilot: pass rate among valid, format-failure rate = 0.380 0.000
 2026-10-07T09:40:12 [model set] START cstr_smollm_collect
+2026-10-07T17:46:14 [model set] END   cstr_smollm_collect (exit 1)
+2026-10-07T17:46:14 [model set] START cstr_smollm_grounding
+2026-10-07T18:36:04 [model set] END   cstr_smollm_grounding (exit 0)
+2026-10-07T18:36:04 [model set] START cstr_smollm_freeze
+2026-10-07T18:36:44 [model set] END   cstr_smollm_freeze (exit 1)
+2026-10-07T18:36:44 [model set] START cstr_smollm_test_eval
+2026-10-07T18:37:01 [model set] END   cstr_smollm_test_eval (exit 1)
+2026-10-07T18:37:01 [model set] START cstr_smollm_cert_grounding
+2026-10-07T18:39:59 [model set] END   cstr_smollm_cert_grounding (exit 1)
+2026-10-07T18:39:59 [model set] START cstr_smollm_cert_eval
+2026-10-07T18:40:12 [model set] END   cstr_smollm_cert_eval (exit 1)
+2026-10-07T18:40:12 [model set] MODEL SET DONE
+2026-10-07T18:40:47 [internals closed loop] START qwen25-3b_internals

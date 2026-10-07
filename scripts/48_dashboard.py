@@ -36,7 +36,9 @@ PLANNED = [
     ("FSM Qwen2.5-7B: cert2 grounding", "[model set] START fsm_qwen7_cert2_grounding", "[model set] END   fsm_qwen7_cert2_grounding"),
     ("FSM Qwen2.5-7B: freeze + cert evaluation", "[model set] START fsm_qwen7_freeze", "[model set] END   fsm_qwen7_cert2_eval"),
     ("CSTR SmolLM2-1.7B: 100-episode pilot (gate)", "[model set] START cstr_smollm_pilot", "SmolLM2 CSTR pilot:"),
-    ("CSTR SmolLM2-1.7B: full run + certification (if gate met)", "[model set] START cstr_smollm_collect", "[model set] MODEL SET DONE"),
+    ("CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died)", "[model set] START cstr_smollm_collect", "[model set] END   cstr_smollm_collect"),
+    ("CSTR SmolLM2-1.7B: resumed collection (after internals-only runs)", "[smollm resume] START cstr_smollm_collect_resume", "[smollm resume] START cstr_smollm_grounding_full"),
+    ("CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation", "[smollm resume] START cstr_smollm_grounding_full", "[smollm resume] SMOLLM DONE"),
     ("Closed loop, internals only: Qwen2.5-3B", "[internals closed loop] START qwen25-3b_internals", "[internals closed loop] END   qwen25-3b_internals"),
     ("Closed loop, internals only: Qwen2.5-1.5B", "[internals closed loop] START qwen25-15b_internals", "[internals closed loop] END   qwen25-15b_internals"),
 ]

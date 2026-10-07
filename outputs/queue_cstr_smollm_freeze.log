@@ -1,0 +1,80 @@
+﻿python.exe : Traceback (most recent call last):
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\model_set_queue.ps1:11 char:5
++     & $py @pyArgs 2>&1 | Out-File -Encoding utf8 "outputs\queue_$name ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\39_cstr_freeze_skip_rules.py", line 189, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\39_cstr_freeze_skip_rules.py", line 155, in main
+    logit(pipe.predict_proba(X["dev_cal"])[:, 1])[:, None], split["dev_cal"]["y"])
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\pipeline.py", line 858, in 
+predict_proba
+    Xt = transform.transform(Xt)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\_set_output.py", line 
+316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File 
+"C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\compose\_column_transformer.py", 
+line 1099, in transform
+    Xs = self._call_func_on_transformers(
+        X,
+    ...<3 lines>...
+        routed_params=routed_params,
+    )
+  File 
+"C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\compose\_column_transformer.py", 
+line 901, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\parallel.py", line 91, 
+in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\parallel.py", line 1986, in 
+__call__
+    return output if self.return_generator else list(output)
+                                                ~~~~^^^^^^^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\parallel.py", line 1914, in 
+_get_sequential_output
+    res = func(*args, **kwargs)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\parallel.py", line 184, 
+in __call__
+    return self.function(*args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\pipeline.py", line 1464, in 
+_transform_one
+    res = transformer.transform(X, **params.transform)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\pipeline.py", line 1043, in 
+transform
+    Xt = transform.transform(Xt, **routed_params[name].transform)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\_set_output.py", line 
+316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\impute\_base.py", line 611, 
+in transform
+    X = self._validate_input(X, in_fit=False)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\impute\_base.py", line 374, 
+in _validate_input
+    raise ve
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\impute\_base.py", line 355, 
+in _validate_input
+    X = validate_data(
+        self,
+    ...<6 lines>...
+        copy=self.copy,
+    )
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 
+2902, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 
+1097, in check_array
+    raise ValueError(
+    ...<3 lines>...
+    )
+ValueError: Found array with 0 sample(s) (shape=(0, 12)) while a minimum of 1 is required by SimpleImputer.
