@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 18:27 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b6722c0 Dashboard: automatic status update`._
+_Generated 2026-10-07 19:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `ea3dfa1 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -13,21 +13,23 @@ _Generated 2026-10-07 18:27 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | FSM Qwen2.5-7B: cert2 grounding | ✅ done |
 | FSM Qwen2.5-7B: freeze + cert evaluation | ✅ done |
 | CSTR SmolLM2-1.7B: 100-episode pilot (gate) | ✅ done (pass rate among valid, format-failure rate = 0.380 0.000) |
-| CSTR SmolLM2-1.7B: full run + certification (if gate met) | ⏳ running |
-| Closed loop, internals only: Qwen2.5-3B | 🕓 waiting |
+| CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
+| CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | 🕓 waiting |
+| CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | 🕓 waiting |
+| Closed loop, internals only: Qwen2.5-3B | ⏳ running — episode 12/400 |
 | Closed loop, internals only: Qwen2.5-1.5B | 🕓 waiting |
 
-<details><summary>Last 8 queue-log lines · 2 failure/skip line(s) in the log</summary>
+<details><summary>Last 8 queue-log lines · 6 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-07T09:02:42 [model set] START fsm_qwen7_cert2_eval
-2026-10-07T09:02:58 [model set] END   fsm_qwen7_cert2_eval (exit 0)
-2026-10-07T09:02:58 [model set] START cstr_smollm_pilot
-2026-10-07T09:40:12 [model set] END   cstr_smollm_pilot (exit 0)
-2026-10-07T09:40:12 [model set] SmolLM2 CSTR pilot: pass rate among valid, format-failure rate = 0.380 0.000
-2026-10-07T09:40:12 [model set] START cstr_smollm_collect
-2026-10-07T17:46:14 [model set] END   cstr_smollm_collect (exit 1)
-2026-10-07T17:46:14 [model set] START cstr_smollm_grounding
+2026-10-07T18:36:44 [model set] START cstr_smollm_test_eval
+2026-10-07T18:37:01 [model set] END   cstr_smollm_test_eval (exit 1)
+2026-10-07T18:37:01 [model set] START cstr_smollm_cert_grounding
+2026-10-07T18:39:59 [model set] END   cstr_smollm_cert_grounding (exit 1)
+2026-10-07T18:39:59 [model set] START cstr_smollm_cert_eval
+2026-10-07T18:40:12 [model set] END   cstr_smollm_cert_eval (exit 1)
+2026-10-07T18:40:12 [model set] MODEL SET DONE
+2026-10-07T18:40:47 [internals closed loop] START qwen25-3b_internals
 ```
 
 </details>
@@ -53,6 +55,7 @@ _Generated 2026-10-07 18:27 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Always validate | 400 | 43.8% | 0 | 2.45 | 75 s |
 | Observables probe | 400 | 41.0% (-2.8) | 0 | 1.30 (-47%) | 73 s |
 | Obs. + internals + grounding | 400 | 37.0% (-6.8) | 1 | 0.69 (-72%) | 77 s |
+| Internals only | 12 | 41.7% (-2.1) | 0 | 0.83 (-66%) | 182 s |
 | Random routing | 400 | 37.8% (-6.0) | 110 | 1.31 (-47%) | 67 s |
 | Never validate | 400 | 30.0% (-13.8) | 274 | 0.00 (-100%) | 16 s |
 
