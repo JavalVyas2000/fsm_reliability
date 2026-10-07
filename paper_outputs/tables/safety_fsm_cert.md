@@ -66,6 +66,21 @@ Rejected unchecked: failing actions correctly stopped / good actions wrongly rej
 | All internals + grounding | 2321 (79%) | 0 | **0** | 2209 | 112 / 490 |  |
 | Token confidence | 1644 (56%) | 0 | **0** | 1567 | 77 / 490 |  |
 
+### Qwen2.5-7B (4-bit) (n = 2973, 1450 failing, 1523 good)
+
+| signal | calls avoided | correct let through | **failing let through** | failing stopped | good rejected | certified |
+|---|---|---|---|---|---|---|
+| Observables | 467 (16%) | 245 | **13** | 192 | 17 / 1523 | yes |
+| Obs. + grounding | 660 (22%) | 472 | **41** | 143 | 4 / 1523 |  |
+| Obs. + all internals | 458 (15%) | 343 | **25** | 86 | 4 / 1523 |  |
+| Obs. + internals + grounding | 452 (15%) | 358 | **17** | 75 | 2 / 1523 | yes |
+| Region grounding | 94 (3%) | 88 | **0** | 5 | 1 / 1523 | yes |
+| Attention (regions) | 394 (13%) | 295 | **24** | 73 | 2 / 1523 |  |
+| Hidden states | 286 (10%) | 219 | **15** | 50 | 2 / 1523 |  |
+| All internals | 266 (9%) | 240 | **12** | 13 | 1 / 1523 | yes |
+| All internals + grounding | 321 (11%) | 291 | **12** | 18 | 0 / 1523 | yes |
+| Token confidence | 0 (0%) | 0 | **0** | 0 | 0 / 1523 |  |
+
 ## X = 5%
 
 ### Qwen2.5-3B (n = 2992, 1525 failing, 1467 good)
@@ -127,3 +142,18 @@ Rejected unchecked: failing actions correctly stopped / good actions wrongly rej
 | All internals | 2241 (76%) | 0 | **0** | 2116 | 125 / 490 |  |
 | All internals + grounding | 2321 (79%) | 0 | **0** | 2209 | 112 / 490 |  |
 | Token confidence | 1644 (56%) | 0 | **0** | 1567 | 77 / 490 |  |
+
+### Qwen2.5-7B (4-bit) (n = 2973, 1450 failing, 1523 good)
+
+| signal | calls avoided | correct let through | **failing let through** | failing stopped | good rejected | certified |
+|---|---|---|---|---|---|---|
+| Observables | 209 (7%) | 0 | **0** | 192 | 17 / 1523 |  |
+| Obs. + grounding | 147 (5%) | 0 | **0** | 143 | 4 / 1523 |  |
+| Obs. + all internals | 90 (3%) | 0 | **0** | 86 | 4 / 1523 |  |
+| Obs. + internals + grounding | 380 (13%) | 293 | **10** | 75 | 2 / 1523 |  |
+| Region grounding | 6 (0%) | 0 | **0** | 5 | 1 / 1523 |  |
+| Attention (regions) | 75 (3%) | 0 | **0** | 73 | 2 / 1523 |  |
+| Hidden states | 52 (2%) | 0 | **0** | 50 | 2 / 1523 |  |
+| All internals | 14 (0%) | 0 | **0** | 13 | 1 / 1523 |  |
+| All internals + grounding | 18 (1%) | 0 | **0** | 18 | 0 / 1523 |  |
+| Token confidence | 0 (0%) | 0 | **0** | 0 | 0 / 1523 |  |

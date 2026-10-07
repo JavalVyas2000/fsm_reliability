@@ -35,6 +35,7 @@ FSM = {  # model -> (freeze on pilot, evaluated on fresh cert2; pilot aug for me
     "Llama-3.2-3B": ("*_fsm_llama-32-3b_skip_ucb_cert2", "outputs/fsm_grounding/20260926_152900_20260924_000726_llama-32-3b-instruct_pilot3000/aug"),
     "Qwen2.5-1.5B": ("*_fsm_qwen25-15b_skip_ucb_cert2", "outputs/fsm_grounding/20260926_154919_20260924_014439_qwen25-15b-instruct_pilot3000/aug"),
     "SmolLM2-1.7B": ("*_fsm_smollm2-17b_skip_ucb_cert2", "outputs/fsm_grounding/20260926_160357_20260924_032202_smollm2-17b-instruct_pilot3000/aug"),
+    "Qwen2.5-7B (4-bit)": ("*_fsm_qwen25-7b_skip_ucb_cert2", "outputs/fsm_grounding/20261007_064657_20261007_052546_qwen25-7b-instruct_pilot3000/aug"),
 }
 CSTR = {
     "Qwen2.5-1.5B": ("*_cstr_v4_qwen25-15b_skip_ucb", "outputs/cstr_grounding/20261002_040625_20261001_115207_qwen25-15b-instruct_v4_v31_r0/aug"),

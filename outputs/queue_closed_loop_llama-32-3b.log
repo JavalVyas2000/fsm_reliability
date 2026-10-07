@@ -1,0 +1,516 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\closed_loop_models_v2.ps1:18 char:5
++     & $py @(@("-m", "scripts.42_cstr_closed_loop", "--dataset_dir", " ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:00<01:45,  2.41it/s]
+Loading weights:   5%|Γûì         | 12/254 [00:00<00:08, 29.27it/s]
+Loading weights:   9%|Γûè         | 22/254 [00:00<00:05, 45.95it/s]
+Loading weights:  13%|ΓûêΓûÄ        | 32/254 [00:00<00:03, 57.89it/s]
+Loading weights:  18%|ΓûêΓûè        | 45/254 [00:00<00:02, 75.51it/s]
+Loading weights:  22%|ΓûêΓûêΓûÅ       | 55/254 [00:00<00:02, 80.31it/s]
+Loading weights:  26%|ΓûêΓûêΓûî       | 65/254 [00:01<00:02, 82.51it/s]
+Loading weights:  30%|ΓûêΓûêΓûë       | 75/254 [00:01<00:02, 83.99it/s]
+Loading weights:  33%|ΓûêΓûêΓûêΓûÄ      | 85/254 [00:01<00:01, 85.33it/s]
+Loading weights:  37%|ΓûêΓûêΓûêΓûï      | 95/254 [00:01<00:01, 84.65it/s]
+Loading weights:  41%|ΓûêΓûêΓûêΓûê      | 104/254 [00:01<00:01, 85.62it/s]
+Loading weights:  44%|ΓûêΓûêΓûêΓûêΓûì     | 113/254 [00:01<00:01, 85.12it/s]
+Loading weights:  48%|ΓûêΓûêΓûêΓûêΓûè     | 122/254 [00:01<00:01, 86.44it/s]
+Loading weights:  52%|ΓûêΓûêΓûêΓûêΓûêΓûÅ    | 131/254 [00:01<00:01, 86.27it/s]
+Loading weights:  56%|ΓûêΓûêΓûêΓûêΓûêΓûï    | 143/254 [00:01<00:01, 94.94it/s]
+Loading weights:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 154/254 [00:02<00:01, 99.10it/s]
+Loading weights:  65%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 165/254 [00:02<00:00, 96.96it/s]
+Loading weights:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 175/254 [00:02<00:00, 94.26it/s]
+Loading weights:  73%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ  | 185/254 [00:02<00:00, 93.30it/s]
+Loading weights:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 198/254 [00:02<00:00, 101.96it/s]
+Loading weights:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 210/254 [00:02<00:00, 104.44it/s]
+Loading weights:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 221/254 [00:02<00:00, 99.90it/s] 
+Loading weights:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 233/254 [00:02<00:00, 102.38it/s]
+Loading weights:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 246/254 [00:02<00:00, 104.22it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 254/254 [00:03<00:00, 83.70it/s] 
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[1/400] cstr_closedloop_00000 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1.4 min
+[2/400] cstr_closedloop_00001 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 13.6 min
+[3/400] cstr_closedloop_00002 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 13.9 min
+[4/400] cstr_closedloop_00003 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 14.8 min
+[5/400] cstr_closedloop_00004 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 21.0 min
+[6/400] cstr_closedloop_00005 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 22.5 min
+[7/400] cstr_closedloop_00006 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 26.8 min
+[8/400] cstr_closedloop_00007 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 33.1 min
+[9/400] cstr_closedloop_00008 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 40.8 min
+[10/400] cstr_closedloop_00009 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 46.1 min
+[11/400] cstr_closedloop_00010 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 53.8 min
+[12/400] cstr_closedloop_00011 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 57.9 min
+[13/400] cstr_closedloop_00012 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 58.5 min
+[14/400] cstr_closedloop_00013 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 7 gens | 62.2 min
+[15/400] cstr_closedloop_00014 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 63.5 min
+[16/400] cstr_closedloop_00015 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 64.9 min
+[17/400] cstr_closedloop_00016 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 71.3 min
+[18/400] cstr_closedloop_00017 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 74.4 min
+[19/400] cstr_closedloop_00018 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 80.5 min
+[20/400] cstr_closedloop_00019 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 84.9 min
+[21/400] cstr_closedloop_00020 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 90.0 min
+[22/400] cstr_closedloop_00021 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 91.7 min
+[23/400] cstr_closedloop_00022 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 13 gens | 97.8 min
+[24/400] cstr_closedloop_00023 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 113.3 min
+[25/400] cstr_closedloop_00024 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 120.0 min
+[26/400] cstr_closedloop_00025 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 120.5 min
+[27/400] cstr_closedloop_00026 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 10 gens | 138.3 min
+[28/400] cstr_closedloop_00027 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 144.1 min
+[29/400] cstr_closedloop_00028 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 0} | cache 13 gens | 153.1 min
+[30/400] cstr_closedloop_00029 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 159.4 min
+[31/400] cstr_closedloop_00030 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 166.4 min
+[32/400] cstr_closedloop_00031 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 173.2 min
+[33/400] cstr_closedloop_00032 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 174.5 min
+[34/400] cstr_closedloop_00033 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 8 gens | 180.9 min
+[35/400] cstr_closedloop_00034 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 182.1 min
+[36/400] cstr_closedloop_00035 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 190.9 min
+[37/400] cstr_closedloop_00036 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 3 gens | 197.4 min
+[38/400] cstr_closedloop_00037 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 199.2 min
+[39/400] cstr_closedloop_00038 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 204.4 min
+[40/400] cstr_closedloop_00039 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 214.4 min
+[41/400] cstr_closedloop_00040 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 215.7 min
+[42/400] cstr_closedloop_00041 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 219.6 min
+[43/400] cstr_closedloop_00042 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 223.6 min
+[44/400] cstr_closedloop_00043 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 232.4 min
+[45/400] cstr_closedloop_00044 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 233.2 min
+[46/400] cstr_closedloop_00045 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 245.1 min
+[47/400] cstr_closedloop_00046 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 246.3 min
+[48/400] cstr_closedloop_00047 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 251.5 min
+[49/400] cstr_closedloop_00048 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 254.0 min
+[50/400] cstr_closedloop_00049 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 264.3 min
+[51/400] cstr_closedloop_00050 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 265.1 min
+[52/400] cstr_closedloop_00051 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 269.5 min
+[53/400] cstr_closedloop_00052 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 271.7 min
+[54/400] cstr_closedloop_00053 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 286.7 min
+[55/400] cstr_closedloop_00054 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 288.5 min
+[56/400] cstr_closedloop_00055 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 294.9 min
+[57/400] cstr_closedloop_00056 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 295.8 min
+[58/400] cstr_closedloop_00057 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 302.9 min
+[59/400] cstr_closedloop_00058 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 305.3 min
+[60/400] cstr_closedloop_00059 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 306.7 min
+[61/400] cstr_closedloop_00060 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 308.2 min
+[62/400] cstr_closedloop_00061 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 310.9 min
+[63/400] cstr_closedloop_00062 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 6 gens | 316.1 min
+[64/400] cstr_closedloop_00063 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 321.1 min
+[65/400] cstr_closedloop_00064 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 10 gens | 329.2 min
+[66/400] cstr_closedloop_00065 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 340.5 min
+[67/400] cstr_closedloop_00066 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 355.5 min
+[68/400] cstr_closedloop_00067 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 2 gens | 360.1 min
+[69/400] cstr_closedloop_00068 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 365.2 min
+[70/400] cstr_closedloop_00069 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 10 gens | 381.5 min
+[71/400] cstr_closedloop_00070 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 383.0 min
+[72/400] cstr_closedloop_00071 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 9 gens | 405.6 min
+[73/400] cstr_closedloop_00072 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 405.9 min
+[74/400] cstr_closedloop_00073 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 407.8 min
+[75/400] cstr_closedloop_00074 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 409.8 min
+[76/400] cstr_closedloop_00075 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 424.0 min
+[77/400] cstr_closedloop_00076 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 425.7 min
+[78/400] cstr_closedloop_00077 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 439.6 min
+[79/400] cstr_closedloop_00078 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 446.8 min
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\42_cstr_closed_loop.py", line 318, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\42_cstr_closed_loop.py", line 237, in main
+    c = R.generate(s, st["fb"], st["prev"])
+  File "C:\Users\jv624\Desktop\fsm_reliability\scripts\42_cstr_closed_loop.py", line 135, in generate
+    out = run_candidate(self.model, self.tok, msgs, lambda rendered: region_char_spans(rendered, msgs), self.cfg)
+  File "C:\Users\jv624\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\utils\_contextlib.py", line 
+124, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\jv624\Desktop\fsm_reliability\src\models\inference_v2.py", line 357, in run_candidate
+    rec["gen_vs_tf_logprob_maxdiff"] = float((tf_sel - gen_sel).abs().max())
+                                       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for 
+more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\llama_resume_queue.ps1:11 char:1
++ & $py -m scripts.42_cstr_closed_loop --dataset_dir data/cstr/closedlo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:00<02:43,  1.55it/s]
+Loading weights:   2%|ΓûÅ         | 5/254 [00:00<00:29,  8.34it/s]
+Loading weights:   5%|Γûî         | 13/254 [00:00<00:11, 21.87it/s]
+Loading weights:   8%|Γûè         | 21/254 [00:01<00:07, 31.22it/s]
+Loading weights:  10%|Γûê         | 26/254 [00:01<00:06, 32.99it/s]
+Loading weights:  12%|ΓûêΓûÅ        | 31/254 [00:01<00:06, 34.20it/s]
+Loading weights:  14%|ΓûêΓûì        | 36/254 [00:01<00:05, 37.32it/s]
+Loading weights:  16%|ΓûêΓûî        | 41/254 [00:01<00:05, 36.30it/s]
+Loading weights:  19%|ΓûêΓûë        | 48/254 [00:01<00:04, 44.12it/s]
+Loading weights:  21%|ΓûêΓûê        | 53/254 [00:01<00:04, 43.39it/s]
+Loading weights:  23%|ΓûêΓûêΓûÄ       | 58/254 [00:01<00:04, 42.60it/s]
+Loading weights:  26%|ΓûêΓûêΓûî       | 66/254 [00:02<00:03, 47.49it/s]
+Loading weights:  28%|ΓûêΓûêΓûè       | 71/254 [00:02<00:04, 44.77it/s]
+Loading weights:  30%|ΓûêΓûêΓûë       | 76/254 [00:02<00:04, 41.56it/s]
+Loading weights:  32%|ΓûêΓûêΓûêΓûÅ      | 82/254 [00:02<00:03, 45.40it/s]
+Loading weights:  34%|ΓûêΓûêΓûêΓûì      | 87/254 [00:02<00:04, 41.70it/s]
+Loading weights:  37%|ΓûêΓûêΓûêΓûï      | 93/254 [00:02<00:03, 45.44it/s]
+Loading weights:  39%|ΓûêΓûêΓûêΓûè      | 98/254 [00:02<00:03, 44.70it/s]
+Loading weights:  41%|ΓûêΓûêΓûêΓûê      | 103/254 [00:02<00:03, 44.81it/s]
+Loading weights:  44%|ΓûêΓûêΓûêΓûêΓûÄ     | 111/254 [00:03<00:02, 49.06it/s]
+Loading weights:  46%|ΓûêΓûêΓûêΓûêΓûî     | 116/254 [00:03<00:02, 47.42it/s]
+Loading weights:  48%|ΓûêΓûêΓûêΓûêΓûè     | 121/254 [00:03<00:02, 46.47it/s]
+Loading weights:  51%|ΓûêΓûêΓûêΓûêΓûê     | 129/254 [00:03<00:02, 50.38it/s]
+Loading weights:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 134/254 [00:03<00:02, 48.15it/s]
+Loading weights:  55%|ΓûêΓûêΓûêΓûêΓûêΓûì    | 139/254 [00:03<00:02, 47.18it/s]
+Loading weights:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 147/254 [00:03<00:02, 48.75it/s]
+Loading weights:  60%|ΓûêΓûêΓûêΓûêΓûêΓûë    | 152/254 [00:03<00:02, 45.62it/s]
+Loading weights:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 158/254 [00:04<00:02, 44.44it/s]
+Loading weights:  65%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 165/254 [00:04<00:01, 50.31it/s]
+Loading weights:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 171/254 [00:04<00:01, 47.10it/s]
+Loading weights:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 176/254 [00:04<00:01, 43.53it/s]
+Loading weights:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 183/254 [00:04<00:01, 48.94it/s]
+Loading weights:  74%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì  | 189/254 [00:04<00:01, 46.80it/s]
+Loading weights:  76%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï  | 194/254 [00:04<00:01, 44.01it/s]
+Loading weights:  80%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 202/254 [00:04<00:01, 49.05it/s]
+Loading weights:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 210/254 [00:05<00:00, 51.38it/s]
+Loading weights:  85%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 216/254 [00:05<00:00, 49.11it/s]
+Loading weights:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 221/254 [00:05<00:00, 44.56it/s]
+Loading weights:  90%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê | 229/254 [00:05<00:00, 49.25it/s]
+Loading weights:  93%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ| 237/254 [00:05<00:00, 52.90it/s]
+Loading weights:  96%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî| 243/254 [00:05<00:00, 50.04it/s]
+Loading weights:  98%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè| 249/254 [00:05<00:00, 49.19it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 254/254 [00:05<00:00, 42.68it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[80/400] cstr_closedloop_00079 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 9 gens | 11.4 min
+[81/400] cstr_closedloop_00080 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 11.8 min
+[82/400] cstr_closedloop_00081 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 10 gens | 15.8 min
+[83/400] cstr_closedloop_00082 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 21.7 min
+[84/400] cstr_closedloop_00083 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 22.8 min
+[85/400] cstr_closedloop_00084 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 23.9 min
+[86/400] cstr_closedloop_00085 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 27.0 min
+[87/400] cstr_closedloop_00086 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 28.2 min
+[88/400] cstr_closedloop_00087 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 34.4 min
+[89/400] cstr_closedloop_00088 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 35.1 min
+[90/400] cstr_closedloop_00089 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 40.5 min
+[91/400] cstr_closedloop_00090 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 43.2 min
+[92/400] cstr_closedloop_00091 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 55.2 min
+[93/400] cstr_closedloop_00092 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 57.7 min
+[94/400] cstr_closedloop_00093 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 61.1 min
+[95/400] cstr_closedloop_00094 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 75.7 min
+[96/400] cstr_closedloop_00095 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 78.2 min
+[97/400] cstr_closedloop_00096 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 90.9 min
+[98/400] cstr_closedloop_00097 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 94.5 min
+[99/400] cstr_closedloop_00098 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 99.5 min
+[100/400] cstr_closedloop_00099 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 100.0 min
+[101/400] cstr_closedloop_00100 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 101.2 min
+[102/400] cstr_closedloop_00101 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 7 gens | 109.8 min
+[103/400] cstr_closedloop_00102 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 110.1 min
+[104/400] cstr_closedloop_00103 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 113.7 min
+[105/400] cstr_closedloop_00104 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 121.0 min
+[106/400] cstr_closedloop_00105 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 135.2 min
+[107/400] cstr_closedloop_00106 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 139.4 min
+[108/400] cstr_closedloop_00107 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 142.4 min
+[109/400] cstr_closedloop_00108 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 144.4 min
+[110/400] cstr_closedloop_00109 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 150.7 min
+[111/400] cstr_closedloop_00110 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 151.3 min
+[112/400] cstr_closedloop_00111 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 157.9 min
+[113/400] cstr_closedloop_00112 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 158.7 min
+[114/400] cstr_closedloop_00113 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 168.9 min
+[115/400] cstr_closedloop_00114 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 189.7 min
+[116/400] cstr_closedloop_00115 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 220.4 min
+[117/400] cstr_closedloop_00116 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 243.3 min
+[118/400] cstr_closedloop_00117 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 258.0 min
+[119/400] cstr_closedloop_00118 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 262.5 min
+[120/400] cstr_closedloop_00119 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 265.8 min
+[121/400] cstr_closedloop_00120 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 268.1 min
+[122/400] cstr_closedloop_00121 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 9 gens | 286.5 min
+[123/400] cstr_closedloop_00122 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 296.8 min
+[124/400] cstr_closedloop_00123 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 3 gens | 304.1 min
+[125/400] cstr_closedloop_00124 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 305.9 min
+[126/400] cstr_closedloop_00125 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 312.0 min
+[127/400] cstr_closedloop_00126 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 316.3 min
+[128/400] cstr_closedloop_00127 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 322.1 min
+[129/400] cstr_closedloop_00128 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 327.2 min
+[130/400] cstr_closedloop_00129 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 335.5 min
+[131/400] cstr_closedloop_00130 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 13 gens | 369.7 min
+[132/400] cstr_closedloop_00131 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 378.7 min
+[133/400] cstr_closedloop_00132 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 394.9 min
+[134/400] cstr_closedloop_00133 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 399.1 min
+[135/400] cstr_closedloop_00134 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 403.9 min
+[136/400] cstr_closedloop_00135 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 406.0 min
+[137/400] cstr_closedloop_00136 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 409.9 min
+[138/400] cstr_closedloop_00137 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 417.9 min
+[139/400] cstr_closedloop_00138 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 427.3 min
+[140/400] cstr_closedloop_00139 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 434.5 min
+[141/400] cstr_closedloop_00140 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 448.0 min
+[142/400] cstr_closedloop_00141 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 452.3 min
+[143/400] cstr_closedloop_00142 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 13 gens | 458.4 min
+[144/400] cstr_closedloop_00143 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 459.9 min
+[145/400] cstr_closedloop_00144 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 465.4 min
+[146/400] cstr_closedloop_00145 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 469.7 min
+[147/400] cstr_closedloop_00146 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 475.6 min
+[148/400] cstr_closedloop_00147 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 493.1 min
+[149/400] cstr_closedloop_00148 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 514.1 min
+[150/400] cstr_closedloop_00149 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 532.3 min
+[151/400] cstr_closedloop_00150 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 536.2 min
+[152/400] cstr_closedloop_00151 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 543.8 min
+[153/400] cstr_closedloop_00152 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 564.3 min
+[154/400] cstr_closedloop_00153 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 573.8 min
+[155/400] cstr_closedloop_00154 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 597.4 min
+[156/400] cstr_closedloop_00155 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 608.5 min
+[157/400] cstr_closedloop_00156 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 633.6 min
+[158/400] cstr_closedloop_00157 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 638.4 min
+[159/400] cstr_closedloop_00158 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 8 gens | 651.1 min
+[160/400] cstr_closedloop_00159 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 657.4 min
+[161/400] cstr_closedloop_00160 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 673.8 min
+[162/400] cstr_closedloop_00161 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 679.4 min
+[163/400] cstr_closedloop_00162 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 684.0 min
+[164/400] cstr_closedloop_00163 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 690.0 min
+[165/400] cstr_closedloop_00164 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 700.9 min
+[166/400] cstr_closedloop_00165 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 706.1 min
+[167/400] cstr_closedloop_00166 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 710.2 min
+[168/400] cstr_closedloop_00167 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 726.7 min
+[169/400] cstr_closedloop_00168 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 13 gens | 742.7 min
+[170/400] cstr_closedloop_00169 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 756.2 min
+[171/400] cstr_closedloop_00170 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 762.3 min
+[172/400] cstr_closedloop_00171 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 774.1 min
+[173/400] cstr_closedloop_00172 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 777.8 min
+[174/400] cstr_closedloop_00173 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 780.3 min
+[175/400] cstr_closedloop_00174 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 782.3 min
+[176/400] cstr_closedloop_00175 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 794.4 min
+[177/400] cstr_closedloop_00176 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 808.9 min
+[178/400] cstr_closedloop_00177 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 813.1 min
+[179/400] cstr_closedloop_00178 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 815.6 min
+[180/400] cstr_closedloop_00179 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 817.7 min
+[181/400] cstr_closedloop_00180 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 831.0 min
+[182/400] cstr_closedloop_00181 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 844.6 min
+[183/400] cstr_closedloop_00182 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 863.2 min
+[184/400] cstr_closedloop_00183 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 867.9 min
+[185/400] cstr_closedloop_00184 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 873.3 min
+[186/400] cstr_closedloop_00185 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 880.8 min
+[187/400] cstr_closedloop_00186 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 887.9 min
+[188/400] cstr_closedloop_00187 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 2 gens | 889.2 min
+[189/400] cstr_closedloop_00188 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 906.8 min
+[190/400] cstr_closedloop_00189 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 920.9 min
+[191/400] cstr_closedloop_00190 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 925.8 min
+[192/400] cstr_closedloop_00191 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 931.4 min
+[193/400] cstr_closedloop_00192 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 936.3 min
+[194/400] cstr_closedloop_00193 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 945.7 min
+[195/400] cstr_closedloop_00194 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 951.7 min
+[196/400] cstr_closedloop_00195 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 960.8 min
+[197/400] cstr_closedloop_00196 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 964.4 min
+[198/400] cstr_closedloop_00197 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 975.7 min
+[199/400] cstr_closedloop_00198 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 982.3 min
+[200/400] cstr_closedloop_00199 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 988.8 min
+[201/400] cstr_closedloop_00200 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 994.9 min
+[202/400] cstr_closedloop_00201 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 1004.9 min
+[203/400] cstr_closedloop_00202 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1008.0 min
+[204/400] cstr_closedloop_00203 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1008.9 min
+[205/400] cstr_closedloop_00204 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1014.7 min
+[206/400] cstr_closedloop_00205 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 1023.3 min
+[207/400] cstr_closedloop_00206 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 1030.6 min
+[208/400] cstr_closedloop_00207 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1044.2 min
+[209/400] cstr_closedloop_00208 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 1046.6 min
+[210/400] cstr_closedloop_00209 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1048.7 min
+[211/400] cstr_closedloop_00210 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 3 gens | 1050.2 min
+[212/400] cstr_closedloop_00211 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1061.0 min
+[213/400] cstr_closedloop_00212 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1066.0 min
+[214/400] cstr_closedloop_00213 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 1075.7 min
+[215/400] cstr_closedloop_00214 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1078.2 min
+[216/400] cstr_closedloop_00215 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 1088.1 min
+[217/400] cstr_closedloop_00216 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1096.7 min
+[218/400] cstr_closedloop_00217 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1098.5 min
+[219/400] cstr_closedloop_00218 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 1112.3 min
+[220/400] cstr_closedloop_00219 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1113.8 min
+[221/400] cstr_closedloop_00220 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 1119.9 min
+[222/400] cstr_closedloop_00221 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 1127.7 min
+[223/400] cstr_closedloop_00222 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 2 gens | 1131.6 min
+[224/400] cstr_closedloop_00223 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1138.9 min
+[225/400] cstr_closedloop_00224 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1141.1 min
+[226/400] cstr_closedloop_00225 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 1157.8 min
+[227/400] cstr_closedloop_00226 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 1159.9 min
+[228/400] cstr_closedloop_00227 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 1170.6 min
+[229/400] cstr_closedloop_00228 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1178.2 min
+[230/400] cstr_closedloop_00229 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1183.3 min
+[231/400] cstr_closedloop_00230 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 1192.6 min
+[232/400] cstr_closedloop_00231 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1198.5 min
+[233/400] cstr_closedloop_00232 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 1200.0 min
+[234/400] cstr_closedloop_00233 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1215.1 min
+[235/400] cstr_closedloop_00234 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1236.5 min
+[236/400] cstr_closedloop_00235 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1239.7 min
+[237/400] cstr_closedloop_00236 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 1243.6 min
+[238/400] cstr_closedloop_00237 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1249.8 min
+[239/400] cstr_closedloop_00238 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 1263.4 min
+[240/400] cstr_closedloop_00239 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 1273.0 min
+[241/400] cstr_closedloop_00240 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1289.4 min
+[242/400] cstr_closedloop_00241 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 1314.1 min
+[243/400] cstr_closedloop_00242 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 1315.3 min
+[244/400] cstr_closedloop_00243 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1321.9 min
+[245/400] cstr_closedloop_00244 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 1324.3 min
+[246/400] cstr_closedloop_00245 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 1340.5 min
+[247/400] cstr_closedloop_00246 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1342.9 min
+[248/400] cstr_closedloop_00247 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 8 gens | 1347.7 min
+[249/400] cstr_closedloop_00248 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1350.3 min
+[250/400] cstr_closedloop_00249 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1351.2 min
+[251/400] cstr_closedloop_00250 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 1355.0 min
+[252/400] cstr_closedloop_00251 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1365.5 min
+[253/400] cstr_closedloop_00252 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1369.9 min
+[254/400] cstr_closedloop_00253 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 8 gens | 1381.3 min
+[255/400] cstr_closedloop_00254 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 1388.3 min
+[256/400] cstr_closedloop_00255 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 1390.8 min
+[257/400] cstr_closedloop_00256 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 1397.3 min
+[258/400] cstr_closedloop_00257 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 1402.0 min
+[259/400] cstr_closedloop_00258 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 13 gens | 1415.5 min
+[260/400] cstr_closedloop_00259 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1423.6 min
+[261/400] cstr_closedloop_00260 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1424.9 min
+[262/400] cstr_closedloop_00261 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 1426.4 min
+[263/400] cstr_closedloop_00262 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1432.9 min
+[264/400] cstr_closedloop_00263 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 1438.9 min
+[265/400] cstr_closedloop_00264 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 1442.7 min
+[266/400] cstr_closedloop_00265 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1444.7 min
+[267/400] cstr_closedloop_00266 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1446.4 min
+[268/400] cstr_closedloop_00267 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 1453.1 min
+[269/400] cstr_closedloop_00268 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 1463.5 min
+[270/400] cstr_closedloop_00269 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1471.5 min
+[271/400] cstr_closedloop_00270 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 2 gens | 1477.6 min
+[272/400] cstr_closedloop_00271 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 10 gens | 1482.6 min
+[273/400] cstr_closedloop_00272 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 1483.6 min
+[274/400] cstr_closedloop_00273 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 1488.9 min
+[275/400] cstr_closedloop_00274 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1492.4 min
+[276/400] cstr_closedloop_00275 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 1500.9 min
+[277/400] cstr_closedloop_00276 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1518.2 min
+[278/400] cstr_closedloop_00277 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 2 gens | 1519.1 min
+[279/400] cstr_closedloop_00278 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1520.2 min
+[280/400] cstr_closedloop_00279 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1523.4 min
+[281/400] cstr_closedloop_00280 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 1530.6 min
+[282/400] cstr_closedloop_00281 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 1539.5 min
+[283/400] cstr_closedloop_00282 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1541.6 min
+[284/400] cstr_closedloop_00283 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1542.4 min
+[285/400] cstr_closedloop_00284 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 1549.9 min
+[286/400] cstr_closedloop_00285 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 1556.2 min
+[287/400] cstr_closedloop_00286 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 1570.3 min
+[288/400] cstr_closedloop_00287 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1579.0 min
+[289/400] cstr_closedloop_00288 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1586.4 min
+[290/400] cstr_closedloop_00289 outlet_block: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 1595.2 min
+[291/400] cstr_closedloop_00290 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 14 gens | 1615.4 min
+[292/400] cstr_closedloop_00291 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1619.6 min
+[293/400] cstr_closedloop_00292 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 1640.5 min
+[294/400] cstr_closedloop_00293 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1647.5 min
+[295/400] cstr_closedloop_00294 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 2 gens | 1657.1 min
+[296/400] cstr_closedloop_00295 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1664.6 min
+[297/400] cstr_closedloop_00296 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 1676.4 min
+[298/400] cstr_closedloop_00297 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 1689.0 min
+[299/400] cstr_closedloop_00298 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1694.0 min
+[300/400] cstr_closedloop_00299 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1703.0 min
+[301/400] cstr_closedloop_00300 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 1715.8 min
+[302/400] cstr_closedloop_00301 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 1724.4 min
+[303/400] cstr_closedloop_00302 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1727.9 min
+[304/400] cstr_closedloop_00303 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 6 gens | 1733.5 min
+[305/400] cstr_closedloop_00304 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 1734.6 min
+[306/400] cstr_closedloop_00305 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 1742.3 min
+[307/400] cstr_closedloop_00306 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1754.8 min
+[308/400] cstr_closedloop_00307 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 1 gens | 1758.9 min
+[309/400] cstr_closedloop_00308 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 1771.4 min
+[310/400] cstr_closedloop_00309 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 1782.0 min
+[311/400] cstr_closedloop_00310 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 1837.5 min
+[312/400] cstr_closedloop_00311 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 1842.7 min
+[313/400] cstr_closedloop_00312 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 1847.5 min
+[314/400] cstr_closedloop_00313 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 1859.4 min
+[315/400] cstr_closedloop_00314 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 1873.9 min
+[316/400] cstr_closedloop_00315 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 2 gens | 1876.2 min
+[317/400] cstr_closedloop_00316 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 1888.9 min
+[318/400] cstr_closedloop_00317 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 6 gens | 1893.3 min
+[319/400] cstr_closedloop_00318 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 1897.3 min
+[320/400] cstr_closedloop_00319 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 1918.6 min
+[321/400] cstr_closedloop_00320 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 11 gens | 1934.9 min
+[322/400] cstr_closedloop_00321 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 1953.8 min
+[323/400] cstr_closedloop_00322 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 5 gens | 1971.9 min
+[324/400] cstr_closedloop_00323 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 1980.1 min
+[325/400] cstr_closedloop_00324 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 2011.0 min
+[326/400] cstr_closedloop_00325 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 8 gens | 2025.4 min
+[327/400] cstr_closedloop_00326 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 2030.3 min
+[328/400] cstr_closedloop_00327 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 6 gens | 2034.0 min
+[329/400] cstr_closedloop_00328 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 2046.3 min
+[330/400] cstr_closedloop_00329 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 2058.4 min
+[331/400] cstr_closedloop_00330 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 2068.1 min
+[332/400] cstr_closedloop_00331 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2071.1 min
+[333/400] cstr_closedloop_00332 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 9 gens | 2088.7 min
+[334/400] cstr_closedloop_00333 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2097.3 min
+[335/400] cstr_closedloop_00334 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 2120.1 min
+[336/400] cstr_closedloop_00335 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 9 gens | 2139.7 min
+[337/400] cstr_closedloop_00336 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 2147.8 min
+[338/400] cstr_closedloop_00337 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2153.8 min
+[339/400] cstr_closedloop_00338 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 2157.3 min
+[340/400] cstr_closedloop_00339 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2161.0 min
+[341/400] cstr_closedloop_00340 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 12 gens | 2178.3 min
+[342/400] cstr_closedloop_00341 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2191.5 min
+[343/400] cstr_closedloop_00342 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2198.8 min
+[344/400] cstr_closedloop_00343 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 7 gens | 2207.6 min
+[345/400] cstr_closedloop_00344 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 2213.0 min
+[346/400] cstr_closedloop_00345 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 0} | cache 4 gens | 2222.3 min
+[347/400] cstr_closedloop_00346 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 2228.6 min
+[348/400] cstr_closedloop_00347 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 2 gens | 2235.3 min
+[349/400] cstr_closedloop_00348 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2238.5 min
+[350/400] cstr_closedloop_00349 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 2240.0 min
+[351/400] cstr_closedloop_00350 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 2242.0 min
+[352/400] cstr_closedloop_00351 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2248.6 min
+[353/400] cstr_closedloop_00352 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 2255.3 min
+[354/400] cstr_closedloop_00353 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 12 gens | 2269.0 min
+[355/400] cstr_closedloop_00354 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 2278.0 min
+[356/400] cstr_closedloop_00355 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 2286.5 min
+[357/400] cstr_closedloop_00356 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 2300.1 min
+[358/400] cstr_closedloop_00357 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 10 gens | 2306.6 min
+[359/400] cstr_closedloop_00358 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2310.2 min
+[360/400] cstr_closedloop_00359 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 2314.8 min
+[361/400] cstr_closedloop_00360 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2319.7 min
+[362/400] cstr_closedloop_00361 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 2324.8 min
+[363/400] cstr_closedloop_00362 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2327.8 min
+[364/400] cstr_closedloop_00363 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2332.0 min
+[365/400] cstr_closedloop_00364 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 2337.3 min
+[366/400] cstr_closedloop_00365 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 3 gens | 2341.6 min
+[367/400] cstr_closedloop_00366 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2345.2 min
+[368/400] cstr_closedloop_00367 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 11 gens | 2361.7 min
+[369/400] cstr_closedloop_00368 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2365.9 min
+[370/400] cstr_closedloop_00369 cool_stuck_closed: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 2367.8 min
+[371/400] cstr_closedloop_00370 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 2370.9 min
+[372/400] cstr_closedloop_00371 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 2372.9 min
+[373/400] cstr_closedloop_00372 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 2 gens | 2376.4 min
+[374/400] cstr_closedloop_00373 pump_degrade: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 2393.1 min
+[375/400] cstr_closedloop_00374 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 2399.6 min
+[376/400] cstr_closedloop_00375 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2402.4 min
+[377/400] cstr_closedloop_00376 fouling: recovered {'always_validate': 1, 'never_validate': 1, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2405.2 min
+[378/400] cstr_closedloop_00377 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2417.4 min
+[379/400] cstr_closedloop_00378 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 7 gens | 2422.8 min
+[380/400] cstr_closedloop_00379 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2423.7 min
+[381/400] cstr_closedloop_00380 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 6 gens | 2434.9 min
+[382/400] cstr_closedloop_00381 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 5 gens | 2439.9 min
+[383/400] cstr_closedloop_00382 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 1} | cache 3 gens | 2440.8 min
+[384/400] cstr_closedloop_00383 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 4 gens | 2448.2 min
+[385/400] cstr_closedloop_00384 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 5 gens | 2453.7 min
+[386/400] cstr_closedloop_00385 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2461.5 min
+[387/400] cstr_closedloop_00386 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 2475.2 min
+[388/400] cstr_closedloop_00387 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2477.2 min
+[389/400] cstr_closedloop_00388 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 6 gens | 2483.0 min
+[390/400] cstr_closedloop_00389 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 4 gens | 2486.8 min
+[391/400] cstr_closedloop_00390 outlet_block: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 8 gens | 2495.9 min
+[392/400] cstr_closedloop_00391 fouling: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 7 gens | 2499.3 min
+[393/400] cstr_closedloop_00392 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2500.2 min
+[394/400] cstr_closedloop_00393 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 5 gens | 2509.2 min
+[395/400] cstr_closedloop_00394 pump_degrade: recovered {'always_validate': 1, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 1, 'internals_probe': 1} | cache 6 gens | 2517.8 min
+[396/400] cstr_closedloop_00395 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 1, 'combined_probe': 1, 'random_matched': 0, 'internals_probe': 1} | cache 4 gens | 2527.0 min
+[397/400] cstr_closedloop_00396 fouling: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2528.0 min
+[398/400] cstr_closedloop_00397 pump_degrade: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2528.9 min
+[399/400] cstr_closedloop_00398 cool_stuck_closed: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 3 gens | 2531.1 min
+[400/400] cstr_closedloop_00399 outlet_block: recovered {'always_validate': 0, 'never_validate': 0, 'observables_probe': 0, 'combined_probe': 0, 'random_matched': 0, 'internals_probe': 0} | cache 1 gens | 2533.7 min
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_closed_loop\\20261004_151943_llama-32-3b", "hours": 42.23}

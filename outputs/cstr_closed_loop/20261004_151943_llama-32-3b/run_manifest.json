@@ -1,0 +1,73 @@
+{
+  "created_utc": "2026-10-04T14:19:51.466473+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\42_cstr_closed_loop.py",
+    "--dataset_dir",
+    "data/cstr/closedloop_v4",
+    "--frozen_dir",
+    "outputs/certification/20261001_112113_cstr_v4_llama-32-3b_skip_ucb",
+    "--model",
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "--tag",
+    "llama-32-3b",
+    "--local_files_only"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "500358d430f73fa7dfcee24baa104a342eab2389",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "prereg": {
+    "file": "docs/cstr_closed_loop_prereg.md",
+    "sha256": "3ee95af2a2e98a1a28a9f8f6145f8b0307544a5818e5460bcbadc328137ff29b"
+  },
+  "model": {
+    "hf_id": "meta-llama/Llama-3.2-3B-Instruct",
+    "resolved_revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+    "quantization": null
+  },
+  "prompt": "cstr_prompt_v3.1",
+  "frozen_dir": "outputs/certification/20261001_112113_cstr_v4_llama-32-3b_skip_ucb",
+  "tolerance": 0.1,
+  "policies": [
+    "always_validate",
+    "never_validate",
+    "observables_probe",
+    "combined_probe",
+    "random_matched",
+    "internals_probe"
+  ],
+  "probe_signal": {
+    "observables_probe": "plant readings + proposed change",
+    "combined_probe": "readings + change + all internals + grounding",
+    "internals_probe": "all internals + grounding"
+  },
+  "random_rates": {
+    "accept": 0.0,
+    "reject": 0.7552301255230126
+  },
+  "max_proposals": 6,
+  "dataset_dir": "data/cstr/closedloop_v4",
+  "n_episodes": 400,
+  "seed": 20261012
+}

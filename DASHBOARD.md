@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 10:27 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `a38d156 Dashboard: automatic status update`._
+_Generated 2026-10-07 12:10 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `f357b23 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -91,17 +91,17 @@ _Generated 2026-10-07 10:27 by `scripts/48_dashboard.py` (git pre-commit hook). 
 
 **FSM (fresh cert2)** — cell: calls skipped (failing / accepted unchecked)
 
-| Signal | Qwen2.5-3B | Llama-3.2-3B | Qwen2.5-1.5B | SmolLM2-1.7B |
-|---|---|---|---|---|
-| Observables | 21%* (15/335) | 43% (26/333) | 40%* (7/284) | 85% (15/166) |
-| Obs. + grounding | 21%* (11/339) | 59%* (20/444) | 46%* (1/228) | 85% (0/0) |
-| Obs. + all internals | 32%* (35/599) | 47%* (7/308) | 37%* (6/262) | 79% (0/0) |
-| Obs. + internals + grounding | 34%* (27/603) | 58%* (29/532) | 40%* (5/259) | 91% (7/146) |
-| Region grounding | 14%* (18/367) | 31%* (2/102) | 31%* (5/178) | 80% (0/0) |
-| Hidden states | 24%* (26/506) | 27% (13/204) | 22% (0/0) | 74% (0/0) |
-| All internals | 25%* (31/526) | 31%* (8/240) | 25%* (6/196) | 76% (0/0) |
-| All internals + grounding | 23%* (21/483) | 36%* (13/371) | 38%* (8/240) | 79% (0/0) |
-| Token confidence | 18% (28/329) | 14% (12/140) | 13% (0/0) | 56% (0/0) |
+| Signal | Qwen2.5-3B | Llama-3.2-3B | Qwen2.5-1.5B | SmolLM2-1.7B | Qwen2.5-7B (4-bit) |
+|---|---|---|---|---|---|
+| Observables | 21%* (15/335) | 43% (26/333) | 40%* (7/284) | 85% (15/166) | 16%* (13/258) |
+| Obs. + grounding | 21%* (11/339) | 59%* (20/444) | 46%* (1/228) | 85% (0/0) | 22% (41/513) |
+| Obs. + all internals | 32%* (35/599) | 47%* (7/308) | 37%* (6/262) | 79% (0/0) | 15% (25/368) |
+| Obs. + internals + grounding | 34%* (27/603) | 58%* (29/532) | 40%* (5/259) | 91% (7/146) | 15%* (17/375) |
+| Region grounding | 14%* (18/367) | 31%* (2/102) | 31%* (5/178) | 80% (0/0) | 3%* (0/88) |
+| Hidden states | 24%* (26/506) | 27% (13/204) | 22% (0/0) | 74% (0/0) | 10% (15/234) |
+| All internals | 25%* (31/526) | 31%* (8/240) | 25%* (6/196) | 76% (0/0) | 9%* (12/252) |
+| All internals + grounding | 23%* (21/483) | 36%* (13/371) | 38%* (8/240) | 79% (0/0) | 11%* (12/303) |
+| Token confidence | 18% (28/329) | 14% (12/140) | 13% (0/0) | 56% (0/0) | 0% (0/0) |
 
 **CSTR (cert)** — cell: calls skipped (failing / accepted unchecked)
 

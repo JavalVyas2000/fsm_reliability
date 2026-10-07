@@ -79,3 +79,23 @@ SmolLM2-1.7B,All internals + grounding,0.05,2946,2321,78.78479293957909,0,0,2209
 SmolLM2-1.7B,Obs. + internals + grounding,0.05,2946,2527,85.77732518669382,0,0,2362,165,490,False
 SmolLM2-1.7B,Obs. + grounding,0.05,2946,2509,85.1663272233537,0,0,2363,146,490,False
 SmolLM2-1.7B,Obs. + all internals,0.05,2946,2327,78.98845892735913,0,0,2191,136,490,False
+Qwen2.5-7B (4-bit),Observables,0.1,2973,467,15.70803901782711,245,13,192,17,1523,True
+Qwen2.5-7B (4-bit),Token confidence,0.1,2973,0,0.0,0,0,0,0,1523,False
+Qwen2.5-7B (4-bit),Attention (regions),0.1,2973,394,13.252606794483688,295,24,73,2,1523,False
+Qwen2.5-7B (4-bit),Region grounding,0.1,2973,94,3.1617894382778338,88,0,5,1,1523,True
+Qwen2.5-7B (4-bit),Hidden states,0.1,2973,286,9.61991254624958,219,15,50,2,1523,False
+Qwen2.5-7B (4-bit),All internals,0.1,2973,266,8.94719138916919,240,12,13,1,1523,True
+Qwen2.5-7B (4-bit),All internals + grounding,0.1,2973,321,10.797174571140262,291,12,18,0,1523,True
+Qwen2.5-7B (4-bit),Obs. + internals + grounding,0.1,2973,452,15.203498150016816,358,17,75,2,1523,True
+Qwen2.5-7B (4-bit),Obs. + grounding,0.1,2973,660,22.199798183652874,472,41,143,4,1523,False
+Qwen2.5-7B (4-bit),Obs. + all internals,0.1,2973,458,15.405314497140935,343,25,86,4,1523,False
+Qwen2.5-7B (4-bit),Observables,0.05,2973,209,7.029936091490077,0,0,192,17,1523,False
+Qwen2.5-7B (4-bit),Token confidence,0.05,2973,0,0.0,0,0,0,0,1523,False
+Qwen2.5-7B (4-bit),Attention (regions),0.05,2973,75,2.5227043390514634,0,0,73,2,1523,False
+Qwen2.5-7B (4-bit),Region grounding,0.05,2973,6,0.20181634712411706,0,0,5,1,1523,False
+Qwen2.5-7B (4-bit),Hidden states,0.05,2973,52,1.7490750084090143,0,0,50,2,1523,False
+Qwen2.5-7B (4-bit),All internals,0.05,2973,14,0.4709048099562731,0,0,13,1,1523,False
+Qwen2.5-7B (4-bit),All internals + grounding,0.05,2973,18,0.6054490413723511,0,0,18,0,1523,False
+Qwen2.5-7B (4-bit),Obs. + internals + grounding,0.05,2973,380,12.781701984527412,293,10,75,2,1523,False
+Qwen2.5-7B (4-bit),Obs. + grounding,0.05,2973,147,4.944500504540867,0,0,143,4,1523,False
+Qwen2.5-7B (4-bit),Obs. + all internals,0.05,2973,90,3.027245206861756,0,0,86,4,1523,False

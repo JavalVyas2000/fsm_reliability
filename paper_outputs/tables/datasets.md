@@ -6,6 +6,7 @@
 | FSM | Llama-3.2-3B | cert2 (fresh) | 2995 | 5 | 0.626 |
 | FSM | Qwen2.5-1.5B | cert2 (fresh) | 2945 | 55 | 0.675 |
 | FSM | SmolLM2-1.7B | cert2 (fresh) | 2946 | 54 | 0.834 |
+| FSM | Qwen2.5-7B (4-bit) | cert2 (fresh) | 2973 | 27 | 0.488 |
 | CSTR | Qwen2.5-1.5B | test_iid | 494 | 6 | 0.666 |
 | CSTR | Qwen2.5-1.5B | cert | 492 | 8 | 0.663 |
 | CSTR | Qwen2.5-3B* | test_iid | 493 | 7 | 0.71 |

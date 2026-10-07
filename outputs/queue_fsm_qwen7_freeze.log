@@ -1,0 +1,22 @@
+﻿                                    signal  tolerance  dev_n  accepted  accepted_failures  rejected  rejected_good  skipped_pct
+              task context + proposed path       0.10    996       108                  3        67              3         17.6
+              task context + proposed path       0.05    996         0                  0        67              3          6.7
+                          token confidence       0.10    996         0                  0         0              0          0.0
+                          token confidence       0.05    996         0                  0         0              0          0.0
+                attention by prompt region       0.10    996       124                  6        22              1         14.7
+                attention by prompt region       0.05    996         0                  0        22              1          2.2
+          region-based attention grounding       0.10    996        35                  0         2              0          3.7
+          region-based attention grounding       0.05    996         0                  0         2              0          0.2
+                             hidden states       0.10    996        86                  3        12              0          9.8
+                             hidden states       0.05    996         0                  0        12              0          1.2
+                             all internals       0.10    996        92                  4         4              0          9.6
+                             all internals       0.05    996         0                  0         4              0          0.4
+                 all internals + grounding       0.10    996       106                  5         6              0         11.2
+                 all internals + grounding       0.05    996         0                  0         6              0          0.6
+context + path + all internals + grounding       0.10    996       138                  7        27              1         16.6
+context + path + all internals + grounding       0.05    996       106                  1        27              1         13.4
+                context + path + grounding       0.10    996       198                 12        49              2         24.8
+                context + path + grounding       0.05    996         0                  0        49              2          4.9
+            context + path + all internals       0.10    996       129                  7        25              1         15.5
+            context + path + all internals       0.05    996         0                  0        25              1          2.5
+Frozen: C:\Users\jv624\Desktop\fsm_reliability\outputs\certification\20261007_090218_fsm_qwen25-7b_skip_ucb_cert2

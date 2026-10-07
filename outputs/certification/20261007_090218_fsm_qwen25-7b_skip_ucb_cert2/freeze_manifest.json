@@ -1,0 +1,82 @@
+{
+  "created_utc": "2026-10-07T08:02:42.030279+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\39_cstr_freeze_skip_rules.py",
+    "--domain",
+    "fsm",
+    "--threshold_rule",
+    "ucb",
+    "--aug_dir",
+    "outputs/fsm_grounding/20261007_064657_20261007_052546_qwen25-7b-instruct_pilot3000/aug",
+    "--tag",
+    "fsm_qwen25-7b_skip_ucb_cert2"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "a38d15644d29adc8e8a2c546fd09bc5c1768fec9",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "aug_dir": "outputs/fsm_grounding/20261007_064657_20261007_052546_qwen25-7b-instruct_pilot3000/aug",
+  "partitions_loaded": [
+    "train",
+    "dev_cal",
+    "dev_thr"
+  ],
+  "n_by_partition": {
+    "train": 1495,
+    "dev_cal": 498,
+    "dev_thr": 498
+  },
+  "prereg": {
+    "file": "docs/cstr_v4_prereg.md",
+    "sha256": "d8c665897f01b0edf29fa39ac7b13bb797962994c000a2068738211fc302660b"
+  },
+  "hidden_keys": [
+    "hid_L025_last_prompt",
+    "hid_L025_mean_answer",
+    "hid_L050_last_prompt",
+    "hid_L050_mean_answer",
+    "hid_L075_last_prompt",
+    "hid_L075_mean_answer",
+    "hid_L100_last_prompt",
+    "hid_L100_mean_answer"
+  ],
+  "signals": {
+    "task context + proposed path": "context_action",
+    "token confidence": "token_confidence",
+    "attention by prompt region": "attention",
+    "region-based attention grounding": "grounding",
+    "hidden states": "hidden",
+    "all internals": "all_internal",
+    "all internals + grounding": "all_internal+grounding",
+    "context + path + all internals + grounding": "context_action+all_internal+grounding",
+    "context + path + grounding": "context_action+grounding",
+    "context + path + all internals": "context_action+all_internal"
+  },
+  "domain": "fsm",
+  "files_sha256": {
+    "probes.joblib": "975382f3bb74aabf40d79c04669669340618f5da808995d784197827e21986d6",
+    "rules.json": "0699a4cf7fe7edfedd46a08a9119ed4aa85b5ad49f71c4c884e750937a5ea99b",
+    "dev_routing.csv": "fa7788a64041fb4d94be93ed3c9560ddc29cdaca6b63dc60a4e4a26662112089"
+  }
+}

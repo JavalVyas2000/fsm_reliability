@@ -64,3 +64,20 @@
 2026-10-05T11:06:55 [closed-loop models] END   closed-loop qwen25-7b (exit 0)
 2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
 2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79
+2026-10-07T05:25:24 [llama resume] END   resume closed-loop llama-32-3b (exit 0)
+2026-10-07T05:25:24 [model set] START fsm_qwen7_pilot
+2026-10-07T06:46:30 [model set] END   fsm_qwen7_pilot (exit 0)
+2026-10-07T06:46:30 [model set] START fsm_qwen7_pilot_grounding
+2026-10-07T07:13:05 [model set] END   fsm_qwen7_pilot_grounding (exit 0)
+2026-10-07T07:13:05 [model set] START fsm_qwen7_cert2
+2026-10-07T08:36:09 [model set] END   fsm_qwen7_cert2 (exit 0)
+2026-10-07T08:36:09 [model set] START fsm_qwen7_cert2_grounding
+2026-10-07T09:02:11 [model set] END   fsm_qwen7_cert2_grounding (exit 0)
+2026-10-07T09:02:11 [model set] START fsm_qwen7_freeze
+2026-10-07T09:02:42 [model set] END   fsm_qwen7_freeze (exit 0)
+2026-10-07T09:02:42 [model set] START fsm_qwen7_cert2_eval
+2026-10-07T09:02:58 [model set] END   fsm_qwen7_cert2_eval (exit 0)
+2026-10-07T09:02:58 [model set] START cstr_smollm_pilot
+2026-10-07T09:40:12 [model set] END   cstr_smollm_pilot (exit 0)
+2026-10-07T09:40:12 [model set] SmolLM2 CSTR pilot: pass rate among valid, format-failure rate = 0.380 0.000
+2026-10-07T09:40:12 [model set] START cstr_smollm_collect

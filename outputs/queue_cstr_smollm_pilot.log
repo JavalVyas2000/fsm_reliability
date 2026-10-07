@@ -1,0 +1,222 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\model_set_queue.ps1:11 char:5
++     & $py @pyArgs 2>&1 | Out-File -Encoding utf8 "outputs\queue_$name ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/218 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/218 [00:00<00:33,  6.54it/s]
+Loading weights:   6%|Γûî         | 13/218 [00:00<00:03, 56.85it/s]
+Loading weights:  11%|Γûê         | 23/218 [00:00<00:02, 70.41it/s]
+Loading weights:  17%|ΓûêΓûï        | 36/218 [00:00<00:02, 90.38it/s]
+Loading weights:  22%|ΓûêΓûêΓûÅ       | 49/218 [00:00<00:01, 97.41it/s]
+Loading weights:  28%|ΓûêΓûêΓûè       | 60/218 [00:00<00:01, 99.21it/s]
+Loading weights:  33%|ΓûêΓûêΓûêΓûÄ      | 71/218 [00:00<00:01, 98.90it/s]
+Loading weights:  39%|ΓûêΓûêΓûêΓûè      | 84/218 [00:00<00:01, 103.93it/s]
+Loading weights:  44%|ΓûêΓûêΓûêΓûêΓûÄ     | 95/218 [00:01<00:01, 94.00it/s] 
+Loading weights:  49%|ΓûêΓûêΓûêΓûêΓûë     | 107/218 [00:01<00:01, 97.97it/s]
+Loading weights:  54%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 117/218 [00:01<00:01, 92.56it/s]
+Loading weights:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 127/218 [00:01<00:01, 87.85it/s]
+Loading weights:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 136/218 [00:01<00:00, 84.79it/s]
+Loading weights:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 145/218 [00:01<00:00, 82.76it/s]
+Loading weights:  71%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûê   | 154/218 [00:01<00:00, 79.62it/s]
+Loading weights:  74%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì  | 162/218 [00:01<00:00, 72.32it/s]
+Loading weights:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 170/218 [00:02<00:00, 73.42it/s]
+Loading weights:  82%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ | 178/218 [00:02<00:00, 72.96it/s]
+Loading weights:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 189/218 [00:02<00:00, 80.77it/s]
+Loading weights:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 201/218 [00:02<00:00, 87.35it/s]
+Loading weights:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 211/218 [00:02<00:00, 88.22it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 218/218 [00:02<00:00, 85.99it/s]
+
+first proposals:   0%|          | 0/100 [00:00<?, ?ep/s]
+first proposals:   1%|          | 1/100 [01:00<1:39:58, 60.59s/ep]
+first proposals:   3%|ΓûÄ         | 3/100 [01:20<37:16, 23.06s/ep, cand 2 | r0 pass 1/2 | episodes solved 1 | queue r0 
+97 reprompt 0 | verifying 1 | 20.1 s/proposal]
+first proposals:   4%|Γûì         | 4/100 [01:40<35:19, 22.08s/ep, cand 3 | r0 pass 1/3 | episodes solved 1 | queue r0 
+96 reprompt 0 | verifying 1 | 20.1 s/proposal]
+first proposals:   5%|Γûî         | 5/100 [02:33<50:54, 32.15s/ep, cand 4 | r0 pass 2/4 | episodes solved 2 | queue r0 
+95 reprompt 0 | verifying 1 | 20.1 s/proposal]
+first proposals:   6%|Γûî         | 6/100 [02:53<44:15, 28.25s/ep, cand 5 | r0 pass 2/5 | episodes solved 2 | queue r0 
+94 reprompt 0 | verifying 1 | 25.5 s/proposal]
+first proposals:   7%|Γûï         | 7/100 [03:13<39:47, 25.67s/ep, cand 6 | r0 pass 2/6 | episodes solved 2 | queue r0 
+93 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:   8%|Γûè         | 8/100 [03:32<36:27, 23.78s/ep, cand 7 | r0 pass 3/7 | episodes solved 3 | queue r0 
+92 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:   9%|Γûë         | 9/100 [03:53<34:24, 22.69s/ep, cand 8 | r0 pass 3/8 | episodes solved 3 | queue r0 
+91 reprompt 0 | verifying 1 | 23.6 s/proposal]
+first proposals:  10%|Γûê         | 10/100 [04:12<32:46, 21.85s/ep, cand 9 | r0 pass 4/9 | episodes solved 4 | queue 
+r0 90 reprompt 0 | verifying 1 | 23.3 s/proposal]
+first proposals:  11%|Γûê         | 11/100 [04:32<31:33, 21.28s/ep, cand 10 | r0 pass 4/10 | episodes solved 4 | queue 
+r0 89 reprompt 0 | verifying 1 | 23.0 s/proposal]
+first proposals:  12%|ΓûêΓûÅ        | 12/100 [04:52<30:35, 20.86s/ep, cand 11 | r0 pass 5/11 | episodes solved 5 | 
+queue r0 88 reprompt 0 | verifying 1 | 22.7 s/proposal]
+first proposals:  13%|ΓûêΓûÄ        | 13/100 [05:12<29:52, 20.61s/ep, cand 12 | r0 pass 5/12 | episodes solved 5 | 
+queue r0 87 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  14%|ΓûêΓûì        | 14/100 [05:32<29:11, 20.36s/ep, cand 13 | r0 pass 6/13 | episodes solved 6 | 
+queue r0 86 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  15%|ΓûêΓûî        | 15/100 [05:51<28:24, 20.06s/ep, cand 14 | r0 pass 6/14 | episodes solved 6 | 
+queue r0 85 reprompt 0 | verifying 1 | 22.1 s/proposal]
+first proposals:  16%|ΓûêΓûî        | 16/100 [06:11<27:57, 19.98s/ep, cand 15 | r0 pass 7/15 | episodes solved 7 | 
+queue r0 84 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  17%|ΓûêΓûï        | 17/100 [06:31<27:32, 19.91s/ep, cand 16 | r0 pass 7/16 | episodes solved 7 | 
+queue r0 83 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  18%|ΓûêΓûè        | 18/100 [06:51<27:09, 19.87s/ep, cand 17 | r0 pass 7/17 | episodes solved 7 | 
+queue r0 82 reprompt 0 | verifying 1 | 21.7 s/proposal]
+first proposals:  19%|ΓûêΓûë        | 19/100 [07:11<26:53, 19.92s/ep, cand 18 | r0 pass 7/18 | episodes solved 7 | 
+queue r0 81 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  20%|ΓûêΓûê        | 20/100 [08:09<41:57, 31.47s/ep, cand 19 | r0 pass 8/19 | episodes solved 8 | 
+queue r0 80 reprompt 0 | verifying 1 | 21.5 s/proposal]
+first proposals:  21%|ΓûêΓûê        | 21/100 [08:29<36:50, 27.98s/ep, cand 20 | r0 pass 8/20 | episodes solved 8 | 
+queue r0 79 reprompt 0 | verifying 1 | 23.3 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 22/100 [08:49<33:13, 25.56s/ep, cand 21 | r0 pass 8/21 | episodes solved 8 | 
+queue r0 78 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 23/100 [09:09<30:41, 23.91s/ep, cand 22 | r0 pass 9/22 | episodes solved 9 | 
+queue r0 77 reprompt 0 | verifying 1 | 23.0 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 24/100 [10:18<47:17, 37.34s/ep, cand 23 | r0 pass 10/23 | episodes solved 10 | 
+queue r0 76 reprompt 0 | verifying 1 | 22.9 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 25/100 [10:38<40:15, 32.21s/ep, cand 24 | r0 pass 10/24 | episodes solved 10 | 
+queue r0 75 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 26/100 [10:58<35:15, 28.58s/ep, cand 25 | r0 pass 10/25 | episodes solved 10 | 
+queue r0 74 reprompt 0 | verifying 1 | 24.5 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 27/100 [11:18<31:39, 26.02s/ep, cand 26 | r0 pass 10/26 | episodes solved 10 | 
+queue r0 73 reprompt 0 | verifying 1 | 24.3 s/proposal]
+first proposals:  28%|ΓûêΓûêΓûè       | 28/100 [11:38<29:00, 24.17s/ep, cand 27 | r0 pass 10/27 | episodes solved 10 | 
+queue r0 72 reprompt 0 | verifying 1 | 24.2 s/proposal]
+first proposals:  29%|ΓûêΓûêΓûë       | 29/100 [11:58<27:04, 22.88s/ep, cand 28 | r0 pass 11/28 | episodes solved 11 | 
+queue r0 71 reprompt 0 | verifying 1 | 24.0 s/proposal]
+first proposals:  30%|ΓûêΓûêΓûê       | 30/100 [12:18<25:43, 22.05s/ep, cand 29 | r0 pass 11/29 | episodes solved 11 | 
+queue r0 70 reprompt 0 | verifying 1 | 23.9 s/proposal]
+first proposals:  31%|ΓûêΓûêΓûê       | 31/100 [12:38<24:33, 21.36s/ep, cand 30 | r0 pass 11/30 | episodes solved 11 | 
+queue r0 69 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  32%|ΓûêΓûêΓûêΓûÅ      | 32/100 [12:58<23:41, 20.91s/ep, cand 31 | r0 pass 11/31 | episodes solved 11 
+| queue r0 68 reprompt 0 | verifying 1 | 23.7 s/proposal]
+first proposals:  33%|ΓûêΓûêΓûêΓûÄ      | 33/100 [13:17<22:58, 20.58s/ep, cand 32 | r0 pass 11/32 | episodes solved 11 
+| queue r0 67 reprompt 0 | verifying 1 | 23.5 s/proposal]
+first proposals:  34%|ΓûêΓûêΓûêΓûì      | 34/100 [13:57<29:02, 26.41s/ep, cand 33 | r0 pass 12/33 | episodes solved 12 
+| queue r0 66 reprompt 0 | verifying 1 | 23.4 s/proposal]
+first proposals:  36%|ΓûêΓûêΓûêΓûî      | 36/100 [14:17<20:05, 18.83s/ep, cand 35 | r0 pass 14/35 | episodes solved 14 
+| queue r0 64 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  37%|ΓûêΓûêΓûêΓûï      | 37/100 [14:37<20:01, 19.08s/ep, cand 36 | r0 pass 15/36 | episodes solved 15 
+| queue r0 63 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  38%|ΓûêΓûêΓûêΓûè      | 38/100 [14:57<19:54, 19.26s/ep, cand 37 | r0 pass 16/37 | episodes solved 16 
+| queue r0 62 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  39%|ΓûêΓûêΓûêΓûë      | 39/100 [15:17<19:43, 19.40s/ep, cand 38 | r0 pass 17/38 | episodes solved 17 
+| queue r0 61 reprompt 0 | verifying 1 | 23.0 s/proposal]
+first proposals:  40%|ΓûêΓûêΓûêΓûê      | 40/100 [15:37<19:32, 19.55s/ep, cand 39 | r0 pass 18/39 | episodes solved 18 
+| queue r0 60 reprompt 0 | verifying 1 | 22.9 s/proposal]
+first proposals:  41%|ΓûêΓûêΓûêΓûê      | 41/100 [15:57<19:19, 19.65s/ep, cand 40 | r0 pass 18/40 | episodes solved 18 
+| queue r0 59 reprompt 0 | verifying 1 | 22.8 s/proposal]
+first proposals:  42%|ΓûêΓûêΓûêΓûêΓûÅ     | 42/100 [16:16<18:59, 19.64s/ep, cand 41 | r0 pass 18/41 | episodes solved 
+18 | queue r0 58 reprompt 0 | verifying 1 | 22.7 s/proposal]
+first proposals:  43%|ΓûêΓûêΓûêΓûêΓûÄ     | 43/100 [16:36<18:48, 19.79s/ep, cand 42 | r0 pass 18/42 | episodes solved 
+18 | queue r0 57 reprompt 0 | verifying 1 | 22.7 s/proposal]
+first proposals:  44%|ΓûêΓûêΓûêΓûêΓûì     | 44/100 [16:56<18:30, 19.83s/ep, cand 43 | r0 pass 18/43 | episodes solved 
+18 | queue r0 56 reprompt 0 | verifying 1 | 22.6 s/proposal]
+first proposals:  45%|ΓûêΓûêΓûêΓûêΓûî     | 45/100 [17:16<18:13, 19.88s/ep, cand 44 | r0 pass 18/44 | episodes solved 
+18 | queue r0 55 reprompt 0 | verifying 1 | 22.6 s/proposal]
+first proposals:  46%|ΓûêΓûêΓûêΓûêΓûî     | 46/100 [17:36<17:57, 19.95s/ep, cand 45 | r0 pass 19/45 | episodes solved 
+19 | queue r0 54 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  47%|ΓûêΓûêΓûêΓûêΓûï     | 47/100 [17:56<17:33, 19.88s/ep, cand 46 | r0 pass 19/46 | episodes solved 
+19 | queue r0 53 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  48%|ΓûêΓûêΓûêΓûêΓûè     | 48/100 [18:36<22:20, 25.77s/ep, cand 47 | r0 pass 19/47 | episodes solved 
+19 | queue r0 52 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  49%|ΓûêΓûêΓûêΓûêΓûë     | 49/100 [18:55<20:16, 23.86s/ep, cand 48 | r0 pass 19/48 | episodes solved 
+19 | queue r0 50 reprompt 0 | verifying 2 | 22.3 s/proposal]
+first proposals:  51%|ΓûêΓûêΓûêΓûêΓûê     | 51/100 [19:15<14:17, 17.49s/ep, cand 50 | r0 pass 19/50 | episodes solved 
+19 | queue r0 49 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  52%|ΓûêΓûêΓûêΓûêΓûêΓûÅ    | 52/100 [19:35<14:26, 18.06s/ep, cand 51 | r0 pass 19/51 | episodes 
+solved 19 | queue r0 48 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 53/100 [19:55<14:28, 18.48s/ep, cand 52 | r0 pass 19/52 | episodes 
+solved 19 | queue r0 47 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  54%|ΓûêΓûêΓûêΓûêΓûêΓûì    | 54/100 [20:14<14:24, 18.80s/ep, cand 53 | r0 pass 19/53 | episodes 
+solved 19 | queue r0 46 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  55%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 55/100 [20:34<14:20, 19.13s/ep, cand 54 | r0 pass 20/54 | episodes 
+solved 20 | queue r0 45 reprompt 0 | verifying 1 | 22.2 s/proposal]
+first proposals:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 56/100 [20:54<14:12, 19.38s/ep, cand 55 | r0 pass 20/55 | episodes 
+solved 20 | queue r0 44 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  57%|ΓûêΓûêΓûêΓûêΓûêΓûï    | 57/100 [21:14<13:57, 19.48s/ep, cand 56 | r0 pass 21/56 | episodes 
+solved 21 | queue r0 43 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 58/100 [21:34<13:45, 19.66s/ep, cand 57 | r0 pass 21/57 | episodes 
+solved 21 | queue r0 42 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  59%|ΓûêΓûêΓûêΓûêΓûêΓûë    | 59/100 [21:54<13:27, 19.70s/ep, cand 58 | r0 pass 22/58 | episodes 
+solved 22 | queue r0 41 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  60%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 60/100 [22:14<13:08, 19.71s/ep, cand 59 | r0 pass 23/59 | episodes 
+solved 23 | queue r0 40 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 61/100 [22:33<12:50, 19.75s/ep, cand 60 | r0 pass 23/60 | episodes 
+solved 23 | queue r0 39 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 62/100 [22:53<12:30, 19.74s/ep, cand 61 | r0 pass 23/61 | episodes 
+solved 23 | queue r0 38 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  63%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ   | 63/100 [23:13<12:11, 19.77s/ep, cand 62 | r0 pass 23/62 | episodes 
+solved 23 | queue r0 37 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  64%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 64/100 [23:33<11:51, 19.77s/ep, cand 63 | r0 pass 24/63 | episodes 
+solved 24 | queue r0 36 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  65%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûî   | 65/100 [23:53<11:32, 19.77s/ep, cand 64 | r0 pass 24/64 | episodes 
+solved 24 | queue r0 35 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  66%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûî   | 66/100 [24:12<11:13, 19.81s/ep, cand 65 | r0 pass 24/65 | episodes 
+solved 24 | queue r0 34 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 67/100 [24:33<10:56, 19.89s/ep, cand 66 | r0 pass 24/66 | episodes 
+solved 24 | queue r0 33 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  68%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûè   | 68/100 [24:53<10:39, 19.97s/ep, cand 67 | r0 pass 25/67 | episodes 
+solved 25 | queue r0 32 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 69/100 [25:12<10:15, 19.87s/ep, cand 68 | r0 pass 26/68 | episodes 
+solved 26 | queue r0 31 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  70%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûê   | 70/100 [25:32<09:57, 19.92s/ep, cand 69 | r0 pass 26/69 | episodes 
+solved 26 | queue r0 30 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  71%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûê   | 71/100 [25:52<09:37, 19.90s/ep, cand 70 | r0 pass 27/70 | episodes 
+solved 27 | queue r0 29 reprompt 0 | verifying 1 | 20.8 s/proposal]
+first proposals:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 72/100 [26:45<13:50, 29.67s/ep, cand 71 | r0 pass 28/71 | episodes 
+solved 28 | queue r0 28 reprompt 0 | verifying 1 | 20.8 s/proposal]
+first proposals:  73%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ  | 73/100 [27:05<12:02, 26.78s/ep, cand 72 | r0 pass 28/72 | episodes 
+solved 28 | queue r0 27 reprompt 0 | verifying 1 | 21.5 s/proposal]
+first proposals:  74%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì  | 74/100 [27:25<10:43, 24.76s/ep, cand 73 | r0 pass 28/73 | episodes 
+solved 28 | queue r0 26 reprompt 0 | verifying 1 | 21.5 s/proposal]
+first proposals:  75%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 75/100 [27:44<09:40, 23.20s/ep, cand 74 | r0 pass 28/74 | episodes 
+solved 28 | queue r0 25 reprompt 0 | verifying 1 | 20.5 s/proposal]
+first proposals:  76%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 76/100 [28:04<08:49, 22.08s/ep, cand 75 | r0 pass 28/75 | episodes 
+solved 28 | queue r0 24 reprompt 0 | verifying 1 | 20.5 s/proposal]
+first proposals:  77%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï  | 77/100 [28:24<08:12, 21.40s/ep, cand 76 | r0 pass 29/76 | episodes 
+solved 29 | queue r0 23 reprompt 0 | verifying 1 | 20.5 s/proposal]
+first proposals:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 78/100 [29:19<11:35, 31.63s/ep, cand 77 | r0 pass 30/77 | episodes 
+solved 30 | queue r0 22 reprompt 0 | verifying 1 | 20.5 s/proposal]
+first proposals:  79%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 79/100 [29:39<09:50, 28.10s/ep, cand 78 | r0 pass 31/78 | episodes 
+solved 31 | queue r0 21 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  80%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê  | 80/100 [30:19<10:32, 31.62s/ep, cand 79 | r0 pass 31/79 | episodes 
+solved 31 | queue r0 20 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  82%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ | 82/100 [30:39<06:29, 21.66s/ep, cand 81 | r0 pass 32/81 | episodes 
+solved 32 | queue r0 18 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 83/100 [30:59<06:01, 21.29s/ep, cand 82 | r0 pass 32/82 | episodes 
+solved 32 | queue r0 17 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  84%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì | 84/100 [31:19<05:34, 20.90s/ep, cand 83 | r0 pass 32/83 | episodes 
+solved 32 | queue r0 16 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  85%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 85/100 [31:39<05:09, 20.60s/ep, cand 84 | r0 pass 32/84 | episodes 
+solved 32 | queue r0 15 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 86/100 [31:59<04:46, 20.50s/ep, cand 85 | r0 pass 32/85 | episodes 
+solved 32 | queue r0 14 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 87/100 [32:19<04:25, 20.45s/ep, cand 86 | r0 pass 33/86 | episodes 
+solved 33 | queue r0 13 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  88%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè | 88/100 [32:39<04:03, 20.31s/ep, cand 87 | r0 pass 33/87 | episodes 
+solved 33 | queue r0 12 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  89%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë | 89/100 [33:19<04:46, 26.01s/ep, cand 88 | r0 pass 33/88 | episodes 
+solved 33 | queue r0 11 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  90%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê | 90/100 [33:39<04:02, 24.23s/ep, cand 89 | r0 pass 34/89 | episodes 
+solved 34 | queue r0 9 reprompt 0 | verifying 2 | 21.2 s/proposal] 
+first proposals:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 92/100 [33:59<02:21, 17.74s/ep, cand 91 | r0 pass 34/91 | 
+episodes solved 34 | queue r0 8 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  93%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ| 93/100 [34:16<02:02, 17.47s/ep, cand 92 | r0 pass 35/92 | 
+episodes solved 35 | queue r0 7 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  94%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 94/100 [34:56<02:20, 23.35s/ep, cand 93 | r0 pass 35/93 | 
+episodes solved 35 | queue r0 6 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  96%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî| 96/100 [35:16<01:10, 17.65s/ep, cand 95 | r0 pass 36/95 | 
+episodes solved 36 | queue r0 4 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 97/100 [35:36<00:54, 18.26s/ep, cand 96 | r0 pass 36/96 | 
+episodes solved 36 | queue r0 3 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  98%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè| 98/100 [35:56<00:37, 18.68s/ep, cand 97 | r0 pass 37/97 | 
+episodes solved 37 | queue r0 2 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals:  99%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë| 99/100 [36:48<00:27, 27.49s/ep, cand 98 | r0 pass 37/98 | 
+episodes solved 37 | queue r0 1 reprompt 0 | verifying 1 | 21.2 s/proposal]
+first proposals: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 100/100 [36:53<00:00, 21.36s/ep, cand 99 | r0 pass 38/99 | 
+episodes solved 38 | queue r0 0 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 100/100 [36:54<00:00, 22.15s/ep, cand 100 | r0 pass 38/100 | 
+episodes solved 38 | queue r0 0 reprompt 0 | verifying 0 | 21.8 s/proposal]
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_collect\\20261007_090309_smollm2-17b-instruct_smollm_pilot100", "generated_this_session": 100, "stopped_by_time": false, "remaining_in_queue": 0, "hours": 0.62}
