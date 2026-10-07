@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 08:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `5bb47bc Dashboard: automatic status update`._
+_Generated 2026-10-07 10:27 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `a38d156 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -9,25 +9,25 @@ _Generated 2026-10-07 08:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Llama-3.2-3B closed loop (resumed) | ✅ done |
 | FSM Qwen2.5-7B: pilot inference | ✅ done |
 | FSM Qwen2.5-7B: pilot grounding | ✅ done |
-| FSM Qwen2.5-7B: cert2 inference | ⏳ running |
-| FSM Qwen2.5-7B: cert2 grounding | 🕓 waiting |
-| FSM Qwen2.5-7B: freeze + cert evaluation | 🕓 waiting |
-| CSTR SmolLM2-1.7B: 100-episode pilot (gate) | 🕓 waiting |
-| CSTR SmolLM2-1.7B: full run + certification (if gate met) | 🕓 waiting |
+| FSM Qwen2.5-7B: cert2 inference | ✅ done |
+| FSM Qwen2.5-7B: cert2 grounding | ✅ done |
+| FSM Qwen2.5-7B: freeze + cert evaluation | ✅ done |
+| CSTR SmolLM2-1.7B: 100-episode pilot (gate) | ✅ done (pass rate among valid, format-failure rate = 0.380 0.000) |
+| CSTR SmolLM2-1.7B: full run + certification (if gate met) | ⏳ running |
 | Closed loop, internals only: Qwen2.5-3B | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-1.5B | 🕓 waiting |
 
 <details><summary>Last 8 queue-log lines · 1 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
-2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79
-2026-10-07T05:25:24 [llama resume] END   resume closed-loop llama-32-3b (exit 0)
-2026-10-07T05:25:24 [model set] START fsm_qwen7_pilot
-2026-10-07T06:46:30 [model set] END   fsm_qwen7_pilot (exit 0)
-2026-10-07T06:46:30 [model set] START fsm_qwen7_pilot_grounding
-2026-10-07T07:13:05 [model set] END   fsm_qwen7_pilot_grounding (exit 0)
-2026-10-07T07:13:05 [model set] START fsm_qwen7_cert2
+2026-10-07T09:02:11 [model set] START fsm_qwen7_freeze
+2026-10-07T09:02:42 [model set] END   fsm_qwen7_freeze (exit 0)
+2026-10-07T09:02:42 [model set] START fsm_qwen7_cert2_eval
+2026-10-07T09:02:58 [model set] END   fsm_qwen7_cert2_eval (exit 0)
+2026-10-07T09:02:58 [model set] START cstr_smollm_pilot
+2026-10-07T09:40:12 [model set] END   cstr_smollm_pilot (exit 0)
+2026-10-07T09:40:12 [model set] SmolLM2 CSTR pilot: pass rate among valid, format-failure rate = 0.380 0.000
+2026-10-07T09:40:12 [model set] START cstr_smollm_collect
 ```
 
 </details>
