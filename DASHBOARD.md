@@ -1,15 +1,15 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 06:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `7320320 Dashboard: automatic status update`._
+_Generated 2026-10-07 08:26 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `5bb47bc Dashboard: automatic status update`._
 
 ## Campaign status
 
 | Step | Status |
 |---|---|
 | Llama-3.2-3B closed loop (resumed) | ✅ done |
-| FSM Qwen2.5-7B: pilot inference | ⏳ running |
-| FSM Qwen2.5-7B: pilot grounding | 🕓 waiting |
-| FSM Qwen2.5-7B: cert2 inference | 🕓 waiting |
+| FSM Qwen2.5-7B: pilot inference | ✅ done |
+| FSM Qwen2.5-7B: pilot grounding | ✅ done |
+| FSM Qwen2.5-7B: cert2 inference | ⏳ running |
 | FSM Qwen2.5-7B: cert2 grounding | 🕓 waiting |
 | FSM Qwen2.5-7B: freeze + cert evaluation | 🕓 waiting |
 | CSTR SmolLM2-1.7B: 100-episode pilot (gate) | 🕓 waiting |
@@ -20,14 +20,14 @@ _Generated 2026-10-07 06:26 by `scripts/48_dashboard.py` (git pre-commit hook). 
 <details><summary>Last 8 queue-log lines · 1 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-04T15:19:05 [closed-loop models] START closed-loop llama-32-3b
-2026-10-04T22:52:36 [closed-loop models] END   closed-loop llama-32-3b (exit 1)
-2026-10-04T22:52:36 [closed-loop models] START closed-loop qwen25-7b
-2026-10-05T11:06:55 [closed-loop models] END   closed-loop qwen25-7b (exit 0)
 2026-10-05T11:06:55 [closed-loop models] CLOSED LOOP MODELS DONE
 2026-10-05T11:11:14 [llama resume] START resume closed-loop llama-32-3b (20261004_151943_llama-32-3b) after CUDA OOM at episode 79
 2026-10-07T05:25:24 [llama resume] END   resume closed-loop llama-32-3b (exit 0)
 2026-10-07T05:25:24 [model set] START fsm_qwen7_pilot
+2026-10-07T06:46:30 [model set] END   fsm_qwen7_pilot (exit 0)
+2026-10-07T06:46:30 [model set] START fsm_qwen7_pilot_grounding
+2026-10-07T07:13:05 [model set] END   fsm_qwen7_pilot_grounding (exit 0)
+2026-10-07T07:13:05 [model set] START fsm_qwen7_cert2
 ```
 
 </details>
