@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-07 16:27 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `09007ba Dashboard: automatic status update`._
+_Generated 2026-10-07 18:27 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b6722c0 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -17,17 +17,17 @@ _Generated 2026-10-07 16:27 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Closed loop, internals only: Qwen2.5-3B | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-1.5B | 🕓 waiting |
 
-<details><summary>Last 8 queue-log lines · 1 failure/skip line(s) in the log</summary>
+<details><summary>Last 8 queue-log lines · 2 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-07T09:02:11 [model set] START fsm_qwen7_freeze
-2026-10-07T09:02:42 [model set] END   fsm_qwen7_freeze (exit 0)
 2026-10-07T09:02:42 [model set] START fsm_qwen7_cert2_eval
 2026-10-07T09:02:58 [model set] END   fsm_qwen7_cert2_eval (exit 0)
 2026-10-07T09:02:58 [model set] START cstr_smollm_pilot
 2026-10-07T09:40:12 [model set] END   cstr_smollm_pilot (exit 0)
 2026-10-07T09:40:12 [model set] SmolLM2 CSTR pilot: pass rate among valid, format-failure rate = 0.380 0.000
 2026-10-07T09:40:12 [model set] START cstr_smollm_collect
+2026-10-07T17:46:14 [model set] END   cstr_smollm_collect (exit 1)
+2026-10-07T17:46:14 [model set] START cstr_smollm_grounding
 ```
 
 </details>
