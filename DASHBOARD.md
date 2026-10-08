@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-08 08:42 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `a5cab21 Dashboard: automatic status update`._
+_Generated 2026-10-08 08:42 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e50c1ea Add internals-only closed loop for Qwen2.5-3B and Qwen2.5-1.5B; cross-model closed-loop summary`._
 
 ## Campaign status
 

@@ -510,3 +510,11 @@ first proposals:  27%|ΓûêΓûêΓûï       | 1342/5000 [1:53:51<22:23:51, 22
 episodes solved 469 | queue r0 3658 reprompt 0 | verifying 1 | 22.3 s/proposal]
 first proposals:  27%|ΓûêΓûêΓûï       | 1343/5000 [1:54:10<21:35:26, 21.25s/ep, cand 1334 | r0 pass 469/1331 | 
 episodes solved 469 | queue r0 3657 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1344/5000 [1:54:50<26:57:04, 26.54s/ep, cand 1335 | r0 pass 470/1332 | 
+episodes solved 470 | queue r0 3656 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1345/5000 [1:57:43<69:52:07, 68.82s/ep, cand 1336 | r0 pass 470/1333 | 
+episodes solved 470 | queue r0 3654 reprompt 0 | verifying 2 | 22.4 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1348/5000 [1:58:41<41:59:49, 41.40s/ep, cand 1339 | r0 pass 472/1335 | 
+episodes solved 472 | queue r0 3653 reprompt 0 | verifying 0 | 25.5 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1349/5000 [1:59:01<37:30:09, 36.98s/ep, cand 1340 | r0 pass 472/1336 | 
+episodes solved 472 | queue r0 3650 reprompt 0 | verifying 2 | 25.5 s/proposal]
