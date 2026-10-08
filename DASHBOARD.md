@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-08 08:42 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e50c1ea Add internals-only closed loop for Qwen2.5-3B and Qwen2.5-1.5B; cross-model closed-loop summary`._
+_Generated 2026-10-08 09:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e3cf6c8 Add provenance of the aborted Llama run, the GPU-memory smoke test and the SmolLM2 CSTR pilot`._
 
 ## Campaign status
 
