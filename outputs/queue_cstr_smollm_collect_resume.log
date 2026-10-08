@@ -1,0 +1,512 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\smollm_resume_queue.ps1:12 char:5
++     & $py @pyArgs 2>&1 | Out-File -Append -Encoding utf8 "outputs\que ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/218 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/218 [00:00<00:34,  6.23it/s]
+Loading weights:   6%|Γûï         | 14/218 [00:00<00:03, 59.83it/s]
+Loading weights:  13%|ΓûêΓûÄ        | 28/218 [00:00<00:02, 89.69it/s]
+Loading weights:  18%|ΓûêΓûè        | 40/218 [00:00<00:01, 93.92it/s]
+Loading weights:  23%|ΓûêΓûêΓûÄ       | 50/218 [00:00<00:01, 95.48it/s]
+Loading weights:  30%|ΓûêΓûêΓûê       | 66/218 [00:00<00:01, 110.49it/s]
+Loading weights:  36%|ΓûêΓûêΓûêΓûî      | 78/218 [00:00<00:01, 105.55it/s]
+Loading weights:  42%|ΓûêΓûêΓûêΓûêΓûÅ     | 91/218 [00:00<00:01, 111.43it/s]
+Loading weights:  47%|ΓûêΓûêΓûêΓûêΓûï     | 103/218 [00:01<00:01, 104.96it/s]
+Loading weights:  52%|ΓûêΓûêΓûêΓûêΓûêΓûÅ    | 114/218 [00:01<00:00, 104.66it/s]
+Loading weights:  58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 126/218 [00:01<00:00, 108.20it/s]
+Loading weights:  63%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ   | 138/218 [00:01<00:00, 108.82it/s]
+Loading weights:  68%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûè   | 149/218 [00:01<00:00, 102.46it/s]
+Loading weights:  74%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì  | 162/218 [00:01<00:00, 108.90it/s]
+Loading weights:  80%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 174/218 [00:01<00:00, 100.55it/s]
+Loading weights:  85%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì | 185/218 [00:01<00:00, 88.85it/s] 
+Loading weights:  90%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë | 196/218 [00:02<00:00, 93.06it/s]
+Loading weights:  95%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 207/218 [00:02<00:00, 97.06it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 218/218 [00:02<00:00, 98.47it/s]
+
+first proposals:  21%|ΓûêΓûê        | 1060/5000 [00:00<?, ?ep/s]
+first proposals:  21%|ΓûêΓûê        | 1061/5000 [00:55<61:01:00, 55.77s/ep]
+first proposals:  21%|ΓûêΓûê        | 1062/5000 [01:14<37:23:39, 34.18s/ep, cand 1053 | r0 pass 372/1053 | episodes 
+solved 372 | queue r0 3937 reprompt 0 | verifying 2 | 18.6 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1063/5000 [01:33<29:40:08, 27.13s/ep, cand 1054 | r0 pass 372/1054 | episodes 
+solved 372 | queue r0 3936 reprompt 0 | verifying 2 | 18.7 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1065/5000 [02:10<24:25:36, 22.35s/ep, cand 1056 | r0 pass 372/1056 | episodes 
+solved 372 | queue r0 3935 reprompt 0 | verifying 1 | 18.7 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1067/5000 [02:30<18:09:14, 16.62s/ep, cand 1058 | r0 pass 373/1058 | episodes 
+solved 373 | queue r0 3933 reprompt 0 | verifying 1 | 18.7 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1068/5000 [02:48<18:43:37, 17.15s/ep, cand 1059 | r0 pass 373/1059 | episodes 
+solved 373 | queue r0 3932 reprompt 0 | verifying 1 | 18.7 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1069/5000 [03:39<28:09:35, 25.79s/ep, cand 1060 | r0 pass 374/1060 | episodes 
+solved 374 | queue r0 3931 reprompt 0 | verifying 1 | 18.7 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1070/5000 [03:58<26:04:49, 23.89s/ep, cand 1061 | r0 pass 374/1061 | episodes 
+solved 374 | queue r0 3930 reprompt 0 | verifying 1 | 21.9 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1071/5000 [04:16<24:27:48, 22.41s/ep, cand 1062 | r0 pass 374/1062 | episodes 
+solved 374 | queue r0 3929 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1072/5000 [07:07<70:26:21, 64.56s/ep, cand 1063 | r0 pass 374/1063 | episodes 
+solved 374 | queue r0 3928 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  21%|ΓûêΓûêΓûÅ       | 1074/5000 [07:45<48:08:17, 44.14s/ep, cand 1065 | r0 pass 374/1064 | episodes 
+solved 374 | queue r0 3927 reprompt 0 | verifying 0 | 32.9 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1075/5000 [08:04<41:28:56, 38.05s/ep, cand 1066 | r0 pass 374/1065 | episodes 
+solved 374 | queue r0 3925 reprompt 0 | verifying 1 | 31.0 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1076/5000 [08:42<41:20:50, 37.93s/ep, cand 1067 | r0 pass 374/1066 | episodes 
+solved 374 | queue r0 3924 reprompt 0 | verifying 1 | 30.3 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1078/5000 [09:00<27:55:09, 25.63s/ep, cand 1069 | r0 pass 374/1068 | episodes 
+solved 374 | queue r0 3922 reprompt 0 | verifying 1 | 29.0 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1079/5000 [09:18<26:09:48, 24.02s/ep, cand 1070 | r0 pass 375/1069 | episodes 
+solved 375 | queue r0 3921 reprompt 0 | verifying 1 | 28.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1080/5000 [09:37<24:41:17, 22.67s/ep, cand 1071 | r0 pass 376/1070 | episodes 
+solved 376 | queue r0 3920 reprompt 0 | verifying 1 | 27.9 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1081/5000 [09:55<23:30:06, 21.59s/ep, cand 1072 | r0 pass 377/1071 | episodes 
+solved 377 | queue r0 3919 reprompt 0 | verifying 1 | 27.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1082/5000 [10:14<22:41:11, 20.85s/ep, cand 1073 | r0 pass 377/1072 | episodes 
+solved 377 | queue r0 3918 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1083/5000 [10:52<27:41:49, 25.46s/ep, cand 1074 | r0 pass 377/1073 | episodes 
+solved 377 | queue r0 3917 reprompt 0 | verifying 1 | 26.7 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1085/5000 [11:10<19:51:58, 18.27s/ep, cand 1076 | r0 pass 378/1075 | episodes 
+solved 378 | queue r0 3915 reprompt 0 | verifying 1 | 26.0 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1086/5000 [12:08<30:10:06, 27.75s/ep, cand 1077 | r0 pass 379/1076 | episodes 
+solved 379 | queue r0 3914 reprompt 0 | verifying 1 | 25.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1087/5000 [12:27<27:41:59, 25.48s/ep, cand 1078 | r0 pass 379/1077 | episodes 
+solved 379 | queue r0 3913 reprompt 0 | verifying 1 | 26.9 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1088/5000 [12:45<25:43:14, 23.67s/ep, cand 1079 | r0 pass 379/1078 | episodes 
+solved 379 | queue r0 3912 reprompt 0 | verifying 1 | 26.6 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1089/5000 [13:54<39:17:07, 36.16s/ep, cand 1080 | r0 pass 379/1079 | episodes 
+solved 379 | queue r0 3911 reprompt 0 | verifying 1 | 26.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1090/5000 [14:13<33:52:36, 31.19s/ep, cand 1081 | r0 pass 379/1080 | episodes 
+solved 379 | queue r0 3910 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1091/5000 [14:31<29:52:15, 27.51s/ep, cand 1082 | r0 pass 379/1081 | episodes 
+solved 379 | queue r0 3909 reprompt 0 | verifying 1 | 27.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1092/5000 [15:09<33:10:11, 30.56s/ep, cand 1083 | r0 pass 380/1082 | episodes 
+solved 380 | queue r0 3908 reprompt 0 | verifying 1 | 27.2 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1094/5000 [16:00<30:43:58, 28.33s/ep, cand 1085 | r0 pass 380/1084 | episodes 
+solved 380 | queue r0 3906 reprompt 0 | verifying 1 | 26.7 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1095/5000 [16:19<28:11:37, 25.99s/ep, cand 1086 | r0 pass 380/1085 | episodes 
+solved 380 | queue r0 3905 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1096/5000 [16:38<26:05:29, 24.06s/ep, cand 1087 | r0 pass 380/1086 | episodes 
+solved 380 | queue r0 3904 reprompt 0 | verifying 1 | 27.2 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1097/5000 [16:57<24:31:34, 22.62s/ep, cand 1088 | r0 pass 381/1087 | episodes 
+solved 381 | queue r0 3903 reprompt 0 | verifying 1 | 26.9 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1098/5000 [17:15<23:19:57, 21.53s/ep, cand 1089 | r0 pass 381/1088 | episodes 
+solved 381 | queue r0 3902 reprompt 0 | verifying 1 | 26.7 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1099/5000 [17:34<22:21:53, 20.64s/ep, cand 1090 | r0 pass 381/1089 | episodes 
+solved 381 | queue r0 3901 reprompt 0 | verifying 1 | 26.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1100/5000 [17:53<21:49:36, 20.15s/ep, cand 1091 | r0 pass 381/1090 | episodes 
+solved 381 | queue r0 3900 reprompt 0 | verifying 1 | 26.3 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1101/5000 [18:11<21:24:02, 19.76s/ep, cand 1092 | r0 pass 382/1091 | episodes 
+solved 382 | queue r0 3899 reprompt 0 | verifying 1 | 26.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1102/5000 [19:03<31:26:57, 29.04s/ep, cand 1093 | r0 pass 383/1092 | episodes 
+solved 383 | queue r0 3898 reprompt 0 | verifying 1 | 26.0 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1103/5000 [19:22<28:11:47, 26.05s/ep, cand 1094 | r0 pass 384/1093 | episodes 
+solved 384 | queue r0 3897 reprompt 0 | verifying 1 | 26.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1104/5000 [20:17<37:45:06, 34.88s/ep, cand 1095 | r0 pass 384/1094 | episodes 
+solved 384 | queue r0 3896 reprompt 0 | verifying 1 | 26.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1105/5000 [20:36<32:27:09, 29.99s/ep, cand 1096 | r0 pass 384/1095 | episodes 
+solved 384 | queue r0 3895 reprompt 0 | verifying 1 | 27.0 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1106/5000 [20:55<28:54:04, 26.72s/ep, cand 1097 | r0 pass 384/1096 | episodes 
+solved 384 | queue r0 3894 reprompt 0 | verifying 1 | 26.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1107/5000 [21:14<26:16:58, 24.30s/ep, cand 1098 | r0 pass 385/1097 | episodes 
+solved 385 | queue r0 3893 reprompt 0 | verifying 1 | 26.7 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1108/5000 [22:16<38:46:15, 35.86s/ep, cand 1099 | r0 pass 385/1098 | episodes 
+solved 385 | queue r0 3892 reprompt 0 | verifying 1 | 26.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1109/5000 [22:35<33:08:39, 30.67s/ep, cand 1100 | r0 pass 386/1099 | episodes 
+solved 386 | queue r0 3891 reprompt 0 | verifying 1 | 27.2 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1110/5000 [22:54<29:18:37, 27.13s/ep, cand 1101 | r0 pass 386/1100 | episodes 
+solved 386 | queue r0 3890 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1111/5000 [23:12<26:32:39, 24.57s/ep, cand 1102 | r0 pass 386/1101 | episodes 
+solved 386 | queue r0 3889 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1112/5000 [23:50<30:44:22, 28.46s/ep, cand 1103 | r0 pass 387/1102 | episodes 
+solved 387 | queue r0 3888 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1114/5000 [24:27<25:48:25, 23.91s/ep, cand 1105 | r0 pass 387/1104 | episodes 
+solved 387 | queue r0 3886 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1115/5000 [24:46<24:27:36, 22.67s/ep, cand 1106 | r0 pass 387/1105 | episodes 
+solved 387 | queue r0 3885 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1116/5000 [25:05<23:23:24, 21.68s/ep, cand 1107 | r0 pass 387/1106 | episodes 
+solved 387 | queue r0 3884 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1117/5000 [25:24<22:35:20, 20.94s/ep, cand 1108 | r0 pass 387/1107 | episodes 
+solved 387 | queue r0 3883 reprompt 0 | verifying 1 | 27.5 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1118/5000 [25:43<21:52:56, 20.29s/ep, cand 1109 | r0 pass 387/1108 | episodes 
+solved 387 | queue r0 3882 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1119/5000 [26:01<21:21:36, 19.81s/ep, cand 1110 | r0 pass 387/1109 | episodes 
+solved 387 | queue r0 3881 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1120/5000 [26:20<21:03:27, 19.54s/ep, cand 1111 | r0 pass 387/1110 | episodes 
+solved 387 | queue r0 3880 reprompt 0 | verifying 1 | 26.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1121/5000 [26:39<20:47:37, 19.30s/ep, cand 1112 | r0 pass 387/1111 | episodes 
+solved 387 | queue r0 3879 reprompt 0 | verifying 1 | 26.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1122/5000 [26:58<20:41:12, 19.20s/ep, cand 1113 | r0 pass 388/1112 | episodes 
+solved 388 | queue r0 3878 reprompt 0 | verifying 1 | 26.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1123/5000 [27:16<20:30:06, 19.04s/ep, cand 1114 | r0 pass 389/1113 | episodes 
+solved 389 | queue r0 3877 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÅ       | 1124/5000 [27:35<20:30:11, 19.04s/ep, cand 1115 | r0 pass 390/1114 | episodes 
+solved 390 | queue r0 3876 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  22%|ΓûêΓûêΓûÄ       | 1125/5000 [27:54<20:24:10, 18.96s/ep, cand 1116 | r0 pass 391/1115 | episodes 
+solved 391 | queue r0 3875 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1126/5000 [28:13<20:20:17, 18.90s/ep, cand 1117 | r0 pass 391/1116 | episodes 
+solved 391 | queue r0 3874 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1127/5000 [28:32<20:16:04, 18.84s/ep, cand 1118 | r0 pass 391/1117 | episodes 
+solved 391 | queue r0 3873 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1128/5000 [28:50<20:12:00, 18.78s/ep, cand 1119 | r0 pass 391/1118 | episodes 
+solved 391 | queue r0 3872 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1129/5000 [29:09<20:10:28, 18.76s/ep, cand 1120 | r0 pass 391/1119 | episodes 
+solved 391 | queue r0 3871 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1130/5000 [29:28<20:15:02, 18.84s/ep, cand 1121 | r0 pass 392/1120 | episodes 
+solved 392 | queue r0 3870 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1131/5000 [30:06<26:22:46, 24.55s/ep, cand 1122 | r0 pass 392/1121 | episodes 
+solved 392 | queue r0 3869 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1132/5000 [30:24<24:24:59, 22.72s/ep, cand 1123 | r0 pass 392/1122 | episodes 
+solved 392 | queue r0 3867 reprompt 0 | verifying 2 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1134/5000 [30:43<17:48:32, 16.58s/ep, cand 1125 | r0 pass 392/1124 | episodes 
+solved 392 | queue r0 3866 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1135/5000 [31:02<18:21:37, 17.10s/ep, cand 1126 | r0 pass 392/1125 | episodes 
+solved 392 | queue r0 3865 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1136/5000 [31:39<23:57:50, 22.33s/ep, cand 1127 | r0 pass 393/1126 | episodes 
+solved 393 | queue r0 3864 reprompt 0 | verifying 1 | 23.8 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1137/5000 [31:58<22:54:59, 21.36s/ep, cand 1128 | r0 pass 393/1127 | episodes 
+solved 393 | queue r0 3862 reprompt 0 | verifying 2 | 23.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1138/5000 [32:16<22:06:51, 20.61s/ep, cand 1129 | r0 pass 394/1128 | episodes 
+solved 394 | queue r0 3861 reprompt 0 | verifying 2 | 23.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1140/5000 [32:35<16:42:39, 15.59s/ep, cand 1131 | r0 pass 395/1130 | episodes 
+solved 395 | queue r0 3860 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1141/5000 [32:54<17:34:45, 16.40s/ep, cand 1132 | r0 pass 395/1131 | episodes 
+solved 395 | queue r0 3859 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1142/5000 [33:32<23:30:17, 21.93s/ep, cand 1133 | r0 pass 395/1132 | episodes 
+solved 395 | queue r0 3858 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1144/5000 [33:51<17:48:09, 16.62s/ep, cand 1135 | r0 pass 397/1134 | episodes 
+solved 397 | queue r0 3856 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1145/5000 [34:09<18:17:38, 17.08s/ep, cand 1136 | r0 pass 398/1135 | episodes 
+solved 398 | queue r0 3855 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1146/5000 [34:28<18:47:53, 17.56s/ep, cand 1137 | r0 pass 398/1136 | episodes 
+solved 398 | queue r0 3854 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1147/5000 [35:21<28:43:00, 26.83s/ep, cand 1138 | r0 pass 398/1137 | episodes 
+solved 398 | queue r0 3853 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1148/5000 [35:40<26:13:18, 24.51s/ep, cand 1139 | r0 pass 399/1138 | episodes 
+solved 399 | queue r0 3852 reprompt 0 | verifying 1 | 22.1 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1149/5000 [35:59<24:34:16, 22.97s/ep, cand 1140 | r0 pass 399/1139 | episodes 
+solved 399 | queue r0 3851 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1150/5000 [36:36<28:53:14, 27.01s/ep, cand 1141 | r0 pass 399/1140 | episodes 
+solved 399 | queue r0 3850 reprompt 0 | verifying 1 | 22.1 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1152/5000 [36:54<20:19:15, 19.01s/ep, cand 1143 | r0 pass 399/1142 | episodes 
+solved 399 | queue r0 3848 reprompt 0 | verifying 1 | 22.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1153/5000 [37:13<20:12:01, 18.90s/ep, cand 1144 | r0 pass 399/1143 | episodes 
+solved 399 | queue r0 3847 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1154/5000 [37:30<19:52:15, 18.60s/ep, cand 1145 | r0 pass 399/1144 | episodes 
+solved 399 | queue r0 3846 reprompt 0 | verifying 1 | 21.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1155/5000 [38:08<25:18:03, 23.69s/ep, cand 1146 | r0 pass 400/1145 | episodes 
+solved 400 | queue r0 3845 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1156/5000 [38:27<23:47:19, 22.28s/ep, cand 1147 | r0 pass 401/1146 | episodes 
+solved 401 | queue r0 3843 reprompt 0 | verifying 2 | 20.6 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1158/5000 [38:45<17:43:24, 16.61s/ep, cand 1149 | r0 pass 401/1148 | episodes 
+solved 401 | queue r0 3842 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1159/5000 [39:04<18:18:53, 17.17s/ep, cand 1150 | r0 pass 401/1149 | episodes 
+solved 401 | queue r0 3841 reprompt 0 | verifying 1 | 19.7 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1160/5000 [39:56<27:45:09, 26.02s/ep, cand 1151 | r0 pass 401/1150 | episodes 
+solved 401 | queue r0 3840 reprompt 0 | verifying 1 | 19.7 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1161/5000 [40:15<25:42:54, 24.11s/ep, cand 1152 | r0 pass 402/1151 | episodes 
+solved 402 | queue r0 3839 reprompt 0 | verifying 1 | 20.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1162/5000 [40:52<29:33:14, 27.72s/ep, cand 1153 | r0 pass 402/1152 | episodes 
+solved 402 | queue r0 3838 reprompt 0 | verifying 1 | 20.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1164/5000 [41:11<20:59:58, 19.71s/ep, cand 1155 | r0 pass 402/1154 | episodes 
+solved 402 | queue r0 3836 reprompt 0 | verifying 1 | 20.4 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1165/5000 [41:30<20:44:22, 19.47s/ep, cand 1156 | r0 pass 403/1155 | episodes 
+solved 403 | queue r0 3835 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1166/5000 [41:49<20:27:09, 19.20s/ep, cand 1157 | r0 pass 403/1156 | episodes 
+solved 403 | queue r0 3834 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1167/5000 [42:08<20:23:50, 19.16s/ep, cand 1158 | r0 pass 403/1157 | episodes 
+solved 403 | queue r0 3833 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1168/5000 [42:26<20:06:16, 18.89s/ep, cand 1159 | r0 pass 404/1158 | episodes 
+solved 404 | queue r0 3832 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1169/5000 [43:04<25:49:26, 24.27s/ep, cand 1160 | r0 pass 404/1159 | episodes 
+solved 404 | queue r0 3831 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1171/5000 [43:22<18:39:52, 17.55s/ep, cand 1162 | r0 pass 404/1161 | episodes 
+solved 404 | queue r0 3829 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1172/5000 [43:41<19:01:05, 17.89s/ep, cand 1163 | r0 pass 405/1162 | episodes 
+solved 405 | queue r0 3828 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1173/5000 [44:18<24:20:05, 22.89s/ep, cand 1164 | r0 pass 406/1163 | episodes 
+solved 406 | queue r0 3827 reprompt 0 | verifying 1 | 20.0 s/proposal]
+first proposals:  23%|ΓûêΓûêΓûÄ       | 1174/5000 [45:07<31:42:43, 29.84s/ep, cand 1165 | r0 pass 406/1164 | episodes 
+solved 406 | queue r0 3825 reprompt 0 | verifying 2 | 20.0 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1176/5000 [45:45<26:39:07, 25.09s/ep, cand 1167 | r0 pass 406/1166 | episodes 
+solved 406 | queue r0 3824 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1178/5000 [46:04<20:14:06, 19.06s/ep, cand 1169 | r0 pass 407/1168 | episodes 
+solved 407 | queue r0 3822 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1179/5000 [46:22<20:08:54, 18.98s/ep, cand 1170 | r0 pass 408/1169 | episodes 
+solved 408 | queue r0 3821 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1180/5000 [46:41<20:05:53, 18.94s/ep, cand 1171 | r0 pass 408/1170 | episodes 
+solved 408 | queue r0 3820 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1181/5000 [47:00<20:03:19, 18.91s/ep, cand 1172 | r0 pass 409/1171 | episodes 
+solved 409 | queue r0 3819 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1182/5000 [47:19<20:03:27, 18.91s/ep, cand 1173 | r0 pass 409/1172 | episodes 
+solved 409 | queue r0 3818 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1183/5000 [47:38<20:00:48, 18.88s/ep, cand 1174 | r0 pass 409/1173 | episodes 
+solved 409 | queue r0 3817 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1184/5000 [49:20<44:50:03, 42.30s/ep, cand 1175 | r0 pass 409/1174 | episodes 
+solved 409 | queue r0 3816 reprompt 0 | verifying 1 | 20.6 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1185/5000 [49:39<37:40:49, 35.56s/ep, cand 1176 | r0 pass 410/1175 | episodes 
+solved 410 | queue r0 3815 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1186/5000 [49:58<32:32:55, 30.72s/ep, cand 1177 | r0 pass 410/1176 | episodes 
+solved 410 | queue r0 3814 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûÄ       | 1187/5000 [50:35<34:42:52, 32.78s/ep, cand 1178 | r0 pass 411/1177 | episodes 
+solved 411 | queue r0 3813 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1189/5000 [50:54<23:23:40, 22.10s/ep, cand 1180 | r0 pass 412/1179 | episodes 
+solved 412 | queue r0 3811 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1190/5000 [51:32<27:32:36, 26.03s/ep, cand 1181 | r0 pass 412/1180 | episodes 
+solved 412 | queue r0 3810 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1192/5000 [51:51<20:18:47, 19.20s/ep, cand 1183 | r0 pass 413/1182 | episodes 
+solved 413 | queue r0 3808 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1193/5000 [52:47<29:02:42, 27.47s/ep, cand 1184 | r0 pass 413/1183 | episodes 
+solved 413 | queue r0 3807 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1194/5000 [53:05<26:45:25, 25.31s/ep, cand 1185 | r0 pass 414/1184 | episodes 
+solved 414 | queue r0 3806 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1195/5000 [53:43<30:02:50, 28.43s/ep, cand 1186 | r0 pass 414/1185 | episodes 
+solved 414 | queue r0 3805 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1196/5000 [54:01<27:16:58, 25.82s/ep, cand 1187 | r0 pass 414/1186 | episodes 
+solved 414 | queue r0 3803 reprompt 0 | verifying 2 | 23.0 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1197/5000 [54:20<25:09:08, 23.81s/ep, cand 1188 | r0 pass 414/1187 | episodes 
+solved 414 | queue r0 3802 reprompt 0 | verifying 2 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1198/5000 [54:38<23:31:40, 22.28s/ep, cand 1189 | r0 pass 414/1188 | episodes 
+solved 414 | queue r0 3801 reprompt 0 | verifying 2 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1200/5000 [54:57<17:24:36, 16.49s/ep, cand 1191 | r0 pass 414/1190 | episodes 
+solved 414 | queue r0 3800 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1201/5000 [55:16<18:01:22, 17.08s/ep, cand 1192 | r0 pass 414/1191 | episodes 
+solved 414 | queue r0 3799 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1202/5000 [55:35<18:34:22, 17.60s/ep, cand 1193 | r0 pass 415/1192 | episodes 
+solved 415 | queue r0 3798 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1203/5000 [55:54<18:53:43, 17.91s/ep, cand 1194 | r0 pass 415/1193 | episodes 
+solved 415 | queue r0 3797 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1204/5000 [56:13<19:12:04, 18.21s/ep, cand 1195 | r0 pass 415/1194 | episodes 
+solved 415 | queue r0 3796 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1205/5000 [56:51<25:07:56, 23.84s/ep, cand 1196 | r0 pass 415/1195 | episodes 
+solved 415 | queue r0 3795 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1207/5000 [57:10<18:19:43, 17.40s/ep, cand 1198 | r0 pass 415/1197 | episodes 
+solved 415 | queue r0 3793 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1208/5000 [57:29<18:39:04, 17.71s/ep, cand 1199 | r0 pass 415/1198 | episodes 
+solved 415 | queue r0 3792 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1209/5000 [57:47<18:57:03, 18.00s/ep, cand 1200 | r0 pass 416/1199 | episodes 
+solved 416 | queue r0 3791 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1210/5000 [58:25<24:34:53, 23.35s/ep, cand 1201 | r0 pass 416/1200 | episodes 
+solved 416 | queue r0 3790 reprompt 0 | verifying 1 | 22.4 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1212/5000 [59:03<22:28:55, 21.37s/ep, cand 1203 | r0 pass 418/1202 | episodes 
+solved 418 | queue r0 3788 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1214/5000 [59:21<17:36:53, 16.75s/ep, cand 1205 | r0 pass 420/1204 | episodes 
+solved 420 | queue r0 3786 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1215/5000 [59:59<22:17:43, 21.21s/ep, cand 1206 | r0 pass 421/1205 | episodes 
+solved 421 | queue r0 3785 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1217/5000 [1:00:37<21:19:33, 20.29s/ep, cand 1208 | r0 pass 422/1207 | 
+episodes solved 422 | queue r0 3783 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1218/5000 [1:00:56<21:01:11, 20.01s/ep, cand 1209 | r0 pass 422/1208 | 
+episodes solved 422 | queue r0 3781 reprompt 0 | verifying 2 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1220/5000 [1:01:33<20:32:24, 19.56s/ep, cand 1211 | r0 pass 423/1210 | 
+episodes solved 423 | queue r0 3780 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1222/5000 [1:02:46<26:45:40, 25.50s/ep, cand 1213 | r0 pass 423/1212 | 
+episodes solved 423 | queue r0 3778 reprompt 0 | verifying 1 | 21.8 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1224/5000 [1:03:36<26:27:50, 25.23s/ep, cand 1215 | r0 pass 424/1214 | 
+episodes solved 424 | queue r0 3776 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  24%|ΓûêΓûêΓûì       | 1225/5000 [1:03:54<25:10:27, 24.01s/ep, cand 1216 | r0 pass 424/1215 | 
+episodes solved 424 | queue r0 3775 reprompt 0 | verifying 1 | 23.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1226/5000 [1:04:13<23:58:28, 22.87s/ep, cand 1217 | r0 pass 424/1216 | 
+episodes solved 424 | queue r0 3774 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1227/5000 [1:04:32<22:56:11, 21.88s/ep, cand 1218 | r0 pass 424/1217 | 
+episodes solved 424 | queue r0 3773 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1228/5000 [1:05:27<31:39:01, 30.21s/ep, cand 1219 | r0 pass 424/1218 | 
+episodes solved 424 | queue r0 3772 reprompt 0 | verifying 1 | 22.5 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1229/5000 [1:05:46<28:28:56, 27.19s/ep, cand 1220 | r0 pass 425/1219 | 
+episodes solved 425 | queue r0 3771 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1230/5000 [1:06:04<26:05:54, 24.92s/ep, cand 1221 | r0 pass 425/1220 | 
+episodes solved 425 | queue r0 3770 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1231/5000 [1:06:23<24:15:12, 23.17s/ep, cand 1222 | r0 pass 426/1221 | 
+episodes solved 426 | queue r0 3769 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1232/5000 [1:06:41<22:46:23, 21.76s/ep, cand 1223 | r0 pass 426/1222 | 
+episodes solved 426 | queue r0 3768 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1233/5000 [1:07:00<21:54:40, 20.94s/ep, cand 1224 | r0 pass 426/1223 | 
+episodes solved 426 | queue r0 3767 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1234/5000 [1:07:19<21:14:07, 20.30s/ep, cand 1225 | r0 pass 427/1224 | 
+episodes solved 427 | queue r0 3766 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1235/5000 [1:07:38<20:52:14, 19.96s/ep, cand 1226 | r0 pass 428/1225 | 
+episodes solved 428 | queue r0 3765 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1236/5000 [1:07:57<20:23:04, 19.50s/ep, cand 1227 | r0 pass 429/1226 | 
+episodes solved 429 | queue r0 3764 reprompt 0 | verifying 1 | 21.6 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1237/5000 [1:08:34<25:57:51, 24.84s/ep, cand 1228 | r0 pass 429/1227 | 
+episodes solved 429 | queue r0 3763 reprompt 0 | verifying 1 | 21.5 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1239/5000 [1:09:29<27:11:55, 26.03s/ep, cand 1230 | r0 pass 429/1229 | 
+episodes solved 429 | queue r0 3761 reprompt 0 | verifying 1 | 21.5 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1240/5000 [1:09:48<25:21:08, 24.27s/ep, cand 1231 | r0 pass 430/1230 | 
+episodes solved 430 | queue r0 3760 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1241/5000 [1:10:59<38:07:12, 36.51s/ep, cand 1232 | r0 pass 430/1231 | 
+episodes solved 430 | queue r0 3759 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1242/5000 [1:11:57<44:09:23, 42.30s/ep, cand 1233 | r0 pass 430/1232 | 
+episodes solved 430 | queue r0 3758 reprompt 0 | verifying 1 | 23.3 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1243/5000 [1:12:16<37:18:49, 35.75s/ep, cand 1234 | r0 pass 430/1233 | 
+episodes solved 430 | queue r0 3757 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1244/5000 [1:12:54<37:58:10, 36.39s/ep, cand 1235 | r0 pass 431/1234 | 
+episodes solved 431 | queue r0 3756 reprompt 0 | verifying 1 | 23.4 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1246/5000 [1:13:49<33:47:01, 32.40s/ep, cand 1237 | r0 pass 431/1236 | 
+episodes solved 431 | queue r0 3754 reprompt 0 | verifying 1 | 23.4 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1247/5000 [1:14:07<30:16:52, 29.05s/ep, cand 1238 | r0 pass 431/1237 | 
+episodes solved 431 | queue r0 3753 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1248/5000 [1:14:26<27:32:30, 26.43s/ep, cand 1239 | r0 pass 431/1238 | 
+episodes solved 431 | queue r0 3752 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûì       | 1249/5000 [1:14:45<25:17:38, 24.28s/ep, cand 1240 | r0 pass 431/1239 | 
+episodes solved 431 | queue r0 3751 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1250/5000 [1:15:03<23:40:28, 22.73s/ep, cand 1241 | r0 pass 432/1240 | 
+episodes solved 432 | queue r0 3750 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1251/5000 [1:15:22<22:24:34, 21.52s/ep, cand 1242 | r0 pass 433/1241 | 
+episodes solved 433 | queue r0 3749 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1252/5000 [1:15:41<21:38:16, 20.78s/ep, cand 1243 | r0 pass 433/1242 | 
+episodes solved 433 | queue r0 3748 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1253/5000 [1:16:18<26:46:11, 25.72s/ep, cand 1244 | r0 pass 434/1243 | 
+episodes solved 434 | queue r0 3747 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1254/5000 [1:16:38<24:45:44, 23.80s/ep, cand 1245 | r0 pass 435/1244 | 
+episodes solved 435 | queue r0 3745 reprompt 0 | verifying 2 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1255/5000 [1:16:56<23:11:27, 22.29s/ep, cand 1246 | r0 pass 435/1245 | 
+episodes solved 435 | queue r0 3744 reprompt 0 | verifying 2 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1257/5000 [1:17:15<17:03:43, 16.41s/ep, cand 1248 | r0 pass 435/1247 | 
+episodes solved 435 | queue r0 3743 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1258/5000 [1:17:34<17:39:13, 16.98s/ep, cand 1249 | r0 pass 436/1248 | 
+episodes solved 436 | queue r0 3742 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1259/5000 [1:18:43<31:45:51, 30.57s/ep, cand 1250 | r0 pass 436/1249 | 
+episodes solved 436 | queue r0 3741 reprompt 0 | verifying 1 | 24.1 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1261/5000 [1:19:02<22:25:11, 21.59s/ep, cand 1252 | r0 pass 437/1251 | 
+episodes solved 437 | queue r0 3739 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1262/5000 [1:19:21<21:45:58, 20.96s/ep, cand 1253 | r0 pass 437/1252 | 
+episodes solved 437 | queue r0 3738 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1263/5000 [1:19:40<21:12:18, 20.43s/ep, cand 1254 | r0 pass 437/1253 | 
+episodes solved 437 | queue r0 3737 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1264/5000 [1:19:58<20:39:41, 19.91s/ep, cand 1255 | r0 pass 438/1254 | 
+episodes solved 438 | queue r0 3736 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1265/5000 [1:20:17<20:21:28, 19.62s/ep, cand 1256 | r0 pass 438/1255 | 
+episodes solved 438 | queue r0 3735 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1266/5000 [1:20:55<25:33:22, 24.64s/ep, cand 1257 | r0 pass 438/1256 | 
+episodes solved 438 | queue r0 3734 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1268/5000 [1:21:13<18:26:26, 17.79s/ep, cand 1259 | r0 pass 439/1258 | 
+episodes solved 439 | queue r0 3732 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1269/5000 [1:21:32<18:39:17, 18.00s/ep, cand 1260 | r0 pass 439/1259 | 
+episodes solved 439 | queue r0 3731 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1270/5000 [1:21:51<18:50:47, 18.19s/ep, cand 1261 | r0 pass 440/1260 | 
+episodes solved 440 | queue r0 3730 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1271/5000 [1:22:10<19:05:40, 18.43s/ep, cand 1262 | r0 pass 440/1261 | 
+episodes solved 440 | queue r0 3729 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1272/5000 [1:22:59<27:48:35, 26.86s/ep, cand 1263 | r0 pass 441/1262 | 
+episodes solved 441 | queue r0 3728 reprompt 0 | verifying 1 | 24.7 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1273/5000 [1:23:18<25:29:05, 24.62s/ep, cand 1264 | r0 pass 441/1263 | 
+episodes solved 441 | queue r0 3727 reprompt 0 | verifying 1 | 25.3 s/proposal]
+first proposals:  25%|ΓûêΓûêΓûî       | 1274/5000 [1:23:36<23:45:18, 22.95s/ep, cand 1265 | r0 pass 441/1264 | 
+episodes solved 441 | queue r0 3726 reprompt 0 | verifying 1 | 24.6 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1275/5000 [1:24:14<28:11:25, 27.24s/ep, cand 1266 | r0 pass 441/1265 | 
+episodes solved 441 | queue r0 3725 reprompt 0 | verifying 1 | 24.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1276/5000 [1:24:33<25:31:43, 24.68s/ep, cand 1267 | r0 pass 441/1266 | 
+episodes solved 441 | queue r0 3723 reprompt 0 | verifying 2 | 24.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1277/5000 [1:24:51<23:39:00, 22.87s/ep, cand 1268 | r0 pass 441/1267 | 
+episodes solved 441 | queue r0 3722 reprompt 0 | verifying 2 | 24.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1279/5000 [1:25:10<17:12:57, 16.66s/ep, cand 1270 | r0 pass 442/1269 | 
+episodes solved 442 | queue r0 3721 reprompt 0 | verifying 1 | 23.3 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1280/5000 [1:26:25<32:01:49, 31.00s/ep, cand 1271 | r0 pass 442/1270 | 
+episodes solved 442 | queue r0 3720 reprompt 0 | verifying 1 | 23.2 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1281/5000 [1:26:43<28:44:06, 27.82s/ep, cand 1272 | r0 pass 443/1271 | 
+episodes solved 443 | queue r0 3719 reprompt 0 | verifying 1 | 24.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1282/5000 [1:27:02<26:09:50, 25.33s/ep, cand 1273 | r0 pass 443/1272 | 
+episodes solved 443 | queue r0 3718 reprompt 0 | verifying 1 | 24.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1283/5000 [1:27:21<24:20:06, 23.57s/ep, cand 1274 | r0 pass 444/1273 | 
+episodes solved 444 | queue r0 3717 reprompt 0 | verifying 1 | 24.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1284/5000 [1:27:40<22:55:33, 22.21s/ep, cand 1275 | r0 pass 445/1274 | 
+episodes solved 445 | queue r0 3716 reprompt 0 | verifying 1 | 24.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1285/5000 [1:30:29<66:49:17, 64.75s/ep, cand 1276 | r0 pass 446/1275 | 
+episodes solved 446 | queue r0 3715 reprompt 0 | verifying 1 | 24.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1287/5000 [1:31:07<45:21:55, 43.98s/ep, cand 1278 | r0 pass 447/1276 | 
+episodes solved 447 | queue r0 3714 reprompt 0 | verifying 0 | 27.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1288/5000 [1:31:44<43:45:22, 42.44s/ep, cand 1279 | r0 pass 447/1277 | 
+episodes solved 447 | queue r0 3712 reprompt 0 | verifying 1 | 27.4 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1289/5000 [1:34:35<77:56:26, 75.61s/ep, cand 1280 | r0 pass 448/1278 | 
+episodes solved 448 | queue r0 3710 reprompt 0 | verifying 2 | 26.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1292/5000 [1:35:31<47:00:26, 45.64s/ep, cand 1283 | r0 pass 449/1280 | 
+episodes solved 449 | queue r0 3709 reprompt 0 | verifying 0 | 29.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1294/5000 [1:35:50<34:34:03, 33.58s/ep, cand 1285 | r0 pass 450/1282 | 
+episodes solved 450 | queue r0 3706 reprompt 0 | verifying 1 | 27.9 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1295/5000 [1:36:09<31:36:58, 30.72s/ep, cand 1286 | r0 pass 451/1283 | 
+episodes solved 451 | queue r0 3705 reprompt 0 | verifying 1 | 27.9 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1296/5000 [1:36:27<28:50:34, 28.03s/ep, cand 1287 | r0 pass 452/1284 | 
+episodes solved 452 | queue r0 3704 reprompt 0 | verifying 1 | 27.9 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1297/5000 [1:37:05<31:09:12, 30.29s/ep, cand 1288 | r0 pass 453/1285 | 
+episodes solved 453 | queue r0 3703 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1299/5000 [1:37:23<22:31:56, 21.92s/ep, cand 1290 | r0 pass 453/1287 | 
+episodes solved 453 | queue r0 3701 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1300/5000 [1:37:42<21:47:14, 21.20s/ep, cand 1291 | r0 pass 454/1288 | 
+episodes solved 454 | queue r0 3700 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1301/5000 [1:38:01<21:09:05, 20.59s/ep, cand 1292 | r0 pass 455/1289 | 
+episodes solved 455 | queue r0 3699 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1302/5000 [1:38:20<20:45:38, 20.21s/ep, cand 1293 | r0 pass 455/1290 | 
+episodes solved 455 | queue r0 3698 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1303/5000 [1:39:10<29:02:28, 28.28s/ep, cand 1294 | r0 pass 456/1291 | 
+episodes solved 456 | queue r0 3697 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1304/5000 [1:39:29<26:22:47, 25.69s/ep, cand 1295 | r0 pass 456/1292 | 
+episodes solved 456 | queue r0 3696 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1305/5000 [1:39:48<24:21:21, 23.73s/ep, cand 1296 | r0 pass 456/1293 | 
+episodes solved 456 | queue r0 3695 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1306/5000 [1:40:07<22:53:21, 22.31s/ep, cand 1297 | r0 pass 456/1294 | 
+episodes solved 456 | queue r0 3694 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1307/5000 [1:40:25<21:49:13, 21.27s/ep, cand 1298 | r0 pass 456/1295 | 
+episodes solved 456 | queue r0 3693 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1308/5000 [1:40:44<21:03:50, 20.54s/ep, cand 1299 | r0 pass 456/1296 | 
+episodes solved 456 | queue r0 3692 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1309/5000 [1:41:22<26:13:32, 25.58s/ep, cand 1300 | r0 pass 457/1297 | 
+episodes solved 457 | queue r0 3691 reprompt 0 | verifying 1 | 27.8 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1311/5000 [1:41:41<18:39:13, 18.20s/ep, cand 1302 | r0 pass 458/1299 | 
+episodes solved 458 | queue r0 3689 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûî       | 1312/5000 [1:41:59<18:37:13, 18.18s/ep, cand 1303 | r0 pass 459/1300 | 
+episodes solved 459 | queue r0 3688 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1313/5000 [1:43:00<30:09:06, 29.44s/ep, cand 1304 | r0 pass 460/1301 | 
+episodes solved 460 | queue r0 3687 reprompt 0 | verifying 1 | 27.1 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1314/5000 [1:43:19<27:12:28, 26.57s/ep, cand 1305 | r0 pass 460/1302 | 
+episodes solved 460 | queue r0 3686 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1315/5000 [1:43:38<24:59:09, 24.41s/ep, cand 1306 | r0 pass 461/1303 | 
+episodes solved 461 | queue r0 3685 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1316/5000 [1:44:30<33:03:10, 32.30s/ep, cand 1307 | r0 pass 462/1304 | 
+episodes solved 462 | queue r0 3684 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1317/5000 [1:44:49<29:04:21, 28.42s/ep, cand 1308 | r0 pass 463/1305 | 
+episodes solved 463 | queue r0 3683 reprompt 0 | verifying 1 | 28.6 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1318/5000 [1:45:08<26:11:33, 25.61s/ep, cand 1309 | r0 pass 463/1306 | 
+episodes solved 463 | queue r0 3682 reprompt 0 | verifying 1 | 28.6 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1319/5000 [1:45:27<24:06:17, 23.57s/ep, cand 1310 | r0 pass 464/1307 | 
+episodes solved 464 | queue r0 3681 reprompt 0 | verifying 1 | 28.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1320/5000 [1:45:45<22:37:41, 22.14s/ep, cand 1311 | r0 pass 465/1308 | 
+episodes solved 465 | queue r0 3680 reprompt 0 | verifying 1 | 28.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1321/5000 [1:46:04<21:32:35, 21.08s/ep, cand 1312 | r0 pass 465/1309 | 
+episodes solved 465 | queue r0 3679 reprompt 0 | verifying 1 | 28.7 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1322/5000 [1:46:22<20:44:31, 20.30s/ep, cand 1313 | r0 pass 465/1310 | 
+episodes solved 465 | queue r0 3678 reprompt 0 | verifying 1 | 28.6 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1323/5000 [1:46:41<20:21:39, 19.93s/ep, cand 1314 | r0 pass 465/1311 | 
+episodes solved 465 | queue r0 3677 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1324/5000 [1:47:00<20:01:27, 19.61s/ep, cand 1315 | r0 pass 465/1312 | 
+episodes solved 465 | queue r0 3676 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  26%|ΓûêΓûêΓûï       | 1325/5000 [1:47:19<19:50:50, 19.44s/ep, cand 1316 | r0 pass 465/1313 | 
+episodes solved 465 | queue r0 3675 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1326/5000 [1:48:14<30:42:26, 30.09s/ep, cand 1317 | r0 pass 465/1314 | 
+episodes solved 465 | queue r0 3674 reprompt 0 | verifying 1 | 28.0 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1327/5000 [1:48:33<27:12:54, 26.67s/ep, cand 1318 | r0 pass 465/1315 | 
+episodes solved 465 | queue r0 3673 reprompt 0 | verifying 1 | 28.8 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1328/5000 [1:48:52<24:50:28, 24.35s/ep, cand 1319 | r0 pass 465/1316 | 
+episodes solved 465 | queue r0 3672 reprompt 0 | verifying 1 | 28.8 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1329/5000 [1:49:30<28:53:40, 28.34s/ep, cand 1320 | r0 pass 465/1317 | 
+episodes solved 465 | queue r0 3671 reprompt 0 | verifying 1 | 28.8 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1331/5000 [1:50:07<24:18:57, 23.86s/ep, cand 1322 | r0 pass 467/1319 | 
+episodes solved 467 | queue r0 3669 reprompt 0 | verifying 1 | 27.7 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1333/5000 [1:50:26<18:30:11, 18.17s/ep, cand 1324 | r0 pass 467/1321 | 
+episodes solved 467 | queue r0 3667 reprompt 0 | verifying 1 | 27.7 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1334/5000 [1:50:44<18:27:41, 18.13s/ep, cand 1325 | r0 pass 467/1322 | 
+episodes solved 467 | queue r0 3666 reprompt 0 | verifying 1 | 27.7 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1335/5000 [1:51:03<18:38:40, 18.31s/ep, cand 1326 | r0 pass 467/1323 | 
+episodes solved 467 | queue r0 3665 reprompt 0 | verifying 1 | 27.6 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1336/5000 [1:51:40<23:31:01, 23.11s/ep, cand 1327 | r0 pass 468/1324 | 
+episodes solved 468 | queue r0 3664 reprompt 0 | verifying 1 | 24.6 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1338/5000 [1:51:59<17:36:01, 17.30s/ep, cand 1329 | r0 pass 469/1326 | 
+episodes solved 469 | queue r0 3662 reprompt 0 | verifying 1 | 24.6 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1339/5000 [1:52:54<26:32:20, 26.10s/ep, cand 1330 | r0 pass 469/1327 | 
+episodes solved 469 | queue r0 3661 reprompt 0 | verifying 1 | 24.6 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1340/5000 [1:53:13<24:41:17, 24.28s/ep, cand 1331 | r0 pass 469/1328 | 
+episodes solved 469 | queue r0 3660 reprompt 0 | verifying 1 | 25.4 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1341/5000 [1:53:31<23:10:45, 22.81s/ep, cand 1332 | r0 pass 469/1329 | 
+episodes solved 469 | queue r0 3659 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1342/5000 [1:53:51<22:23:51, 22.04s/ep, cand 1333 | r0 pass 469/1330 | 
+episodes solved 469 | queue r0 3658 reprompt 0 | verifying 1 | 22.3 s/proposal]
+first proposals:  27%|ΓûêΓûêΓûï       | 1343/5000 [1:54:10<21:35:26, 21.25s/ep, cand 1334 | r0 pass 469/1331 | 
+episodes solved 469 | queue r0 3657 reprompt 0 | verifying 1 | 22.3 s/proposal]

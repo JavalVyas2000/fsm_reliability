@@ -50,6 +50,22 @@
       "t_total_s": 77.41939008825473
     },
     {
+      "policy": "internals_probe",
+      "episodes": 400,
+      "recovered": 0.3,
+      "executed_failure": 0.0,
+      "unresolved": 0.7,
+      "validator_calls": 0.86,
+      "proposals": 4.4225,
+      "unchecked_rejects": 3.5375,
+      "good_rejected": 0.45,
+      "t_generation_s": 78.31515299324616,
+      "t_internals_s": 1.1627482859953306,
+      "t_grounding_s": 2.918185872753966,
+      "t_validator_s": 8.458159845497285,
+      "t_total_s": 90.85424699749274
+    },
+    {
       "policy": "random_matched",
       "episodes": 400,
       "recovered": 0.3775,
@@ -154,6 +170,43 @@
         "ci95": [
           0.0,
           0.0075
+        ]
+      }
+    },
+    "internals_probe": {
+      "recovered": {
+        "delta": -0.1375,
+        "ci95": [
+          -0.1725,
+          -0.105
+        ]
+      },
+      "validator_calls": {
+        "delta": -1.59,
+        "ci95": [
+          -1.7575,
+          -1.425
+        ]
+      },
+      "t_total_s": {
+        "delta": 15.675331467993091,
+        "ci95": [
+          10.3263260523376,
+          22.155880699696926
+        ]
+      },
+      "t_validator_s": {
+        "delta": -11.668033399503257,
+        "ci95": [
+          -13.431029570260124,
+          -9.943608177021165
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
         ]
       }
     },

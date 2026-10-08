@@ -1,0 +1,454 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\internals_closed_loop_queue.ps1:16 char:5
++     & $py @("-m", "scripts.42_cstr_closed_loop", "--dataset_dir", "da ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<03:21,  2.15it/s]
+Loading weights:   1%|          | 5/434 [00:00<00:39, 10.95it/s]
+Loading weights:   4%|Γûì         | 17/434 [00:00<00:12, 34.40it/s]
+Loading weights:   7%|Γûï         | 29/434 [00:00<00:07, 51.43it/s]
+Loading weights:   9%|Γûë         | 39/434 [00:00<00:06, 60.10it/s]
+Loading weights:  11%|Γûê         | 48/434 [00:01<00:05, 64.95it/s]
+Loading weights:  13%|ΓûêΓûÄ        | 56/434 [00:01<00:05, 63.76it/s]
+Loading weights:  15%|ΓûêΓûì        | 65/434 [00:01<00:05, 62.65it/s]
+Loading weights:  17%|ΓûêΓûï        | 75/434 [00:01<00:05, 71.45it/s]
+Loading weights:  20%|ΓûêΓûê        | 87/434 [00:01<00:05, 68.89it/s]
+Loading weights:  23%|ΓûêΓûêΓûÄ       | 101/434 [00:01<00:04, 77.66it/s]
+Loading weights:  26%|ΓûêΓûêΓûî       | 113/434 [00:01<00:03, 80.44it/s]
+Loading weights:  29%|ΓûêΓûêΓûè       | 124/434 [00:02<00:03, 85.40it/s]
+Loading weights:  31%|ΓûêΓûêΓûê       | 135/434 [00:02<00:03, 80.84it/s]
+Loading weights:  34%|ΓûêΓûêΓûêΓûì      | 147/434 [00:02<00:03, 87.82it/s]
+Loading weights:  36%|ΓûêΓûêΓûêΓûî      | 157/434 [00:02<00:03, 88.48it/s]
+Loading weights:  38%|ΓûêΓûêΓûêΓûè      | 167/434 [00:02<00:03, 84.57it/s]
+Loading weights:  41%|ΓûêΓûêΓûêΓûê      | 176/434 [00:02<00:03, 79.96it/s]
+Loading weights:  43%|ΓûêΓûêΓûêΓûêΓûÄ     | 185/434 [00:02<00:03, 75.38it/s]
+Loading weights:  45%|ΓûêΓûêΓûêΓûêΓûî     | 196/434 [00:02<00:03, 75.00it/s]
+Loading weights:  48%|ΓûêΓûêΓûêΓûêΓûè     | 208/434 [00:03<00:02, 80.91it/s]
+Loading weights:  50%|ΓûêΓûêΓûêΓûêΓûê     | 219/434 [00:03<00:02, 81.47it/s]
+Loading weights:  53%|ΓûêΓûêΓûêΓûêΓûêΓûÄ    | 228/434 [00:03<00:02, 78.76it/s]
+Loading weights:  54%|ΓûêΓûêΓûêΓûêΓûêΓûì    | 236/434 [00:03<00:02, 72.02it/s]
+Loading weights:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 244/434 [00:03<00:02, 69.61it/s]
+Loading weights:  59%|ΓûêΓûêΓûêΓûêΓûêΓûë    | 255/434 [00:03<00:02, 63.66it/s]
+Loading weights:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 268/434 [00:03<00:02, 73.64it/s]
+Loading weights:  64%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 278/434 [00:04<00:02, 70.89it/s]
+Loading weights:  66%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûî   | 286/434 [00:04<00:02, 66.56it/s]
+Loading weights:  68%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûè   | 293/434 [00:04<00:02, 56.76it/s]
+Loading weights:  70%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 302/434 [00:04<00:02, 51.41it/s]
+Loading weights:  73%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ  | 315/434 [00:04<00:02, 54.24it/s]
+Loading weights:  75%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 327/434 [00:04<00:01, 65.76it/s]
+Loading weights:  77%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï  | 335/434 [00:05<00:01, 61.83it/s]
+Loading weights:  79%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 342/434 [00:05<00:01, 53.02it/s]
+Loading weights:  81%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê  | 352/434 [00:05<00:01, 56.18it/s]
+Loading weights:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 362/434 [00:05<00:01, 57.55it/s]
+Loading weights:  85%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 369/434 [00:05<00:01, 58.20it/s]
+Loading weights:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 377/434 [00:05<00:00, 59.45it/s]
+Loading weights:  89%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë | 388/434 [00:05<00:00, 70.32it/s]
+Loading weights:  92%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ| 400/434 [00:06<00:00, 75.14it/s]
+Loading weights:  95%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûì| 411/434 [00:06<00:00, 83.09it/s]
+Loading weights:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 420/434 [00:06<00:00, 83.80it/s]
+Loading weights:  99%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë| 429/434 [00:06<00:00, 76.22it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 434/434 [00:06<00:00, 67.04it/s]
+[1/400] cstr_closedloop_00000 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 6.4 min
+[2/400] cstr_closedloop_00001 fouling: recovered {'internals_probe': 0} | cache 2 gens | 8.4 min
+[3/400] cstr_closedloop_00002 fouling: recovered {'internals_probe': 0} | cache 5 gens | 11.8 min
+[4/400] cstr_closedloop_00003 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 14.9 min
+[5/400] cstr_closedloop_00004 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 15.4 min
+[6/400] cstr_closedloop_00005 fouling: recovered {'internals_probe': 1} | cache 1 gens | 16.0 min
+[7/400] cstr_closedloop_00006 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 18.5 min
+[8/400] cstr_closedloop_00007 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 19.5 min
+[9/400] cstr_closedloop_00008 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 20.4 min
+[10/400] cstr_closedloop_00009 fouling: recovered {'internals_probe': 0} | cache 3 gens | 22.3 min
+[11/400] cstr_closedloop_00010 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 23.0 min
+[12/400] cstr_closedloop_00011 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 29.2 min
+[13/400] cstr_closedloop_00012 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 37.6 min
+[14/400] cstr_closedloop_00013 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 43.9 min
+[15/400] cstr_closedloop_00014 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 44.8 min
+[16/400] cstr_closedloop_00015 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 51.6 min
+[17/400] cstr_closedloop_00016 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 54.2 min
+[18/400] cstr_closedloop_00017 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 61.6 min
+[19/400] cstr_closedloop_00018 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 65.4 min
+[20/400] cstr_closedloop_00019 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 70.3 min
+[21/400] cstr_closedloop_00020 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 74.7 min
+[22/400] cstr_closedloop_00021 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 78.0 min
+[23/400] cstr_closedloop_00022 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 80.1 min
+[24/400] cstr_closedloop_00023 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 82.6 min
+[25/400] cstr_closedloop_00024 fouling: recovered {'internals_probe': 0} | cache 5 gens | 85.0 min
+[26/400] cstr_closedloop_00025 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 87.7 min
+[27/400] cstr_closedloop_00026 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 90.3 min
+[28/400] cstr_closedloop_00027 pump_degrade: recovered {'internals_probe': 0} | cache 1 gens | 91.7 min
+[29/400] cstr_closedloop_00028 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 92.2 min
+[30/400] cstr_closedloop_00029 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 96.3 min
+[31/400] cstr_closedloop_00030 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 98.7 min
+[32/400] cstr_closedloop_00031 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 99.2 min
+[33/400] cstr_closedloop_00032 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 99.8 min
+[34/400] cstr_closedloop_00033 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 103.8 min
+[35/400] cstr_closedloop_00034 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 104.6 min
+[36/400] cstr_closedloop_00035 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 107.2 min
+[37/400] cstr_closedloop_00036 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 107.6 min
+[38/400] cstr_closedloop_00037 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 108.5 min
+[39/400] cstr_closedloop_00038 outlet_block: recovered {'internals_probe': 0} | cache 2 gens | 110.0 min
+[40/400] cstr_closedloop_00039 fouling: recovered {'internals_probe': 0} | cache 4 gens | 111.8 min
+[41/400] cstr_closedloop_00040 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 114.9 min
+[42/400] cstr_closedloop_00041 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 115.2 min
+[43/400] cstr_closedloop_00042 pump_degrade: recovered {'internals_probe': 0} | cache 2 gens | 116.4 min
+[44/400] cstr_closedloop_00043 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 117.0 min
+[45/400] cstr_closedloop_00044 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 118.4 min
+[46/400] cstr_closedloop_00045 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 119.5 min
+[47/400] cstr_closedloop_00046 fouling: recovered {'internals_probe': 1} | cache 1 gens | 119.7 min
+[48/400] cstr_closedloop_00047 fouling: recovered {'internals_probe': 0} | cache 3 gens | 120.8 min
+[49/400] cstr_closedloop_00048 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 122.2 min
+[50/400] cstr_closedloop_00049 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 124.9 min
+[51/400] cstr_closedloop_00050 fouling: recovered {'internals_probe': 1} | cache 1 gens | 125.2 min
+[52/400] cstr_closedloop_00051 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 126.6 min
+[53/400] cstr_closedloop_00052 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 127.4 min
+[54/400] cstr_closedloop_00053 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 130.2 min
+[55/400] cstr_closedloop_00054 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 131.6 min
+[56/400] cstr_closedloop_00055 fouling: recovered {'internals_probe': 0} | cache 5 gens | 133.1 min
+[57/400] cstr_closedloop_00056 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 134.2 min
+[58/400] cstr_closedloop_00057 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 137.0 min
+[59/400] cstr_closedloop_00058 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 138.1 min
+[60/400] cstr_closedloop_00059 fouling: recovered {'internals_probe': 0} | cache 4 gens | 139.6 min
+[61/400] cstr_closedloop_00060 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 141.4 min
+[62/400] cstr_closedloop_00061 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 141.9 min
+[63/400] cstr_closedloop_00062 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 143.1 min
+[64/400] cstr_closedloop_00063 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 144.5 min
+[65/400] cstr_closedloop_00064 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 144.9 min
+[66/400] cstr_closedloop_00065 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 145.1 min
+[67/400] cstr_closedloop_00066 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 147.4 min
+[68/400] cstr_closedloop_00067 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 150.4 min
+[69/400] cstr_closedloop_00068 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 152.4 min
+[70/400] cstr_closedloop_00069 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 152.9 min
+[71/400] cstr_closedloop_00070 fouling: recovered {'internals_probe': 0} | cache 5 gens | 154.7 min
+[72/400] cstr_closedloop_00071 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 156.6 min
+[73/400] cstr_closedloop_00072 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 157.1 min
+[74/400] cstr_closedloop_00073 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 157.6 min
+[75/400] cstr_closedloop_00074 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 158.1 min
+[76/400] cstr_closedloop_00075 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 161.1 min
+[77/400] cstr_closedloop_00076 fouling: recovered {'internals_probe': 1} | cache 1 gens | 161.3 min
+[78/400] cstr_closedloop_00077 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 163.9 min
+[79/400] cstr_closedloop_00078 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 166.0 min
+[80/400] cstr_closedloop_00079 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 167.2 min
+[81/400] cstr_closedloop_00080 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 168.2 min
+[82/400] cstr_closedloop_00081 fouling: recovered {'internals_probe': 0} | cache 5 gens | 169.5 min
+[83/400] cstr_closedloop_00082 fouling: recovered {'internals_probe': 0} | cache 6 gens | 171.5 min
+[84/400] cstr_closedloop_00083 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 173.3 min
+[85/400] cstr_closedloop_00084 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 175.7 min
+[86/400] cstr_closedloop_00085 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 176.2 min
+[87/400] cstr_closedloop_00086 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 178.9 min
+[88/400] cstr_closedloop_00087 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 179.8 min
+[89/400] cstr_closedloop_00088 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 182.6 min
+[90/400] cstr_closedloop_00089 fouling: recovered {'internals_probe': 0} | cache 6 gens | 184.2 min
+[91/400] cstr_closedloop_00090 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 185.7 min
+[92/400] cstr_closedloop_00091 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 187.7 min
+[93/400] cstr_closedloop_00092 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 188.9 min
+[94/400] cstr_closedloop_00093 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 190.1 min
+[95/400] cstr_closedloop_00094 fouling: recovered {'internals_probe': 1} | cache 1 gens | 190.4 min
+[96/400] cstr_closedloop_00095 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 192.3 min
+[97/400] cstr_closedloop_00096 fouling: recovered {'internals_probe': 0} | cache 4 gens | 193.7 min
+[98/400] cstr_closedloop_00097 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 195.7 min
+[99/400] cstr_closedloop_00098 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 198.1 min
+[100/400] cstr_closedloop_00099 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 200.6 min
+[101/400] cstr_closedloop_00100 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 202.1 min
+[102/400] cstr_closedloop_00101 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 204.7 min
+[103/400] cstr_closedloop_00102 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 207.2 min
+[104/400] cstr_closedloop_00103 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 208.1 min
+[105/400] cstr_closedloop_00104 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 209.6 min
+[106/400] cstr_closedloop_00105 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 211.1 min
+[107/400] cstr_closedloop_00106 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 212.9 min
+[108/400] cstr_closedloop_00107 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 213.6 min
+[109/400] cstr_closedloop_00108 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 219.3 min
+[110/400] cstr_closedloop_00109 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 223.5 min
+[111/400] cstr_closedloop_00110 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 226.6 min
+[112/400] cstr_closedloop_00111 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 229.7 min
+[113/400] cstr_closedloop_00112 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 233.7 min
+[114/400] cstr_closedloop_00113 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 236.2 min
+[115/400] cstr_closedloop_00114 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 237.0 min
+[116/400] cstr_closedloop_00115 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 242.2 min
+[117/400] cstr_closedloop_00116 fouling: recovered {'internals_probe': 1} | cache 1 gens | 242.8 min
+[118/400] cstr_closedloop_00117 fouling: recovered {'internals_probe': 0} | cache 6 gens | 246.3 min
+[119/400] cstr_closedloop_00118 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 249.5 min
+[120/400] cstr_closedloop_00119 fouling: recovered {'internals_probe': 1} | cache 1 gens | 250.0 min
+[121/400] cstr_closedloop_00120 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 251.8 min
+[122/400] cstr_closedloop_00121 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 254.6 min
+[123/400] cstr_closedloop_00122 fouling: recovered {'internals_probe': 1} | cache 1 gens | 255.4 min
+[124/400] cstr_closedloop_00123 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 258.5 min
+[125/400] cstr_closedloop_00124 fouling: recovered {'internals_probe': 0} | cache 6 gens | 261.3 min
+[126/400] cstr_closedloop_00125 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 264.1 min
+[127/400] cstr_closedloop_00126 fouling: recovered {'internals_probe': 0} | cache 4 gens | 265.6 min
+[128/400] cstr_closedloop_00127 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 268.4 min
+[129/400] cstr_closedloop_00128 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 270.9 min
+[130/400] cstr_closedloop_00129 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 272.9 min
+[131/400] cstr_closedloop_00130 fouling: recovered {'internals_probe': 0} | cache 3 gens | 273.5 min
+[132/400] cstr_closedloop_00131 fouling: recovered {'internals_probe': 0} | cache 5 gens | 275.4 min
+[133/400] cstr_closedloop_00132 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 278.8 min
+[134/400] cstr_closedloop_00133 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 281.7 min
+[135/400] cstr_closedloop_00134 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 283.3 min
+[136/400] cstr_closedloop_00135 fouling: recovered {'internals_probe': 0} | cache 4 gens | 284.8 min
+[137/400] cstr_closedloop_00136 fouling: recovered {'internals_probe': 0} | cache 2 gens | 285.3 min
+[138/400] cstr_closedloop_00137 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 285.6 min
+[139/400] cstr_closedloop_00138 fouling: recovered {'internals_probe': 0} | cache 3 gens | 286.5 min
+[140/400] cstr_closedloop_00139 fouling: recovered {'internals_probe': 1} | cache 1 gens | 286.7 min
+[141/400] cstr_closedloop_00140 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 289.3 min
+[142/400] cstr_closedloop_00141 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 291.7 min
+[143/400] cstr_closedloop_00142 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 292.7 min
+[144/400] cstr_closedloop_00143 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 294.0 min
+[145/400] cstr_closedloop_00144 fouling: recovered {'internals_probe': 0} | cache 4 gens | 295.2 min
+[146/400] cstr_closedloop_00145 fouling: recovered {'internals_probe': 1} | cache 1 gens | 295.4 min
+[147/400] cstr_closedloop_00146 fouling: recovered {'internals_probe': 1} | cache 1 gens | 295.7 min
+[148/400] cstr_closedloop_00147 outlet_block: recovered {'internals_probe': 1} | cache 6 gens | 298.0 min
+[149/400] cstr_closedloop_00148 outlet_block: recovered {'internals_probe': 0} | cache 2 gens | 298.9 min
+[150/400] cstr_closedloop_00149 fouling: recovered {'internals_probe': 0} | cache 5 gens | 300.2 min
+[151/400] cstr_closedloop_00150 fouling: recovered {'internals_probe': 0} | cache 4 gens | 301.3 min
+[152/400] cstr_closedloop_00151 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 303.4 min
+[153/400] cstr_closedloop_00152 fouling: recovered {'internals_probe': 0} | cache 4 gens | 304.5 min
+[154/400] cstr_closedloop_00153 fouling: recovered {'internals_probe': 0} | cache 4 gens | 305.8 min
+[155/400] cstr_closedloop_00154 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 306.2 min
+[156/400] cstr_closedloop_00155 outlet_block: recovered {'internals_probe': 0} | cache 1 gens | 307.0 min
+[157/400] cstr_closedloop_00156 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 309.5 min
+[158/400] cstr_closedloop_00157 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 311.6 min
+[159/400] cstr_closedloop_00158 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 313.5 min
+[160/400] cstr_closedloop_00159 fouling: recovered {'internals_probe': 0} | cache 2 gens | 314.0 min
+[161/400] cstr_closedloop_00160 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 315.1 min
+[162/400] cstr_closedloop_00161 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 315.3 min
+[163/400] cstr_closedloop_00162 outlet_block: recovered {'internals_probe': 0} | cache 1 gens | 316.1 min
+[164/400] cstr_closedloop_00163 fouling: recovered {'internals_probe': 0} | cache 6 gens | 318.1 min
+[165/400] cstr_closedloop_00164 fouling: recovered {'internals_probe': 0} | cache 6 gens | 320.2 min
+[166/400] cstr_closedloop_00165 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 321.2 min
+[167/400] cstr_closedloop_00166 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 323.1 min
+[168/400] cstr_closedloop_00167 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 325.4 min
+[169/400] cstr_closedloop_00168 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 326.9 min
+[170/400] cstr_closedloop_00169 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 329.6 min
+[171/400] cstr_closedloop_00170 fouling: recovered {'internals_probe': 0} | cache 4 gens | 330.6 min
+[172/400] cstr_closedloop_00171 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 330.8 min
+[173/400] cstr_closedloop_00172 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 331.3 min
+[174/400] cstr_closedloop_00173 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 332.9 min
+[175/400] cstr_closedloop_00174 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 333.4 min
+[176/400] cstr_closedloop_00175 fouling: recovered {'internals_probe': 0} | cache 6 gens | 335.4 min
+[177/400] cstr_closedloop_00176 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 336.7 min
+[178/400] cstr_closedloop_00177 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 339.1 min
+[179/400] cstr_closedloop_00178 outlet_block: recovered {'internals_probe': 0} | cache 2 gens | 340.0 min
+[180/400] cstr_closedloop_00179 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 342.3 min
+[181/400] cstr_closedloop_00180 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 343.5 min
+[182/400] cstr_closedloop_00181 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 344.3 min
+[183/400] cstr_closedloop_00182 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 346.9 min
+[184/400] cstr_closedloop_00183 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 348.3 min
+[185/400] cstr_closedloop_00184 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 350.0 min
+[186/400] cstr_closedloop_00185 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 351.5 min
+[187/400] cstr_closedloop_00186 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 352.8 min
+[188/400] cstr_closedloop_00187 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 353.3 min
+[189/400] cstr_closedloop_00188 fouling: recovered {'internals_probe': 0} | cache 6 gens | 354.9 min
+[190/400] cstr_closedloop_00189 fouling: recovered {'internals_probe': 0} | cache 2 gens | 355.3 min
+[191/400] cstr_closedloop_00190 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 357.4 min
+[192/400] cstr_closedloop_00191 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 357.7 min
+[193/400] cstr_closedloop_00192 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 358.2 min
+[194/400] cstr_closedloop_00193 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 359.9 min
+[195/400] cstr_closedloop_00194 fouling: recovered {'internals_probe': 0} | cache 5 gens | 361.2 min
+[196/400] cstr_closedloop_00195 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 363.0 min
+[197/400] cstr_closedloop_00196 fouling: recovered {'internals_probe': 0} | cache 2 gens | 363.5 min
+[198/400] cstr_closedloop_00197 fouling: recovered {'internals_probe': 0} | cache 3 gens | 364.4 min
+[199/400] cstr_closedloop_00198 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 364.9 min
+[200/400] cstr_closedloop_00199 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 365.1 min
+[201/400] cstr_closedloop_00200 fouling: recovered {'internals_probe': 0} | cache 6 gens | 366.5 min
+[202/400] cstr_closedloop_00201 fouling: recovered {'internals_probe': 0} | cache 5 gens | 367.9 min
+[203/400] cstr_closedloop_00202 fouling: recovered {'internals_probe': 1} | cache 1 gens | 368.2 min
+[204/400] cstr_closedloop_00203 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 369.4 min
+[205/400] cstr_closedloop_00204 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 369.7 min
+[206/400] cstr_closedloop_00205 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 372.1 min
+[207/400] cstr_closedloop_00206 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 373.7 min
+[208/400] cstr_closedloop_00207 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 375.8 min
+[209/400] cstr_closedloop_00208 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 377.1 min
+[210/400] cstr_closedloop_00209 outlet_block: recovered {'internals_probe': 0} | cache 2 gens | 377.9 min
+[211/400] cstr_closedloop_00210 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 378.4 min
+[212/400] cstr_closedloop_00211 outlet_block: recovered {'internals_probe': 0} | cache 1 gens | 379.2 min
+[213/400] cstr_closedloop_00212 fouling: recovered {'internals_probe': 0} | cache 6 gens | 381.4 min
+[214/400] cstr_closedloop_00213 fouling: recovered {'internals_probe': 0} | cache 2 gens | 381.8 min
+[215/400] cstr_closedloop_00214 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 383.0 min
+[216/400] cstr_closedloop_00215 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 383.9 min
+[217/400] cstr_closedloop_00216 fouling: recovered {'internals_probe': 0} | cache 3 gens | 384.7 min
+[218/400] cstr_closedloop_00217 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 385.2 min
+[219/400] cstr_closedloop_00218 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 386.9 min
+[220/400] cstr_closedloop_00219 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 387.3 min
+[221/400] cstr_closedloop_00220 cool_stuck_closed: recovered {'internals_probe': 0} | cache 2 gens | 387.9 min
+[222/400] cstr_closedloop_00221 fouling: recovered {'internals_probe': 1} | cache 1 gens | 388.3 min
+[223/400] cstr_closedloop_00222 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 388.7 min
+[224/400] cstr_closedloop_00223 fouling: recovered {'internals_probe': 0} | cache 3 gens | 389.5 min
+[225/400] cstr_closedloop_00224 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 389.9 min
+[226/400] cstr_closedloop_00225 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 392.1 min
+[227/400] cstr_closedloop_00226 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 393.5 min
+[228/400] cstr_closedloop_00227 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 394.9 min
+[229/400] cstr_closedloop_00228 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 395.3 min
+[230/400] cstr_closedloop_00229 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 397.6 min
+[231/400] cstr_closedloop_00230 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 399.2 min
+[232/400] cstr_closedloop_00231 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 400.6 min
+[233/400] cstr_closedloop_00232 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 400.9 min
+[234/400] cstr_closedloop_00233 fouling: recovered {'internals_probe': 0} | cache 6 gens | 402.7 min
+[235/400] cstr_closedloop_00234 fouling: recovered {'internals_probe': 0} | cache 4 gens | 403.6 min
+[236/400] cstr_closedloop_00235 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 404.0 min
+[237/400] cstr_closedloop_00236 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 406.1 min
+[238/400] cstr_closedloop_00237 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 406.6 min
+[239/400] cstr_closedloop_00238 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 408.2 min
+[240/400] cstr_closedloop_00239 fouling: recovered {'internals_probe': 0} | cache 5 gens | 409.5 min
+[241/400] cstr_closedloop_00240 fouling: recovered {'internals_probe': 0} | cache 6 gens | 411.3 min
+[242/400] cstr_closedloop_00241 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 411.7 min
+[243/400] cstr_closedloop_00242 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 412.5 min
+[244/400] cstr_closedloop_00243 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 413.7 min
+[245/400] cstr_closedloop_00244 cool_stuck_closed: recovered {'internals_probe': 0} | cache 1 gens | 413.9 min
+[246/400] cstr_closedloop_00245 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 414.3 min
+[247/400] cstr_closedloop_00246 fouling: recovered {'internals_probe': 0} | cache 4 gens | 415.5 min
+[248/400] cstr_closedloop_00247 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 415.8 min
+[249/400] cstr_closedloop_00248 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 418.2 min
+[250/400] cstr_closedloop_00249 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 420.0 min
+[251/400] cstr_closedloop_00250 fouling: recovered {'internals_probe': 0} | cache 3 gens | 420.7 min
+[252/400] cstr_closedloop_00251 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 422.0 min
+[253/400] cstr_closedloop_00252 fouling: recovered {'internals_probe': 0} | cache 6 gens | 423.7 min
+[254/400] cstr_closedloop_00253 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 424.0 min
+[255/400] cstr_closedloop_00254 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 426.2 min
+[256/400] cstr_closedloop_00255 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 427.3 min
+[257/400] cstr_closedloop_00256 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 427.7 min
+[258/400] cstr_closedloop_00257 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 430.3 min
+[259/400] cstr_closedloop_00258 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 431.3 min
+[260/400] cstr_closedloop_00259 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 433.1 min
+[261/400] cstr_closedloop_00260 fouling: recovered {'internals_probe': 0} | cache 4 gens | 434.1 min
+[262/400] cstr_closedloop_00261 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 435.2 min
+[263/400] cstr_closedloop_00262 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 435.6 min
+[264/400] cstr_closedloop_00263 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 435.9 min
+[265/400] cstr_closedloop_00264 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 436.2 min
+[266/400] cstr_closedloop_00265 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 437.8 min
+[267/400] cstr_closedloop_00266 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 439.6 min
+[268/400] cstr_closedloop_00267 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 440.7 min
+[269/400] cstr_closedloop_00268 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 441.0 min
+[270/400] cstr_closedloop_00269 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 443.2 min
+[271/400] cstr_closedloop_00270 fouling: recovered {'internals_probe': 1} | cache 1 gens | 443.5 min
+[272/400] cstr_closedloop_00271 fouling: recovered {'internals_probe': 0} | cache 4 gens | 444.7 min
+[273/400] cstr_closedloop_00272 fouling: recovered {'internals_probe': 0} | cache 4 gens | 445.7 min
+[274/400] cstr_closedloop_00273 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 445.9 min
+[275/400] cstr_closedloop_00274 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 447.6 min
+[276/400] cstr_closedloop_00275 fouling: recovered {'internals_probe': 0} | cache 3 gens | 448.3 min
+[277/400] cstr_closedloop_00276 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 448.5 min
+[278/400] cstr_closedloop_00277 fouling: recovered {'internals_probe': 1} | cache 1 gens | 448.8 min
+[279/400] cstr_closedloop_00278 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 450.1 min
+[280/400] cstr_closedloop_00279 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 451.3 min
+[281/400] cstr_closedloop_00280 fouling: recovered {'internals_probe': 1} | cache 1 gens | 451.6 min
+[282/400] cstr_closedloop_00281 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 452.0 min
+[283/400] cstr_closedloop_00282 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 453.0 min
+[284/400] cstr_closedloop_00283 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 453.2 min
+[285/400] cstr_closedloop_00284 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 453.4 min
+[286/400] cstr_closedloop_00285 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 453.9 min
+[287/400] cstr_closedloop_00286 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 454.9 min
+[288/400] cstr_closedloop_00287 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 456.0 min
+[289/400] cstr_closedloop_00288 fouling: recovered {'internals_probe': 0} | cache 5 gens | 457.7 min
+[290/400] cstr_closedloop_00289 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 458.2 min
+[291/400] cstr_closedloop_00290 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 459.5 min
+[292/400] cstr_closedloop_00291 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 461.4 min
+[293/400] cstr_closedloop_00292 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 461.9 min
+[294/400] cstr_closedloop_00293 fouling: recovered {'internals_probe': 1} | cache 1 gens | 462.1 min
+[295/400] cstr_closedloop_00294 pump_degrade: recovered {'internals_probe': 0} | cache 3 gens | 463.3 min
+[296/400] cstr_closedloop_00295 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 465.6 min
+[297/400] cstr_closedloop_00296 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 466.0 min
+[298/400] cstr_closedloop_00297 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 468.2 min
+[299/400] cstr_closedloop_00298 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 468.6 min
+[300/400] cstr_closedloop_00299 fouling: recovered {'internals_probe': 0} | cache 3 gens | 469.3 min
+[301/400] cstr_closedloop_00300 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 469.6 min
+[302/400] cstr_closedloop_00301 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 471.5 min
+[303/400] cstr_closedloop_00302 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 473.7 min
+[304/400] cstr_closedloop_00303 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 474.6 min
+[305/400] cstr_closedloop_00304 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 475.9 min
+[306/400] cstr_closedloop_00305 fouling: recovered {'internals_probe': 1} | cache 1 gens | 476.2 min
+[307/400] cstr_closedloop_00306 fouling: recovered {'internals_probe': 1} | cache 1 gens | 476.4 min
+[308/400] cstr_closedloop_00307 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 478.9 min
+[309/400] cstr_closedloop_00308 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 481.4 min
+[310/400] cstr_closedloop_00309 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 483.2 min
+[311/400] cstr_closedloop_00310 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 484.9 min
+[312/400] cstr_closedloop_00311 outlet_block: recovered {'internals_probe': 0} | cache 4 gens | 486.3 min
+[313/400] cstr_closedloop_00312 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 487.6 min
+[314/400] cstr_closedloop_00313 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 487.9 min
+[315/400] cstr_closedloop_00314 fouling: recovered {'internals_probe': 1} | cache 1 gens | 488.1 min
+[316/400] cstr_closedloop_00315 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 488.5 min
+[317/400] cstr_closedloop_00316 fouling: recovered {'internals_probe': 0} | cache 6 gens | 489.9 min
+[318/400] cstr_closedloop_00317 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 490.3 min
+[319/400] cstr_closedloop_00318 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 490.6 min
+[320/400] cstr_closedloop_00319 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 493.2 min
+[321/400] cstr_closedloop_00320 fouling: recovered {'internals_probe': 1} | cache 1 gens | 493.4 min
+[322/400] cstr_closedloop_00321 fouling: recovered {'internals_probe': 0} | cache 5 gens | 494.9 min
+[323/400] cstr_closedloop_00322 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 496.9 min
+[324/400] cstr_closedloop_00323 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 498.7 min
+[325/400] cstr_closedloop_00324 fouling: recovered {'internals_probe': 0} | cache 4 gens | 499.9 min
+[326/400] cstr_closedloop_00325 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 500.3 min
+[327/400] cstr_closedloop_00326 fouling: recovered {'internals_probe': 1} | cache 1 gens | 500.6 min
+[328/400] cstr_closedloop_00327 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 502.8 min
+[329/400] cstr_closedloop_00328 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 504.1 min
+[330/400] cstr_closedloop_00329 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 505.3 min
+[331/400] cstr_closedloop_00330 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 505.5 min
+[332/400] cstr_closedloop_00331 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 506.6 min
+[333/400] cstr_closedloop_00332 fouling: recovered {'internals_probe': 1} | cache 1 gens | 506.8 min
+[334/400] cstr_closedloop_00333 fouling: recovered {'internals_probe': 0} | cache 6 gens | 508.7 min
+[335/400] cstr_closedloop_00334 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 511.0 min
+[336/400] cstr_closedloop_00335 fouling: recovered {'internals_probe': 0} | cache 6 gens | 512.6 min
+[337/400] cstr_closedloop_00336 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 513.7 min
+[338/400] cstr_closedloop_00337 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 514.1 min
+[339/400] cstr_closedloop_00338 fouling: recovered {'internals_probe': 1} | cache 1 gens | 514.5 min
+[340/400] cstr_closedloop_00339 cool_stuck_closed: recovered {'internals_probe': 0} | cache 6 gens | 516.8 min
+[341/400] cstr_closedloop_00340 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 517.7 min
+[342/400] cstr_closedloop_00341 fouling: recovered {'internals_probe': 0} | cache 6 gens | 519.4 min
+[343/400] cstr_closedloop_00342 pump_degrade: recovered {'internals_probe': 0} | cache 2 gens | 520.3 min
+[344/400] cstr_closedloop_00343 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 522.8 min
+[345/400] cstr_closedloop_00344 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 523.2 min
+[346/400] cstr_closedloop_00345 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 523.5 min
+[347/400] cstr_closedloop_00346 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 523.9 min
+[348/400] cstr_closedloop_00347 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 524.3 min
+[349/400] cstr_closedloop_00348 fouling: recovered {'internals_probe': 0} | cache 5 gens | 525.6 min
+[350/400] cstr_closedloop_00349 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 526.0 min
+[351/400] cstr_closedloop_00350 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 526.4 min
+[352/400] cstr_closedloop_00351 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 527.5 min
+[353/400] cstr_closedloop_00352 fouling: recovered {'internals_probe': 0} | cache 3 gens | 528.2 min
+[354/400] cstr_closedloop_00353 pump_degrade: recovered {'internals_probe': 0} | cache 6 gens | 530.5 min
+[355/400] cstr_closedloop_00354 pump_degrade: recovered {'internals_probe': 0} | cache 5 gens | 532.1 min
+[356/400] cstr_closedloop_00355 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 533.2 min
+[357/400] cstr_closedloop_00356 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 533.6 min
+[358/400] cstr_closedloop_00357 fouling: recovered {'internals_probe': 0} | cache 5 gens | 535.0 min
+[359/400] cstr_closedloop_00358 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 535.4 min
+[360/400] cstr_closedloop_00359 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 537.1 min
+[361/400] cstr_closedloop_00360 fouling: recovered {'internals_probe': 0} | cache 6 gens | 538.5 min
+[362/400] cstr_closedloop_00361 cool_stuck_closed: recovered {'internals_probe': 0} | cache 2 gens | 539.2 min
+[363/400] cstr_closedloop_00362 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 539.6 min
+[364/400] cstr_closedloop_00363 outlet_block: recovered {'internals_probe': 0} | cache 1 gens | 540.4 min
+[365/400] cstr_closedloop_00364 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 542.0 min
+[366/400] cstr_closedloop_00365 cool_stuck_closed: recovered {'internals_probe': 0} | cache 3 gens | 543.0 min
+[367/400] cstr_closedloop_00366 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 543.3 min
+[368/400] cstr_closedloop_00367 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 543.7 min
+[369/400] cstr_closedloop_00368 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 543.9 min
+[370/400] cstr_closedloop_00369 cool_stuck_closed: recovered {'internals_probe': 1} | cache 1 gens | 544.3 min
+[371/400] cstr_closedloop_00370 fouling: recovered {'internals_probe': 0} | cache 3 gens | 545.1 min
+[372/400] cstr_closedloop_00371 fouling: recovered {'internals_probe': 1} | cache 1 gens | 545.3 min
+[373/400] cstr_closedloop_00372 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 545.7 min
+[374/400] cstr_closedloop_00373 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 547.3 min
+[375/400] cstr_closedloop_00374 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 547.8 min
+[376/400] cstr_closedloop_00375 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 548.0 min
+[377/400] cstr_closedloop_00376 fouling: recovered {'internals_probe': 0} | cache 4 gens | 549.0 min
+[378/400] cstr_closedloop_00377 fouling: recovered {'internals_probe': 0} | cache 4 gens | 550.0 min
+[379/400] cstr_closedloop_00378 fouling: recovered {'internals_probe': 0} | cache 6 gens | 551.8 min
+[380/400] cstr_closedloop_00379 outlet_block: recovered {'internals_probe': 0} | cache 6 gens | 553.8 min
+[381/400] cstr_closedloop_00380 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 554.2 min
+[382/400] cstr_closedloop_00381 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 555.6 min
+[383/400] cstr_closedloop_00382 fouling: recovered {'internals_probe': 0} | cache 6 gens | 557.2 min
+[384/400] cstr_closedloop_00383 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 557.6 min
+[385/400] cstr_closedloop_00384 pump_degrade: recovered {'internals_probe': 0} | cache 2 gens | 558.2 min
+[386/400] cstr_closedloop_00385 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 558.6 min
+[387/400] cstr_closedloop_00386 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 560.1 min
+[388/400] cstr_closedloop_00387 cool_stuck_closed: recovered {'internals_probe': 0} | cache 5 gens | 561.8 min
+[389/400] cstr_closedloop_00388 outlet_block: recovered {'internals_probe': 0} | cache 5 gens | 563.7 min
+[390/400] cstr_closedloop_00389 fouling: recovered {'internals_probe': 0} | cache 4 gens | 564.7 min
+[391/400] cstr_closedloop_00390 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 565.6 min
+[392/400] cstr_closedloop_00391 fouling: recovered {'internals_probe': 0} | cache 5 gens | 566.9 min
+[393/400] cstr_closedloop_00392 outlet_block: recovered {'internals_probe': 1} | cache 1 gens | 567.2 min
+[394/400] cstr_closedloop_00393 fouling: recovered {'internals_probe': 0} | cache 2 gens | 567.8 min
+[395/400] cstr_closedloop_00394 pump_degrade: recovered {'internals_probe': 0} | cache 4 gens | 569.2 min
+[396/400] cstr_closedloop_00395 fouling: recovered {'internals_probe': 0} | cache 5 gens | 570.7 min
+[397/400] cstr_closedloop_00396 fouling: recovered {'internals_probe': 0} | cache 2 gens | 571.2 min
+[398/400] cstr_closedloop_00397 pump_degrade: recovered {'internals_probe': 1} | cache 1 gens | 571.5 min
+[399/400] cstr_closedloop_00398 cool_stuck_closed: recovered {'internals_probe': 0} | cache 4 gens | 572.6 min
+[400/400] cstr_closedloop_00399 outlet_block: recovered {'internals_probe': 0} | cache 3 gens | 573.6 min
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_closed_loop\\20261007_184203_qwen25-3b_internals", "hours": 9.56}

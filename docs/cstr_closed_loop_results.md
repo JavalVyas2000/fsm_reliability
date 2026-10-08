@@ -52,3 +52,34 @@ Paired differences against always-validate (bootstrap 95% CI over episodes):
 - **Probes on retries:** they were trained on first proposals and applied to retries.
 - **Exploratory freeze:** the probe rules come from a freeze whose test sets had been used for the exploratory UCB re-analysis. The closed-loop episodes themselves are fresh.
 - **Compute times** are this laptop's (RTX 4060 8 GB, 4 verifier workers).
+
+## Update 2026-10-08: all four CSTR models, including the internals-only policy
+
+400 fresh episodes per model, the same episodes for every policy. Δ = change against always-validate (paired bootstrap 95% CI). Full tables, with compute and savings at 30 s and 60 s validator cost: `paper_outputs/tables/closed_loop_costs_all.md`.
+
+| Model | Policy | Recovered (Δ) | Failing executed | Validator calls avoided |
+|---|---|---|---|---|
+| Qwen2.5-1.5B | Observables probe | 33.0% (−1.5 [−3.0, −0.3]) | 12 | 67% |
+| | Obs. + internals + grounding | 33.2% (−1.3 [−2.5, 0.0]) | 9 | 64% |
+| | **Internals only** | 33.2% (−1.3 [−2.5, −0.3]) | **0** | 35% |
+| Qwen2.5-3B | Observables probe | 41.0% (−2.8 [−5.8, +0.3]) | 0 | 47% |
+| | Obs. + internals + grounding | 37.0% (−6.8 [−10.0, −3.5]) | 1 | 72% |
+| | **Internals only** | 30.0% (−13.8 [−17.3, −10.5]) | **0** | 65% |
+| Llama-3.2-3B | Observables probe | 35.2% (−18.5 [−24.0, −13.3]) | 0 | 62% |
+| | Obs. + internals + grounding | 44.5% (−9.3 [−14.0, −4.3]) | 0 | 45% |
+| | **Internals only** | 49.8% (−4.0 [−8.3, +0.3]) | **0** | 29% |
+| Qwen2.5-7B (4-bit) | Observables probe | 25.0% (−9.0 [−12.8, −5.5]) | 8 | 90% |
+| | Obs. + internals + grounding | 26.5% (−7.5 [−11.0, −4.5]) | 165, 161 of them on retries | 75% |
+| | **Internals only** | 30.0% (−4.0 [−6.3, −1.8]) | **0** | 44% |
+
+Random routing at matched rates executed 0–186 failing actions, depending on the model. Never validating executed 259–318.
+
+**Cross-model findings:**
+- **The internals-only probe** uses no plant readings and no proposed-action features. It never executed a failing action unchecked in 1600 episodes across 4 models, while avoiding 29–65% of validator calls.
+  - Its recovery cost is small for three models: −1.3 to −4.0 points.
+  - For Qwen2.5-3B it is large (−13.8): that probe rejected many good proposals, 0.45 per episode.
+- **Probes that use observables** avoid more calls (45–90%) but are not uniformly safe. For Qwen2.5-7B the combined probe failed on retries. Accepting unchecked only on first proposals brings its unsafe executions from 165 to 4.
+- **Every skipped call in Llama's case was a reject.** Each reject forces a slow regeneration, so the probes cost time at the measured validator cost (break-even 73–108 s per call). Llama's generation was also slowed by a GPU memory spill, so its compute figures overstate generation cost.
+- **Time savings scale with validator cost** for the Qwen models: at 30 s per call, 14–50% less compute; at 60 s, 21–64%.
+
+The aborted and resumed runs are documented in the commit history: Llama hit a GPU memory spill, then CUDA OOM at episode 79, and was resumed with the completed episodes kept.

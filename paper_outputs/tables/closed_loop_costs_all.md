@@ -6,20 +6,22 @@ Compute per episode = generation + internals pass + grounding pass + validator c
 
 | policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 10.5 s | @ 30 s | @ 60 s | break-even validator s |
 |---|---|---|---|---|---|---|---|---|
-| Always validate | 34.5% | 0 | 1.05 | 48.0 s = 37.0 + 0.0 + 0.0 + 10.5 | +0% | +0% | +0% |  |
+| Always validate | 34.5% | 0 | 1.05 | 48.1 s = 37.0 + 0.0 + 0.0 + 10.5 | +0% | +0% | +0% |  |
 | Observables probe | 33.0% | 12 | 0.35 (−67%) | 42.6 s = 38.9 + 0.0 + 0.0 + 4.1 | +11% | +28% | +40% | 2.7 |
 | Obs. + internals + grounding probe | 33.2% | 9 | 0.38 (−64%) | 45.6 s = 39.9 + 0.5 + 1.2 + 4.3 | +5% | +23% | +36% | 6.8 |
-| Random routing | 33.8% | 186 | 0.42 (−60%) | 33.0 s = 28.6 + 0.0 + 0.0 + 4.3 | +31% | +40% | +46% | any (cheaper even at 0 s) |
+| Internals-only probe | 33.2% | 0 | 0.69 (−35%) | 45.4 s = 36.5 + 0.5 + 1.2 + 7.4 | +6% | +14% | +21% | 3.1 |
+| Random routing | 33.8% | 186 | 0.42 (−60%) | 33.1 s = 28.6 + 0.0 + 0.0 + 4.3 | +31% | +40% | +46% | any (cheaper even at 0 s) |
 | Never validate | 34.5% | 259 | 0.00 (−100%) | 10.8 s = 10.8 + 0.0 + 0.0 + 0.0 | +78% | +84% | +89% |  |
 
-## Qwen2.5-3B (400 episodes; measured validator 7.9 s/call)
+## Qwen2.5-3B (400 episodes; measured validator 8.1 s/call)
 
-| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 7.9 s | @ 30 s | @ 60 s | break-even validator s |
+| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 8.1 s | @ 30 s | @ 60 s | break-even validator s |
 |---|---|---|---|---|---|---|---|---|
-| Always validate | 43.8% | 0 | 2.45 | 74.4 s = 55.1 + 0.0 + 0.0 + 20.1 | +0% | +0% | +0% |  |
-| Observables probe | 41.0% | 0 | 1.30 (−47%) | 73.2 s = 63.0 + 0.0 + 0.0 + 10.4 | +2% | +21% | +30% | 6.9 |
-| Obs. + internals + grounding probe | 37.0% | 1 | 0.69 (−72%) | 77.8 s = 67.2 + 2.7 + 2.4 + 5.1 | -5% | +28% | +44% | 9.8 |
-| Random routing | 37.8% | 110 | 1.31 (−47%) | 67.1 s = 56.8 + 0.0 + 0.0 + 9.8 | +10% | +25% | +33% | 1.5 |
+| Always validate | 43.8% | 0 | 2.45 | 75.0 s = 55.1 + 0.0 + 0.0 + 20.1 | +0% | +0% | +0% |  |
+| Observables probe | 41.0% | 0 | 1.30 (−47%) | 73.6 s = 63.0 + 0.0 + 0.0 + 10.4 | +2% | +21% | +30% | 6.9 |
+| Obs. + internals + grounding probe | 37.0% | 1 | 0.69 (−72%) | 77.9 s = 67.2 + 2.7 + 2.4 + 5.1 | -4% | +28% | +44% | 9.8 |
+| Internals-only probe | 30.0% | 0 | 0.86 (−65%) | 89.4 s = 78.3 + 1.2 + 2.9 + 8.5 | -19% | +16% | +34% | 17.2 |
+| Random routing | 37.8% | 110 | 1.31 (−47%) | 67.4 s = 56.8 + 0.0 + 0.0 + 9.8 | +10% | +25% | +33% | 1.5 |
 | Never validate | 30.0% | 274 | 0.00 (−100%) | 16.5 s = 16.5 + 0.0 + 0.0 + 0.0 | +78% | +87% | +92% |  |
 
 ## Llama-3.2-3B (400 episodes; measured validator 8.1 s/call)
@@ -52,8 +54,10 @@ Derived from the logged trajectories (see script docstring): unsafe executions a
 |---|---|---|---|---|
 | Qwen2.5-1.5B | Observables probe | 12 → **12** | 0.35 → 0.35 | 33.0% → [33.0%, 33.0%] |
 | Qwen2.5-1.5B | Obs. + internals + grounding probe | 9 → **9** | 0.38 → 0.38 | 33.2% → [33.2%, 33.2%] |
+| Qwen2.5-1.5B | Internals-only probe | 0 → **0** | 0.69 → 0.69 | 33.2% → [33.2%, 33.2%] |
 | Qwen2.5-3B | Observables probe | 0 → **0** | 1.30 → 1.30 | 41.0% → [41.0%, 41.0%] |
 | Qwen2.5-3B | Obs. + internals + grounding probe | 1 → **1** | 0.69 → 0.70 | 37.0% → [37.0%, 37.0%] |
+| Qwen2.5-3B | Internals-only probe | 0 → **0** | 0.86 → 0.86 | 30.0% → [30.0%, 30.0%] |
 | Llama-3.2-3B | Observables probe | 0 → **0** | 0.68 → 0.68 | 35.2% → [35.2%, 35.2%] |
 | Llama-3.2-3B | Obs. + internals + grounding probe | 0 → **0** | 0.99 → 0.99 | 44.5% → [44.5%, 44.5%] |
 | Llama-3.2-3B | Internals-only probe | 0 → **0** | 1.27 → 1.27 | 49.8% → [49.8%, 49.8%] |
