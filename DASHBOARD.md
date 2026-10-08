@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-08 17:13 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `9e1a786 Dashboard: automatic status update`._
+_Generated 2026-10-08 19:13 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `72cc8f3 Dashboard: automatic status update`._
 
 ## Campaign status
 
