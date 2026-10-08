@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-08 09:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e3cf6c8 Add provenance of the aborted Llama run, the GPU-memory smoke test and the SmolLM2 CSTR pilot`._
+_Generated 2026-10-08 11:13 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `bafa468 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -19,17 +19,17 @@ _Generated 2026-10-08 09:12 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
-<details><summary>Last 8 queue-log lines · 6 failure/skip line(s) in the log</summary>
+<details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-07T18:40:12 [model set] END   cstr_smollm_cert_eval (exit 1)
-2026-10-07T18:40:12 [model set] MODEL SET DONE
 2026-10-07T18:40:47 [internals closed loop] START qwen25-3b_internals
 2026-10-08T04:16:02 [internals closed loop] END   qwen25-3b_internals (exit 0)
 2026-10-08T04:16:02 [internals closed loop] START qwen25-15b_internals
 2026-10-08T06:37:40 [internals closed loop] END   qwen25-15b_internals (exit 0)
 2026-10-08T06:37:40 [internals closed loop] INTERNALS CLOSED LOOP DONE
 2026-10-08T06:41:56 [smollm resume] START cstr_smollm_collect_resume
+2026-10-08T10:17:57 [smollm resume] END   cstr_smollm_collect_resume (exit 1)
+2026-10-08T10:17:58 [smollm resume] START cstr_smollm_collect_resume
 ```
 
 </details>
