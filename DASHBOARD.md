@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-08 05:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `159fe89 Dashboard: automatic status update`._
+_Generated 2026-10-08 07:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `c73819b Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -14,22 +14,22 @@ _Generated 2026-10-08 05:12 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | FSM Qwen2.5-7B: freeze + cert evaluation | ✅ done |
 | CSTR SmolLM2-1.7B: 100-episode pilot (gate) | ✅ done (pass rate among valid, format-failure rate = 0.380 0.000) |
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
-| CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | 🕓 waiting |
+| CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ⏳ running |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
-| Closed loop, internals only: Qwen2.5-1.5B | ⏳ running — episode 157/400 |
+| Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 6 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-07T18:37:01 [model set] START cstr_smollm_cert_grounding
-2026-10-07T18:39:59 [model set] END   cstr_smollm_cert_grounding (exit 1)
-2026-10-07T18:39:59 [model set] START cstr_smollm_cert_eval
 2026-10-07T18:40:12 [model set] END   cstr_smollm_cert_eval (exit 1)
 2026-10-07T18:40:12 [model set] MODEL SET DONE
 2026-10-07T18:40:47 [internals closed loop] START qwen25-3b_internals
 2026-10-08T04:16:02 [internals closed loop] END   qwen25-3b_internals (exit 0)
 2026-10-08T04:16:02 [internals closed loop] START qwen25-15b_internals
+2026-10-08T06:37:40 [internals closed loop] END   qwen25-15b_internals (exit 0)
+2026-10-08T06:37:40 [internals closed loop] INTERNALS CLOSED LOOP DONE
+2026-10-08T06:41:56 [smollm resume] START cstr_smollm_collect_resume
 ```
 
 </details>
@@ -45,7 +45,7 @@ _Generated 2026-10-08 05:12 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Always validate | 400 | 34.5% | 0 | 1.05 | 47 s |
 | Observables probe | 400 | 33.0% (-1.5) | 12 | 0.35 (-67%) | 43 s |
 | Obs. + internals + grounding | 400 | 33.2% (-1.2) | 9 | 0.38 (-64%) | 46 s |
-| Internals only | 157 | 31.8% (-2.7) | 0 | 0.71 (-33%) | 46 s |
+| Internals only | 400 | 33.2% (-1.2) | 0 | 0.69 (-35%) | 46 s |
 | Random routing | 400 | 33.8% (-0.7) | 186 | 0.42 (-60%) | 33 s |
 | Never validate | 400 | 34.5% (+0.0) | 259 | 0.00 (-100%) | 11 s |
 
