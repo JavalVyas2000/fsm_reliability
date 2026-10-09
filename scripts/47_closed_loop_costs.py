@@ -31,14 +31,18 @@ import pandas as pd  # noqa: E402
 from src.utils.manifest import REPO_ROOT, build_manifest, write_json  # noqa: E402
 
 OUT = REPO_ROOT / "paper_outputs"
-ORDER = ["always_validate", "observables_probe", "combined_probe", "internals_probe", "random_matched", "never_validate"]
+ORDER = ["always_validate", "observables_probe", "observables_probe_r0", "combined_probe", "combined_probe_r0",
+         "internals_probe", "internals_probe_r0", "random_matched", "never_validate"]
 NAMES = {"always_validate": "Always validate", "observables_probe": "Observables probe",
          "combined_probe": "Obs. + internals + grounding probe", "internals_probe": "Internals-only probe",
-         "random_matched": "Random routing", "never_validate": "Never validate"}
+         "random_matched": "Random routing", "never_validate": "Never validate",
+         "observables_probe_r0": "Observables probe, first-proposal-only", "combined_probe_r0": "Obs. + internals + grounding, first-proposal-only",
+         "internals_probe_r0": "Internals-only, first-proposal-only"}
 COLORS = {"always_validate": "#2a78d6", "observables_probe": "#eb6834", "combined_probe": "#1baf7a",
-          "internals_probe": "#e87ba4", "random_matched": "#eda100", "never_validate": "#898781"}
+          "internals_probe": "#e87ba4", "random_matched": "#eda100", "never_validate": "#898781", "observables_probe_r0": "#eb6834",
+          "combined_probe_r0": "#1baf7a", "internals_probe_r0": "#e87ba4"}
 INK, INK2, MUTED, GRID, SURFACE = "#0b0b0b", "#52514e", "#898781", "#e6e5e1", "#fcfcfb"
-PROBES = ("observables_probe", "combined_probe", "internals_probe")
+PROBES = ("observables_probe", "combined_probe", "internals_probe")  # the rule bounds apply to the unrestricted probes
 
 
 def parse_args():

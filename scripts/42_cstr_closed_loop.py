@@ -54,11 +54,16 @@ S12 = importlib.import_module("scripts.12_fit_fsm_baseline")
 S25 = importlib.import_module("scripts.25_cstr_collect")
 
 VERSION = "cstr_prompt_v3.1"
-POLICIES = ["always_validate", "never_validate", "observables_probe", "combined_probe", "random_matched", "internals_probe"]
+POLICIES = ["always_validate", "never_validate", "observables_probe", "combined_probe", "random_matched", "internals_probe",
+            # Amendment 4: same probes, but a retry (round > 0) is never accepted unchecked; it is validated instead
+            "observables_probe_r0", "combined_probe_r0", "internals_probe_r0"]
 PROBE_SIGNAL = {"observables_probe": "plant readings + proposed change",
                 "combined_probe": "readings + change + all internals + grounding",
                 # Amendment 2 of docs/cstr_closed_loop_prereg.md: model internals only, no plant readings or action
-                "internals_probe": "all internals + grounding"}
+                "internals_probe": "all internals + grounding",
+                "observables_probe_r0": "plant readings + proposed change",
+                "combined_probe_r0": "readings + change + all internals + grounding",
+                "internals_probe_r0": "all internals + grounding"}
 REJECT_MSG = "The previous proposal was rejected by a risk screen before validation."
 
 
@@ -254,7 +259,7 @@ def main():
                     st, c = state[p], cands[p]
                     st["proposals"] += 1
                     st["t_gen"] += c["gen_s"]
-                    st["t_feat"] += c["feat_s"] if p in ("combined_probe", "internals_probe") else 0.0  # need internals
+                    st["t_feat"] += c["feat_s"] if p.startswith(("combined_probe", "internals_probe")) else 0.0  # need internals
                     step = {"episode_id": e, "policy": p, "round": rnd, "prompt_sha": c["sha"],
                             "schema_valid": c["parsed"]["schema_valid"], "action": c["parsed"]["action"]}
                     if c["parsed"]["schema_valid"] != 1:  # CAR aborts on an unparseable answer
@@ -278,6 +283,8 @@ def main():
                         ta, tr = R.rules[lab][R.tkey], R.rules[lab]["t_reject"]
                         decision = "accept" if ta is not None and risk <= ta else (
                             "reject" if tr is not None and risk >= tr else "validate")
+                        if p.endswith("_r0") and rnd > 0 and decision == "accept":
+                            decision = "validate"  # first-proposal-only rule: retries are always validated
                         step["risk"] = risk
                     else:
                         u = np.random.default_rng([args.seed, ei, rnd]).random()

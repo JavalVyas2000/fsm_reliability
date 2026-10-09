@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 19:07 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `8d4101b Dashboard: automatic status update`._
+_Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `cbba2ae Add SmolLM2-1.7B closed loop: internals-based probes fail on retries (237-243 unchecked failing executions, 2-11 under the first-proposal-only rule)`._
 
 ## Campaign status
 
@@ -17,6 +17,8 @@ _Generated 2026-10-09 19:07 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
 | Closed loop: SmolLM2-1.7B (all six policies) | ✅ done |
+| First-proposal-only rule: SmolLM2-1.7B | 🕓 waiting |
+| First-proposal-only rule: Qwen2.5-7B (4-bit) | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 

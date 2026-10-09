@@ -89,3 +89,11 @@ Written before any SmolLM2 closed-loop episode was run, at the author's request,
 - **Unchanged:** the same 400 episodes, the six policies including internals-only, the same budget and outcomes.
 - **Random routing** uses SmolLM2's own combined-probe dev rates.
 - **Reporting:** separate, like every other model.
+
+## Amendment 4 (2026-10-09): first-proposal-only rule
+
+Written after the SmolLM2 and Qwen2.5-7B closed loops showed that internals-based probes accept failing *retries*, and before any run with the rule.
+
+- **Policies** `observables_probe_r0`, `combined_probe_r0`, `internals_probe_r0`: the same frozen probes and rules, except that a retry (round > 0) is never accepted unchecked. A retry the probe would accept is validated instead. Unchecked rejects and first-proposal accepts are unchanged.
+- **Runs:** SmolLM2-1.7B and Qwen2.5-7B (4-bit), the two models whose probes accepted failing retries, on the same 400 episodes. These are supplementary runs of the three variants only, paired with the main runs by episode. For the other three models the rule changes nothing, since their probes accepted no failing retries; their main runs stand as the rule's results.
+- **Outcomes:** as before. This is the deployment rule the paper will recommend.

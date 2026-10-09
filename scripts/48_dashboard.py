@@ -21,10 +21,13 @@ ROOT = Path(__file__).resolve().parents[1]
 LOG = ROOT / "outputs" / "data_queue.log"
 CL = ROOT / "outputs" / "cstr_closed_loop"
 TABLES = ROOT / "paper_outputs" / "tables"
-POLICY_ORDER = ["always_validate", "observables_probe", "combined_probe", "internals_probe", "random_matched", "never_validate"]
+POLICY_ORDER = ["always_validate", "observables_probe", "observables_probe_r0", "combined_probe", "combined_probe_r0",
+                "internals_probe", "internals_probe_r0", "random_matched", "never_validate"]
 POLICY_NAME = {"always_validate": "Always validate", "observables_probe": "Observables probe",
                "combined_probe": "Obs. + internals + grounding", "internals_probe": "Internals only",
-               "random_matched": "Random routing", "never_validate": "Never validate"}
+               "random_matched": "Random routing", "never_validate": "Never validate",
+               "observables_probe_r0": "Observables, first-proposal-only", "combined_probe_r0": "Obs. + internals + grounding, first-proposal-only",
+               "internals_probe_r0": "Internals only, first-proposal-only"}
 CL_MODELS = [("Qwen2.5-1.5B", "_qwen25-15b"), ("Qwen2.5-3B", "_qwen25-3b"), ("Llama-3.2-3B", "_llama-32-3b"),
              ("Qwen2.5-7B (4-bit)", "_qwen25-7b"), ("SmolLM2-1.7B", "_smollm2-17b")]
 # Planned steps after the closed loops: (label, START marker, END marker)
@@ -40,6 +43,8 @@ PLANNED = [
     ("CSTR SmolLM2-1.7B: resumed collection (after internals-only runs)", "[smollm resume] START cstr_smollm_collect_resume", "[smollm resume] START cstr_smollm_grounding_full"),
     ("CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation", "[smollm resume] START cstr_smollm_grounding_full", "[smollm resume] SMOLLM DONE"),
     ("Closed loop: SmolLM2-1.7B (all six policies)", "[smollm closed loop] START", "[smollm closed loop] END"),
+    ("First-proposal-only rule: SmolLM2-1.7B", "[r0 rule] START smollm2-17b", "[r0 rule] END   smollm2-17b"),
+    ("First-proposal-only rule: Qwen2.5-7B (4-bit)", "[r0 rule] START qwen25-7b", "[r0 rule] END   qwen25-7b"),
     ("Closed loop, internals only: Qwen2.5-3B", "[internals closed loop] START qwen25-3b_internals", "[internals closed loop] END   qwen25-3b_internals"),
     ("Closed loop, internals only: Qwen2.5-1.5B", "[internals closed loop] START qwen25-15b_internals", "[internals closed loop] END   qwen25-15b_internals"),
 ]
@@ -65,7 +70,7 @@ def log_lines():
 
 def latest_run(suffix):
     runs = sorted(p for p in CL.glob(f"*{suffix}") if "SMOKE" not in p.name and "ABORTED" not in p.name
-                  and "internals" not in p.name) if CL.exists() else []
+                  and "internals" not in p.name and "r0rule" not in p.name) if CL.exists() else []
     return runs[-1] if runs else None
 
 
@@ -138,10 +143,11 @@ def closed_loop_section():
             out += [f"**{model}** — not started", ""]
             continue
         e = pd.DataFrame([json.loads(l) for l in open(run / "episodes.jsonl", encoding="utf-8")])
-        extra = sorted(CL.glob(f"*{suffix}_internals"))
-        if extra and (extra[-1] / "episodes.jsonl").exists():
-            x = pd.DataFrame([json.loads(l) for l in open(extra[-1] / "episodes.jsonl", encoding="utf-8")])
-            e = pd.concat([e, x[~x.policy.isin(e.policy.unique())]], ignore_index=True)
+        for tag in ("_internals", "_r0rule"):
+            extra = sorted(CL.glob(f"*{suffix}{tag}"))
+            if extra and (extra[-1] / "episodes.jsonl").exists():
+                x = pd.DataFrame([json.loads(l) for l in open(extra[-1] / "episodes.jsonl", encoding="utf-8")])
+                e = pd.concat([e, x[~x.policy.isin(e.policy.unique())]], ignore_index=True)
         n_ep = e[e.policy == "always_validate"].episode_id.nunique()
         e = e[e.episode_id.isin(e[e.policy == "always_validate"].episode_id)]
         e["unsafe"] = e.outcome.str.startswith("executed_failure")
