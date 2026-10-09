@@ -80,3 +80,12 @@ Written before any internals-only closed-loop result existed.
   - Qwen2.5-3B (done) and Qwen2.5-1.5B (already running): supplementary runs of this policy only (`--policies internals_probe`) on the same 400 episodes, paired with the main runs by episode.
 - **Determinism:** generation is greedy and the verifier is deterministic, so an episode's trajectory under a given policy does not depend on which other policies run alongside it.
 - **Outcomes:** as for the other policies.
+
+## Amendment 3 (2026-10-09): SmolLM2-1.7B
+
+Written before any SmolLM2 closed-loop episode was run, at the author's request, so that the closed loop covers all five CSTR models.
+
+- **Probes and rules:** SmolLM2-1.7B's own frozen probes and rules (`outputs/certification/*_cstr_v4_smollm2-17b_skip_ucb`, prereg Amendment 3 and 4 rules; the `_FAILED_PARTIAL_DATA` folder is excluded).
+- **Unchanged:** the same 400 episodes, the six policies including internals-only, the same budget and outcomes.
+- **Random routing** uses SmolLM2's own combined-probe dev rates.
+- **Reporting:** separate, like every other model.

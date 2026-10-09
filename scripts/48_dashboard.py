@@ -26,7 +26,7 @@ POLICY_NAME = {"always_validate": "Always validate", "observables_probe": "Obser
                "combined_probe": "Obs. + internals + grounding", "internals_probe": "Internals only",
                "random_matched": "Random routing", "never_validate": "Never validate"}
 CL_MODELS = [("Qwen2.5-1.5B", "_qwen25-15b"), ("Qwen2.5-3B", "_qwen25-3b"), ("Llama-3.2-3B", "_llama-32-3b"),
-             ("Qwen2.5-7B (4-bit)", "_qwen25-7b")]
+             ("Qwen2.5-7B (4-bit)", "_qwen25-7b"), ("SmolLM2-1.7B", "_smollm2-17b")]
 # Planned steps after the closed loops: (label, START marker, END marker)
 PLANNED = [
     ("Llama-3.2-3B closed loop (resumed)", "[llama resume] START", "[llama resume] END"),
@@ -39,6 +39,7 @@ PLANNED = [
     ("CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died)", "[model set] START cstr_smollm_collect", "[model set] END   cstr_smollm_collect"),
     ("CSTR SmolLM2-1.7B: resumed collection (after internals-only runs)", "[smollm resume] START cstr_smollm_collect_resume", "[smollm resume] START cstr_smollm_grounding_full"),
     ("CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation", "[smollm resume] START cstr_smollm_grounding_full", "[smollm resume] SMOLLM DONE"),
+    ("Closed loop: SmolLM2-1.7B (all six policies)", "[smollm closed loop] START", "[smollm closed loop] END"),
     ("Closed loop, internals only: Qwen2.5-3B", "[internals closed loop] START qwen25-3b_internals", "[internals closed loop] END   qwen25-3b_internals"),
     ("Closed loop, internals only: Qwen2.5-1.5B", "[internals closed loop] START qwen25-15b_internals", "[internals closed loop] END   qwen25-15b_internals"),
 ]
@@ -96,6 +97,15 @@ def status_section():
             st = "⏳ running"
             if "Llama" in label:
                 p = progress(ROOT / "outputs" / "queue_closed_loop_llama-32-3b.log")
+                if p:
+                    i, n, m, rate = p
+                    eta = ""
+                    if rate:
+                        eta_t = dt.datetime.now() + dt.timedelta(minutes=(n - i) * rate)
+                        eta = f", ~{rate:.1f} min/episode, ETA {eta_t:%a %d %b %H:%M}"
+                    st += f" — episode {i}/{n}{eta}"
+            elif "SmolLM2-1.7B (all six" in label:
+                p = progress(ROOT / "outputs" / "queue_closed_loop_smollm2-17b.log")
                 if p:
                     i, n, m, rate = p
                     eta = ""

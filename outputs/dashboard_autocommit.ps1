@@ -3,7 +3,7 @@
 Set-Location "C:\Users\jv624\Desktop\fsm_reliability"
 $log = "outputs\data_queue.log"
 while ($true) {
-    $done = Select-String -Path $log -Pattern "CAMPAIGN DONE" -Quiet
+    $done = Select-String -Path $log -Pattern "CAMPAIGN COMPLETE" -Quiet
     & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" -m scripts.48_dashboard | Out-Null
     git add DASHBOARD.md 2>$null
     git diff --cached --quiet -- DASHBOARD.md

@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `1d641e0 Dashboard: automatic status update`._
+_Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `d15f3f2 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -15,7 +15,7 @@ _Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: 100-episode pilot (gate) | ✅ done (pass rate among valid, format-failure rate = 0.380 0.000) |
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
-| CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ⏳ running |
+| CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
 | Closed loop: SmolLM2-1.7B (all six policies) | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
@@ -23,14 +23,14 @@ _Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-09T15:38:33 [smollm resume] END   cstr_smollm_grounding_full (exit 0)
-2026-10-09T15:38:33 [smollm resume] START cstr_smollm_freeze_full
-2026-10-09T15:39:17 [smollm resume] END   cstr_smollm_freeze_full (exit 0)
 2026-10-09T15:39:17 [smollm resume] START cstr_smollm_test_eval_full
 2026-10-09T15:39:25 [smollm resume] END   cstr_smollm_test_eval_full (exit 0)
 2026-10-09T15:39:25 [smollm resume] START cstr_smollm_cert_grounding_full
 2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
 2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
+2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
+2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
+2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
 ```
 
 </details>
