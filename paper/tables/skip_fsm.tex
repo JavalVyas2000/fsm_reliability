@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{FSM: share of validator calls skipped (\%) per signal on the fresh certification set (tolerance $X=10\%$). Bold: failure rate among unchecked accepts certified $\le 10\%$ (one-sided Clopper--Pearson, Bonferroni over signals). $^{+}$/$^{-}$: significantly more/fewer calls skipped than observables (paired bootstrap 95\% CI).}
+\label{tab:skip-fsm}
+\begin{tabular}{lrrrrr}
+\toprule
+Signal & Qwen-1.5B & Qwen-3B & Qwen-7B & Llama-3B & SmolLM-1.7B \\
+\midrule
+Observables & \textbf{40} & \textbf{21} & \textbf{16} & 43 & 85 \\
+\midrule
+Obs. + grounding & \textbf{46}$^{+}$ & \textbf{21} & 22$^{+}$ & \textbf{59}$^{+}$ & 85 \\
+Obs. + all internals & \textbf{37}$^{-}$ & \textbf{32}$^{+}$ & 15 & \textbf{47}$^{+}$ & 79$^{-}$ \\
+Obs. + internals + grounding & \textbf{40} & \textbf{34}$^{+}$ & \textbf{15} & \textbf{58}$^{+}$ & 91$^{+}$ \\
+\midrule
+Region grounding & \textbf{31}$^{-}$ & \textbf{14}$^{-}$ & \textbf{3}$^{-}$ & \textbf{31}$^{-}$ & 80$^{-}$ \\
+Attention (regions) & \textbf{35}$^{-}$ & \textbf{21} & 13$^{-}$ & 17$^{-}$ & 75$^{-}$ \\
+Hidden states & 22$^{-}$ & \textbf{24}$^{+}$ & 10$^{-}$ & 27$^{-}$ & 74$^{-}$ \\
+All internals & \textbf{25}$^{-}$ & \textbf{25}$^{+}$ & \textbf{9}$^{-}$ & \textbf{31}$^{-}$ & 76$^{-}$ \\
+All internals + grounding & \textbf{38}$^{-}$ & \textbf{23}$^{+}$ & \textbf{11}$^{-}$ & \textbf{36}$^{-}$ & 79$^{-}$ \\
+Token confidence & 13$^{-}$ & 18$^{-}$ & 0$^{-}$ & 14$^{-}$ & 56$^{-}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

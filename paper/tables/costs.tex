@@ -1,0 +1,34 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Compute per episode relative to always-validate (positive = saving). The logged closed-loop decisions do not depend on validator latency (the plant is paused during decisions), so the same decisions are re-costed exactly for a validator taking 30\,s or 60\,s per call. Break-even: validator cost per call above which the policy saves time.}
+\label{tab:costs}
+\begin{tabular}{llrrrr}
+\toprule
+Model & Policy & Measured & 30\,s & 60\,s & Break-even (s) \\
+\midrule
+Qwen-1.5B & Observables probe & +11\% & +28\% & +40\% & 3 \\
+ & Obs. + internals + grounding probe & +5\% & +23\% & +36\% & 7 \\
+ & Internals-only probe & +6\% & +14\% & +21\% & 3 \\
+\midrule
+Qwen-3B & Observables probe & +2\% & +21\% & +30\% & 7 \\
+ & Obs. + internals + grounding probe & -4\% & +28\% & +44\% & 10 \\
+ & Internals-only probe & -19\% & +16\% & +34\% & 17 \\
+\midrule
+Llama-3B & Observables probe & -40\% & -22\% & -5\% & 73 \\
+ & Obs. + internals + grounding probe & -40\% & -24\% & -11\% & 97 \\
+ & Internals-only probe & -29\% & -18\% & -9\% & 107 \\
+\midrule
+Qwen-7B & Observables probe & +17\% & +49\% & +64\% & 2 \\
+ & Obs. + internals + grounding probe & +30\% & +50\% & +59\% & any \\
+ & Internals-only probe & -1\% & +18\% & +28\% & 9 \\
+\midrule
+SmolLM-1.7B & Observables probe & +0\% & +24\% & +39\% & 12 \\
+ & Observables probe, first-proposal-only & -7\% & +20\% & +36\% & 15 \\
+ & Obs. + internals + grounding probe & +44\% & +52\% & +58\% & any \\
+ & Obs. + internals + grounding, first-proposal-only & -1\% & +25\% & +41\% & 12 \\
+ & Internals-only probe & +40\% & +42\% & +43\% & any \\
+ & Internals-only, first-proposal-only & -9\% & +11\% & +23\% & 18 \\
+\bottomrule
+\end{tabular}
+\end{table*}

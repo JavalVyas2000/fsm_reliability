@@ -1,0 +1,104 @@
+\section{Method}\label{sec:method}
+
+\subsection{Problem setting}
+An agent receives a prompt $x$ describing the task state and returns a proposal $a$. A validator $V(x,a)\in\{0,1\}$
+returns whether $a$ is acceptable; in the CSTR it simulates the plant forward from the current state under the
+proposed setpoints (Section~\ref{sec:setup}). In the baseline loop every proposal is validated: passing proposals are
+executed, failing ones are returned with the validator's feedback for a new proposal, up to a budget. A
+\emph{screen} maps signals $z(x,a)$ to an estimated failure risk $\hat r\in[0,1]$ and one of three decisions
+(Fig.~\ref{fig:routing}):
+\begin{equation}
+d(\hat r)=\begin{cases}
+\textsc{accept} & \hat r\le t_{\mathrm{acc}} \quad\text{(execute without validation)}\\
+\textsc{reject} & \hat r\ge t_{\mathrm{rej}} \quad\text{(return to the agent without validation)}\\
+\textsc{validate} & \text{otherwise.}
+\end{cases}
+\end{equation}
+Both \textsc{accept} and \textsc{reject} skip a validator call. An unchecked accept of a failing proposal is the
+safety-relevant error; an unchecked reject of a good proposal costs a regeneration.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[node distance=7mm and 9mm, every node/.style={font=\small},
+  box/.style={draw, rounded corners, align=center, minimum height=8mm, inner sep=3pt},
+  dec/.style={draw, diamond, aspect=2.2, align=center, inner sep=1pt}]
+\node[box] (agent) {LLM agent\\proposes $a$};
+\node[box, right=of agent] (sig) {signals $z(x,a)$:\\observables, token conf.,\\attention, hidden, grounding};
+\node[box, right=of sig] (probe) {probe\\$\hat r$};
+\node[dec, right=of probe] (route) {route};
+\node[box, above right=3mm and 9mm of route] (exec) {execute};
+\node[box, right=9mm of route] (val) {validator\\(digital twin)};
+\node[box, below right=3mm and 9mm of route] (rej) {return to agent};
+\draw[-{Latex}] (agent) -- (sig);
+\draw[-{Latex}] (sig) -- (probe);
+\draw[-{Latex}] (probe) -- (route);
+\draw[-{Latex}] (route) |- node[pos=0.75, above]{\scriptsize $\hat r\le t_{\mathrm{acc}}$} (exec);
+\draw[-{Latex}] (route) -- node[above]{\scriptsize else} (val);
+\draw[-{Latex}] (route) |- node[pos=0.75, below]{\scriptsize $\hat r\ge t_{\mathrm{rej}}$} (rej);
+\draw[-{Latex}] (val) -- node[right]{\scriptsize pass} (exec);
+\draw[-{Latex}] (val) -- node[right]{\scriptsize fail + feedback} (rej);
+\end{tikzpicture}
+\caption{Skip-the-validator routing. A probe estimates the failure risk of each proposal from the chosen signals;
+confident proposals are executed and clearly failing ones returned to the agent without a validator call. Under the
+first-proposal-only rule (R0), retries are never accepted unchecked.}
+\label{fig:routing}
+\end{figure}
+
+\subsection{Signals}
+All internal signals are read from the forward pass that produces the proposal, at four relative depths of the
+network (0.25, 0.5, 0.75 and 1.0).
+\begin{itemize}
+\item \textbf{Observables.} Task-state features visible in the prompt and features of the proposed action. In path
+planning: graph size, query and path properties. In the CSTR: the measured temperature, level and actuator commands,
+alarm flags, and the proposed setpoint changes. A \emph{plant-readings-only} variant omits the action features.
+\item \textbf{Token confidence.} Log-probability, entropy and top-two margin statistics of the answer tokens, overall
+and for numeric tokens.
+\item \textbf{Attention by prompt region.} The share of attention mass from answer tokens to each prompt region
+(instructions, knowledge graph or graph description, task state), with head-mean and head-max aggregation and
+attention entropy.
+\item \textbf{Hidden states.} The residual-stream vector at the last prompt token and its mean over answer tokens,
+standardised and reduced to 64 principal components fitted on training data.
+\item \textbf{Region-based attention grounding.} For each decision-relevant answer token, the share of attention on
+the prompt region that decides it, relative to all task-content regions. In path planning, a step $u\to v$ is legal
+only if $v$ appears in the adjacency line of $u$; the deciding region for the tokens of $v$ is that line. In the CSTR,
+the deciding regions for each setpoint are the plant measurements that indicate its effect and the knowledge-graph
+statements of the controller and balance equations that link it to the plant (pre-registered before computation).
+Features are summarised over steps or setpoints (minimum, mean) and layers.
+\end{itemize}
+Combinations (\emph{all internals} = token confidence + attention + hidden states; \emph{observables + internals};
+\emph{observables + grounding}) are fitted as single probes.
+
+\subsection{Probes and thresholds}
+Each signal set is fitted with an $\ell_2$-regularised logistic regression on the training partition (median
+imputation and standardisation fitted on training data) and Platt-calibrated on a calibration partition. Thresholds
+are chosen on the pooled development partitions $\mathcal D$ for a tolerance $X$ on the failure rate among unchecked
+accepts. The accept threshold is the largest $t$ for which a one-sided Clopper--Pearson upper bound
+\citep{clopper1934} at level $1-\delta_{\mathrm{sel}}$ ($\delta_{\mathrm{sel}}=0.05$) on the failure rate of
+$\{a\in\mathcal D:\hat r(a)\le t\}$ is at most $X$. This bound-based rule replaced an initial point-estimate rule,
+which proved too loose on certification data; the change was pre-registered before any affected test data were
+analysed. The reject threshold is the smallest $t$ for which at least 95\% of $\{a\in\mathcal D:\hat r(a)\ge t\}$
+fail. We report $X=10\%$ as primary and $X=5\%$ as secondary.
+
+\subsection{Certification}
+On an independent certification set used once, a screen is \emph{certified} at $X$ if the one-sided Clopper--Pearson
+upper bound on the failure rate among its unchecked accepts, at level $1-\delta/K$ with $\delta=0.05$ and $K$ the
+number of signal sets compared (Bonferroni), is at most $X$. A bound below $X$ requires a sufficiently large accept
+set: with $K=11$ and no failures, at least about 52 unchecked accepts are needed at $X=10\%$, which was stated in
+advance as a power limit for the 500-episode CSTR certification sets.
+
+\subsection{Closed-loop evaluation and cost}
+In closed loop each episode runs the propose--route--(validate)--retry loop with a budget of six proposals; if no
+proposal is executed, the current setpoints are held. The executed outcome is the digital twin's verdict on the
+executed setpoints with the plant's own future disturbances. We compare the screens with always-validate,
+never-validate, and random routing at the combined probe's development accept and reject rates. Under the
+\emph{first-proposal-only rule} (R0), a retry that the probe would accept is validated instead. The compute per
+episode is
+\begin{equation}
+C = \sum_{\text{proposals}} \left(c_{\mathrm{gen}} + c_{\mathrm{feat}}\right) + n_{\mathrm{val}}\,c_{\mathrm{val}},
+\end{equation}
+where $c_{\mathrm{gen}}$ is generation time, $c_{\mathrm{feat}}$ the extra feature passes (zero for observables),
+$n_{\mathrm{val}}$ the number of validator calls and $c_{\mathrm{val}}$ the validator cost per call. The screen's cost
+does not depend on the simulator, whereas $c_{\mathrm{val}}$ grows with simulation horizon and fidelity. Because the
+plant is paused during decisions, the logged decisions do not depend on $c_{\mathrm{val}}$, so $C$ can be recomputed
+exactly for any validator cost, and the break-even cost $c^{*}_{\mathrm{val}}$ at which a screen matches
+always-validate follows directly.

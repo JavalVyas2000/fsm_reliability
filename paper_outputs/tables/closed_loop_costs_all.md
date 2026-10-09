@@ -46,15 +46,18 @@ Compute per episode = generation + internals pass + grounding pass + validator c
 | Random routing | 19.2% | 107 | 0.55 (−78%) | 59.4 s = 55.1 + 0.0 + 0.0 + 4.0 | +17% | +43% | +56% | 1.7 |
 | Never validate | 19.2% | 318 | 0.00 (−100%) | 11.9 s = 11.9 + 0.0 + 0.0 + 0.0 | +83% | +91% | +94% |  |
 
-## SmolLM2-1.7B (400 episodes; measured validator 11.6 s/call)
+## SmolLM2-1.7B (400 episodes; measured validator 12.0 s/call)
 
-| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 11.6 s | @ 30 s | @ 60 s | break-even validator s |
+| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 12.0 s | @ 30 s | @ 60 s | break-even validator s |
 |---|---|---|---|---|---|---|---|---|
-| Always validate | 36.5% | 0 | 1.01 | 28.5 s = 16.7 + 0.0 + 0.0 + 10.9 | +0% | +0% | +0% |  |
-| Observables probe | 35.2% | 13 | 0.39 (−62%) | 28.7 s = 24.2 + 0.0 + 0.0 + 4.8 | -1% | +24% | +39% | 12.0 |
-| Obs. + internals + grounding probe | 35.0% | 237 | 0.34 (−66%) | 16.2 s = 10.6 + 0.7 + 0.9 + 4.3 | +43% | +52% | +58% | any (cheaper even at 0 s) |
-| Internals-only probe | 35.5% | 243 | 0.56 (−44%) | 17.2 s = 9.1 + 0.6 + 0.9 + 7.0 | +40% | +42% | +43% | any (cheaper even at 0 s) |
-| Random routing | 34.0% | 172 | 0.36 (−65%) | 24.0 s = 19.9 + 0.0 + 0.0 + 4.0 | +16% | +35% | +47% | 4.9 |
+| Always validate | 36.5% | 0 | 1.01 | 28.9 s = 16.7 + 0.0 + 0.0 + 10.9 | +0% | +0% | +0% |  |
+| Observables probe | 35.2% | 13 | 0.39 (−62%) | 28.9 s = 24.2 + 0.0 + 0.0 + 4.8 | +0% | +24% | +39% | 12.0 |
+| Observables probe, first-proposal-only | 35.2% | 13 | 0.39 (−62%) | 30.9 s = 26.3 + 0.0 + 0.0 + 5.0 | -7% | +20% | +36% | 15.3 |
+| Obs. + internals + grounding probe | 35.0% | 237 | 0.34 (−66%) | 16.3 s = 10.6 + 0.7 + 0.9 + 4.3 | +44% | +52% | +58% | any (cheaper even at 0 s) |
+| Obs. + internals + grounding, first-proposal-only | 35.5% | 11 | 0.35 (−65%) | 29.1 s = 21.9 + 1.3 + 1.7 + 4.6 | -1% | +25% | +41% | 12.4 |
+| Internals-only probe | 35.5% | 243 | 0.56 (−44%) | 17.4 s = 9.1 + 0.6 + 0.9 + 7.0 | +40% | +42% | +43% | any (cheaper even at 0 s) |
+| Internals-only, first-proposal-only | 36.0% | 2 | 0.58 (−42%) | 31.5 s = 21.5 + 1.1 + 1.8 + 7.4 | -9% | +11% | +23% | 18.0 |
+| Random routing | 34.0% | 172 | 0.36 (−65%) | 24.2 s = 19.9 + 0.0 + 0.0 + 4.0 | +16% | +35% | +47% | 4.9 |
 | Never validate | 36.0% | 254 | 0.00 (−100%) | 4.5 s = 4.5 + 0.0 + 0.0 + 0.0 | +84% | +90% | +94% |  |
 
 ## Rule: accept unchecked only on first proposals (validate every retry)

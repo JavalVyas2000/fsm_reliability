@@ -1,0 +1,52 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Closed-loop CSTR recovery on 400 fresh episodes per model. $\Delta$: paired difference to always-validate (percentage points, bootstrap 95\% CI over episodes). Unsafe: failing actions executed without validation. Calls: validator calls avoided relative to always-validate. R0: the probe may skip validation only for first proposals (retries are always validated).}
+\label{tab:closedloop}
+\begin{tabular}{llrrrr}
+\toprule
+Model & Policy & Recovered (\%) & $\Delta$ recovered & Unsafe & Calls avoided \\
+\midrule
+Qwen-1.5B & Always validate & 34.5 & -- & 0 & -- \\
+ & Observables & 33.0 & -1.5 [-3.0, -0.2] & 12 & 67\% \\
+ & Obs.+int.+grd. & 33.2 & -1.2 [-2.5, +0.0] & 9 & 64\% \\
+ & Internals only & 33.2 & -1.2 [-2.5, -0.2] & 0 & 35\% \\
+ & Random (matched) & 33.8 & -0.8 [-1.8, +0.0] & 186 & 60\% \\
+ & Never validate & 34.5 & +0.0 [+0.0, +0.0] & 259 & 100\% \\
+\midrule
+Qwen-3B & Always validate & 43.8 & -- & 0 & -- \\
+ & Observables & 41.0 & -2.8 [-5.8, +0.2] & 0 & 47\% \\
+ & Obs.+int.+grd. & 37.0 & -6.8 [-10.2, -3.5] & 1 & 72\% \\
+ & Internals only & 30.0 & -13.8 [-17.5, -10.5] & 0 & 65\% \\
+ & Random (matched) & 37.8 & -6.0 [-9.0, -3.0] & 110 & 47\% \\
+ & Never validate & 30.0 & -13.8 [-17.2, -10.5] & 274 & 100\% \\
+\midrule
+Qwen-7B & Always validate & 0.0 & -- & 0 & -- \\
+ & Observables & 0.0 & +0.0 [+0.0, +0.0] & 1 & 60\% \\
+ & Observables, R0 & 0.0 & +0.0 [+0.0, +0.0] & 0 & 20\% \\
+ & Obs.+int.+grd. & 0.0 & +0.0 [+0.0, +0.0] & 1 & 80\% \\
+ & Obs.+int.+grd., R0 & 0.0 & +0.0 [+0.0, +0.0] & 0 & 20\% \\
+ & Internals only & 0.0 & +0.0 [+0.0, +0.0] & 0 & 20\% \\
+ & Internals only, R0 & 0.0 & +0.0 [+0.0, +0.0] & 0 & 20\% \\
+ & Random (matched) & 0.0 & +0.0 [+0.0, +0.0] & 1 & 40\% \\
+ & Never validate & 0.0 & +0.0 [+0.0, +0.0] & 2 & 100\% \\
+\midrule
+Llama-3B & Always validate & 53.8 & -- & 0 & -- \\
+ & Observables & 35.2 & -18.5 [-23.5, -13.2] & 0 & 62\% \\
+ & Obs.+int.+grd. & 44.5 & -9.2 [-13.8, -4.5] & 0 & 45\% \\
+ & Internals only & 49.8 & -4.0 [-8.0, +0.0] & 0 & 29\% \\
+ & Random (matched) & 29.5 & -24.2 [-29.2, -19.0] & 0 & 68\% \\
+ & Never validate & 15.2 & -38.5 [-43.2, -33.8] & 312 & 100\% \\
+\midrule
+SmolLM-1.7B & Always validate & 36.5 & -- & 0 & -- \\
+ & Observables & 35.2 & -1.2 [-2.5, -0.2] & 13 & 62\% \\
+ & Observables, R0 & 35.2 & -1.2 [-2.5, -0.2] & 13 & 62\% \\
+ & Obs.+int.+grd. & 35.0 & -1.5 [-2.8, -0.5] & 237 & 66\% \\
+ & Obs.+int.+grd., R0 & 35.5 & -1.0 [-2.0, -0.2] & 11 & 65\% \\
+ & Internals only & 35.5 & -1.0 [-2.0, -0.2] & 243 & 44\% \\
+ & Internals only, R0 & 36.0 & -0.5 [-1.2, +0.0] & 2 & 42\% \\
+ & Random (matched) & 34.0 & -2.5 [-4.2, -1.0] & 172 & 65\% \\
+ & Never validate & 36.0 & -0.5 [-1.2, +0.0] & 254 & 100\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

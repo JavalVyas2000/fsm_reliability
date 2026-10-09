@@ -1,0 +1,59 @@
+\section{Experimental setup}\label{sec:setup}
+
+\subsection{Domain 1: graph path planning (exact validator)}
+Each instance is a directed graph with 5, 10, 15 or 20 nodes, given in the prompt as one adjacency line per node,
+together with a start and a goal node and one worked example. The agent returns the path as a JSON list. The
+validator checks that the path starts and ends correctly and that every step $u\to v$ is an edge, i.e.\ that $v$
+appears in the adjacency line of $u$. This validator is exact and costs microseconds, so this domain measures the
+quality of the screens; compute savings are only meaningful in the second domain. Graphs are disjoint across all
+datasets. Probes are fitted on a development set of 3000 graphs (1500 training, 500 calibration, 500 threshold
+selection, 500 test) and evaluated once on a fresh certification set of 3000 graphs that had not been used before
+(Table~\ref{tab:datasets}).
+
+\subsection{Domain 2: CSTR fault recovery (digital-twin validator)}
+The plant is the CSTR case study of \citep{car_todo}: a jacketed reactor with level, temperature and inlet-flow PID
+loops, a monitoring layer that triggers the agent when the process leaves its safe operating region, and a digital
+twin. Each episode draws a nominal plant (heat-transfer coefficient, feed and coolant temperatures, inlet
+concentrations, coolant capacity, nominal level and feed setpoints), a fault family (jacket fouling, outlet pump
+degradation, cooling valve stuck partly closed, outlet blockage), a continuous fault severity and an onset time
+(1500--5000\,s). The plant is simulated to the first monitor trigger, and the snapshot at that moment is the agent's
+task. Episodes that never trigger, or trigger before the fault onset, are redrawn within the same fault family.
+
+The prompt contains the agent's role, the plant's knowledge graph in Turtle (process operators, controllers and the
+mass and energy balance equations), the snapshot (measurements, actuator commands, alarms and current setpoints),
+the goal and the admissible setpoint ranges. The prompt is deliberately \emph{neutral}: it states plant physics and
+the acceptance criteria but gives no advice on which setpoint to change, in which direction or by how much, so that
+failures reflect the model's own reasoning rather than prompt wording. The agent returns three setpoints (temperature,
+level, feed flow) as JSON after a short justification.
+
+The validator simulates the plant forward from the snapshot under the proposed setpoints, with the plant's own future
+disturbances, to the end of the horizon. A proposal passes if the plant reaches the safe state (temperature at most
+313\,K, level within 2--11, no overflow, no actuator saturated while the temperature is away from 310\,K) within
+600\,s, holds it for 60 consecutive seconds, and remains safe for at least 80\% of the remaining run. One validation
+took 7.8--11.6\,s on our hardware, depending on concurrent load.
+
+Fault severities were calibrated without the LLM so that the reference model's (Qwen2.5-3B) first proposals pass in
+roughly 30\% of episodes, which gives enough passing proposals to train and certify an accept decision. This is a
+property of the dataset, not a target for the agents; pass rates of the other models range from 17\% to 35\%. The
+5000 episodes are partitioned by episode into training (3000), calibration (500), threshold selection (500), test
+(500) and certification (500), each with equal numbers per fault family. A further 400 fresh episodes, disjoint from
+all others, are used for the closed loop.
+
+\subsection{Models and inference}
+Qwen2.5-1.5B, Qwen2.5-3B and Qwen2.5-7B \citep{qwen2025}, Llama-3.2-3B \citep{llama3} and SmolLM2-1.7B
+\citep{allal2025smollm2} instruction-tuned models were run locally in bfloat16, except Qwen2.5-7B, which was run with
+4-bit NF4 weights \citep{dettmers2023qlora} to fit an 8\,GB laptop GPU (NVIDIA RTX 4060). Decoding is greedy, so every
+proposal is reproducible. The knowledge graph was exported once and frozen, so all prompts are identical across runs.
+
+\subsection{Pre-registration and data hygiene}
+For each study we froze a pre-registration before computing the relevant features or outcomes, recording later
+changes as dated amendments made before the affected data were examined: the change of primary endpoint to validator
+calls skipped, the bound-based accept rule, additional signal combinations, the closed-loop policies, the
+first-proposal-only rule and a pilot gate for SmolLM2 in the CSTR. Test and certification partitions were evaluated
+once per model with frozen probes and thresholds. Two analyses are labelled exploratory: the CSTR results of
+Qwen2.5-3B under the bound-based rule (its sealed sets had been used once under the earlier rule), and the CSTR
+closed-loop probes of Qwen2.5-3B, which come from that exploratory freeze (the closed-loop episodes themselves are
+fresh). Where a run failed for technical reasons (GPU memory exhaustion, a crashed simulator worker), it was resumed
+from its saved records; no records were discarded.
+
+\input{tables/datasets}

@@ -1,0 +1,62 @@
+\section{Introduction}\label{sec:intro}
+
+Large language model (LLM) agents are increasingly used to propose supervisory actions for engineered systems:
+recovery setpoints after a process fault, operating sequences, or plans that a lower-level controller then executes
+\citep{yao2023react,shinn2023reflexion,car_todo}. Because an LLM's proposal can be wrong in ways that are hard to
+anticipate, such agents are usually deployed behind a \emph{validator}: every proposal is checked by a simulator or
+digital twin before it reaches the plant, and rejected proposals are returned to the agent with feedback. This
+propose--validate--retry loop makes the agent safe by construction, but it makes every decision pay for a full
+validation. Validation is often the expensive step: a digital-twin rollout must simulate the plant over the recovery
+horizon, and its cost grows with the horizon, the model fidelity and the number of scenarios checked, while the cost
+of the agent's own forward pass is fixed for a given prompt.
+
+This raises a practical question: \emph{when can the validator be skipped, and how do we know?} A screen that
+predicts, before validation, whether a proposal will pass could execute confident proposals directly, send clearly
+bad proposals straight back to the agent, and validate only the uncertain ones. For such a screen to be useful in an
+engineering setting, three things must hold. Its accept decisions must come with a guarantee on the failure rate of
+what is executed unchecked; its decisions must remain safe when used inside the closed loop, not only on a static test
+set; and its own cost must be small relative to the validation it replaces.
+
+Two families of signals are available to such a screen. \emph{Observable} features describe the task state and the
+proposed action, for example the plant measurements and the size of the proposed setpoint change; they are cheap but
+domain specific. \emph{Model-internal} signals come from the agent itself: the confidence of its output tokens
+\citep{kadavath2022know}, its hidden states \citep{azaria2023internal,burns2023ccs}, and its attention. Internal
+signals are attractive because they are available for any task without a model of the plant, and because attention
+offers a mechanistic reading: if the model did not attend to the part of the prompt that decides the answer, its answer
+is suspect, a principle recently exploited for detecting contextual hallucinations \citep{chuang2024lookback}. We
+call this signal \emph{region-based attention grounding}.
+
+This paper studies, in a pre-registered and certification-oriented design, how many validator calls each signal lets
+an LLM agent skip, at what risk, and at what cost. We use two domains with a validator in the loop: a graph
+path-planning task in which every proposal is checked exactly, and fault recovery for a continuous stirred-tank
+reactor (CSTR) in which proposals are validated by a digital twin \citep{car_todo}. Five open-weight models from three
+families (Qwen2.5 1.5B, 3B and 7B \citep{qwen2025}, Llama-3.2-3B \citep{llama3} and SmolLM2-1.7B
+\citep{allal2025smollm2}) generate the proposals.
+
+Our contributions are as follows.
+\begin{enumerate}
+\item \textbf{A skip-the-validator protocol with certified accepts.} Each proposal is accepted unchecked, rejected
+unchecked, or validated, using thresholds frozen on development data and a one-sided Clopper--Pearson bound on the
+failure rate among unchecked accepts (Section~\ref{sec:method}). All hypotheses, rules and amendments were
+pre-registered, and every test partition was evaluated once.
+\item \textbf{A comparison of signals across two domains and five models.} Learned screens skip 16--91\% of validator
+calls. Model internals add 5--15 points for four of five models in path planning, but only for one to three models,
+each in a different way, in CSTR fault recovery (Section~\ref{sec:results}).
+\item \textbf{A mechanistic account of when internals help.} Low attention on the deciding prompt region predicts
+failure strongly in path planning (AUROC 0.75--0.88), where errors come from not consulting the relevant information,
+and weakly or not at all in CSTR (0.48--0.72), where the model attends to the relevant physics and reasons
+incorrectly.
+\item \textbf{Closed-loop evidence and a deployment rule.} On 400 fresh CSTR episodes per model, trained screens
+executed far fewer failing actions than random skipping at matched rates. Probes that use internal signals failed on
+retries, whose prompts contain failure feedback, for two models; allowing unchecked execution only for first
+proposals removed these failures with no measurable loss of recovery (Section~\ref{sec:closedloop}).
+\item \textbf{A cost analysis that ties savings to simulator fidelity.} Because decisions do not depend on validator
+latency, the logged closed-loop decisions can be re-costed exactly. Savings are small or negative for a fast
+validator and grow to 21--64\% of total compute at 60\,s per validation for four of five models; we report the
+break-even validator cost for every screen.
+\end{enumerate}
+
+The remainder of the paper reviews related work (Section~\ref{sec:related}), defines the screens, signals and
+certification procedure (Section~\ref{sec:method}), describes the domains and data (Section~\ref{sec:setup}), and
+reports offline results (Section~\ref{sec:results}), closed-loop results and costs (Section~\ref{sec:closedloop}).
+Section~\ref{sec:discussion} discusses implications and limitations.

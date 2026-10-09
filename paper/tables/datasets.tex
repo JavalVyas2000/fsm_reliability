@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Evaluation sets used for the confirmatory results (one candidate per graph or episode). FSM: fresh certification set, never used before evaluation. CSTR: sealed test and certification partitions, each evaluated once.}
+\label{tab:datasets}
+\begin{tabular}{llrrr}
+\toprule
+Domain & Model & Set & Eligible & Failure rate \\
+\midrule
+FSM & Qwen-3B & cert2 (fresh) & 2992 & 0.51 \\
+FSM & Llama-3B & cert2 (fresh) & 2995 & 0.63 \\
+FSM & Qwen-1.5B & cert2 (fresh) & 2945 & 0.68 \\
+FSM & SmolLM-1.7B & cert2 (fresh) & 2946 & 0.83 \\
+FSM & Qwen-7B & cert2 (fresh) & 2973 & 0.49 \\
+CSTR & Qwen-1.5B & test_iid & 494 & 0.67 \\
+CSTR & Qwen-1.5B & cert & 492 & 0.66 \\
+CSTR & Qwen-3B$^\dagger$ & test_iid & 493 & 0.71 \\
+CSTR & Qwen-3B$^\dagger$ & cert & 498 & 0.67 \\
+CSTR & Qwen-7B & test_iid & 499 & 0.79 \\
+CSTR & Qwen-7B & cert & 498 & 0.80 \\
+CSTR & Llama-3B & test_iid & 473 & 0.84 \\
+CSTR & Llama-3B & cert & 474 & 0.83 \\
+CSTR & SmolLM-1.7B & test_iid & 499 & 0.67 \\
+CSTR & SmolLM-1.7B & cert & 496 & 0.66 \\
+\bottomrule
+\end{tabular}
+\end{table}

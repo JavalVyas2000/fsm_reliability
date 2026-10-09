@@ -1,0 +1,12 @@
+\section{Conclusion}\label{sec:conclusion}
+
+LLM agents for process operations need not pay for a full simulation of every proposal. Learned risk screens that
+combine the observable task state and proposed action with, where informative, the agent's internal signals skipped
+16--91\% of validator calls in two domains with five models, with certified failure bounds where the data allowed and
+far fewer unsafe executions than random skipping in closed loop. Internal signals, and region-based attention grounding
+in particular, help when the agent's failures are failures to retrieve the information that decides its answer, and
+help little when the agent retrieves the right information and reasons incorrectly. Two rules make such screens safe
+and worthwhile in practice: accept proposals unchecked only on first proposals, with thresholds set by a confidence
+bound; and deploy screening where validation is costly, since the screen's cost is fixed while the simulator's grows
+with fidelity and horizon. Future work should train screens on retries, certify them on larger sets, and test them
+with larger models, real-time constraints and plants with richer fault libraries.

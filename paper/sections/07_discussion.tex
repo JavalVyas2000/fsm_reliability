@@ -1,0 +1,41 @@
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{When do model internals help an agent skip its validator?} Across two domains and five models, internal
+signals were most useful when the agent's failures were failures to consult information that is in the prompt. In path
+planning, a wrong step is almost always a step whose adjacency line the model did not attend to, and both
+region-based grounding and the broader internal signals added 5--15 points of skipped validator calls on top of strong
+observable baselines. In CSTR fault recovery, the relevant measurements and physics are short and salient; the model
+attends to them and errs in the direction or size of its correction. There, the observable state and the proposed
+action carry most of the information, and internal signals added little except for the smallest model. For
+practitioners, the lesson is to diagnose the agent's failure mode before investing in internal-signal screens:
+attention-based grounding pays off for retrieval-heavy tasks with long, structured contexts.
+
+\paragraph{A practical recipe} Three design choices mattered more than the choice of signal. First, accept
+thresholds must be chosen with a confidence bound, not a point estimate, or the realised failure rate among unchecked
+accepts exceeds the tolerance on new data. Second, a screen trained on first proposals must not be applied to
+retries without validation: retry prompts contain failure feedback, which shifts internal signals, and two of five
+models' internal probes accepted failing retries; the first-proposal-only rule removed this at no measurable cost in
+recovery. Third, the time saved depends on what a skipped call is replaced with. An unchecked accept saves a full
+validation, but an unchecked reject triggers a regeneration, so screens save time only when validation is more
+expensive than generation. This is exactly the regime that motivates selective validation: high-fidelity or
+long-horizon simulators, scenario sets, or multi-unit plants, where validation cost grows while the agent's cost
+stays fixed.
+
+\paragraph{Plant models versus model internals} A natural objection is that a screen on plant measurements and
+proposed setpoints is a learned surrogate of the plant rather than a statement about the agent. The plant-readings-only
+baseline addresses this directly: for three models it skips nearly as many calls as the full observable screen
+(the outcome is largely determined by the fault state), whereas for Qwen2.5-3B and Llama-3.2-3B it skips almost
+none. More importantly, the internals-only screen uses no plant information at all, yet with the first-proposal-only
+rule it avoided 29--65\% of validator calls while executing at most \pending{two} failing actions unchecked in
+\pending{2000} closed-loop episodes. The agent's own internal state therefore carries reliable information about when
+its proposal can be rejected without simulation, independent of any plant model, even though it rarely suffices to
+accept proposals unchecked.
+
+\paragraph{Limitations} The study uses small and medium open-weight models (1.5--7B parameters), one of them
+quantised, on a single laptop GPU; larger models may fail differently. The CSTR is one simulated plant with four
+fault families, one prompt, and a paused plant during decisions; we make no claim about decision latency under real
+time pressure. The validator doubles as the plant simulator in closed loop. The CSTR certification sets were too small
+to certify accepts at a 10\% tolerance, as anticipated; larger certification sets are the remedy. The Qwen2.5-3B CSTR
+screens come from an exploratory freeze. The probes were trained on first proposals only; training on retries is a
+natural extension. Compute figures are specific to our hardware, but the re-costing makes the dependence on
+validator cost explicit and transferable.

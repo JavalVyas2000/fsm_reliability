@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{CSTR: share of validator calls skipped (\%) per signal on the certification partition ($X=10\%$); notation as in Table~\ref{tab:skip-fsm}. $^\dagger$Qwen-3B: exploratory re-analysis under the bound-based rule (its sealed sets had been used once before the rule change).}
+\label{tab:skip-cstr}
+\begin{tabular}{lrrrrr}
+\toprule
+Signal & Qwen-1.5B & Qwen-3B$^\dagger$ & Qwen-7B & Llama-3B & SmolLM-1.7B \\
+\midrule
+Observables & 63 & 41 & 86 & 71 & 61 \\
+\midrule
+Obs. + grounding & 60$^{-}$ & 39 & 86 & 75$^{+}$ & 65$^{+}$ \\
+Obs. + all internals & 61 & 51 & 83 & 72 & 66$^{+}$ \\
+Obs. + internals + grounding & 61 & 50 & 80$^{-}$ & 74 & 66$^{+}$ \\
+\midrule
+Region grounding & 27$^{-}$ & 10 & 47$^{-}$ & 38$^{-}$ & 24$^{-}$ \\
+Attention (regions) & 30$^{-}$ & 15 & 49$^{-}$ & 48$^{-}$ & 31$^{-}$ \\
+Hidden states & 29$^{-}$ & 13 & 50$^{-}$ & 48$^{-}$ & 45$^{-}$ \\
+All internals & 29$^{-}$ & 15 & 47$^{-}$ & 53$^{-}$ & 40$^{-}$ \\
+All internals + grounding & 28$^{-}$ & 12 & 48$^{-}$ & 53$^{-}$ & 41$^{-}$ \\
+Token confidence & 4$^{-}$ & 0 & 17$^{-}$ & 34$^{-}$ & 22$^{-}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,25 @@
+# Claims ledger (every claim in the manuscript must appear here, with its evidence)
+
+Status: draft 2026-10-09. The Qwen2.5-7B first-proposal-only (R0) closed-loop run is pending; claims C9 and C10 are provisional until it is in.
+
+| # | Claim (as worded in the paper) | Evidence | Caveats to state |
+|---|---|---|---|
+| C1 | A learned risk screen, using the agent's context and proposed action and, where informative, its internal signals, lets the agent skip a large share of validator calls at a bounded failure rate among unchecked executions. | Tables `skip_fsm`, `skip_cstr` (`paper_outputs/tables/skip_*_cert.csv`). FSM, fresh cert2: observables 16–85% skipped, certified for 3/5 models. CSTR cert: observables 41–86%. | The bound is certified only where the accept set is large enough. CSTR cert has 500 episodes, so ≈52 zero-failure accepts are needed at X=10% (prereg Amendment 3, power limit). |
+| C2 | In FSM, adding model internals to observables increases validator calls skipped for 4 of 5 models, by +6 to +15 points; region-based attention grounding alone carries the gain for Llama-3B and Qwen-1.5B. | `skip_fsm_cert.csv` delta columns. Qwen-3B +14.0 [12.4, 15.5]; Llama +15.0 [13.2, 16.9] (grounding alone +15.5); Qwen-1.5B grounding +5.1 [3.7, 6.6]; SmolLM +6.2 [4.8, 7.5]; Qwen-7B ≈0. | The SmolLM2 gain is not certifiable (accept set too small). FSM numbers are on a fresh set; earlier FSM test sets had been reused (`docs/skip_validator_results.md`). |
+| C3 | In CSTR, internals add significantly for 3 of 5 models, each on a different side of the decision; grounding adds for 1 of 5 (SmolLM2). | `skip_cstr_cert.csv`. SmolLM +4.8 [1.4, 8.3] (grounding +3.8 [1.4, 6.2]); Llama good rejections 16→8 [−15, −2]; Qwen-3B accepts enabled (exploratory). | Qwen-3B's CSTR result is an exploratory re-analysis. Qwen-1.5B and Qwen-7B: observables are equal or better. |
+| C4 | Attention on the deciding prompt region predicts failure strongly in FSM and weakly or not at all in CSTR (the mechanism contrast). | Table `mechanism`. FSM AUROC 0.75–0.88 (5 models); CSTR 0.48–0.72. FSM step-level 0.64–0.81 (`docs/grounding_results.md`). | CSTR Qwen-1.5B (0.72) and SmolLM (0.66) carry signal, so the contrast is one of degree, not absolute. |
+| C5 | In CSTR the model attends to the relevant physics and still moves the setpoint the wrong way (pre-registered H3, reversed). | `docs/cstr_v4_results.md` H3: AUROC 0.31 (Qwen-3B, dev). | One model; development data. |
+| C6 | Internal signals are not more robust than observables to plant or fault-type shift. | Table `shift`; `docs/cstr_shift_results.md` (S2, S3 not supported). | This contradicts an earlier, larger fixed→varied shift under prompt v2.1. Report both. |
+| C7 | Validated against a random-routing control at matched rates, the trained screens execute far fewer failing actions unchecked in closed loop. | Table `closed_loop`: random 107–186 unsafe vs probes 0–13 (observables) across models. | Llama: random also 0 (it never accepts). |
+| C8 | Probes trained on first proposals can fail on retries: internals-based probes accepted failing retries for 2 of 5 models (Qwen-7B combined 165, SmolLM 237/243). | `closed_loop` table; steps analysis (`paper_outputs/tables/closed_loop_r0_accept.csv`). | Declared distribution shift in the closed-loop prereg. |
+| C9 | Restricting unchecked execution to first proposals (R0 rule) removes the retry failures: unsafe executions 0.5–3% with recovery unchanged (SmolLM2: −0.5 [−1.3, 0.0] internals-only R0; 2 unsafe in 400). | SmolLM R0 run (`outputs/cstr_closed_loop/*_smollm2-17b_r0rule`). **Qwen-7B pending.** | For the other three models the rule changes nothing (no failing retry accepts). |
+| C10 | With the R0 rule, an internals-only screen (no plant model) avoids 29–65% of validator calls with 0–2 unsafe executions across five models. | `closed_loop` table: internals-only (R0 for SmolLM; Qwen-7B pending). | Recovery cost: Qwen-3B −13.8 points (many good proposals rejected); others −0.5 to −4.0. |
+| C11 | The screens' cost is independent of simulator fidelity, while validator cost grows with horizon and fidelity. Time savings are 14–64% at 30–60 s per validator call; break-even is about 2–17 s for the Qwen and SmolLM models. | Table `costs`; figure `closed_loop_compute_all`. | At the measured ~8–12 s validator, savings are small or negative. Llama's break-even is >70 s (every skip is a reject; slow generation, GPU memory spill inflated its timings). |
+| C12 | Unchecked rejects are not free: each forces a regeneration, and this is where recovery is lost. | `closed_loop`: unchecked rejects of good proposals per episode; Llama/Qwen-3B recovery drops. | — |
+
+**Things the paper must NOT claim:**
+- That internals alone outperform observables in general.
+- That certification holds for every model or domain.
+- That grounding never helps in CSTR.
+- Any result from the earlier CAR traces (they were served by gpt-4o-mini; repo audit F5).
+- Time savings at the measured validator cost for Llama.

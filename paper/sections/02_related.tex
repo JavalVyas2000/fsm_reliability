@@ -1,0 +1,31 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{LLM agents with validators} Agent frameworks interleave reasoning with actions and use environment
+feedback to revise proposals \citep{yao2023react,shinn2023reflexion}. In process systems, LLM agents have been used
+for supervisory fault recovery, where proposals are checked against plant knowledge and digital-twin rollouts before
+execution \citep{car_todo}. These designs treat validation as mandatory; we ask when it can be skipped and quantify
+the safety and compute consequences. \todo{add 2--3 references on LLMs for process control and fault-tolerant control.}
+
+\paragraph{Selective prediction and risk control} Selective classification lets a model abstain when its risk is
+high, trading coverage for accuracy \citep{geifman2017selective}. Distribution-free methods calibrate such decisions
+to guarantee a risk level with high probability \citep{bates2021rcps,angelopoulos2021ltt}. Our accept rule follows
+this tradition: thresholds are chosen on development data so that an upper confidence bound on the failure rate of
+accepted proposals stays below a tolerance, and the guarantee is checked once on an independent certification set
+with an exact binomial bound \citep{clopper1934}. Unlike standard selective prediction, the screen has three outcomes
+(accept, reject, validate) and the cost of a reject is a regeneration by the agent, which we measure in closed loop.
+
+\paragraph{Uncertainty and internal states of LLMs} LLMs' token probabilities carry information about answer
+correctness \citep{kadavath2022know}, and linear probes on hidden states detect falsehoods and latent knowledge
+\citep{azaria2023internal,burns2023ccs}. Semantic entropy detects confabulations from sampled answers
+\citep{farquhar2024semantic}, and probes can approximate it from a single forward pass \citep{kossen2024sep}. These
+works ask whether an answer is likely wrong; we ask how many validator calls such signals let an agent skip at a
+certified risk, compare them with strong observable baselines, and test them in closed loop.
+
+\paragraph{Attention as evidence of grounding} Whether attention weights explain model behaviour is debated
+\citep{jain2019attention,wiegreffe2019attention}; we use attention only as a predictive signal. Lookback Lens
+detects contextual hallucinations from the ratio of attention on the context to attention on generated tokens
+\citep{chuang2024lookback}. Our region-based grounding is closer to a targeted version of this idea: it measures the
+share of attention, while writing each decision-relevant token, that falls on the specific prompt region that decides
+that token (an adjacency line in path planning; the relevant plant measurements and knowledge-graph relations in the
+CSTR). Our results delimit when such a signal is useful: when failures are failures to retrieve the relevant
+information, not failures of reasoning over it.

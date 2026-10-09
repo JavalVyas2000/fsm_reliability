@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 21:52 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `c2c95d1 Dashboard: automatic status update`._
+_Generated 2026-10-09 22:05 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `32ebeb8 Add SmolLM2 first-proposal-only rule run: unchecked failing executions 237 -> 11 (combined) and 243 -> 2 (internals only) with recovery unchanged`._
 
 ## Campaign status
 
@@ -80,8 +80,11 @@ _Generated 2026-10-09 21:52 by `scripts/48_dashboard.py` (git pre-commit hook). 
 |---|---|---|---|---|---|
 | Always validate | 400 | 34.0% | 0 | 2.50 | 71 s |
 | Observables probe | 400 | 25.0% (-9.0) | 8 | 0.24 (-90%) | 60 s |
+| Observables, first-proposal-only | 5 | 0.0% (-34.0) | 0 | 0.80 (-68%) | 107 s |
 | Obs. + internals + grounding | 400 | 26.5% (-7.5) | 165 | 0.62 (-75%) | 49 s |
+| Obs. + internals + grounding, first-proposal-only | 5 | 0.0% (-34.0) | 0 | 1.20 (-52%) | 121 s |
 | Internals only | 400 | 30.0% (-4.0) | 0 | 1.41 (-44%) | 73 s |
+| Internals only, first-proposal-only | 5 | 0.0% (-34.0) | 0 | 1.20 (-52%) | 127 s |
 | Random routing | 400 | 19.2% (-14.8) | 107 | 0.55 (-78%) | 59 s |
 | Never validate | 400 | 19.2% (-14.8) | 318 | 0.00 (-100%) | 12 s |
 

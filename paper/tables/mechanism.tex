@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Does low attention on the prompt region that decides the answer predict failure? AUROC of the negative minimum grounding share for answer failure (train + development data; 0.5 = no signal).}
+\label{tab:mechanism}
+\begin{tabular}{lrr}
+\toprule
+Model & FSM & CSTR \\
+\midrule
+Qwen-1.5B & 0.84 & 0.72 \\
+Qwen-3B & 0.75 & 0.50 \\
+Qwen-7B & 0.72 & 0.48 \\
+Llama-3B & 0.84 & 0.52 \\
+SmolLM-1.7B & 0.88 & 0.66 \\
+\bottomrule
+\end{tabular}
+\end{table}
