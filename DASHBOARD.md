@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 15:15 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `73ce9ff Dashboard: automatic status update`._
+_Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `1d641e0 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -16,20 +16,21 @@ _Generated 2026-10-09 15:15 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ⏳ running |
+| Closed loop: SmolLM2-1.7B (all six policies) | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-08T04:16:02 [internals closed loop] START qwen25-15b_internals
-2026-10-08T06:37:40 [internals closed loop] END   qwen25-15b_internals (exit 0)
-2026-10-08T06:37:40 [internals closed loop] INTERNALS CLOSED LOOP DONE
-2026-10-08T06:41:56 [smollm resume] START cstr_smollm_collect_resume
-2026-10-08T10:17:57 [smollm resume] END   cstr_smollm_collect_resume (exit 1)
-2026-10-08T10:17:58 [smollm resume] START cstr_smollm_collect_resume
-2026-10-09T11:37:24 [smollm resume] END   cstr_smollm_collect_resume (exit 0)
-2026-10-09T11:37:25 [smollm resume] START cstr_smollm_grounding_full
+2026-10-09T15:38:33 [smollm resume] END   cstr_smollm_grounding_full (exit 0)
+2026-10-09T15:38:33 [smollm resume] START cstr_smollm_freeze_full
+2026-10-09T15:39:17 [smollm resume] END   cstr_smollm_freeze_full (exit 0)
+2026-10-09T15:39:17 [smollm resume] START cstr_smollm_test_eval_full
+2026-10-09T15:39:25 [smollm resume] END   cstr_smollm_test_eval_full (exit 0)
+2026-10-09T15:39:25 [smollm resume] START cstr_smollm_cert_grounding_full
+2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
+2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
 ```
 
 </details>
@@ -81,6 +82,8 @@ _Generated 2026-10-09 15:15 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Internals only | 400 | 30.0% (-4.0) | 0 | 1.41 (-44%) | 73 s |
 | Random routing | 400 | 19.2% (-14.8) | 107 | 0.55 (-78%) | 59 s |
 | Never validate | 400 | 19.2% (-14.8) | 318 | 0.00 (-100%) | 12 s |
+
+**SmolLM2-1.7B** — not started
 
 ## Headline findings so far
 
