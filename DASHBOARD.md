@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 11:14 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b743fe1 Dashboard: automatic status update`._
+_Generated 2026-10-09 13:14 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `bcba599 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -14,22 +14,22 @@ _Generated 2026-10-09 11:14 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | FSM Qwen2.5-7B: freeze + cert evaluation | ✅ done |
 | CSTR SmolLM2-1.7B: 100-episode pilot (gate) | ✅ done (pass rate among valid, format-failure rate = 0.380 0.000) |
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
-| CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ⏳ running |
-| CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | 🕓 waiting |
+| CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
+| CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ⏳ running |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-07T18:40:47 [internals closed loop] START qwen25-3b_internals
-2026-10-08T04:16:02 [internals closed loop] END   qwen25-3b_internals (exit 0)
 2026-10-08T04:16:02 [internals closed loop] START qwen25-15b_internals
 2026-10-08T06:37:40 [internals closed loop] END   qwen25-15b_internals (exit 0)
 2026-10-08T06:37:40 [internals closed loop] INTERNALS CLOSED LOOP DONE
 2026-10-08T06:41:56 [smollm resume] START cstr_smollm_collect_resume
 2026-10-08T10:17:57 [smollm resume] END   cstr_smollm_collect_resume (exit 1)
 2026-10-08T10:17:58 [smollm resume] START cstr_smollm_collect_resume
+2026-10-09T11:37:24 [smollm resume] END   cstr_smollm_collect_resume (exit 0)
+2026-10-09T11:37:25 [smollm resume] START cstr_smollm_grounding_full
 ```
 
 </details>
