@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e8248ef Pre-register and queue the first-proposal-only rule (closed-loop Amendment 4) for SmolLM2 and Qwen2.5-7B`._
+_Generated 2026-10-09 20:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `c289307 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -91,8 +91,11 @@ _Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 |---|---|---|---|---|---|
 | Always validate | 400 | 36.5% | 0 | 1.01 | 28 s |
 | Observables probe | 400 | 35.2% (-1.3) | 13 | 0.39 (-62%) | 29 s |
+| Observables, first-proposal-only | 136 | 30.9% (-5.6) | 4 | 0.41 (-59%) | 30 s |
 | Obs. + internals + grounding | 400 | 35.0% (-1.5) | 237 | 0.34 (-66%) | 16 s |
+| Obs. + internals + grounding, first-proposal-only | 136 | 30.9% (-5.6) | 4 | 0.34 (-67%) | 28 s |
 | Internals only | 400 | 35.5% (-1.0) | 243 | 0.56 (-44%) | 18 s |
+| Internals only, first-proposal-only | 136 | 31.6% (-4.9) | 0 | 0.62 (-38%) | 31 s |
 | Random routing | 400 | 34.0% (-2.5) | 172 | 0.36 (-65%) | 24 s |
 | Never validate | 400 | 36.0% (-0.5) | 254 | 0.00 (-100%) | 5 s |
 
