@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `d15f3f2 Dashboard: automatic status update`._
+_Generated 2026-10-09 16:10 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `8a5884d Closed loop: pre-register and queue SmolLM2-1.7B (Amendment 3) so CSTR covers all five models`._
 
 ## Campaign status
 
@@ -16,14 +16,13 @@ _Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
-| Closed loop: SmolLM2-1.7B (all six policies) | 🕓 waiting |
+| Closed loop: SmolLM2-1.7B (all six policies) | ⏳ running |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-09T15:39:17 [smollm resume] START cstr_smollm_test_eval_full
 2026-10-09T15:39:25 [smollm resume] END   cstr_smollm_test_eval_full (exit 0)
 2026-10-09T15:39:25 [smollm resume] START cstr_smollm_cert_grounding_full
 2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
@@ -31,6 +30,7 @@ _Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
 2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
 2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
+2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
 ```
 
 </details>
@@ -112,17 +112,17 @@ _Generated 2026-10-09 16:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 
 **CSTR (cert)** — cell: calls skipped (failing / accepted unchecked)
 
-| Signal | Qwen2.5-1.5B | Qwen2.5-3B* | Qwen2.5-7B (4-bit) | Llama-3.2-3B |
-|---|---|---|---|---|
-| Observables | 63% (14/121) | 41% (0/0) | 86% (2/54) | 71% (0/0) |
-| Obs. + grounding | 60% (7/102) | 39% (0/0) | 86% (4/57) | 75% (0/0) |
-| Obs. + all internals | 61% (13/110) | 51% (4/38) | 83% (3/46) | 72% (0/0) |
-| Obs. + internals + grounding | 61% (14/111) | 50% (5/43) | 80% (2/35) | 74% (0/0) |
-| Region grounding | 27% (0/0) | 10% (0/0) | 47% (0/0) | 38% (0/0) |
-| Hidden states | 29% (0/0) | 13% (0/0) | 50% (0/0) | 48% (0/0) |
-| All internals | 29% (0/0) | 15% (0/0) | 47% (0/0) | 53% (0/0) |
-| All internals + grounding | 28% (0/0) | 12% (0/0) | 48% (0/0) | 53% (0/0) |
-| Token confidence | 4% (0/0) | 0% (0/0) | 17% (0/0) | 34% (0/0) |
+| Signal | Qwen2.5-1.5B | Qwen2.5-3B* | Qwen2.5-7B (4-bit) | Llama-3.2-3B | SmolLM2-1.7B |
+|---|---|---|---|---|---|
+| Observables | 63% (14/121) | 41% (0/0) | 86% (2/54) | 71% (0/0) | 61% (14/128) |
+| Obs. + grounding | 60% (7/102) | 39% (0/0) | 86% (4/57) | 75% (0/0) | 65% (13/127) |
+| Obs. + all internals | 61% (13/110) | 51% (4/38) | 83% (3/46) | 72% (0/0) | 66% (11/108) |
+| Obs. + internals + grounding | 61% (14/111) | 50% (5/43) | 80% (2/35) | 74% (0/0) | 66% (11/109) |
+| Region grounding | 27% (0/0) | 10% (0/0) | 47% (0/0) | 38% (0/0) | 24% (0/0) |
+| Hidden states | 29% (0/0) | 13% (0/0) | 50% (0/0) | 48% (0/0) | 45% (9/65) |
+| All internals | 29% (0/0) | 15% (0/0) | 47% (0/0) | 53% (0/0) | 40% (1/37) |
+| All internals + grounding | 28% (0/0) | 12% (0/0) | 48% (0/0) | 53% (0/0) | 41% (2/39) |
+| Token confidence | 4% (0/0) | 0% (0/0) | 17% (0/0) | 34% (0/0) | 22% (0/0) |
 
 ## Figures
 

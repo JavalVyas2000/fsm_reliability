@@ -1,0 +1,45 @@
+﻿test_iid: n=499 eligible, 1 format failures, failure rate 0.667
+ tolerance                                        signal   n  skipped_pct  accepted  accepted_failures  accepted_failure_rate  cp_upper_delta_0.0045  certified  rejected  rejected_good  good_rejected_pct_of_good  validated
+      0.10                           plant readings only 499       58.317       107                 10                  0.093                  0.191      False       184              3                      1.807        208
+      0.10              plant readings + proposed change 499       61.523       111                  9                  0.081                  0.173      False       196              4                      2.410        192
+      0.10                              token confidence 499       23.447         0                  0                    NaN                  1.000      False       117              7                      4.217        382
+      0.10                    attention by prompt region 499       32.866         0                  0                    NaN                  1.000      False       164             12                      7.229        335
+      0.10              region-based attention grounding 499       26.453         0                  0                    NaN                  1.000      False       132              5                      3.012        367
+      0.10                                 hidden states 499       46.693        68                  2                  0.029                  0.131      False       165              5                      3.012        266
+      0.10                                 all internals 499       41.683        41                  2                  0.049                  0.209      False       167              3                      1.807        291
+      0.10                     all internals + grounding 499       43.086        36                  2                  0.056                  0.236      False       179              6                      3.614        284
+      0.10 readings + change + all internals + grounding 499       65.932        99                  8                  0.081                  0.179      False       230              9                      5.422        170
+      0.10                 readings + change + grounding 499       67.134       118                 13                  0.110                  0.206      False       217              7                      4.217        164
+      0.10             readings + change + all internals 499       66.733        98                  8                  0.082                  0.181      False       235             11                      6.627        166
+      0.05                           plant readings only 499       50.701        69                  0                  0.000                  0.075      False       184              3                      1.807        246
+      0.05              plant readings + proposed change 499       54.509        76                  0                  0.000                  0.069      False       196              4                      2.410        227
+      0.05                              token confidence 499       23.447         0                  0                    NaN                  1.000      False       117              7                      4.217        382
+      0.05                    attention by prompt region 499       32.866         0                  0                    NaN                  1.000      False       164             12                      7.229        335
+      0.05              region-based attention grounding 499       26.453         0                  0                    NaN                  1.000      False       132              5                      3.012        367
+      0.05                                 hidden states 499       33.066         0                  0                    NaN                  1.000      False       165              5                      3.012        334
+      0.05                                 all internals 499       38.477        25                  1                  0.040                  0.265      False       167              3                      1.807        307
+      0.05                     all internals + grounding 499       41.483        28                  1                  0.036                  0.240      False       179              6                      3.614        292
+      0.05 readings + change + all internals + grounding 499       58.918        64                  1                  0.016                  0.112      False       230              9                      5.422        205
+      0.05                 readings + change + grounding 499       59.118        78                  1                  0.013                  0.093      False       217              7                      4.217        204
+      0.05             readings + change + all internals 499       61.122        70                  1                  0.014                  0.103      False       235             11                      6.627        194
+ tolerance                                        signal  delta_skipped_pts  ci95_lo  ci95_hi
+      0.10                           plant readings only              -3.21    -5.61    -0.80
+      0.10                              token confidence             -38.08   -42.69   -33.27
+      0.10                    attention by prompt region             -28.66   -33.27   -23.45
+      0.10              region-based attention grounding             -35.07   -39.48   -30.46
+      0.10                                 hidden states             -14.83   -18.64   -11.02
+      0.10                                 all internals             -19.84   -23.85   -15.63
+      0.10                     all internals + grounding             -18.44   -22.44   -14.23
+      0.10 readings + change + all internals + grounding               4.41     1.20     7.82
+      0.10                 readings + change + grounding               5.61     3.41     7.82
+      0.10             readings + change + all internals               5.21     2.00     8.62
+      0.05                           plant readings only              -3.81    -6.21    -1.40
+      0.05                              token confidence             -31.06   -35.67   -26.65
+      0.05                    attention by prompt region             -21.64   -26.25   -17.03
+      0.05              region-based attention grounding             -28.06   -32.46   -23.65
+      0.05                                 hidden states             -21.44   -25.65   -17.43
+      0.05                                 all internals             -16.03   -20.04   -12.02
+      0.05                     all internals + grounding             -13.03   -16.83    -9.02
+      0.05 readings + change + all internals + grounding               4.41     1.20     7.82
+      0.05                 readings + change + grounding               4.61     2.61     6.81
+      0.05             readings + change + all internals               6.61     3.81    10.02

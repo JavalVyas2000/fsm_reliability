@@ -15,3 +15,5 @@
 | CSTR | Qwen2.5-7B (4-bit) | cert | 498 | 2 | 0.803 |
 | CSTR | Llama-3.2-3B | test_iid | 473 | 27 | 0.841 |
 | CSTR | Llama-3.2-3B | cert | 474 | 26 | 0.833 |
+| CSTR | SmolLM2-1.7B | test_iid | 499 | 1 | 0.667 |
+| CSTR | SmolLM2-1.7B | cert | 496 | 4 | 0.659 |

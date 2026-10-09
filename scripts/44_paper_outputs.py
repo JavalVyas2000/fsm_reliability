@@ -42,6 +42,7 @@ CSTR = {
     "Qwen2.5-3B*": ("*_cstr_v4_qwen25-3b_skip_ucb_EXPLORATORY", "outputs/cstr_grounding/20260929_204745_20260928_201301_qwen25-3b-instruct_v4_v31_r0/aug"),
     "Qwen2.5-7B (4-bit)": ("*_cstr_v4_qwen25-7b_skip_ucb", "outputs/cstr_grounding/20261003_022728_20261002_083124_qwen25-7b-instruct_v4_v31_r0/aug"),
     "Llama-3.2-3B": ("*_cstr_v4_llama-32-3b_skip_ucb", "outputs/cstr_grounding/20261001_065645_20260929_214136_llama-32-3b-instruct_v4_v31_r0/aug"),
+    "SmolLM2-1.7B": ("*_cstr_v4_smollm2-17b_skip_ucb", "outputs/cstr_grounding/20261009_113804_20261007_094026_smollm2-17b-instruct_v4_v31_r0/aug"),
 }
 CLOSED_LOOP = "outputs/cstr_closed_loop/20261003_033144_qwen25-3b"
 

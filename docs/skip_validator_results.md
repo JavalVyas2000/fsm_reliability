@@ -160,3 +160,24 @@ CSTR, calls skipped at X = 10%. Cert unless noted; Δ against observables, paire
 **FSM (fresh cert2):** internals + grounding add +6 to +15 points for 3 of 4 models, certified. Grounding alone carries the gain for Llama and Qwen2.5-1.5B.
 
 The cross-domain boundary therefore holds across all models: grounding helps where failures are retrieval errors, and not where they are reasoning errors.
+
+## Update 2026-10-09: SmolLM2-1.7B on CSTR (prereg Amendment 4)
+
+The pilot gate was met (38% pass, 0 format failures). The full collection survived two simulator-worker crashes through automatic resume, with no records lost. 5000 proposals, 35% pass. Freeze `outputs/certification/20261009_153848_cstr_v4_smollm2-17b_skip_ucb`; test_iid and cert each evaluated once.
+
+Calls skipped at X = 10%; Δ against observables with paired bootstrap 95% CI:
+
+| Signal | test_iid | cert |
+|---|---|---|
+| Observables | 61.5% | 61.1% (14/128 accepted were failures) |
+| Obs. + all internals | 66.7% (+5.2 [+2.0, +8.6]) | 65.9% (+4.8 [+1.4, +8.3]) |
+| Obs. + grounding | 67.1% (+5.6 [+3.4, +7.8]) | 64.9% (+3.8 [+1.4, +6.2]) |
+| Obs. + internals + grounding | 65.9% (+4.4 [+1.2, +7.8]) | 65.7% (+4.6 [+1.2, +8.3]) |
+| All internals alone | 41.7% | 39.9% (1/37 accepted failed) |
+| Region grounding alone | — | 24.4% (0 good rejected) |
+
+**This revises the CSTR summary.** SmolLM2 is the one CSTR model where internals, and grounding alone, add significantly to the observables. CSTR now stands at: grounding adds for **1 of 5** models (SmolLM2); internals add for **3 of 5** (Qwen2.5-3B accept side, Llama reject side, SmolLM2 overall).
+
+The cross-domain contrast still holds in degree, not absolutely:
+- **FSM:** internals and grounding add for 4 of 5 models (all but Qwen2.5-7B), +6 to +15 points;
+- **CSTR:** they add +4 to +6 points for one model and little or nothing for the rest.

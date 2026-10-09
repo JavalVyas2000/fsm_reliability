@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-10-09T14:39:16.672241+00:00",
+  "argv": [
+    "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\39_cstr_freeze_skip_rules.py",
+    "--aug_dir",
+    "outputs/cstr_grounding/20261009_113804_20261007_094026_smollm2-17b-instruct_v4_v31_r0/aug",
+    "--tag",
+    "cstr_v4_smollm2-17b_skip_ucb",
+    "--threshold_rule",
+    "ucb"
+  ],
+  "git": {
+    "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
+    "commit": "1d641e072146810fedc05a282ca6f5267755d16b",
+    "dirty": true
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "18.1.0"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python": "3.13.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_mem_bytes": 8585216000,
+    "cuda_version": "12.8"
+  },
+  "aug_dir": "outputs/cstr_grounding/20261009_113804_20261007_094026_smollm2-17b-instruct_v4_v31_r0/aug",
+  "partitions_loaded": [
+    "train",
+    "dev_cal",
+    "dev_thr"
+  ],
+  "n_by_partition": {
+    "train": 2979,
+    "dev_cal": 493,
+    "dev_thr": 492
+  },
+  "prereg": {
+    "file": "docs/cstr_v4_prereg.md",
+    "sha256": "d8c665897f01b0edf29fa39ac7b13bb797962994c000a2068738211fc302660b"
+  },
+  "hidden_keys": [
+    "hid_L025_last_prompt",
+    "hid_L025_mean_answer",
+    "hid_L050_last_prompt",
+    "hid_L050_mean_answer",
+    "hid_L075_last_prompt",
+    "hid_L075_mean_answer",
+    "hid_L100_last_prompt",
+    "hid_L100_mean_answer"
+  ],
+  "signals": {
+    "plant readings only": "context_only_no_action",
+    "plant readings + proposed change": "context_action",
+    "token confidence": "token_confidence",
+    "attention by prompt region": "attention",
+    "region-based attention grounding": "grounding_v31",
+    "hidden states": "hidden",
+    "all internals": "all_internal",
+    "all internals + grounding": "all_internal+grounding_v31",
+    "readings + change + all internals + grounding": "context_action+all_internal+grounding_v31",
+    "readings + change + grounding": "context_action+grounding_v31",
+    "readings + change + all internals": "context_action+all_internal"
+  },
+  "domain": "cstr",
+  "files_sha256": {
+    "probes.joblib": "b3b0b24102cc2daa72da0e30f3a5c3334af9e1f45d08ae6f64eecb22e3bdb5c9",
+    "rules.json": "02c5c7b171caba852a155980d0e73010f4df7937853aadcd9eaad6a5c638134c",
+    "dev_routing.csv": "018db8f8ecf6d39a850cdc200bcc227be33ca575b0936d184f23008347ad2f8a"
+  }
+}

@@ -70,6 +70,22 @@ Rejected unchecked: failing actions correctly stopped / good actions wrongly rej
 | All internals + grounding | 268 (57%) | 0 | **0** | 263 | 5 / 75 |  |
 | Token confidence | 173 (37%) | 0 | **0** | 164 | 9 / 75 |  |
 
+### SmolLM2-1.7B (n = 499, 333 failing, 166 good)
+
+| signal | calls avoided | correct let through | **failing let through** | failing stopped | good rejected | certified |
+|---|---|---|---|---|---|---|
+| Observables | 307 (62%) | 102 | **9** | 192 | 4 / 166 |  |
+| Plant readings only | 291 (58%) | 97 | **10** | 181 | 3 / 166 |  |
+| Obs. + grounding | 335 (67%) | 105 | **13** | 210 | 7 / 166 |  |
+| Obs. + all internals | 333 (67%) | 90 | **8** | 224 | 11 / 166 |  |
+| Obs. + internals + grounding | 329 (66%) | 91 | **8** | 221 | 9 / 166 |  |
+| Region grounding | 132 (26%) | 0 | **0** | 127 | 5 / 166 |  |
+| Attention (regions) | 164 (33%) | 0 | **0** | 152 | 12 / 166 |  |
+| Hidden states | 233 (47%) | 66 | **2** | 160 | 5 / 166 |  |
+| All internals | 208 (42%) | 39 | **2** | 164 | 3 / 166 |  |
+| All internals + grounding | 215 (43%) | 34 | **2** | 173 | 6 / 166 |  |
+| Token confidence | 117 (23%) | 0 | **0** | 110 | 7 / 166 |  |
+
 ## X = 5%
 
 ### Qwen2.5-1.5B (n = 494, 329 failing, 165 good)
@@ -135,3 +151,19 @@ Rejected unchecked: failing actions correctly stopped / good actions wrongly rej
 | All internals | 268 (57%) | 0 | **0** | 263 | 5 / 75 |  |
 | All internals + grounding | 268 (57%) | 0 | **0** | 263 | 5 / 75 |  |
 | Token confidence | 173 (37%) | 0 | **0** | 164 | 9 / 75 |  |
+
+### SmolLM2-1.7B (n = 499, 333 failing, 166 good)
+
+| signal | calls avoided | correct let through | **failing let through** | failing stopped | good rejected | certified |
+|---|---|---|---|---|---|---|
+| Observables | 272 (55%) | 76 | **0** | 192 | 4 / 166 |  |
+| Plant readings only | 253 (51%) | 69 | **0** | 181 | 3 / 166 |  |
+| Obs. + grounding | 295 (59%) | 77 | **1** | 210 | 7 / 166 |  |
+| Obs. + all internals | 305 (61%) | 69 | **1** | 224 | 11 / 166 |  |
+| Obs. + internals + grounding | 294 (59%) | 63 | **1** | 221 | 9 / 166 |  |
+| Region grounding | 132 (26%) | 0 | **0** | 127 | 5 / 166 |  |
+| Attention (regions) | 164 (33%) | 0 | **0** | 152 | 12 / 166 |  |
+| Hidden states | 165 (33%) | 0 | **0** | 160 | 5 / 166 |  |
+| All internals | 192 (38%) | 24 | **1** | 164 | 3 / 166 |  |
+| All internals + grounding | 207 (41%) | 27 | **1** | 173 | 6 / 166 |  |
+| Token confidence | 117 (23%) | 0 | **0** | 110 | 7 / 166 |  |

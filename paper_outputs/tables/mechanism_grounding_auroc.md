@@ -11,3 +11,4 @@
 | CSTR | Qwen2.5-3B* | g31_min_share | 3954 | 0.496 |
 | CSTR | Qwen2.5-7B (4-bit) | g31_min_share | 3988 | 0.479 |
 | CSTR | Llama-3.2-3B | g31_min_share | 3817 | 0.522 |
+| CSTR | SmolLM2-1.7B | g31_min_share | 3964 | 0.662 |

@@ -99,3 +99,19 @@
 2026-10-08T06:37:40 [internals closed loop] END   qwen25-15b_internals (exit 0)
 2026-10-08T06:37:40 [internals closed loop] INTERNALS CLOSED LOOP DONE
 2026-10-08T06:41:56 [smollm resume] START cstr_smollm_collect_resume
+2026-10-08T10:17:57 [smollm resume] END   cstr_smollm_collect_resume (exit 1)
+2026-10-08T10:17:58 [smollm resume] START cstr_smollm_collect_resume
+2026-10-09T11:37:24 [smollm resume] END   cstr_smollm_collect_resume (exit 0)
+2026-10-09T11:37:25 [smollm resume] START cstr_smollm_grounding_full
+2026-10-09T15:38:33 [smollm resume] END   cstr_smollm_grounding_full (exit 0)
+2026-10-09T15:38:33 [smollm resume] START cstr_smollm_freeze_full
+2026-10-09T15:39:17 [smollm resume] END   cstr_smollm_freeze_full (exit 0)
+2026-10-09T15:39:17 [smollm resume] START cstr_smollm_test_eval_full
+2026-10-09T15:39:25 [smollm resume] END   cstr_smollm_test_eval_full (exit 0)
+2026-10-09T15:39:25 [smollm resume] START cstr_smollm_cert_grounding_full
+2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
+2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
+2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
+2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
+2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
+2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
