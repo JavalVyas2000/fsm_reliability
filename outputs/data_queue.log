@@ -117,3 +117,6 @@
 2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
 2026-10-09T19:03:02 [smollm closed loop] END   closed-loop smollm2-17b (exit 0)
 2026-10-09T19:03:02 [smollm closed loop] CAMPAIGN COMPLETE
+2026-10-09T19:11:42 [r0 rule] START smollm2-17b
+2026-10-09T21:51:05 [r0 rule] END   smollm2-17b (exit 0)
+2026-10-09T21:51:05 [r0 rule] START qwen25-7b

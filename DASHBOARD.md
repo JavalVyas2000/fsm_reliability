@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 21:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `14cbd62 Dashboard: automatic status update`._
+_Generated 2026-10-09 21:52 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `c2c95d1 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -17,22 +17,22 @@ _Generated 2026-10-09 21:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
 | Closed loop: SmolLM2-1.7B (all six policies) | ✅ done |
-| First-proposal-only rule: SmolLM2-1.7B | ⏳ running |
-| First-proposal-only rule: Qwen2.5-7B (4-bit) | 🕓 waiting |
+| First-proposal-only rule: SmolLM2-1.7B | ✅ done |
+| First-proposal-only rule: Qwen2.5-7B (4-bit) | ⏳ running |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
-2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
 2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
 2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
 2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
 2026-10-09T19:03:02 [smollm closed loop] END   closed-loop smollm2-17b (exit 0)
 2026-10-09T19:03:02 [smollm closed loop] CAMPAIGN COMPLETE
 2026-10-09T19:11:42 [r0 rule] START smollm2-17b
+2026-10-09T21:51:05 [r0 rule] END   smollm2-17b (exit 0)
+2026-10-09T21:51:05 [r0 rule] START qwen25-7b
 ```
 
 </details>
@@ -91,11 +91,11 @@ _Generated 2026-10-09 21:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 |---|---|---|---|---|---|
 | Always validate | 400 | 36.5% | 0 | 1.01 | 28 s |
 | Observables probe | 400 | 35.2% (-1.3) | 13 | 0.39 (-62%) | 29 s |
-| Observables, first-proposal-only | 297 | 34.3% (-2.2) | 9 | 0.39 (-61%) | 31 s |
+| Observables, first-proposal-only | 400 | 35.2% (-1.3) | 13 | 0.39 (-62%) | 31 s |
 | Obs. + internals + grounding | 400 | 35.0% (-1.5) | 237 | 0.34 (-66%) | 16 s |
-| Obs. + internals + grounding, first-proposal-only | 297 | 34.7% (-1.8) | 7 | 0.35 (-65%) | 29 s |
+| Obs. + internals + grounding, first-proposal-only | 400 | 35.5% (-1.0) | 11 | 0.35 (-65%) | 29 s |
 | Internals only | 400 | 35.5% (-1.0) | 243 | 0.56 (-44%) | 18 s |
-| Internals only, first-proposal-only | 297 | 35.0% (-1.5) | 0 | 0.59 (-42%) | 32 s |
+| Internals only, first-proposal-only | 400 | 36.0% (-0.5) | 2 | 0.58 (-42%) | 32 s |
 | Random routing | 400 | 34.0% (-2.5) | 172 | 0.36 (-65%) | 24 s |
 | Never validate | 400 | 36.0% (-0.5) | 254 | 0.00 (-100%) | 5 s |
 
