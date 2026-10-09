@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `cbba2ae Add SmolLM2-1.7B closed loop: internals-based probes fail on retries (237-243 unchecked failing executions, 2-11 under the first-proposal-only rule)`._
+_Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `e8248ef Pre-register and queue the first-proposal-only rule (closed-loop Amendment 4) for SmolLM2 and Qwen2.5-7B`._
 
 ## Campaign status
 
@@ -17,7 +17,7 @@ _Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
 | Closed loop: SmolLM2-1.7B (all six policies) | ✅ done |
-| First-proposal-only rule: SmolLM2-1.7B | 🕓 waiting |
+| First-proposal-only rule: SmolLM2-1.7B | ⏳ running |
 | First-proposal-only rule: Qwen2.5-7B (4-bit) | 🕓 waiting |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
@@ -25,7 +25,6 @@ _Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
 2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
 2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
 2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
@@ -33,6 +32,7 @@ _Generated 2026-10-09 19:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
 2026-10-09T19:03:02 [smollm closed loop] END   closed-loop smollm2-17b (exit 0)
 2026-10-09T19:03:02 [smollm closed loop] CAMPAIGN COMPLETE
+2026-10-09T19:11:42 [r0 rule] START smollm2-17b
 ```
 
 </details>
