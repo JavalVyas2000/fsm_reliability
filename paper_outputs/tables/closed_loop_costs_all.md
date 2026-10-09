@@ -46,6 +46,17 @@ Compute per episode = generation + internals pass + grounding pass + validator c
 | Random routing | 19.2% | 107 | 0.55 (−78%) | 59.4 s = 55.1 + 0.0 + 0.0 + 4.0 | +17% | +43% | +56% | 1.7 |
 | Never validate | 19.2% | 318 | 0.00 (−100%) | 11.9 s = 11.9 + 0.0 + 0.0 + 0.0 | +83% | +91% | +94% |  |
 
+## SmolLM2-1.7B (400 episodes; measured validator 11.6 s/call)
+
+| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 11.6 s | @ 30 s | @ 60 s | break-even validator s |
+|---|---|---|---|---|---|---|---|---|
+| Always validate | 36.5% | 0 | 1.01 | 28.5 s = 16.7 + 0.0 + 0.0 + 10.9 | +0% | +0% | +0% |  |
+| Observables probe | 35.2% | 13 | 0.39 (−62%) | 28.7 s = 24.2 + 0.0 + 0.0 + 4.8 | -1% | +24% | +39% | 12.0 |
+| Obs. + internals + grounding probe | 35.0% | 237 | 0.34 (−66%) | 16.2 s = 10.6 + 0.7 + 0.9 + 4.3 | +43% | +52% | +58% | any (cheaper even at 0 s) |
+| Internals-only probe | 35.5% | 243 | 0.56 (−44%) | 17.2 s = 9.1 + 0.6 + 0.9 + 7.0 | +40% | +42% | +43% | any (cheaper even at 0 s) |
+| Random routing | 34.0% | 172 | 0.36 (−65%) | 24.0 s = 19.9 + 0.0 + 0.0 + 4.0 | +16% | +35% | +47% | 4.9 |
+| Never validate | 36.0% | 254 | 0.00 (−100%) | 4.5 s = 4.5 + 0.0 + 0.0 + 0.0 | +84% | +90% | +94% |  |
+
 ## Rule: accept unchecked only on first proposals (validate every retry)
 
 Derived from the logged trajectories (see script docstring): unsafe executions and the minimum extra validator calls are exact; recovery is bounded because a blocked failing retry would have continued.
@@ -64,3 +75,6 @@ Derived from the logged trajectories (see script docstring): unsafe executions a
 | Qwen2.5-7B (4-bit) | Observables probe | 8 → **4** | 0.24 → 0.32 | 25.0% → [25.0%, 26.0%] |
 | Qwen2.5-7B (4-bit) | Obs. + internals + grounding probe | 165 → **4** | 0.62 → 1.10 | 26.5% → [26.5%, 66.8%] |
 | Qwen2.5-7B (4-bit) | Internals-only probe | 0 → **0** | 1.41 → 1.41 | 30.0% → [30.0%, 30.0%] |
+| SmolLM2-1.7B | Observables probe | 13 → **13** | 0.39 → 0.39 | 35.2% → [35.2%, 35.2%] |
+| SmolLM2-1.7B | Obs. + internals + grounding probe | 237 → **11** | 0.34 → 0.92 | 35.0% → [35.0%, 91.5%] |
+| SmolLM2-1.7B | Internals-only probe | 243 → **2** | 0.56 → 1.18 | 35.5% → [35.5%, 95.8%] |

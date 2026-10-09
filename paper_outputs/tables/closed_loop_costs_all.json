@@ -1,16 +1,17 @@
 {
-  "created_utc": "2026-10-08T07:41:35.868372+00:00",
+  "created_utc": "2026-10-09T18:07:05.095081+00:00",
   "argv": [
     "C:\\Users\\jv624\\Desktop\\fsm_reliability\\scripts\\47_closed_loop_costs.py",
     "--runs",
     "Qwen2.5-1.5B=outputs/cstr_closed_loop/20261003_181911_qwen25-15b,outputs/cstr_closed_loop/20261008_041617_qwen25-15b_internals",
     "Qwen2.5-3B=outputs/cstr_closed_loop/20261003_033144_qwen25-3b,outputs/cstr_closed_loop/20261007_184203_qwen25-3b_internals",
     "Llama-3.2-3B=outputs/cstr_closed_loop/20261004_151943_llama-32-3b",
-    "Qwen2.5-7B (4-bit)=outputs/cstr_closed_loop/20261004_225258_qwen25-7b"
+    "Qwen2.5-7B (4-bit)=outputs/cstr_closed_loop/20261004_225258_qwen25-7b",
+    "SmolLM2-1.7B=outputs/cstr_closed_loop/20261009_160941_smollm2-17b"
   ],
   "git": {
     "repo": "C:\\Users\\jv624\\Desktop\\fsm_reliability",
-    "commit": "a5cab21568d8da6ca70639b6d9d942e4b5055681",
+    "commit": "8d4101b659ed902c6ee63ca0af1c9a0a6af91ed2",
     "dirty": true
   },
   "packages": {
@@ -34,6 +35,7 @@
     "Qwen2.5-1.5B": "outputs/cstr_closed_loop/20261003_181911_qwen25-15b,outputs/cstr_closed_loop/20261008_041617_qwen25-15b_internals",
     "Qwen2.5-3B": "outputs/cstr_closed_loop/20261003_033144_qwen25-3b,outputs/cstr_closed_loop/20261007_184203_qwen25-3b_internals",
     "Llama-3.2-3B": "outputs/cstr_closed_loop/20261004_151943_llama-32-3b",
-    "Qwen2.5-7B (4-bit)": "outputs/cstr_closed_loop/20261004_225258_qwen25-7b"
+    "Qwen2.5-7B (4-bit)": "outputs/cstr_closed_loop/20261004_225258_qwen25-7b",
+    "SmolLM2-1.7B": "outputs/cstr_closed_loop/20261009_160941_smollm2-17b"
   }
 }

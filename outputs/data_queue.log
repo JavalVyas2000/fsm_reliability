@@ -115,3 +115,5 @@
 2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
 2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
 2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
+2026-10-09T19:03:02 [smollm closed loop] END   closed-loop smollm2-17b (exit 0)
+2026-10-09T19:03:02 [smollm closed loop] CAMPAIGN COMPLETE

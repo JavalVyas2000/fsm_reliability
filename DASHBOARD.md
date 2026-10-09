@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 18:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `6d58feb Add SmolLM2-1.7B CSTR results: internals and grounding add +4 to +6 pts over observables (CIs exclude 0)`._
+_Generated 2026-10-09 19:07 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `8d4101b Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -16,21 +16,21 @@ _Generated 2026-10-09 18:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | CSTR SmolLM2-1.7B: first collection attempt (crashed at 1073/5000, worker died) | ✅ done |
 | CSTR SmolLM2-1.7B: resumed collection (after internals-only runs) | ✅ done |
 | CSTR SmolLM2-1.7B: grounding, freeze, test + cert evaluation | ✅ done |
-| Closed loop: SmolLM2-1.7B (all six policies) | ⏳ running — episode 245/400, ~0.5 min/episode, ETA Fri 09 Oct 19:15 |
+| Closed loop: SmolLM2-1.7B (all six policies) | ✅ done |
 | Closed loop, internals only: Qwen2.5-3B | ✅ done |
 | Closed loop, internals only: Qwen2.5-1.5B | ✅ done |
 
 <details><summary>Last 8 queue-log lines · 7 failure/skip line(s) in the log</summary>
 
 ```
-2026-10-09T15:39:25 [smollm resume] END   cstr_smollm_test_eval_full (exit 0)
-2026-10-09T15:39:25 [smollm resume] START cstr_smollm_cert_grounding_full
 2026-10-09T16:04:20 [smollm resume] END   cstr_smollm_cert_grounding_full (exit 0)
 2026-10-09T16:04:20 [smollm resume] START cstr_smollm_cert_eval_full
 2026-10-09T16:04:33 [smollm resume] END   cstr_smollm_cert_eval_full (exit 0)
 2026-10-09T16:04:33 [smollm resume] SMOLLM DONE
 2026-10-09T16:04:33 [smollm resume] CAMPAIGN DONE
 2026-10-09T16:09:26 [smollm closed loop] START closed-loop smollm2-17b (frozen 20261009_153848_cstr_v4_smollm2-17b_skip_ucb)
+2026-10-09T19:03:02 [smollm closed loop] END   closed-loop smollm2-17b (exit 0)
+2026-10-09T19:03:02 [smollm closed loop] CAMPAIGN COMPLETE
 ```
 
 </details>
@@ -83,16 +83,16 @@ _Generated 2026-10-09 18:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Random routing | 400 | 19.2% (-14.8) | 107 | 0.55 (-78%) | 59 s |
 | Never validate | 400 | 19.2% (-14.8) | 318 | 0.00 (-100%) | 12 s |
 
-**SmolLM2-1.7B** — **in progress: 245/400 episodes** (`20261009_160941_smollm2-17b`)
+**SmolLM2-1.7B** — complete (`20261009_160941_smollm2-17b`)
 
 | Policy | Episodes | Recovered | Failing executed | Validator calls / ep (Δ) | Compute / ep |
 |---|---|---|---|---|---|
-| Always validate | 245 | 33.1% | 0 | 1.01 | 29 s |
-| Observables probe | 245 | 31.8% (-1.2) | 8 | 0.40 (-61%) | 32 s |
-| Obs. + internals + grounding | 245 | 31.4% (-1.6) | 151 | 0.34 (-66%) | 18 s |
-| Internals only | 245 | 31.8% (-1.2) | 155 | 0.56 (-44%) | 19 s |
-| Random routing | 245 | 30.6% (-2.4) | 108 | 0.34 (-66%) | 26 s |
-| Never validate | 245 | 32.7% (-0.4) | 163 | 0.00 (-100%) | 5 s |
+| Always validate | 400 | 36.5% | 0 | 1.01 | 28 s |
+| Observables probe | 400 | 35.2% (-1.3) | 13 | 0.39 (-62%) | 29 s |
+| Obs. + internals + grounding | 400 | 35.0% (-1.5) | 237 | 0.34 (-66%) | 16 s |
+| Internals only | 400 | 35.5% (-1.0) | 243 | 0.56 (-44%) | 18 s |
+| Random routing | 400 | 34.0% (-2.5) | 172 | 0.36 (-65%) | 24 s |
+| Never validate | 400 | 36.0% (-0.5) | 254 | 0.00 (-100%) | 5 s |
 
 ## Headline findings so far
 
