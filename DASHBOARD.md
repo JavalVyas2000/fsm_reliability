@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-09 23:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `ad191cd Start the EAAI manuscript: claims ledger, generated tables, full first draft`._
+_Generated 2026-10-10 01:12 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `3ac2938 Dashboard: automatic status update`._
 
 ## Campaign status
 
@@ -80,11 +80,11 @@ _Generated 2026-10-09 23:11 by `scripts/48_dashboard.py` (git pre-commit hook). 
 |---|---|---|---|---|---|
 | Always validate | 400 | 34.0% | 0 | 2.50 | 71 s |
 | Observables probe | 400 | 25.0% (-9.0) | 8 | 0.24 (-90%) | 60 s |
-| Observables, first-proposal-only | 43 | 27.9% (-6.1) | 0 | 0.35 (-86%) | 71 s |
+| Observables, first-proposal-only | 115 | 23.5% (-10.5) | 1 | 0.37 (-85%) | 70 s |
 | Obs. + internals + grounding | 400 | 26.5% (-7.5) | 165 | 0.62 (-75%) | 49 s |
-| Obs. + internals + grounding, first-proposal-only | 43 | 37.2% (+3.2) | 0 | 1.37 (-45%) | 87 s |
+| Obs. + internals + grounding, first-proposal-only | 115 | 35.7% (+1.7) | 1 | 1.38 (-45%) | 83 s |
 | Internals only | 400 | 30.0% (-4.0) | 0 | 1.41 (-44%) | 73 s |
-| Internals only, first-proposal-only | 43 | 41.9% (+7.9) | 0 | 1.26 (-50%) | 83 s |
+| Internals only, first-proposal-only | 115 | 34.8% (+0.8) | 0 | 1.27 (-49%) | 83 s |
 | Random routing | 400 | 19.2% (-14.8) | 107 | 0.55 (-78%) | 59 s |
 | Never validate | 400 | 19.2% (-14.8) | 318 | 0.00 (-100%) | 12 s |
 
