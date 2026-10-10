@@ -35,16 +35,19 @@ Compute per episode = generation + internals pass + grounding pass + validator c
 | Random routing | 29.5% | 0 | 0.58 (−68%) | 305.1 s = 300.5 + 0.0 + 0.0 + 4.8 | -68% | -44% | -22% | 109.8 |
 | Never validate | 15.2% | 312 | 0.00 (−100%) | 56.5 s = 56.5 + 0.0 + 0.0 + 0.0 | +69% | +74% | +79% |  |
 
-## Qwen2.5-7B (4-bit) (400 episodes; measured validator 7.8 s/call)
+## Qwen2.5-7B (4-bit) (400 episodes; measured validator 8.4 s/call)
 
-| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 7.8 s | @ 30 s | @ 60 s | break-even validator s |
+| policy | recovered | failing executed unchecked | validator calls / ep (avoided) | compute / ep: gen + int + grd + val | saving @ 8.4 s | @ 30 s | @ 60 s | break-even validator s |
 |---|---|---|---|---|---|---|---|---|
-| Always validate | 34.0% | 0 | 2.50 | 71.4 s = 51.9 + 0.0 + 0.0 + 19.3 | +0% | +0% | +0% |  |
-| Observables probe | 25.0% | 8 | 0.24 (−90%) | 59.3 s = 57.3 + 0.0 + 0.0 + 2.2 | +17% | +49% | +64% | 2.4 |
-| Obs. + internals + grounding probe | 26.5% | 165 | 0.62 (−75%) | 49.8 s = 40.5 + 1.1 + 3.4 + 4.5 | +30% | +50% | +59% | any (cheaper even at 0 s) |
-| Internals-only probe | 30.0% | 0 | 1.41 (−44%) | 72.5 s = 55.4 + 1.5 + 4.6 + 11.8 | -1% | +18% | +28% | 8.8 |
-| Random routing | 19.2% | 107 | 0.55 (−78%) | 59.4 s = 55.1 + 0.0 + 0.0 + 4.0 | +17% | +43% | +56% | 1.7 |
-| Never validate | 19.2% | 318 | 0.00 (−100%) | 11.9 s = 11.9 + 0.0 + 0.0 + 0.0 | +83% | +91% | +94% |  |
+| Always validate | 34.0% | 0 | 2.50 | 72.7 s = 51.9 + 0.0 + 0.0 + 19.3 | +0% | +0% | +0% |  |
+| Observables probe | 25.0% | 8 | 0.24 (−90%) | 59.4 s = 57.3 + 0.0 + 0.0 + 2.2 | +18% | +49% | +64% | 2.4 |
+| Observables probe, first-proposal-only | 25.5% | 4 | 0.32 (−87%) | 60.6 s = 57.9 + 0.0 + 0.0 + 3.3 | +17% | +47% | +62% | 2.8 |
+| Obs. + internals + grounding probe | 26.5% | 165 | 0.62 (−75%) | 50.1 s = 40.5 + 1.1 + 3.4 + 4.5 | +31% | +50% | +59% | any (cheaper even at 0 s) |
+| Obs. + internals + grounding, first-proposal-only | 32.5% | 4 | 1.47 (−41%) | 73.3 s = 55.0 + 1.4 + 4.6 + 13.5 | -1% | +17% | +26% | 8.9 |
+| Internals-only probe | 30.0% | 0 | 1.41 (−44%) | 73.2 s = 55.4 + 1.5 + 4.6 + 11.8 | -1% | +18% | +28% | 8.8 |
+| Internals-only, first-proposal-only | 30.0% | 0 | 1.41 (−44%) | 74.3 s = 56.4 + 1.5 + 4.6 + 12.6 | -2% | +17% | +27% | 9.8 |
+| Random routing | 19.2% | 107 | 0.55 (−78%) | 59.7 s = 55.1 + 0.0 + 0.0 + 4.0 | +18% | +43% | +56% | 1.7 |
+| Never validate | 19.2% | 318 | 0.00 (−100%) | 11.9 s = 11.9 + 0.0 + 0.0 + 0.0 | +84% | +91% | +94% |  |
 
 ## SmolLM2-1.7B (400 episodes; measured validator 12.0 s/call)
 

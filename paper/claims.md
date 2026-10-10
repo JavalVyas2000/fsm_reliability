@@ -1,6 +1,6 @@
 # Claims ledger (every claim in the manuscript must appear here, with its evidence)
 
-Status: draft 2026-10-09. The Qwen2.5-7B first-proposal-only (R0) closed-loop run is pending; claims C9 and C10 are provisional until it is in.
+Status: final data 2026-10-10. All runs are complete, including the Qwen2.5-7B first-proposal-only (R0) closed-loop run.
 
 | # | Claim (as worded in the paper) | Evidence | Caveats to state |
 |---|---|---|---|
@@ -12,8 +12,8 @@ Status: draft 2026-10-09. The Qwen2.5-7B first-proposal-only (R0) closed-loop ru
 | C6 | Internal signals are not more robust than observables to plant or fault-type shift. | Table `shift`; `docs/cstr_shift_results.md` (S2, S3 not supported). | This contradicts an earlier, larger fixed→varied shift under prompt v2.1. Report both. |
 | C7 | Validated against a random-routing control at matched rates, the trained screens execute far fewer failing actions unchecked in closed loop. | Table `closed_loop`: random 107–186 unsafe vs probes 0–13 (observables) across models. | Llama: random also 0 (it never accepts). |
 | C8 | Probes trained on first proposals can fail on retries: internals-based probes accepted failing retries for 2 of 5 models (Qwen-7B combined 165, SmolLM 237/243). | `closed_loop` table; steps analysis (`paper_outputs/tables/closed_loop_r0_accept.csv`). | Declared distribution shift in the closed-loop prereg. |
-| C9 | Restricting unchecked execution to first proposals (R0 rule) removes the retry failures: unsafe executions 0.5–3% with recovery unchanged (SmolLM2: −0.5 [−1.3, 0.0] internals-only R0; 2 unsafe in 400). | SmolLM R0 run (`outputs/cstr_closed_loop/*_smollm2-17b_r0rule`). **Qwen-7B pending.** | For the other three models the rule changes nothing (no failing retry accepts). |
-| C10 | With the R0 rule, an internals-only screen (no plant model) avoids 29–65% of validator calls with 0–2 unsafe executions across five models. | `closed_loop` table: internals-only (R0 for SmolLM; Qwen-7B pending). | Recovery cost: Qwen-3B −13.8 points (many good proposals rejected); others −0.5 to −4.0. |
+| C9 | Restricting unchecked execution to first proposals (R0 rule) removes the retry failures: unsafe executions ≤ 3% (≤ 13 of 400) with recovery unchanged (SmolLM2: −0.5 [−1.3, 0.0] internals-only R0; 2 unsafe in 400). | SmolLM R0 run (`*_smollm2-17b_r0rule`); Qwen-7B R0 run (`*_qwen25-7b_r0rule`): combined 165 → 4 unsafe, recovery −1.5 [−4.5, +1.5], 41% of calls avoided. | For the other three models the rule changes nothing (no failing retry accepts). |
+| C10 | With the R0 rule, an internals-only screen (no plant model) avoids 29–65% of validator calls with 0–2 unsafe executions across five models. | `closed_loop` table: internals-only (R0 for SmolLM and Qwen-7B; Qwen-7B internals-only: 0 unsafe, 44% avoided). | Recovery cost: Qwen-3B −13.8 points (many good proposals rejected); others −0.5 to −4.0. |
 | C11 | The screens' cost is independent of simulator fidelity, while validator cost grows with horizon and fidelity. Time savings are 14–64% at 30–60 s per validator call; break-even is about 2–17 s for the Qwen and SmolLM models. | Table `costs`; figure `closed_loop_compute_all`. | At the measured ~8–12 s validator, savings are small or negative. Llama's break-even is >70 s (every skip is a reject; slow generation, GPU memory spill inflated its timings). |
 | C12 | Unchecked rejects are not free: each forces a regeneration, and this is where recovery is lost. | `closed_loop`: unchecked rejects of good proposals per episode; Llama/Qwen-3B recovery drops. | — |
 

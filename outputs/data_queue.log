@@ -120,3 +120,5 @@
 2026-10-09T19:11:42 [r0 rule] START smollm2-17b
 2026-10-09T21:51:05 [r0 rule] END   smollm2-17b (exit 0)
 2026-10-09T21:51:05 [r0 rule] START qwen25-7b
+2026-10-10T08:04:02 [r0 rule] END   qwen25-7b (exit 0)
+2026-10-10T08:04:02 [r0 rule] R0 RULE DONE

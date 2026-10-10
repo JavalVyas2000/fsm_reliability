@@ -26,8 +26,8 @@ proposed setpoints is a learned surrogate of the plant rather than a statement a
 baseline addresses this directly: for three models it skips nearly as many calls as the full observable screen
 (the outcome is largely determined by the fault state), whereas for Qwen2.5-3B and Llama-3.2-3B it skips almost
 none. More importantly, the internals-only screen uses no plant information at all, yet with the first-proposal-only
-rule it avoided 29--65\% of validator calls while executing at most \pending{two} failing actions unchecked in
-\pending{2000} closed-loop episodes. The agent's own internal state therefore carries reliable information about when
+rule it avoided 29--65\% of validator calls while executing at most two failing actions unchecked in
+2000 closed-loop episodes. The agent's own internal state therefore carries reliable information about when
 its proposal can be rejected without simulation, independent of any plant model, even though it rarely suffices to
 accept proposals unchecked.
 

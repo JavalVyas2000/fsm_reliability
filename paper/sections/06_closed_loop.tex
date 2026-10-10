@@ -19,10 +19,11 @@ between first proposals and retries, were unaffected.
 every retry removes these failures (Table~\ref{tab:closedloop}). For SmolLM2, failing executions fell from 237 to 11
 (combined) and from 243 to 2 (internals only), with recovery unchanged ($-1.0$ [$-2.0$, $-0.3$] and $-0.5$ [$-1.3$,
 0.0] points relative to always-validate) and validator calls still reduced by 65\% and 42\%. For Qwen2.5-7B the
-combined probe's failing executions fell from 165 to \pending{X}, with recovery \pending{Y}. For the other three
+combined probe's failing executions fell from 165 to 4, with recovery unchanged within uncertainty
+($-1.5$ [$-4.5$, $+1.5$] points) and validator calls still reduced by 41\%. For the other three
 models the rule changes nothing, because their probes accepted no failing retries. With R0, an internals-only screen,
 which uses no plant measurements and no model of the plant, avoided 29--65\% of validator calls across the five models
-while executing \pending{0--2} failing actions unchecked.
+while executing 0--2 failing actions unchecked.
 
 \paragraph{Where recovery is lost} The screens' recovery cost ranges from $-0.5$ to $-18.5$ points. It comes from
 unchecked \emph{rejects}, not from unsafe accepts: each reject requires a new proposal and consumes the six-proposal
@@ -40,8 +41,8 @@ internal signals add 2--14\,s per episode (the most for Llama-3.2-3B). At the me
 little or cost time, because every unchecked reject triggers a regeneration that costs about as much as the
 validation it replaces. The screen's cost, however, is independent of the simulator, while the validator's cost grows
 with the simulated horizon, model fidelity and number of scenarios. Re-costing the same decisions
-(Fig.~\ref{fig:costs}) shows savings of \pending{11--49\%} of total compute at 30\,s per validation and
-\pending{21--64\%} at 60\,s for four of the five models, with break-even validator costs of 2--18\,s. Llama-3.2-3B is
+(Fig.~\ref{fig:costs}) shows savings of 11--49\% of total compute at 30\,s per validation and
+21--64\% at 60\,s for four of the five models, with break-even validator costs of 2--18\,s. Llama-3.2-3B is
 the exception: since it is screened only by rejection, its break-even lies above 70\,s, and its timings are
 additionally inflated by GPU memory pressure in our runs.
 

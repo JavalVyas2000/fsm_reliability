@@ -13,7 +13,7 @@
 \usepackage{lineno}
 \linenumbers
 
-% Numbers that depend on the pending Qwen2.5-7B first-proposal-only run are wrapped in \pending{}.
+% Numbers awaiting a run are wrapped in \pending{} (none at present).
 \newcommand{\pending}[1]{\textcolor{red}{#1}}
 \newcommand{\todo}[1]{\textcolor{orange}{[TODO: #1]}}
 
@@ -45,7 +45,7 @@ where failures stem from not consulting the relevant information, but helped onl
 task, where models attend to the relevant physics and reason incorrectly. In 400 fresh closed-loop episodes per
 model, probes using internal signals accepted failing retries for two models; allowing unchecked execution only for
 first proposals removed this failure while keeping recovery. Because screening cost is independent of simulation
-fidelity, savings grow with validator cost, reaching \pending{21--64\%} of total compute at 60\,s per validation for
+fidelity, savings grow with validator cost, reaching 21--64\% of total compute at 60\,s per validation for
 four of five models.
 \end{abstract}
 
