@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 10:11 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `f658386 Paper: fill final Qwen2.5-7B first-proposal-only numbers; all runs complete`._
+_Generated 2026-10-29 10:39 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `aff92ac Paper: rewrite around model internals replacing simulator verification, with TikZ/pgfplots figures`._
 
 ## Campaign status
 
