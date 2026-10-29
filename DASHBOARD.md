@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 11:06 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `5015761 Add probe-class and validator-derived-observables sensitivity results (item 3a)`._
+_Generated 2026-10-29 11:33 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `7a65c44 Paper: rewrite results around one figure per question; new intuitive figures; tables to appendix`._
 
 ## Campaign status
 
