@@ -216,12 +216,46 @@ def figures_section():
     return out
 
 
+REV_LOG = ROOT / "outputs" / "revision_queue.log"
+REV_STEPS = [  # (label, start marker, end marker) in outputs/revision_queue.log (docs/revision_prereg.md)
+    ("Build 400 fresh closed-loop episodes", "START build_closedloop2", "END   build_closedloop2"),
+    ("Item 2: fresh R0 test, SmolLM2-1.7B", "START closedloop2_smollm2-17b", "END   closedloop2_smollm2-17b"),
+    ("Item 2: fresh R0 test, Qwen2.5-7B", "START closedloop2_qwen25-7b", "END   closedloop2_qwen25-7b"),
+] + [(f"Item 1: cert2 (2000 episodes), {m}", f"START cert2_collect_{k}", f"END   cert2_eval_{k}")
+     for k, m in [("smollm2-17b", "SmolLM2-1.7B"), ("qwen25-15b", "Qwen2.5-1.5B"), ("qwen25-3b", "Qwen2.5-3B"),
+                  ("llama-32-3b", "Llama-3.2-3B"), ("qwen25-7b", "Qwen2.5-7B")]]
+
+
+def revision_section():
+    text = REV_LOG.read_text(encoding="utf-8-sig", errors="replace") if REV_LOG.exists() else ""
+    if not text:
+        return []
+    out = ["## Revision runs (`docs/revision_prereg.md`)", "", "| Step | Status |", "|---|---|"]
+    for label, start, end in REV_STEPS:
+        if end in text:
+            st = "✅ done"
+        elif start in text:
+            st = "⏳ running"
+            key = start.replace("START ", "")
+            p = progress(ROOT / "outputs" / f"queue_rev_{key}.log")
+            if p:
+                i, n, m, rate = p
+                eta = f", ETA {dt.datetime.now() + dt.timedelta(minutes=(n - i) * rate):%a %d %b %H:%M}" if rate else ""
+                st += f" — episode {i}/{n}{eta}"
+        else:
+            st = "🕓 waiting"
+        out.append(f"| {label} | {st} |")
+    lines = text.splitlines()
+    out += ["", "```", *lines[-6:], "```", ""]
+    return out
+
+
 def main():
     head = git("log", "-1", "--format=%h %s")
     md = ["# Selective verification — campaign dashboard", "",
           f"_Generated {dt.datetime.now():%Y-%m-%d %H:%M} by `scripts/48_dashboard.py` (git pre-commit hook). "
           f"Previous commit: `{head}`._", ""]
-    for section in (status_section, closed_loop_section, findings_section, skip_section, figures_section):
+    for section in (revision_section, status_section, closed_loop_section, findings_section, skip_section, figures_section):
         md += safe(section)
     (ROOT / "DASHBOARD.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print("DASHBOARD.md updated")
