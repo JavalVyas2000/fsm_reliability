@@ -120,6 +120,17 @@ proposals. And the flexible observable screens of two models accepted proposals 
 the tolerance, which the certificate would have refused. The confirmatory linear observable screens of the same
 models showed 10.9--11.6\% and were refused as well. The safeguard therefore did its job in both cases.
 
+\paragraph{Stability across development splits} The confidence intervals above capture sampling of the
+certification set, not the choice of the development split on which each probe was fitted and thresholded. We
+therefore re-partitioned the open data at random ten times, refitted and rethresholded every screen, and evaluated
+each split on the same certification set (Table~\ref{tab:splits}). The share of calls skipped varied with an SD of
+1--7 points. In path planning, adding internals to observables raised the mean share for all five models. The gain
+was largest for Llama-3.2-3B (57.4\% against 40.9\%) and Qwen2.5-3B (37.1\% against 21.9\%). The internals-only screen
+certified in 8 of 10 splits for Qwen2.5-7B and Llama-3.2-3B, against 1 and 2 of 10 for their observable screens. In
+the CSTR, the differences between signal sets were mostly within the split-to-split variation. The exception was
+Llama-3.2-3B, for which the combined screen skipped more calls than the observable screen on average (78.6\% against
+68.7\%). No CSTR screen certified on any split, which is the power limit again.
+
 \subsection{RQ3: why do internals help in one domain and not the other?}\label{sec:res-rq3}
 
 \finding{Low attention on the prompt region that decides an answer predicts failure when the agent's errors are

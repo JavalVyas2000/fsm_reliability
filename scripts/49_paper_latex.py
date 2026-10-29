@@ -242,6 +242,38 @@ def table_sensitivity():
     write("sensitivity", "\n".join(lines))
 
 
+def table_split_stability():
+    """Revision item 4 (scripts/53): calls skipped over 10 random development splits, X = 10%."""
+    runs = sorted((REPO_ROOT / "outputs" / "revision").glob("*_split_stability_cert"))
+    if not runs:
+        return
+    S = pd.read_csv(runs[-1] / "summary.csv")
+    S = S[(S.tolerance - 0.10).abs() < 1e-9]
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
+             "\\caption{Stability across development splits: share of validator calls skipped (\\%, $X=10\\%$) over "
+             "10 random re-partitions of the open data (stratified; probes refitted and rethresholded each time), "
+             "evaluated on the same certification sets. Mean $\\pm$ SD [min--max]; $c$: splits in which the "
+             "screen is certified. The CSTR Qwen-3B column is exploratory.}",
+             "\\label{tab:splits}", "\\begin{tabular}{ll" + "r" * 5 + "}", "\\toprule",
+             "Domain & Signal & " + " & ".join(SHORT[m] for m in FSM_MODELS) + " \\\\", "\\midrule"]
+    for dom in ("fsm", "cstr"):
+        models = FSM_MODELS if dom == "fsm" else CSTR_MODELS
+        for j, sig in enumerate(["observables", "internals only", "combined"]):
+            cells = []
+            for m in models:
+                r = S[(S.domain == dom) & (S.model == m) & (S.signal == sig)]
+                if r.empty:
+                    cells.append("--")
+                    continue
+                r = r.iloc[0]
+                cells.append(f"{r['mean']:.1f} $\\pm$ {r['sd']:.1f} [{r['min']:.0f}--{r['max']:.0f}], $c{{=}}{int(r.certified_splits)}$")
+            lines.append(f"{(DOMAIN.get(dom.upper(), 'CSTR') if j == 0 else '')} & {esc(sig)} & " + " & ".join(cells) + " \\\\")
+        lines.append("\\midrule")
+    lines[-1] = "\\bottomrule"
+    lines += ["\\end{tabular}", "\\end{table*}", ""]
+    write("splits", "\n".join(lines))
+
+
 def main():
     (PAPER / "tables").mkdir(parents=True, exist_ok=True)
     (PAPER / "figures").mkdir(parents=True, exist_ok=True)
@@ -262,6 +294,7 @@ def main():
     table_costs()
     table_shift()
     table_sensitivity()
+    table_split_stability()
     (PAPER / "tables" / "MANIFEST.json").write_text(json.dumps(
         {"closed_loop_runs": {m: CL_RUNS[m] for m in frames}, "sources": "paper_outputs/tables, outputs/cstr_closed_loop"},
         indent=2), encoding="utf-8")

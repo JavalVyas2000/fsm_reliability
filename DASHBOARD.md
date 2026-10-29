@@ -1,13 +1,13 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 11:52 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `73578cc Dashboard: track the revision queue (fresh R0 test, cert2 per model)`._
+_Generated 2026-10-29 12:25 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `ebc9035 Add a 10-minute status monitor for the revision queue (scripts/54)`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
 | Step | Status |
 |---|---|
-| Build 400 fresh closed-loop episodes | ⏳ running |
-| Item 2: fresh R0 test, SmolLM2-1.7B | 🕓 waiting |
+| Build 400 fresh closed-loop episodes | ✅ done |
+| Item 2: fresh R0 test, SmolLM2-1.7B | ⏳ running — episode 16/400, ETA Thu 29 Oct 15:21 |
 | Item 2: fresh R0 test, Qwen2.5-7B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), SmolLM2-1.7B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), Qwen2.5-1.5B | 🕓 waiting |
@@ -18,6 +18,8 @@ _Generated 2026-10-29 11:52 by `scripts/48_dashboard.py` (git pre-commit hook). 
 ```
 2026-10-29T11:37:44 REVISION QUEUE START
 2026-10-29T11:37:44 START build_closedloop2
+2026-10-29T12:15:53 END   build_closedloop2 (exit 0)
+2026-10-29T12:15:53 START closedloop2_smollm2-17b
 ```
 
 ## Campaign status
