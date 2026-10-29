@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 11:37 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `7b9c330 Pre-register the revision analyses: fresh R0 test, 2000-episode CSTR cert2, split stability, TF audit and region sensitivity`._
+_Generated 2026-10-29 11:40 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `3d2a31e Revision queue: fresh closed-loop and cert2 specs, detached queue, cert2 partition in scripts/40`._
 
 ## Campaign status
 

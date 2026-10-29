@@ -1,0 +1,21 @@
+model,region_definition,n,auroc_low_grounding_predicts_failure
+Qwen2.5-1.5B,deciding regions (pre-registered),3968,0.7162212987188741
+Qwen2.5-1.5B,physics section,3968,0.6018793982316853
+Qwen2.5-1.5B,setpoint-action section,3968,0.6027889299891735
+Qwen2.5-1.5B,whole snapshot,3968,0.5312478854655359
+Qwen2.5-3B*,deciding regions (pre-registered),3954,0.4957500401950801
+Qwen2.5-3B*,physics section,3954,0.5165302075597376
+Qwen2.5-3B*,setpoint-action section,3954,0.4343497201656803
+Qwen2.5-3B*,whole snapshot,3954,0.4914928835567669
+Qwen2.5-7B (4-bit),deciding regions (pre-registered),3988,0.47898919640245685
+Qwen2.5-7B (4-bit),physics section,3988,0.6982978849809885
+Qwen2.5-7B (4-bit),setpoint-action section,3988,0.7055985394121088
+Qwen2.5-7B (4-bit),whole snapshot,3988,0.4761393895632251
+Llama-3.2-3B,deciding regions (pre-registered),3817,0.5219701843609084
+Llama-3.2-3B,physics section,3817,0.3530736036594656
+Llama-3.2-3B,setpoint-action section,3817,0.5361783659523762
+Llama-3.2-3B,whole snapshot,3817,0.5474434103517306
+SmolLM2-1.7B,deciding regions (pre-registered),3964,0.6623617863247026
+SmolLM2-1.7B,physics section,3964,0.6806189397004129
+SmolLM2-1.7B,setpoint-action section,3964,0.35784838105050093
+SmolLM2-1.7B,whole snapshot,3964,0.467718016806111

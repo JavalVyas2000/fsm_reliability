@@ -67,14 +67,19 @@ screen (Section~\ref{sec:res-rq3}). The rules at the bottom apply to every scree
 \paragraph{Internal validity} All hypotheses, rules and amendments were pre-registered, and sealed partitions
 were evaluated once. Two analyses are exploratory and labelled as such: the offline CSTR result of Qwen2.5-3B
 and the closed-loop probes of that model. The first-proposal-only rule was introduced after observing the retry
-failure. Its effect was then measured on the same 400 episodes, so it is a confirmatory test of a rule, not an
-independent replication. Teacher-forced re-runs agreed with greedy generation for 92.8--99.6\% of answer tokens
-where audited, so attention features describe the generated answer closely but not exactly.
+failure. We therefore re-tested it on 400 new episodes (Section~\ref{sec:closedloop}). Teacher-forced re-runs
+agreed with greedy generation for 92.8--99.9\% of answer tokens for the bfloat16 models but only 84--91\% for the
+4-bit Qwen2.5-7B. For that model the internal features describe a closely related, not identical, decoding path.
+This may contribute to its weaker gains from internals.
 
 \paragraph{Construct validity} The CSTR deciding regions are domain-informed choices taken from the process
-structure stated in the prompt. A different choice could change the CSTR grounding values, although the
-pre-registered H3 test, which found more rather than less attention on the relevant physics, does not depend on
-the exact region boundaries. Attention is used as a predictive signal, not as an explanation. The observable
+structure stated in the prompt. In a pre-registered sensitivity check we recomputed the CSTR grounding AUROC under
+three alternative region definitions: the physics section, the section describing how each setpoint acts, and the
+whole snapshot. For Qwen2.5-3B and Llama-3.2-3B no definition reached 0.55. For Llama, \emph{more} attention on
+the physics section went with failure (0.35), as in the pre-registered H3 test. For Qwen2.5-7B, however, low
+attention on the physics and action sections did predict failure (0.70 and 0.71), which our pre-registered
+criterion had not anticipated. For that model the CSTR failures are partly failures to consult the physics, and
+the retrieval--reasoning contrast is one of degree rather than kind. Attention is used as a predictive signal, not as an explanation. The observable
 baseline in path planning includes a shortest-path length and an endpoint check, which are partial validator
 computations. This makes the baseline strong and the gains from internals conservative.
 

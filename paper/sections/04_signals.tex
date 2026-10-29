@@ -2,8 +2,9 @@
 
 All internal signals are read from the forward pass that produced the proposal. The stored answer is re-run once
 with teacher forcing to extract attention and hidden states, and the agreement between the teacher-forced
-argmax and the generated token is checked; where audited it was 92.8--99.6\% \todo{report the audit for every
-model and domain}. Signals are taken at four
+argmax and the generated token is checked. Agreement was 96--99.9\% for the bfloat16 models, except
+Qwen2.5-1.5B in path planning (92.8\%). It was lower for the 4-bit Qwen2.5-7B (84\% in path planning, 91\% in the
+CSTR), because quantised kernels make the two passes diverge more often. Signals are taken at four
 relative depths $\mathcal L=\{0.25,0.5,0.75,1.0\}$ of the network, where depth $1.0$ is the last layer. Let
 $\mathcal T$ denote the answer tokens and $\mathcal P$ the prompt tokens. Let $\alpha^{(\ell,\eta)}_{j,i}$ be the
 attention weight of head $\eta$ in layer $\ell$ from the position that predicts answer token $j$ to prompt token

@@ -37,3 +37,10 @@ Revised 2026-10-29 with the internals-centred rewrite: C2, C3 and C4 corrected a
 | C17 | In path planning the internals' gain survives a flexible (gradient-boosting) probe for 4 of 5 models. | `outputs/sensitivity/20261029_104001_probe_class/deltas.csv`, C1 gbm: Llama +15.9, Qwen-3B +5.8, Qwen-1.5B +3.0, SmolLM +2.4; Qwen-7B −2.5. | Gains shrink for Qwen-3B and SmolLM; certification sets had been examined before. |
 | C18 | The path-planning observable screen relies on validator-derived features; without them, internals add 11–37 points (gbm, all 5 models) and internals alone beat the observables for every model. | Same run, C3/C4 and results.csv. | Under logistic, the gain holds for 4 of 5 models (+1.1 to +11.6). |
 | C19 | In the CSTR, a flexible observable probe absorbs the internals' contribution: no combined gbm screen beats gbm observables, and 3 are significantly worse. | `outputs/sensitivity/20261029_104322_probe_class/deltas.csv`. | This **narrows C3**: the confirmatory CSTR gains are specific to the linear probe. |
+
+## Revision analyses (2026-10-29; `docs/revision_prereg.md`)
+
+| # | Claim | Evidence | Caveats to state |
+|---|---|---|---|
+| C20 | Teacher-forced argmax agreement: 96–99.9% for the bf16 models (Qwen-1.5B path planning 92.8%); 84% (path planning) and 91% (CSTR) for the 4-bit Qwen-7B. | `outputs/revision/20261029_113856_audits/tf_agreement.csv` | **Corrects the draft** ("92.8–99.6% where audited"). |
+| C21 | CSTR grounding stays uninformative for Qwen-3B and Llama under every region definition (≤ 0.55); for Qwen-7B the physics and action sections predict failure (0.70, 0.71). | `outputs/revision/20261029_113856_audits/region_sensitivity.csv` | Pre-registered criterion (no definition ≥ 0.70 for Qwen-3B/7B/Llama) **fails narrowly for Qwen-7B**; the mechanism contrast is one of degree for that model. |

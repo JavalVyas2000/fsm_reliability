@@ -154,7 +154,10 @@ test partitions (four models, all intervals above zero).
 proposals raised the feed while cooling was saturated and the reactor was hot, a move the stated physics rules
 out; only 5.9\% of them passed. The hypothesis was that such proposals attend \emph{less} to the physics section.
 They attended slightly \emph{more}: the AUROC in the predicted direction was 0.31. The model reads the relevant
-physics and still moves the feed the wrong way.
+physics and still moves the feed the wrong way. A pre-registered check with three alternative region definitions
+(Section~\ref{sec:discussion}) confirmed the absence of signal for Qwen2.5-3B and Llama-3.2-3B. For Qwen2.5-7B,
+however, low attention on the whole physics section did predict failure (AUROC 0.70), so for that model the
+contrast is one of degree.
 
 \paragraph{Answer to RQ3} This explains both RQ1 and RQ2. Where errors are retrieval errors, the forward pass
 records them and the internals beat any observable baseline that does not itself compute part of the answer.
