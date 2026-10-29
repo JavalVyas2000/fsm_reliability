@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 11:41 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b4fe464 Revision item 7: teacher-forcing audit and CSTR grounding-region sensitivity; paper and ledger updated`._
+_Generated 2026-10-29 11:52 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `73578cc Dashboard: track the revision queue (fresh R0 test, cert2 per model)`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
