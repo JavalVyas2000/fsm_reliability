@@ -1,0 +1,30 @@
+\begin{table*}[!tbp]
+\centering
+\small
+\caption{Sensitivity analysis (pre-registered, on previously examined certification sets): share of validator calls skipped (\%, $X=10\%$) with the confirmatory linear probe and a fixed, untuned gradient-boosting probe. Validator-free observables omit the shortest-path length and the endpoint check. Bold: certified (Bonferroni over the screens of this analysis). The CSTR Qwen-3B column is exploratory.}
+\label{tab:sensitivity}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrrrrr}
+\toprule
+Domain & Signal & Probe & Qwen-1.5B & Qwen-3B & Qwen-7B & Llama-3B & SmolLM-1.7B \\
+\midrule
+Path planning & observables & linear & \textbf{40.4} & \textbf{20.5} & \textbf{15.7} & 43.0 & 84.6 \\
+ &  & boosting & \textbf{44.8} & \textbf{27.1} & \textbf{15.8} & 49.5 & \textbf{94.0} \\
+ & validator-free observables & linear & \textbf{33.4} & \textbf{18.2} & \textbf{11.7} & 22.0 & 71.1 \\
+ &  & boosting & 32.3 & \textbf{12.5} & \textbf{8.9} & 13.2 & 72.4 \\
+ & internals only & linear & \textbf{38.0} & \textbf{22.6} & \textbf{10.8} & \textbf{35.8} & 78.8 \\
+ &  & boosting & \textbf{47.1} & 30.0 & \textbf{11.9} & \textbf{45.9} & 86.7 \\
+ & combined & linear & \textbf{39.9} & \textbf{34.5} & \textbf{15.2} & \textbf{58.1} & 90.7 \\
+ &  & boosting & \textbf{47.8} & \textbf{32.9} & \textbf{13.3} & \textbf{65.5} & 96.3 \\
+ & validator-free combined & linear & \textbf{32.1} & \textbf{25.1} & \textbf{12.8} & \textbf{33.6} & 80.9 \\
+ &  & boosting & \textbf{42.9} & 27.5 & \textbf{25.0} & \textbf{49.8} & 87.0 \\
+\midrule
+CSTR & observables & linear & 62.8 & 41.2 & 85.5 & 70.7 & 61.1 \\
+ &  & boosting & 71.7 & 81.5 & 87.3 & 89.5 & 69.4 \\
+ & internals only & linear & 28.3 & 12.2 & 47.8 & 52.7 & 40.5 \\
+ &  & boosting & 27.6 & 22.5 & 49.4 & 54.2 & 43.5 \\
+ & combined & linear & 60.6 & 49.8 & 79.9 & 74.1 & 65.7 \\
+ &  & boosting & 70.9 & 73.7 & 84.1 & 83.3 & 67.5 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

@@ -1,0 +1,35 @@
+% RQ4: relative compute saving against always-validate as a function of the simulator's cost per call
+% (exact re-costing of the logged closed-loop decisions; R0 variant where it was run). Data: data/save_*.dat.
+\pgfplotstableread{data/save_measured.dat}\meastab
+\pgfplotstablegetelem{0}{lo}\of\meastab\let\measlo\pgfplotsretval
+\pgfplotstablegetelem{0}{hi}\of\meastab\let\meashi\pgfplotsretval
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\pgfplotsset{
+  svax/.style={paperaxis, width=0.37\textwidth, height=0.36\textwidth, xmin=0, xmax=120, ymin=-60, ymax=85,
+    xtick={0,30,60,90,120}, ytick={-60,-40,-20,0,20,40,60,80}, xmajorgrids, clip=false,
+    title style={font=\footnotesize\bfseries}, xlabel={simulator cost per call (s)}},
+  mline/.style={line width=1.1pt, #1},
+}
+\newcommand{\svlines}[1]{%
+  \fill[cInt!7] (axis cs:0,-60) rectangle (axis cs:120,0);
+  \fill[black!10] (axis cs:\measlo,-60) rectangle (axis cs:\meashi,85);
+  \draw[black!45] (axis cs:0,0) -- (axis cs:120,0);
+  \addplot[mline=cM1] table[x=c, y=m1] {data/save_#1.dat};
+  \addplot[mline=cM2] table[x=c, y=m2] {data/save_#1.dat};
+  \addplot[mline=cM3] table[x=c, y=m3] {data/save_#1.dat};
+  \addplot[mline=cM4] table[x=c, y=m4] {data/save_#1.dat};
+  \addplot[mline=cM5] table[x=c, y=m5] {data/save_#1.dat};}
+\begin{groupplot}[group style={group size=3 by 1, horizontal sep=7mm, yticklabels at=edge left}, svax]
+\nextgroupplot[title={observables}, ylabel={compute saved vs.\ always-validate (\%)}]
+\svlines{obs}
+\node[font=\scriptsize, text=cInt!80!black, anchor=south east] at (axis cs:118,-58) {screening costs time};
+\nextgroupplot[title={combined}]
+\svlines{comb}
+\nextgroupplot[title={internals only}, legend columns=5, legend cell align=left,
+  legend to name=svlegend, legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\svlines{int}
+\legend{Qwen2.5-1.5B, Qwen2.5-3B, Qwen2.5-7B, Llama-3.2-3B, SmolLM2-1.7B}
+\end{groupplot}
+\node[anchor=north] at ($(group c2r1.south)+(0,-1.0)$) {\pgfplotslegendfromname{svlegend}};
+\end{tikzpicture}}

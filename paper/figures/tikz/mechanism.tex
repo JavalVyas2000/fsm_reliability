@@ -1,17 +1,17 @@
-% Does low attention on the deciding prompt region predict failure? AUROC per model and domain.
-% Data: data/mechanism.dat (scripts/50).
+% RQ3: does low attention on the deciding prompt region predict failure? Data: data/mechanism.dat (scripts/50).
 \begin{tikzpicture}
-\begin{axis}[paperaxis, modelticks, width=0.62\textwidth, height=0.4\textwidth, ymin=0.4, ymax=1.0,
-  ylabel={AUROC of $-g_{\min}$ for failure}, ytick={0.4,0.5,0.6,0.7,0.8,0.9},
-  legend columns=2, legend style={at={(0.5,0.98)}, anchor=north, /tikz/every even column/.append style={column sep=8pt}},
-  legend cell align=left]
-\addplot[black!60, densely dashed, forget plot] coordinates {(0.4,0.5) (5.6,0.5)};
-\node[anchor=south west, font=\scriptsize, text=black!60] at (axis cs:0.45,0.5) {no signal};
-\addplot[only marks, mark=*, mark size=2.3pt, cGrd, error bars/.cd, y dir=minus, y explicit, error mark=none,
-  error bar style={black!35, line width=1.2pt}]
-  table[x=x, y=fsm, y error expr=\thisrow{fsm}-\thisrow{cstr}] {data/mechanism.dat};
-\addlegendentry{path planning (retrieval errors)}
-\addplot[only marks, mark=o, mark size=2.3pt, cInt, thick] table[x=x, y=cstr] {data/mechanism.dat};
-\addlegendentry{CSTR (reasoning errors)}
+\begin{axis}[paperaxis, modelrows, width=0.66\textwidth, height=0.36\textwidth, xmin=0.4, xmax=0.95,
+  xlabel={AUROC of low grounding $-g_{\min}$ for a failing answer}, xtick={0.4,0.5,0.6,0.7,0.8,0.9},
+  legend columns=2, legend cell align=left, clip=false,
+  legend style={at={(0.5,1.03)}, anchor=south, /tikz/every even column/.append style={column sep=10pt}}]
+\fill[black!6] (axis cs:0.45,0.45) rectangle (axis cs:0.55,5.55);
+\node[font=\scriptsize, text=black!55, anchor=north] at (axis cs:0.5,0.45) {no signal};
+\addplot[only marks, mark=*, mark size=2.6pt, cGrd, error bars/.cd, x dir=minus, x explicit, error mark=none,
+  error bar style={black!30, line width=1.6pt}]
+  table[y=y, x=fsm, x error expr=\thisrow{fsm}-\thisrow{cstr}] {data/mechanism.dat};
+\addlegendentry{path planning: retrieval errors}
+\addplot[only marks, mark=*, mark size=2.6pt, cInt, mark options={fill=white, line width=1.1pt}]
+  table[y=y, x=cstr] {data/mechanism.dat};
+\addlegendentry{CSTR: reasoning errors}
 \end{axis}
 \end{tikzpicture}

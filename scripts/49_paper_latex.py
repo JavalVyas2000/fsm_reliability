@@ -210,6 +210,38 @@ def table_shift():
     write("shift", "\n".join(lines))
 
 
+def table_sensitivity():
+    """Probe-class / validator-derived-observables sensitivity (scripts/51): calls skipped at X = 10%, both domains."""
+    R, _ = importlib.import_module("scripts.50_paper_figure_data").sensitivity_frames()
+    R = R[(R.tolerance - 0.10).abs() < 1e-9]
+    order = {"fsm": ["observables", "validator-free observables", "internals only", "combined", "validator-free combined"],
+             "cstr": ["observables", "internals only", "combined"]}
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
+             "\\caption{Sensitivity analysis (pre-registered, on previously examined certification sets): share of "
+             "validator calls skipped (\\%, $X=10\\%$) with the confirmatory linear probe and a fixed, untuned "
+             "gradient-boosting probe. Validator-free observables omit the shortest-path length and the endpoint check. "
+             "Bold: certified (Bonferroni over the screens of this analysis). The CSTR Qwen-3B column is exploratory.}",
+             "\\label{tab:sensitivity}", "\\begin{tabular}{lll" + "r" * 5 + "}", "\\toprule",
+             "Domain & Signal & Probe & " + " & ".join(SHORT[m] for m in FSM_MODELS) + " \\\\", "\\midrule"]
+    for dom, sigs in order.items():
+        models = FSM_MODELS if dom == "fsm" else CSTR_MODELS
+        first = True
+        for sig in sigs:
+            for probe, pname in (("logistic", "linear"), ("gbm", "boosting")):
+                cells = []
+                for m in models:
+                    r = R[(R.domain == dom) & (R.model == m) & (R.signal == sig) & (R.probe == probe)]
+                    v = f"{r.skipped_pct.iloc[0]:.1f}" if len(r) else "--"
+                    cells.append(f"\\textbf{{{v}}}" if len(r) and r.certified.iloc[0] else v)
+                lines.append(f"{(DOMAIN.get(dom.upper(), 'CSTR') if first else '')} & "
+                             f"{esc(sig) if probe == 'logistic' else ''} & {pname} & " + " & ".join(cells) + " \\\\")
+                first = False
+        lines.append("\\midrule")
+    lines[-1] = "\\bottomrule"
+    lines += ["\\end{tabular}", "\\end{table*}", ""]
+    write("sensitivity", "\n".join(lines))
+
+
 def main():
     (PAPER / "tables").mkdir(parents=True, exist_ok=True)
     (PAPER / "figures").mkdir(parents=True, exist_ok=True)
@@ -229,6 +261,7 @@ def main():
     table_closed_loop(frames)
     table_costs()
     table_shift()
+    table_sensitivity()
     (PAPER / "tables" / "MANIFEST.json").write_text(json.dumps(
         {"closed_loop_runs": {m: CL_RUNS[m] for m in frames}, "sources": "paper_outputs/tables, outputs/cstr_closed_loop"},
         indent=2), encoding="utf-8")

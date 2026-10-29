@@ -5,11 +5,12 @@ The results support a precise version of the claim that motivated this study. Th
 LLM agent's proposal carries information about whether that proposal will pass simulation. The information is
 available before the simulator runs, costs a fixed amount, and requires no model of the plant. How much
 verification it can replace depends on the kind of error the agent makes. When errors are failures to consult
-information the agent was given, as in path planning, the internals support certified unchecked execution and
-add up to 15 points of skipped calls to a strong observable screen. When errors are reasoning errors over
-correctly consulted information, as in CSTR fault recovery, the internals still identify many failing proposals
-and reject them with 95--98\% precision. They cannot, however, certify a proposal as safe, and observable
-features of the plant state and the proposed change carry most of the information. Region-based grounding makes
+information the agent was given, as in path planning, the internals support certified unchecked execution. They
+add to observables even under a flexible probe, and they beat any observable baseline that does not itself compute
+part of the validator's answer. When errors are reasoning errors over correctly consulted information, as in CSTR
+fault recovery, the internals still identify many failing proposals and reject them with 95--98\% precision. They
+cannot, however, certify a proposal as safe, and a flexible surrogate of the plant's response captures what they
+add. Region-based grounding makes
 this distinction measurable. Its AUROC on development data is a cheap diagnostic of whether internal signals are
 worth the extra feature pass for a given task and model.
 
@@ -21,7 +22,10 @@ internals contribute mainly by filtering out proposals that are clearly wrong.
 
 \subsection{Plant surrogates versus model internals}
 A natural objection is that a screen on plant measurements and proposed setpoints is a learned surrogate of the
-digital twin rather than a statement about the agent. The study addresses this in three ways. First, the
+digital twin rather than a statement about the agent. The sensitivity analysis confirms this reading: given a
+flexible probe, the CSTR observable screen improved by up to 40 points and absorbed every gain from internals
+(Fig.~\ref{fig:heatmap}). Where a cheap surrogate of the plant can be learned, it is the better tool for
+\emph{accepting} proposals. The study shows what the internals offer beyond it in three ways. First, the
 plant-readings-only baseline, which sees the plant state but not the proposed action, skipped nearly as many
 calls as the full observable screen for three models, but almost none for Qwen2.5-3B (1.8\%) and Llama-3.2-3B
 (4.0\%). For those two models the outcome depends on the agent's action, not only on the fault state. Second, the

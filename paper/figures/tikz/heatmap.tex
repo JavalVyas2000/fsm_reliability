@@ -1,0 +1,37 @@
+% RQ2: change in validator calls skipped (X = 10%) when internals + grounding are added to an observable screen,
+% against baselines of increasing strength/fairness. Data: data/heat_{fsm,cstr}.tex (scripts/50 from scripts/51).
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\footnotesize]
+\def\cw{2.2}\def\ch{0.86}\def\xz{5.0}
+\newcommand{\hcell}[6]{%
+  \pgfmathsetmacro{\cx}{\xz+(#1-1)*\cw}\pgfmathsetmacro{\cy}{-(#2-1)*\ch}
+  \fill[#3] (\cx-\cw/2+0.04,\cy-\ch/2+0.04) rectangle (\cx+\cw/2-0.04,\cy+\ch/2-0.04);
+  \ifnum#6=1 \node[font=\small\boldmath] at (\cx,\cy+0.1) {#4};\else \node[font=\small, text=black!45] at (\cx,\cy+0.1) {#4};\fi
+  \node[font=\tiny, text=black!60] at (\cx,\cy-0.22) {#5};}
+\newcommand{\hrow}[2]{\node[anchor=east, font=\scriptsize, align=right] at (\xz-\cw/2-0.1,{-(#1-1)*\ch}) {#2};}
+\newcommand{\hhead}[1]{\foreach \m/\l in {1/Qwen2.5-1.5B,2/Qwen2.5-3B#1,3/Qwen2.5-7B,4/Llama-3.2-3B,5/SmolLM2-1.7B}
+  \node[font=\scriptsize\bfseries] at ({\xz+(\m-1)*\cw},0.68) {\l};}
+% ---------------------------------------------------------------- (a) path planning
+\node[anchor=west, font=\small\bfseries] at (-0.6,1.35) {(a) Path planning};
+\hhead{}
+\hrow{1}{full observables, linear probe}
+\hrow{2}{full observables, flexible probe}
+\hrow{3}{validator-free observables, linear probe}
+\hrow{4}{validator-free observables, flexible probe}
+\input{data/heat_fsm.tex}
+\draw[black!40, densely dashed] (-0.6,{-1.5*\ch}) -- ({\xz+4.5*\cw},{-1.5*\ch});
+% ---------------------------------------------------------------- (b) CSTR
+\begin{scope}[yshift=-5.0cm]
+\node[anchor=west, font=\small\bfseries] at (-0.6,1.35) {(b) CSTR fault recovery};
+\hhead{$^\dagger$}
+\hrow{1}{full observables, linear probe}
+\hrow{2}{full observables, flexible probe}
+\input{data/heat_cstr.tex}
+% legend
+\begin{scope}[yshift=-1.75cm, font=\scriptsize]
+\fill[cGrd!55] (\xz-1.0,0) rectangle ++(0.35,0.22); \node[anchor=west] at (\xz-0.6,0.11) {internals add significantly};
+\fill[cInt!45] (\xz+3.3,0) rectangle ++(0.35,0.22); \node[anchor=west] at (\xz+3.7,0.11) {internals cost significantly};
+\fill[black!8] (\xz+7.5,0) rectangle ++(0.35,0.22); \node[anchor=west] at (\xz+7.9,0.11) {not significant};
+\end{scope}
+\end{scope}
+\end{tikzpicture}}

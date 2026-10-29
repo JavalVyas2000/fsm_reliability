@@ -98,9 +98,11 @@ break-even validator cost above which screening saves compute.
 verification} (RQ1, Section~\ref{sec:res-rq1}). Internals-only screens skipped 11--79\% of validator calls in
 path planning, with certified accepts for four of five models. In the CSTR they skipped 12--53\% of calls,
 almost entirely by rejecting proposals, 95--98\% of which indeed failed.
-\item \textbf{A domain-dependent answer to complementarity} (RQ2, Section~\ref{sec:res-rq2}). Adding internals
-to observables significantly increased the calls skipped for all five models in path planning, by up to 15.5
-points. In the CSTR the increase held for two models and reversed for two.
+\item \textbf{A fair test of complementarity} (RQ2, Section~\ref{sec:res-rq2}). We compare against observable
+baselines of increasing strength: a flexible probe, and features that do not reuse the validator's own logic. In
+path planning the internals still add for four of five models under a flexible probe, and add 11--37 points for
+all five against validator-free observables. In the CSTR, a flexible observable surrogate of the plant absorbs
+their contribution.
 \item \textbf{A mechanistic account of when internals help} (RQ3, Section~\ref{sec:res-rq3}). Low attention on
 the deciding prompt region predicts failure in path planning (AUROC 0.72--0.88). It predicts weakly or not at
 all in the CSTR (0.48--0.72), where a pre-registered test shows that failing proposals attend to the relevant

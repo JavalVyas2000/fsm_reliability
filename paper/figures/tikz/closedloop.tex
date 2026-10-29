@@ -1,0 +1,52 @@
+% RQ4: closed loop, 400 fresh CSTR episodes per model. Rows = policies (deployed first-proposal-only variant where it
+% was run); one marker per model. Faded rings: the same screen before the R0 rule. Data: data/cl_*.dat (scripts/50).
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\pgfplotsset{
+  clax/.style={paperaxis, width=0.37\textwidth, height=0.42\textwidth, ymin=0.45, ymax=5.55, y dir=reverse,
+    ytick={1,2,3,4,5}, ymajorgrids=false, xmajorgrids, tick align=outside, axis line style={black!35},
+    major tick length=2pt, title style={font=\footnotesize\bfseries, align=center}},
+  pt/.style={modelmarks, mark size=2.8pt, mark options={draw=white, line width=0.3pt, fill=#1}},
+  ghost/.style={only marks, mark=o, mark size=2.6pt, black!40},
+}
+\tikzset{rowfill/.style={fill=#1, opacity=0.07, draw=none}}
+\newcommand{\rowband}[3]{\fill[rowfill=#3] ({rel axis cs:0,0}|-{axis cs:1,#1}) rectangle ({rel axis cs:1,0}|-{axis cs:1,#2});}
+\newcommand{\rows}{\rowband{4.5}{5.55}{black}\rowband{3.5}{4.5}{cRand}\rowband{2.5}{3.5}{cObs}\rowband{1.5}{2.5}{cComb}\rowband{0.45}{1.5}{cInt}}
+\newcommand{\clpts}[1]{%
+  \addplot[pt=black] table[x=#1, y=y, meta=m] {data/cl_nv.dat};
+  \addplot[pt=cRand] table[x=#1, y=y, meta=m] {data/cl_rand.dat};
+  \addplot[pt=cObs] table[x=#1, y=y, meta=m] {data/cl_obs.dat};
+  \addplot[pt=cComb] table[x=#1, y=y, meta=m] {data/cl_comb.dat};
+  \addplot[pt=cInt] table[x=#1, y=y, meta=m] {data/cl_int.dat};}
+\begin{groupplot}[group style={group size=3 by 1, horizontal sep=4mm, yticklabels at=edge left}, clax]
+% ---- (a) safety
+\nextgroupplot[title={failing actions executed\\[-1pt]unchecked (of 400)}, xmode=log, xmin=0.35, xmax=600,
+  xtick={0.5,1,10,100}, xticklabels={0,1,10,100}, minor xtick={2,3,4,5,6,7,8,9,20,30,40,50,60,70,80,90,200,300,400,500},
+  yticklabels={internals only,obs.\,+\,internals\,+\,grounding,observables,random (matched rate),never validate},
+  y tick label style={font=\scriptsize}]
+\rows
+\addplot[ghost, error bars/.cd, x dir=minus, x explicit, error mark=none, error bar style={cRzero, line width=0.9pt}]
+  table[x=u0, y=y, x error expr=\thisrow{u0}-\thisrow{u1}] {data/cl_ghost.dat};
+\clpts{unsafe}
+% ---- (b) savings
+\nextgroupplot[title={validator calls\\[-1pt]avoided (\%)}, xmin=-5, xmax=105, xtick={0,25,50,75,100}]
+\rows
+\addplot[ghost] table[x=c0, y=y] {data/cl_ghost.dat};
+\clpts{calls}
+% ---- (c) recovery
+\nextgroupplot[title={recovery vs.\ always-\\[-1pt]validate (points)}, xmin=-42, xmax=4, xtick={-40,-30,-20,-10,0},
+  legend columns=6, legend cell align=left, legend to name=cllegend,
+  legend style={/tikz/every even column/.append style={column sep=7pt}}]
+\rows
+\draw[black!50] (axis cs:0,0.45) -- (axis cs:0,5.55);
+\addplot[ghost, forget plot] table[x=r0, y=y] {data/cl_ghost.dat};
+\clpts{drec}
+\addlegendimage{only marks, mark=*, black!60}\addlegendentry{Qwen2.5-1.5B}
+\addlegendimage{only marks, mark=square*, black!60}\addlegendentry{Qwen2.5-3B}
+\addlegendimage{only marks, mark=triangle*, black!60}\addlegendentry{Qwen2.5-7B}
+\addlegendimage{only marks, mark=diamond*, black!60}\addlegendentry{Llama-3.2-3B}
+\addlegendimage{only marks, mark=pentagon*, black!60}\addlegendentry{SmolLM2-1.7B}
+\addlegendimage{only marks, mark=o, mark options={draw=black!45, fill=none}}\addlegendentry{before the R0 rule}
+\end{groupplot}
+\node[anchor=north] at ($(group c2r1.south)+(0,-0.75)$) {\pgfplotslegendfromname{cllegend}};
+\end{tikzpicture}}

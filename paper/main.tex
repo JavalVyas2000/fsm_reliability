@@ -16,6 +16,11 @@
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.misc,calc,fit,backgrounds,decorations.pathreplacing,patterns}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+% tables are single-spaced even in the double-spaced review layout
+\usepackage{array,etoolbox}
+\AtBeginEnvironment{table}{\renewcommand{\baselinestretch}{1}\selectfont}
+\AtBeginEnvironment{table*}{\renewcommand{\baselinestretch}{1}\selectfont}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 % figures are single-spaced even in the double-spaced review layout
 \tikzset{every picture/.append style={execute at begin picture={\renewcommand{\baselinestretch}{1}\selectfont}}}
 \usepgfplotslibrary{groupplots}
@@ -32,8 +37,12 @@
 \definecolor{cRzero}{HTML}{E69F00} % first-proposal-only rule
 \definecolor{cRand}{HTML}{7F7F7F}  % random routing
 \definecolor{cTwin}{HTML}{56B4E9}  % digital twin / validator
-\colorlet{cAcc}{black!75}
-\colorlet{cRej}{black!25}
+% Models: the Qwen2.5 family as three shades of one blue (light = small), Llama and SmolLM2 as distinct hues.
+\definecolor{cM1}{HTML}{6BAED6}  % Qwen2.5-1.5B
+\definecolor{cM2}{HTML}{2171B5}  % Qwen2.5-3B
+\definecolor{cM3}{HTML}{08306B}  % Qwen2.5-7B
+\definecolor{cM4}{HTML}{E69F00}  % Llama-3.2-3B
+\definecolor{cM5}{HTML}{009E73}  % SmolLM2-1.7B
 
 \pgfplotsset{
   paperaxis/.style={
@@ -41,10 +50,14 @@
     legend style={font=\scriptsize, draw=none, fill=none}, axis line style={black!60},
     tick style={black!60}, major grid style={black!12}, ymajorgrids,
   },
-  modelticks/.style={
-    xtick={1,2,3,4,5}, xticklabels={Qwen-1.5B,Qwen-3B,Qwen-7B,Llama-3B,SmolLM-1.7B},
-    xticklabel style={rotate=25, anchor=north east, inner sep=1pt}, xmin=0.4, xmax=5.6,
+  modelrows/.style={  % models as rows of a horizontal chart, smallest Qwen on top
+    ytick={1,2,3,4,5}, yticklabels={Qwen2.5-1.5B,Qwen2.5-3B,Qwen2.5-7B,Llama-3.2-3B,SmolLM2-1.7B},
+    y dir=reverse, ymin=0.45, ymax=5.55, ymajorgrids=false, xmajorgrids, tick align=outside,
+    y tick label style={font=\scriptsize}, axis line style={black!35}, major tick length=2pt,
   },
+  % model as marker shape (used where colour already encodes the policy)
+  modelmarks/.style={scatter, only marks, point meta=explicit symbolic, scatter/classes={
+    m1={mark=*}, m2={mark=square*}, m3={mark=triangle*}, m4={mark=diamond*}, m5={mark=pentagon*}}},
 }
 
 \newtheorem{proposition}{Proposition}
@@ -52,6 +65,9 @@
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 
+% one-sentence answer that opens each results subsection
+\newcommand{\finding}[1]{\par\medskip\noindent\fcolorbox{black!20}{black!3}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+  \renewcommand{\baselinestretch}{1.15}\selectfont\small\textbf{Finding.} #1}}\par\medskip}
 \newcommand{\pending}[1]{\textcolor{red}{#1}}
 \newcommand{\todo}[1]{\textcolor{orange}{[TODO: #1]}}
 \newcommand{\ACC}{\textsc{accept}}
@@ -83,11 +99,12 @@ fidelity, whereas the agent's forward pass, which already computes token probabi
 states, costs a fixed amount. We ask whether these model-internal signals can replace part of the simulation. A
 calibrated probe on the agent's internals estimates each proposal's failure risk and routes it to execution,
 rejection or simulation, with a Clopper--Pearson guarantee on the failure rate of unchecked executions. In a
-pre-registered study with sealed test sets, five open-weight models and two domains (graph path planning;
+pre-registered study of five open-weight models and two domains (graph path planning;
 fault recovery of a continuous stirred-tank reactor), internals alone, with no plant model, removed 11--79\% of
 validator calls in path planning, with certified accepts for four models, and 12--53\% in the reactor, almost
-entirely through rejections that were 95--98\% precise. Added to observable features, internals increased the
-calls skipped for all five models in path planning but for only two in the reactor. Attention on the prompt
+entirely through rejections that were 95--98\% precise. In path planning, internals added to observable features
+under a flexible probe, and against observables that do not reuse the validator's logic they added 11--37
+points; in the reactor, a flexible surrogate of the plant absorbed their contribution. Attention on the prompt
 region that decides the answer explains why: it predicts failures caused by not consulting relevant
 information (AUROC 0.72--0.88), but not failures of reasoning over correctly consulted information (0.48--0.72).
 In 2000 closed-loop episodes, internals-based probes accepted failing retries, a shift outside the guarantee.
@@ -130,6 +147,9 @@ Code, pre-registrations with dated amendments, frozen probes' manifests and all 
 
 \section*{Acknowledgements}
 \todo{Funding and acknowledgements.}
+
+\appendix
+\input{sections/10_appendix}
 
 \bibliographystyle{elsarticle-num}
 \bibliography{refs}

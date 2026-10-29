@@ -1,0 +1,26 @@
+% RQ1: what an internals-only screen (no plant model) does with every proposal. Data: data/replace_*.{dat,tex}.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\pgfplotsset{
+  rq1/.style={paperaxis, modelrows, xbar stacked, bar width=7.5pt, width=0.5\textwidth, height=0.29\textwidth,
+    xmin=0, xmax=100, xtick={0,20,40,60,80,100}, xticklabel={\pgfmathprintnumber{\tick}\,\%},
+    ymajorgrids=false, xmajorgrids=false, clip=false, enlarge y limits=false},
+}
+\newcommand{\rnote}[2]{\node[anchor=west, font=\scriptsize, text=black!65] at (axis cs:102,#1) {#2};}
+\newcommand{\rqbars}[1]{%
+  \addplot[fill=cGrd, draw=white] table[x=acc, y=y] {data/replace_#1.dat};
+  \addplot[fill=cInt, draw=white] table[x=rej, y=y] {data/replace_#1.dat};
+  \addplot[fill=cTwin!35, draw=white] table[x=sim, y=y] {data/replace_#1.dat};}
+\begin{groupplot}[group style={group size=1 by 2, vertical sep=9mm}, rq1]
+\nextgroupplot[title={\footnotesize\bfseries (a) Path planning \mdseries (exact validator)}, title style={anchor=west, at={(0,1)}, yshift=1pt},
+  xticklabels={}]
+\rqbars{fsm}
+\input{data/replace_notes_fsm.tex}
+\nextgroupplot[title={\footnotesize\bfseries (b) CSTR fault recovery \mdseries (digital-twin validator)}, title style={anchor=west, at={(0,1)}, yshift=1pt},
+  xlabel={share of proposals}, legend columns=3, legend cell align=left,
+  legend style={at={(0.5,-0.42)}, anchor=north, /tikz/every even column/.append style={column sep=10pt}}]
+\rqbars{cstr}
+\input{data/replace_notes_cstr.tex}
+\legend{executed without simulation (\ACC), returned without simulation (\REJ), still simulated (\VAL)}
+\end{groupplot}
+\end{tikzpicture}}

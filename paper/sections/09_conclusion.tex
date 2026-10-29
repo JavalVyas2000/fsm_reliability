@@ -4,10 +4,11 @@ LLM agents for process operations need not pay for a full simulation of every pr
 that produces a proposal already estimates how likely it is to fail. Across two domains, five open-weight models
 and a pre-registered protocol with sealed test sets, a screen that reads the agent's internals, with no model of
 the plant, removed 11--79\% of validator calls in graph path planning, with certified accepts for four models,
-and 12--53\% in CSTR fault recovery, almost entirely through rejections that were 95--98\% precise. Combined with
-observable features, internals added up to 15 points of skipped calls where the agent's errors were failures to
-consult the relevant information. They added little where the agent consulted the right information and
-reasoned incorrectly, a distinction that region-based attention grounding measures directly. In closed loop,
+and 12--53\% in CSTR fault recovery, almost entirely through rejections that were 95--98\% precise. Where the agent's errors were
+failures to consult the relevant information, internals added to observable features under a flexible probe and
+added 11--37 points against observables that do not reuse the validator's logic. Where the agent consulted the
+right information and reasoned incorrectly, a flexible surrogate of the plant absorbed their contribution.
+Region-based attention grounding measures this distinction directly. In closed loop,
 internals-based screens accepted failing retries, a distribution shift outside the certificate; allowing
 unchecked execution only for first proposals restored the certificate's premise and kept unsafe executions at
 0--2 per 400 episodes while 29--65\% of validator calls were avoided. Because the screen's cost is fixed and the
