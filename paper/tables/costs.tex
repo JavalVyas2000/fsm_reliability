@@ -1,8 +1,9 @@
-\begin{table*}[t]
+\begin{table*}[!tbp]
 \centering
 \small
 \caption{Compute per episode relative to always-validate (positive = saving). The logged closed-loop decisions do not depend on validator latency (the plant is paused during decisions), so the same decisions are re-costed exactly for a validator taking 30\,s or 60\,s per call. Break-even: validator cost per call above which the policy saves time.}
 \label{tab:costs}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llrrrr}
 \toprule
 Model & Policy & Measured & 30\,s & 60\,s & Break-even (s) \\
@@ -33,5 +34,5 @@ SmolLM-1.7B & Observables probe & +0\% & +24\% & +39\% & 12 \\
  & Internals-only probe & +40\% & +42\% & +43\% & any \\
  & Internals-only, first-proposal-only & -9\% & +11\% & +23\% & 18 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table*}

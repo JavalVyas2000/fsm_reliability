@@ -1,0 +1,53 @@
+% Region-based attention grounding: schematic of a retrieval failure (path planning) and a reasoning failure (CSTR).
+% Bar lengths are illustrative, not measured values.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\footnotesize,
+  row/.style={anchor=west, font=\ttfamily\scriptsize, inner sep=1pt},
+  hdr/.style={font=\scriptsize\bfseries, align=center},
+]
+\def\bw{2.4}  % bar length for an attention share of 1
+% ------------------------------------------------------------------ (a) path planning
+\node[anchor=west, font=\small\bfseries] at (-0.2,0.85) {(a) Path planning: a retrieval failure};
+\node[anchor=west, font=\scriptsize, align=left] at (-0.2,0.3) {query $2\to 6$; writing the step after node 0};
+\node[hdr] at (0.7,-0.25) {adjacency\\[-2pt]lines};
+\node[hdr] at (2.75,-0.25) {legal step $0\!\to\!3$};
+\node[hdr] at (5.35,-0.25) {illegal step $0\!\to\!5$};
+\foreach \i/\txt/\a/\b in {1/{0: 3, 7}/0.52/0.07, 2/{1: 4, 6}/0.05/0.06, 3/{2: 0, 5}/0.10/0.43, 4/{3: 1, 6}/0.07/0.08,
+                          5/{4: 2}/0.04/0.05, 6/{5: 6}/0.06/0.14, 7/{6: 4}/0.08/0.09, 8/{7: 1}/0.08/0.08} {
+  \pgfmathsetmacro{\y}{-0.45*\i-0.5}
+  \ifnum\i=1 \fill[cGrd!22] (-0.15,\y-0.2) rectangle (6.95,\y+0.2); \fi
+  \node[row] at (0,\y) {\txt};
+  \fill[cInt!80] (1.75,\y-0.12) rectangle ++(\a*\bw,0.24);
+  \fill[cInt!80] (4.35,\y-0.12) rectangle ++(\b*\bw,0.24);
+}
+\draw[black!40] (1.75,-0.65) -- (1.75,-4.3);
+\draw[black!40] (4.35,-0.65) -- (4.35,-4.3);
+\node[anchor=west, font=\scriptsize, text=cGrd!70!black] at (-0.15,-4.55) {deciding region $R^{\star}$: the source node's line};
+\node[font=\scriptsize] at (2.75,-5.0) {$g=0.52$ (high)};
+\node[font=\scriptsize] at (5.35,-5.0) {$g=0.07$ (low)};
+\node[font=\scriptsize, align=center, text=black!70] at (3.4,-5.65) {low grounding flags the failure:\\[-1pt]the model did not consult the line that decides the step};
+
+% ------------------------------------------------------------------ (b) CSTR
+\begin{scope}[xshift=8.0cm]
+\node[anchor=west, font=\small\bfseries] at (-0.2,0.85) {(b) CSTR: a reasoning failure};
+\node[anchor=west, font=\scriptsize, align=left] at (-0.2,0.3) {reactor hot, cooling saturated; writing $F_{\mathrm{in,sp}}$};
+\node[hdr] at (1.0,-0.25) {prompt\\[-2pt]regions};
+\node[hdr] at (3.45,-0.25) {passing proposal\\[-2pt](cuts feed)};
+\node[hdr] at (6.05,-0.25) {failing proposal\\[-2pt](raises feed)};
+\foreach \i/\txt/\d/\a/\b in {1/{T\_meas}/1/0.13/0.14, 2/{u\_cool}/1/0.12/0.13, 3/{setpoints}/1/0.11/0.10,
+                             4/{KG: PO8 (flow)}/1/0.07/0.07, 5/{KG: PO5 (balances)}/1/0.05/0.05,
+                             6/{L\_meas}/0/0.05/0.04, 7/{u\_pump}/0/0.04/0.04, 8/{KG: PO7 (temp.)}/0/0.08/0.08} {
+  \pgfmathsetmacro{\y}{-0.45*\i-0.5}
+  \ifnum\d=1 \fill[cGrd!22] (-0.15,\y-0.2) rectangle (7.65,\y+0.2); \fi
+  \node[row] at (0,\y) {\txt};
+  \fill[cInt!80] (2.75,\y-0.12) rectangle ++(\a*\bw*2,0.24);
+  \fill[cInt!80] (5.05,\y-0.12) rectangle ++(\b*\bw*2,0.24);
+}
+\draw[black!40] (2.75,-0.65) -- (2.75,-4.3);
+\draw[black!40] (5.05,-0.65) -- (5.05,-4.3);
+\node[anchor=west, font=\scriptsize, text=cGrd!70!black] at (-0.15,-4.55) {deciding regions $R^{\star}$ of $F_{\mathrm{in,sp}}$ (pre-registered)};
+\node[font=\scriptsize] at (3.45,-5.0) {$g=0.48$};
+\node[font=\scriptsize] at (6.05,-5.0) {$g=0.49$};
+\node[font=\scriptsize, align=center, text=black!70] at (3.9,-5.65) {grounding cannot flag the failure:\\[-1pt]the model reads the right regions and draws the wrong conclusion};
+\end{scope}
+\end{tikzpicture}}

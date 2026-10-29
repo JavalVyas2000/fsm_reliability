@@ -1,0 +1,88 @@
+\section{Discussion}\label{sec:discussion}
+
+\subsection{What the agent's internals can and cannot replace}
+The results support a precise version of the claim that motivated this study. The forward pass that produces an
+LLM agent's proposal carries information about whether that proposal will pass simulation. The information is
+available before the simulator runs, costs a fixed amount, and requires no model of the plant. How much
+verification it can replace depends on the kind of error the agent makes. When errors are failures to consult
+information the agent was given, as in path planning, the internals support certified unchecked execution and
+add up to 15 points of skipped calls to a strong observable screen. When errors are reasoning errors over
+correctly consulted information, as in CSTR fault recovery, the internals still identify many failing proposals
+and reject them with 95--98\% precision. They cannot, however, certify a proposal as safe, and observable
+features of the plant state and the proposed change carry most of the information. Region-based grounding makes
+this distinction measurable. Its AUROC on development data is a cheap diagnostic of whether internal signals are
+worth the extra feature pass for a given task and model.
+
+The asymmetry between rejection and acceptance has a practical reading. A rejection by an internals-only screen
+is cheap to trust: it can at worst cost a regeneration, never an unsafe action. It therefore requires no plant
+model and no certification for safety. An acceptance is where the guarantee is needed. Our results suggest that,
+in physics-heavy tasks, acceptance should rely on features that describe the plant's response, while the agent's
+internals contribute mainly by filtering out proposals that are clearly wrong.
+
+\subsection{Plant surrogates versus model internals}
+A natural objection is that a screen on plant measurements and proposed setpoints is a learned surrogate of the
+digital twin rather than a statement about the agent. The study addresses this in three ways. First, the
+plant-readings-only baseline, which sees the plant state but not the proposed action, skipped nearly as many
+calls as the full observable screen for three models, but almost none for Qwen2.5-3B (1.8\%) and Llama-3.2-3B
+(4.0\%). For those two models the outcome depends on the agent's action, not only on the fault state. Second, the
+internals-only screen uses no plant information at all. With the first-proposal-only rule it avoided 29--65\% of
+validator calls while executing at most two failing actions in 2000 closed-loop episodes. Third, a surrogate
+must be retrained when the plant changes, whereas the internal signals are tied to the agent. Our shift analysis
+shows, however, that this does not make them more robust to a change of plant population. Both kinds of screen
+must be recalibrated (Section~\ref{sec:res-shift}).
+
+\subsection{A deployment guide}
+Figure~\ref{fig:guide} condenses the results into a procedure for engineers who deploy an LLM agent behind a
+simulator. Three design choices mattered more than the choice of signal.
+\begin{enumerate}
+\item \emph{Thresholds need a confidence bound.} A point-estimate accept threshold overshot the tolerance on
+certification data. Even with the bound-based rule, two observable CSTR screens exceeded the tolerance on new
+data, and the certificate caught them. Certification is therefore not a formality but the step that detects
+optimistic thresholds.
+\item \emph{Retries are a different population.} A screen certified on first proposals must not accept retries
+unchecked, because feedback changes the agent's internal state. The first-proposal-only rule turns this
+observation into a one-line safeguard. It removed 95--99\% of the unsafe executions of the affected screens with
+no measurable loss of recovery.
+\item \emph{Savings depend on what replaces a skipped call.} An unchecked accept saves a full validation. An
+unchecked rejection of a good proposal forces a regeneration. Screening therefore pays when a validation costs
+more than the break-even $c^{\ast}$, which was 3--18\,s for four of five models. This is the regime that motivates
+selective validation in the first place: high-fidelity or long-horizon simulators, scenario sets and multi-unit
+plants, where the cost of validation grows while the cost of the agent stays fixed.
+\end{enumerate}
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/guide}
+\caption{Deployment guide derived from the results. The first question decides whether screening can pay off
+(Section~\ref{sec:closedloop}). The second decides whether internal signals are worth adding to an observable
+screen (Section~\ref{sec:res-rq3}). The rules at the bottom apply to every screen.}
+\label{fig:guide}
+\end{figure}
+
+\subsection{Threats to validity}
+\paragraph{Internal validity} All hypotheses, rules and amendments were pre-registered, and sealed partitions
+were evaluated once. Two analyses are exploratory and labelled as such: the offline CSTR result of Qwen2.5-3B
+and the closed-loop probes of that model. The first-proposal-only rule was introduced after observing the retry
+failure. Its effect was then measured on the same 400 episodes, so it is a confirmatory test of a rule, not an
+independent replication. Teacher-forced re-runs agreed with greedy generation for 92.8--99.6\% of answer tokens
+where audited, so attention features describe the generated answer closely but not exactly.
+
+\paragraph{Construct validity} The CSTR deciding regions are domain-informed choices taken from the process
+structure stated in the prompt. A different choice could change the CSTR grounding values, although the
+pre-registered H3 test, which found more rather than less attention on the relevant physics, does not depend on
+the exact region boundaries. Attention is used as a predictive signal, not as an explanation. The observable
+baseline in path planning includes a shortest-path length and an endpoint check, which are partial validator
+computations. This makes the baseline strong and the gains from internals conservative.
+
+\paragraph{External validity} The study uses open-weight models of 1.5--7 billion parameters, one of them
+quantised, on a single laptop GPU. Larger models make fewer retrieval errors and may therefore benefit less from
+grounding, and API-served models do not expose internal signals at all. The CSTR is one simulated plant with four
+fault families and one prompt, and the plant is paused while the agent and the validator run. We make no claim
+about decision latency under real-time constraints. The validator doubles as the plant in closed loop, so model
+mismatch between the digital twin and a real plant is outside the scope of this study.
+
+\paragraph{Statistical conclusion validity} Certification in the CSTR was limited by the size of the
+certification partitions (Eq.~\ref{eq:mmin}), so the absence of certified CSTR screens reflects power as well as
+risk. Confidence intervals are per comparison. The certification bounds are Bonferroni-corrected over signal sets
+but not over models or tolerances. Compute figures are specific to our hardware, but the linear re-costing makes
+their dependence on the validator explicit and transferable.

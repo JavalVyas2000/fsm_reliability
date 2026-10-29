@@ -1,0 +1,17 @@
+% Does low attention on the deciding prompt region predict failure? AUROC per model and domain.
+% Data: data/mechanism.dat (scripts/50).
+\begin{tikzpicture}
+\begin{axis}[paperaxis, modelticks, width=0.62\textwidth, height=0.4\textwidth, ymin=0.4, ymax=1.0,
+  ylabel={AUROC of $-g_{\min}$ for failure}, ytick={0.4,0.5,0.6,0.7,0.8,0.9},
+  legend columns=2, legend style={at={(0.5,0.98)}, anchor=north, /tikz/every even column/.append style={column sep=8pt}},
+  legend cell align=left]
+\addplot[black!60, densely dashed, forget plot] coordinates {(0.4,0.5) (5.6,0.5)};
+\node[anchor=south west, font=\scriptsize, text=black!60] at (axis cs:0.45,0.5) {no signal};
+\addplot[only marks, mark=*, mark size=2.3pt, cGrd, error bars/.cd, y dir=minus, y explicit, error mark=none,
+  error bar style={black!35, line width=1.2pt}]
+  table[x=x, y=fsm, y error expr=\thisrow{fsm}-\thisrow{cstr}] {data/mechanism.dat};
+\addlegendentry{path planning (retrieval errors)}
+\addplot[only marks, mark=o, mark size=2.3pt, cInt, thick] table[x=x, y=cstr] {data/mechanism.dat};
+\addlegendentry{CSTR (reasoning errors)}
+\end{axis}
+\end{tikzpicture}

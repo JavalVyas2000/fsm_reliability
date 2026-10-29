@@ -1,0 +1,75 @@
+% CSTR case study: process, regulatory loops, fault locations and the supervisory agent loop.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\footnotesize, >={Latex[length=1.8mm]},
+  pipe/.style={line width=1.1pt, black!75},
+  sig/.style={densely dashed, black!60},
+  ctrl/.style={circle, draw=black!70, fill=white, minimum size=7.5mm, inner sep=0pt, font=\scriptsize},
+  fault/.style={circle, draw=red!75!black, fill=red!12, text=red!75!black, minimum size=4.6mm, inner sep=0pt, font=\scriptsize\bfseries},
+  sup/.style={draw=black!70, rounded corners=2pt, minimum width=31mm, minimum height=7.5mm, align=center, fill=black!3},
+]
+\newcommand{\valve}[1]{\fill[white] ($(#1)+(-0.22,-0.15)$) -- ($(#1)+(0.22,0.15)$) -- ($(#1)+(0.22,-0.15)$) -- ($(#1)+(-0.22,0.15)$) -- cycle;
+  \draw[black!80, line width=0.7pt] ($(#1)+(-0.22,-0.15)$) -- ($(#1)+(0.22,0.15)$) -- ($(#1)+(0.22,-0.15)$) -- ($(#1)+(-0.22,0.15)$) -- cycle;}
+
+% jacket and vessel
+\fill[cTwin!30] (-0.35,-0.35) rectangle (2.55,2.4);
+\draw[black!70] (-0.35,-0.35) rectangle (2.55,2.4);
+\fill[white] (0,0) rectangle (2.2,3.2);
+\fill[cTwin!12] (0,0) rectangle (2.2,2.05);
+\draw[black!80, line width=1pt] (0,3.2) -- (0,0) -- (2.2,0) -- (2.2,3.2);
+\draw[black!50, decorate, decoration={snake, amplitude=0.6pt, segment length=4mm}] (0,2.05) -- (2.2,2.05);
+\node[font=\scriptsize, align=center] at (1.1,1.0) {$A\rightarrow B$\\[-1pt]exothermic};
+\node[font=\scriptsize, text=black!70, rotate=90] at (2.38,1.0) {jacket};
+
+% feed line with flow controller
+\draw[pipe, ->] (-3.2,3.6) -- (0.6,3.6) -- (0.6,2.3);
+\valve{-1.2,3.6}
+\node[anchor=south west, font=\scriptsize, align=left] at (-3.2,3.65) {feed $F_{\mathrm{in}}$, $C_{A,\mathrm{in}}$, $T_{\mathrm{in}}$};
+\node[ctrl] (fc) at (-1.2,4.55) {FC};
+\draw[sig] (fc) -- (-1.2,3.75);
+
+% outlet with pump and level controller
+\draw[pipe, ->] (1.1,-0.35) -- (1.1,-1.3) -- (4.4,-1.3);
+\node[circle, draw=black!80, fill=white, minimum size=6.5mm, line width=0.7pt] (pump) at (2.9,-1.3) {};
+\draw[black!80] (pump.north) -- (pump.east) -- (pump.south);
+\node[anchor=north, font=\scriptsize] at (3.95,-1.35) {outlet};
+\node[ctrl] (lc) at (3.65,1.75) {LC};
+\draw[sig] (2.2,1.75) -- node[above, font=\tiny] {LT} (lc);
+\draw[sig] (lc) -- (3.65,-0.25) -| (pump.north);
+
+% cooling jacket with temperature controller
+\draw[pipe, ->] (-3.2,0.15) -- (-0.35,0.15);
+\draw[pipe, ->] (-0.35,2.0) -- (-3.2,2.0);
+\valve{-1.9,0.15}
+\node[anchor=north west, font=\scriptsize] at (-3.2,0.1) {coolant in};
+\node[anchor=south west, font=\scriptsize] at (-3.2,2.05) {coolant out};
+\node[ctrl] (tc) at (-1.9,1.1) {TC};
+\draw[sig] (tc) -- (-1.9,0.3);
+\draw[sig] (tc) -- node[above, font=\tiny, pos=0.75] {TT} (0.45,1.1);
+
+% faults
+\node[fault] at (-0.17,0.55) {1};
+\node[fault] at (2.9,-0.8) {2};
+\node[fault] at (-1.4,-0.2) {3};
+\node[fault] at (1.1,-0.85) {4};
+\node[anchor=north west, font=\scriptsize, align=left, text=red!60!black] at (-3.25,-1.75)
+  {faults: \textbf{1} jacket fouling (lower $UA$)\quad \textbf{2} outlet pump degradation\\
+   \phantom{faults: }\textbf{3} cooling valve stuck partly closed\quad \textbf{4} outlet blockage};
+
+% ---------------------------------------------------------------- supervisory layer
+\node[sup] (mon) at (7.6,4.4) {monitor: process leaves\\[-1pt]safe operating region};
+\node[sup] (agent) at (7.6,3.15) {LLM agent proposes\\[-1pt]$(T_{\mathrm{sp}},L_{\mathrm{sp}},F_{\mathrm{in,sp}})$};
+\node[sup, draw=cInt, fill=cInt!8] (screen) at (7.6,1.9) {risk screen on\\[-1pt]internals (+ observables)};
+\node[sup, draw=cTwin!90!black, fill=cTwin!15] (twin) at (7.6,0.65) {digital twin: rollout to\\[-1pt]600\,s horizon};
+\node[sup] (sp) at (7.6,-0.6) {apply setpoints};
+\draw[->] (mon) -- (agent);
+\draw[->] (agent) -- (screen);
+\draw[->] (screen) -- node[right, font=\scriptsize] {\VAL} (twin);
+\draw[->] (twin) -- node[right, font=\scriptsize] {pass} (sp);
+\draw[->] (screen.east) -- ++(0.45,0) |- node[pos=0.25, right, font=\scriptsize] {\ACC} (sp.east);
+\draw[->] (screen.west) -- ++(-0.35,0) |- node[pos=0.25, left, font=\scriptsize] {\REJ} (agent.west);
+\draw[->] (twin.west) -- ++(-0.55,0) |- node[pos=0.2, left, font=\scriptsize] {fail} (agent.west);
+% measurements up, setpoints down
+\draw[->, sig, black!70] (2.4,3.2) -- node[above, font=\scriptsize, sloped] {plant snapshot} (mon.west);
+\draw[->, line width=0.8pt, cRzero!90!black] (sp.west) -- (4.5,-0.6);
+\node[font=\scriptsize, text=cRzero!80!black, align=center, anchor=south] at (5.2,-0.55) {setpoints to\\[-1pt]TC, LC, FC};
+\end{tikzpicture}}

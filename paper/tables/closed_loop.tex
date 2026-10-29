@@ -1,8 +1,9 @@
-\begin{table*}[t]
+\begin{table*}[!tbp]
 \centering
 \small
 \caption{Closed-loop CSTR recovery on 400 fresh episodes per model. $\Delta$: paired difference to always-validate (percentage points, bootstrap 95\% CI over episodes). Unsafe: failing actions executed without validation. Calls: validator calls avoided relative to always-validate. R0: the probe may skip validation only for first proposals (retries are always validated).}
 \label{tab:closedloop}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llrrrr}
 \toprule
 Model & Policy & Recovered (\%) & $\Delta$ recovered & Unsafe & Calls avoided \\
@@ -48,5 +49,5 @@ SmolLM-1.7B & Always validate & 36.5 & -- & 0 & -- \\
  & Random (matched) & 34.0 & -2.5 [-4.2, -1.0] & 172 & 65\% \\
  & Never validate & 36.0 & -0.5 [-1.2, +0.0] & 254 & 100\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table*}

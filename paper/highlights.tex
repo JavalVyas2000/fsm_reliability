@@ -3,10 +3,10 @@
 \begin{document}
 \section*{Highlights}
 \begin{itemize}
-\item Learned risk screens let LLM agents skip 16--91\% of digital-twin validations
-\item Model internals help when agent failures are retrieval, not reasoning, errors
-\item Attention on the deciding prompt region flags path-planning errors (AUROC 0.75+)
-\item Accepting unchecked only first proposals keeps closed-loop execution safe
-\item Savings grow with simulator cost: 21--64\% of compute at 60 s per validation
+\item An LLM agent's internals can replace part of its digital-twin verification
+\item With no plant model, internals skip 11--79\% of validator calls at bounded risk
+\item Attention grounding flags retrieval errors in prompts, not reasoning errors
+\item Retries break the certificate; accept only first proposals unchecked (R0)
+\item Screening pays once a simulation costs more than 3--18 s per call
 \end{itemize}
 \end{document}

@@ -1,0 +1,187 @@
+\section{Problem formulation}\label{sec:problem}
+
+This section formalises selective validation as a three-way routing problem. It states the guarantee that the
+accept rule provides and the assumption on which that guarantee rests. It then derives the exact cost model
+used to judge whether screening pays off.
+
+\subsection{Agent, validator and episode}
+An \emph{episode} begins when a monitoring layer detects that the process has left its safe operating region,
+or, in path planning, when a query is posed. In round $k=0,1,\dots,K-1$ the agent receives a prompt $x_k$ and
+returns a proposal $a_k$. The first prompt $x_0$ describes the task state. A later prompt $x_k$ ($k\ge 1$)
+additionally contains feedback on the previous proposal. The \emph{validator} $V(x,a)\in\{0,1\}$ returns
+whether proposal $a$ is acceptable. In the CSTR it simulates the plant from the current state under the proposed
+setpoints and checks the outcome contract (Section~\ref{sec:setup}). We write $Y=1-V$ for the failure
+indicator. In the conventional loop, which we call \emph{always-validate} (AV), every proposal is validated. A
+passing proposal is executed and ends the episode. A failing one is returned to the agent with the validator's
+measured outcome as feedback, until a budget of $K=6$ proposals is exhausted. If no proposal passes, the current
+setpoints are held.
+
+While generating $a_k$, the agent's forward pass produces an internal record $h_k$: output-token
+distributions, attention weights and hidden states. A \emph{signal map} $\psi$ turns the available information
+into a feature vector $z=\psi(x,a,h)$. The signal families are defined in Section~\ref{sec:signals}. Some use
+only $h$ (internal signals), some use only $(x,a)$ (observable signals), and some use both.
+
+\subsection{Three-way routing}
+A \emph{screen} consists of a probe $f$, which maps $z$ to an estimated failure probability $\hat r=f(z)\in[0,1]$,
+and two thresholds $\tacc<\trej$:
+\begin{equation}\label{eq:route}
+d(\hat r)=\begin{cases}
+\ACC & \hat r\le \tacc \quad\text{(execute without validation)},\\
+\REJ & \hat r\ge \trej \quad\text{(return to the agent without validation)},\\
+\VAL & \text{otherwise}.
+\end{cases}
+\end{equation}
+Both \ACC{} and \REJ{} avoid a validator call. The two errors differ in kind. An \ACC{} of a failing proposal
+executes an unsafe action on the plant; this is the safety-relevant error. A \REJ{} of a passing proposal costs
+a regeneration and may cost the episode its recovery if the budget runs out; this is an efficiency error. The
+design therefore treats the two thresholds asymmetrically: $\tacc$ carries a statistical guarantee, while
+$\trej$ is set for high precision.
+
+\begin{definition}[Offline operating characteristics]\label{def:metrics}
+For a screen applied to proposals drawn from a distribution $P$, the \emph{skip rate} is
+$S=P\{d\in\{\ACC,\REJ\}\}$, the \emph{unchecked failure rate} is $\rho_{A}=P\{Y=1\mid d=\ACC\}$, and the
+\emph{rejection precision} is $\pi_{R}=P\{Y=1\mid d=\REJ\}$.
+\end{definition}
+
+The design goal is to maximise $S$ subject to $\rho_A\le X$ with high confidence, for a tolerance $X$ set by the
+operator, and subject to a high rejection precision. We use $X=10\%$ as the primary tolerance and $X=5\%$ as a
+secondary one. The validator calls skipped, $S$, are the primary endpoint of the study. We use this rather than
+the area under the ROC curve (AUROC) because $S$ measures what an engineer saves at a fixed risk, whereas AUROC
+averages over operating points that would never be deployed.
+
+\subsection{Choosing the thresholds}
+Let $\mathcal D=\{(\hat r_i,Y_i)\}$ be development proposals that were not used to fit the probe. For a
+candidate threshold $t$ let $m(t)=|\{i:\hat r_i\le t\}|$ be the number of proposals it would accept and $k(t)$ the
+number of failures among them. Let
+\begin{equation}\label{eq:cp}
+U_{\alpha}(k,m)=\begin{cases}\mathrm{Beta}^{-1}(1-\alpha;\;k+1,\;m-k) & k<m,\\ 1 & k=m,\end{cases}
+\end{equation}
+be the one-sided Clopper--Pearson upper confidence bound at level $1-\alpha$ on a binomial proportion with $k$
+successes in $m$ trials \citep{clopper1934}; $U_\alpha(0,0)=1$. The accept threshold is the largest threshold
+whose bound does not exceed the tolerance,
+\begin{equation}\label{eq:tacc}
+\tacc=\max\{t:\;U_{\delta_{\mathrm{sel}}}(k(t),m(t))\le X\},\qquad \delta_{\mathrm{sel}}=0.05,
+\end{equation}
+and the reject threshold is the smallest threshold whose rejected development set is at least 95\% failures,
+\begin{equation}\label{eq:trej}
+\trej=\min\Bigl\{t:\;\tfrac{1}{|\{i:\hat r_i\ge t\}|}\textstyle\sum_{i:\hat r_i\ge t}Y_i\ge 0.95\Bigr\}.
+\end{equation}
+If no threshold satisfies Eq.~\eqref{eq:tacc}, the screen accepts nothing. Fig.~\ref{fig:threshold} illustrates
+why the bound matters. A rule that sets $\tacc$ where the \emph{point estimate} $k(t)/m(t)$ reaches $X$ selects a
+larger threshold. The failure rate of the set it selects is then biased upward on new data, because the selection
+itself favours thresholds whose development failure rate happened to be low. In an earlier pre-registered stage
+of this study the point rule did prove too loose on certification data. The bound-based rule replaced it by a
+dated amendment, made before any affected test data were analysed.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/threshold}
+\caption{Schematic of the bound-based accept rule (illustrative curves, not data). For each candidate threshold
+$t$, the failure rate of the development proposals with $\hat r\le t$ (solid) and its one-sided Clopper--Pearson
+upper bound (dashed) are computed. The bound is large for small $t$, because few proposals are accepted, and
+approaches the point estimate as more are accepted. The accept threshold $\tacc$ is the largest $t$ at which the
+bound stays below the tolerance $X$. The point-estimate rule picks a larger threshold and, after selection,
+exceeds $X$ on new data.}
+\label{fig:threshold}
+\end{figure}
+
+\subsection{What the certificate guarantees}
+After $f$, $\tacc$ and $\trej$ are frozen, each screen is evaluated once on a certification set $\mathcal C$ that
+played no role in building it. Let $m$ be the number of certification proposals it accepts and $k$ the number
+of failures among them.
+
+\begin{proposition}[Certified unchecked failure rate]\label{prop:cert}
+Let the screen be fixed independently of $\mathcal C$, and let the proposals in $\mathcal C$ and the future
+proposals on which the screen is deployed be independent draws from the same distribution $P$. Then, for the
+deployed unchecked failure rate $\rho_A=P\{Y=1\mid \hat r\le\tacc\}$,
+\[
+\Pr\bigl\{\rho_A\le U_{\delta/M}(k,m)\bigr\}\ \ge\ 1-\delta/M,
+\]
+and the statements for $M$ screens certified on the same set hold simultaneously with probability at least
+$1-\delta$.
+\end{proposition}
+\begin{proof}
+Because the screen does not depend on $\mathcal C$, the accept decisions are a fixed function of each
+certification proposal's features. Conditional on the set of accepted proposals, their failure indicators are
+therefore independent Bernoulli variables with mean $\rho_A$, so $k\mid m\sim\mathrm{Bin}(m,\rho_A)$. The
+Clopper--Pearson bound covers a binomial proportion with probability at least $1-\delta/M$ for every $m$
+\citep{clopper1934}. The same coverage therefore holds unconditionally. The simultaneous statement follows from
+the union (Bonferroni) bound.
+\end{proof}
+
+We call a screen \emph{certified} at tolerance $X$ if $U_{\delta/M}(k,m)\le X$ with $\delta=0.05$ and $M$ the number
+of signal sets compared on that certification set ($M=10$ in path planning, $M=11$ in the CSTR).
+Proposition~\ref{prop:cert} has two practical consequences.
+
+\emph{A minimum accept-set size.} With no failures among the accepts, $U_\alpha(0,m)=1-\alpha^{1/m}$, so
+certification at tolerance $X$ requires
+\begin{equation}\label{eq:mmin}
+m\ \ge\ m_{\min}=\left\lceil\frac{\ln\alpha}{\ln(1-X)}\right\rceil .
+\end{equation}
+For $X=10\%$ and $\alpha=0.05/11$, $m_{\min}=52$; any failure among the accepts raises the requirement. A
+certification set of 500 episodes in which a screen accepts 10\% of proposals therefore cannot certify it, however
+safe the accepts are. We stated this power limit for the CSTR in advance.
+
+\emph{An exchangeability premise.} The guarantee covers proposals drawn from the certification distribution and
+nothing else. This becomes decisive in closed loop, where the agent also produces \emph{retries}.
+
+\begin{remark}[Retries are outside the guarantee]\label{rem:retries}
+The certification sets contain first proposals. A retry $a_k$, $k\ge1$, differs from them in two ways. Its prompt
+$x_k$ contains feedback that a first prompt never contains, which changes the model's internal state. And the
+retry is drawn only in episodes whose previous proposal was not executed, which selects harder episodes.
+Proposition~\ref{prop:cert} therefore gives no bound on $\rho_A$ for retries. The \emph{first-proposal-only
+rule} (R0) replaces \ACC{} by \VAL{} whenever $k\ge1$, so that every unchecked execution is a first proposal, the
+population the certificate covers. Unchecked \REJ{} remains allowed on retries, since it cannot execute an
+unsafe action.
+\end{remark}
+
+\subsection{Cost model and break-even validator cost}\label{sec:costmodel}
+Let a policy $p$ (always-validate, or a screen with or without R0) be run on an episode. Its compute is
+\begin{equation}\label{eq:cost}
+C_p(\cval)=\underbrace{\sum_{k}\bigl(c_{\mathrm{gen},k}+c_{\mathrm{feat},k}\bigr)}_{G_p}\;+\;N_p\,\cval,
+\end{equation}
+where $c_{\mathrm{gen},k}$ is the generation time of proposal $k$, $c_{\mathrm{feat},k}$ the time of any extra
+pass needed to compute features (zero for observables), $N_p$ the number of validator calls and $\cval$ the cost
+of one call. In our closed loop the plant is paused while the agent and the validator run, decoding is greedy,
+and the validator is deterministic. The sequence of decisions, and with it $G_p$ and $N_p$, is therefore
+independent of $\cval$. The expected compute $\bar C_p(\cval)=\bar G_p+\bar N_p\,\cval$ is then exactly linear in
+the validator cost. Logged decisions can be re-costed for any validator, faster or slower than the one
+measured. Comparing a screen $p$ with always-validate gives the following.
+\begin{itemize}
+\item If $\bar N_p<\bar N_{\mathrm{AV}}$, the screen saves compute if and only if
+\begin{equation}\label{eq:breakeven}
+\cval>c^{\ast}_p=\frac{\bar G_p-\bar G_{\mathrm{AV}}}{\bar N_{\mathrm{AV}}-\bar N_p},
+\end{equation}
+and it saves at any validator cost if $\bar G_p\le\bar G_{\mathrm{AV}}$.
+\item The relative saving $1-\bar C_p/\bar C_{\mathrm{AV}}$ increases monotonically with $\cval$ when
+$c^{\ast}_p\ge0$ and tends to $1-\bar N_p/\bar N_{\mathrm{AV}}$, the fraction of validator calls avoided, as
+$\cval\to\infty$.
+\end{itemize}
+The numerator of Eq.~\eqref{eq:breakeven} explains when screening is cheap. An \ACC{} of a passing proposal
+saves a call and costs nothing, since always-validate would also have executed it. A \REJ{} of a failing
+proposal saves a call and also costs nothing in expectation, since always-validate would also have asked for a
+new proposal. A \REJ{} of a \emph{passing} proposal, in contrast, forces generations that always-validate would
+not have needed, and feature passes add a fixed overhead. Rejection precision therefore governs the break-even
+cost, and accept safety governs the risk.
+
+Algorithm~\ref{alg:episode} summarises one closed-loop episode under a screen.
+
+\begin{algorithm}[!htbp]
+\caption{One closed-loop episode with a screen (optional R0 rule)}\label{alg:episode}
+\begin{algorithmic}[1]
+\Require snapshot $s$, agent, probe $f$, thresholds $\tacc,\trej$, validator $V$, budget $K=6$
+\State $x_0\gets\mathrm{prompt}(s)$
+\For{$k=0,\dots,K-1$}
+  \State $(a_k,h_k)\gets\mathrm{agent}(x_k)$ \Comment{proposal and internals}
+  \If{$a_k$ repeats an earlier proposal}\ reuse its verdict (no new call) \EndIf
+  \State $\hat r\gets f(\psi(x_k,a_k,h_k))$
+  \If{$\hat r\le\tacc$ \textbf{and} ($k=0$ \textbf{or} R0 is off)} \State \textbf{execute} $a_k$; \Return \Comment{\ACC}
+  \ElsIf{$\hat r\ge\trej$} \State $x_{k+1}\gets\mathrm{prompt}(s,\text{rejection notice})$ \Comment{\REJ: no metrics}
+  \Else \State $v\gets V(s,a_k)$ \Comment{\VAL: one simulator call}
+    \If{$v=1$} \State \textbf{execute} $a_k$; \Return \EndIf
+    \State $x_{k+1}\gets\mathrm{prompt}(s,\text{measured outcome of }a_k)$
+  \EndIf
+\EndFor
+\State hold the current setpoints \Comment{budget exhausted: unresolved}
+\end{algorithmic}
+\end{algorithm}

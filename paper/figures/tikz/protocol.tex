@@ -1,0 +1,32 @@
+% Data partitions and their single use; widths are proportional to the number of graphs/episodes.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\footnotesize,
+  part/.style={draw=white, line width=0.8pt, minimum height=9mm, align=center, font=\scriptsize, inner sep=0pt, anchor=west},
+]
+\def\u{0.0024} % cm per item
+\colorlet{pFit}{black!22}\colorlet{pCal}{cTwin!45}\colorlet{pThr}{cRzero!55}\colorlet{pTest}{cInt!45}
+\colorlet{pCert}{cInt!85}\colorlet{pCL}{cGrd!55}
+% path planning
+\node[anchor=east, font=\footnotesize\bfseries, align=right] at (-0.2,1.5) {Path planning\\[-1pt]{\scriptsize\mdseries per model}};
+\node[part, fill=pFit, minimum width=1500*\u cm] (a1) at (0,1.5) {train\\1500};
+\node[part, fill=pCal, minimum width=500*\u cm] (a2) at (a1.east) {calib.\\500};
+\node[part, fill=pThr, minimum width=500*\u cm] (a3) at (a2.east) {thresh.\\500};
+\node[part, fill=pTest, minimum width=500*\u cm] (a4) at (a3.east) {test\\500};
+\node[part, fill=pCert, text=white, minimum width=3000*\u cm] (a5) at ($(a4.east)+(0.25,0)$) {fresh certification set\\3000 new graphs (cert2)};
+% CSTR
+\node[anchor=east, font=\footnotesize\bfseries, align=right] at (-0.2,0) {CSTR\\[-1pt]{\scriptsize\mdseries per model}};
+\node[part, fill=pFit, minimum width=3000*\u cm] (b1) at (0,0) {train\\3000 episodes};
+\node[part, fill=pCal, minimum width=500*\u cm] (b2) at (b1.east) {calib.\\500};
+\node[part, fill=pThr, minimum width=500*\u cm] (b3) at (b2.east) {thresh.\\500};
+\node[part, fill=pTest, minimum width=500*\u cm] (b4) at (b3.east) {test\\500};
+\node[part, fill=pCert, text=white, minimum width=500*\u cm] (b5) at (b4.east) {cert.\\500};
+\node[part, fill=pCL, minimum width=400*\u cm] (b6) at ($(b5.east)+(0.25,0)$) {closed\\loop\\400};
+% legend
+\begin{scope}[yshift=-1.25cm, font=\scriptsize]
+\foreach \c/\t/\x in {pFit/{fit $\ell_2$-logistic probe}/0, pCal/{Platt calibration}/4.4, pThr/{choose $t_{\mathrm{acc}},t_{\mathrm{rej}}$}/8.8} {
+  \fill[\c] (\x,0) rectangle ++(0.3,0.22); \node[anchor=west] at (\x+0.35,0.11) {\t}; }
+\foreach \c/\t/\x in {pTest/{sealed: AUROC, once}/0, pCert/{sealed: certification, once}/4.4, pCL/{fresh: closed-loop policies}/8.8} {
+  \fill[\c] (\x,-0.4) rectangle ++(0.3,0.22); \node[anchor=west] at (\x+0.35,-0.29) {\t}; }
+\end{scope}
+\draw[decorate, decoration={brace, amplitude=3pt}, black!60] ($(a2.north west)+(0,0.05)$) -- node[above, font=\scriptsize] {development (pooled for thresholds)} ($(a3.north east)+(0,0.05)$);
+\end{tikzpicture}}

@@ -1,0 +1,115 @@
+\section{Signals and probes}\label{sec:signals}
+
+All internal signals are read from the forward pass that produced the proposal. The stored answer is re-run once
+with teacher forcing to extract attention and hidden states, and the agreement between the teacher-forced
+argmax and the generated token is checked; where audited it was 92.8--99.6\% \todo{report the audit for every
+model and domain}. Signals are taken at four
+relative depths $\mathcal L=\{0.25,0.5,0.75,1.0\}$ of the network, where depth $1.0$ is the last layer. Let
+$\mathcal T$ denote the answer tokens and $\mathcal P$ the prompt tokens. Let $\alpha^{(\ell,\eta)}_{j,i}$ be the
+attention weight of head $\eta$ in layer $\ell$ from the position that predicts answer token $j$ to prompt token
+$i$, and let $\bar\alpha^{(\ell)}_{j,i}$ be its mean over heads.
+
+\subsection{Internal signals}
+
+\paragraph{Token confidence} For answer token $j$ with predictive distribution $p_j$ and selected token $y_j$,
+we compute the log-probability $\log p_j(y_j)$, the entropy $-\sum_v p_j(v)\log p_j(v)$ and the margin between
+the two most probable tokens. The features are their mean, minimum and maximum over all answer tokens and over
+the numeric tokens. This is the cheapest internal signal and needs no extra pass.
+
+\paragraph{Attention by prompt region} The prompt is partitioned into coarse regions $R$: system instructions,
+plant knowledge or graph description, task state, and user instructions. The mass that answer token $j$ places on
+region $R$ in layer $\ell$ is
+\begin{equation}\label{eq:regionmass}
+A^{(\ell)}_j(R)=\frac{\sum_{i\in R}\bar\alpha^{(\ell)}_{j,i}}{\sum_{i\in\mathcal P}\bar\alpha^{(\ell)}_{j,i}},
+\end{equation}
+averaged over answer tokens. Head-maximum variants and the attention entropy are included as well. The signal
+asks \emph{where in the prompt} the model looked while answering.
+
+\paragraph{Hidden states} The residual-stream vectors at the last prompt token and their mean over answer tokens,
+at each depth in $\mathcal L$, are standardised. They are reduced to 64 principal components fitted on the
+training partition only. Linear probes on such representations are known to recover correctness information
+\citep{alain2016probes,azaria2023internal,orgad2025llms}.
+
+\paragraph{Region-based attention grounding} Each answer contains \emph{decision units}: a step $u\to v$ of a
+path, or one of the three setpoints. For unit $u$ with decision tokens $\mathcal T_u\subseteq\mathcal T$, a
+\emph{deciding region} $R^{\star}_u$ is fixed in advance. It is the part of the prompt that contains the
+information on which the unit's correctness depends. The grounding share of unit $u$ is
+\begin{equation}\label{eq:grounding}
+g_u=\frac{1}{|\mathcal L|}\sum_{\ell\in\mathcal L}\;\frac{1}{|\mathcal T_u|}\sum_{j\in\mathcal T_u}
+\frac{\sum_{i\in R^{\star}_u}\bar\alpha^{(\ell)}_{j,i}}{\sum_{i\in R_{\mathrm{task}}}\bar\alpha^{(\ell)}_{j,i}},
+\end{equation}
+where $R_{\mathrm{task}}$ contains all task-content tokens (all adjacency lines in path planning; all system,
+knowledge-graph and snapshot tokens in the CSTR). Template tokens and previously generated tokens are excluded,
+so $g_u$ is the fraction of the model's attention to task content that falls on the content that matters. The
+answer-level features are the minimum $g_{\min}=\min_u g_u$, which was pre-registered as primary, the mean over
+units, per-layer variants, and, in path planning, the fraction of steps for which $R^{\star}_u$ is the
+most-attended line.
+
+The deciding regions encode domain knowledge and were fixed before any grounding value was computed. In path
+planning a step $u\to v$ is legal if and only if $v$ appears in the adjacency line of $u$, so $R^{\star}_u$ is that
+line. The definition is exact. In the CSTR the deciding regions of each setpoint were taken from the process
+structure stated in the prompt (Table~\ref{tab:regions}). They are the measurements that indicate the setpoint's
+effect, the current setpoints, the knowledge-graph statement of the loop that the setpoint drives, and the
+statement of the mass and energy balances (operator PO5). Figure~\ref{fig:grounding} illustrates the intended
+reading of the signal and the two failure types it is meant to separate.
+
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Pre-registered deciding regions $R^{\star}$ per CSTR setpoint (prompt v3.1). Snapshot fields are single
+lines of the prompt's plant snapshot; knowledge-graph (KG) statements are complete Turtle statements that mention
+the operator.}
+\label{tab:regions}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll}
+\toprule
+Setpoint & Deciding regions \\
+\midrule
+Feed flow $F_{\mathrm{in,sp}}$ & $u_{\mathrm{cool}}$, $T_{\mathrm{meas}}$, current setpoints, KG PO8 (flow loop), KG PO5 (balances) \\
+Level $L_{\mathrm{sp}}$ & $L_{\mathrm{meas}}$, $u_{\mathrm{pump}}$, current setpoints, KG PO6 (level loop), KG PO5 \\
+Temperature $T_{\mathrm{sp}}$ & $T_{\mathrm{meas}}$, $u_{\mathrm{cool}}$, current setpoints, KG PO7 (temperature loop), KG PO5 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/grounding}
+\caption{Region-based attention grounding (schematic; bar lengths are illustrative). Each bar is the share of
+the model's attention to task content that falls on a prompt region while the model writes one decision.
+(a)~In path planning the step after node~0 is legal only if its target appears in line ``0: 3, 7''. A legal step
+attends to that line (high $g$). An illegal step attends elsewhere, here to line ``2: 0, 5'', which contains the
+wrongly chosen node (low $g$). Low grounding flags the \emph{retrieval} failure. (b)~In the CSTR, a proposal that
+cuts the feed and one that raises it while cooling is saturated both attend to the deciding regions. The failing
+proposal is a \emph{reasoning} failure, and grounding cannot distinguish it.}
+\label{fig:grounding}
+\end{figure}
+
+\subsection{Observable signals (baselines)}
+The engineering baseline uses only information that is visible without opening the model.
+\begin{itemize}
+\item \textbf{Path planning:} the numbers of nodes and edges, the edge density, the length of the shortest path
+(computed by breadth-first search on the prompt's graph), the length of the proposed path, and indicators of
+whether the path has two nodes, repeats a node or has the correct endpoints. Two of these features use part of
+the validator's logic (a shortest-path computation and an endpoint check). This makes the observable baseline
+deliberately strong.
+\item \textbf{CSTR:} the measured temperature and level, the three actuator commands, the anomaly ratio, the
+control zone, the alarm flags, and the proposed setpoint changes (absolute and, for the feed, relative). A
+\emph{plant-readings-only} variant omits the action features. Hidden plant parameters, the fault family, its
+severity and onset time are never features.
+\end{itemize}
+The observable CSTR screen is in effect a learned surrogate of the digital twin: it learns how the plant responds
+to a change from a state. The internals-only screen is not. It sees no plant reading and no proposed setpoint,
+only the agent's forward pass.
+
+\subsection{Signal sets and probes}
+We compare ten signal sets in path planning and eleven in the CSTR, each fitted as a single probe: observables;
+plant readings only (CSTR); token confidence; attention by region; region grounding; hidden states; \emph{all
+internals} (token confidence, attention and hidden states); all internals with grounding, called
+\emph{internals only} below; observables with grounding; observables with all internals; and observables with all
+internals and grounding, called \emph{combined}. Every probe is an $\ell_2$-regularised logistic regression fitted
+on the training partition, with median imputation and standardisation fitted on the same partition, and
+Platt-calibrated \citep{platt1999} on a separate calibration partition. Logistic probes were chosen deliberately.
+They are cheap, they are standard for probing \citep{alain2016probes,belinkov2022probing}, and a fixed model
+class keeps the comparison between signal sets fair. Any advantage of the internal signals must come from the
+signals, not from a more flexible probe.

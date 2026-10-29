@@ -1,0 +1,24 @@
+% Deployment guide distilled from the results (each branch is backed by a result in Sections 6-7).
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\footnotesize, >={Latex[length=2mm]},
+  q/.style={draw=black!70, fill=black!4, rounded corners=2pt, text width=46mm, align=center, inner sep=4pt},
+  a/.style={draw=black!70, rounded corners=2pt, text width=46mm, align=center, inner sep=4pt},
+  lab/.style={font=\scriptsize, fill=white, inner sep=1pt},
+]
+\node[q] (q1) at (0,0) {Does a validator call cost more than the break-even $c^{\ast}$ (Eq.~\ref{eq:breakeven})?\\[-1pt]{\scriptsize estimate $c^{\ast}$ from a short logged pilot}};
+\node[a] (n1) at (0,-2.7) {Validate every proposal.\\[-1pt]{\scriptsize screening cannot pay off; rejections cost regenerations}};
+\node[q] (q2) at (6.2,0) {Are failures retrieval failures?\\[-1pt]{\scriptsize grounding AUROC on development data clearly above 0.5}};
+\node[a, draw=cComb, fill=cComb!10] (a2) at (6.2,-2.7) {Combined screen:\\observables + internals + grounding\\[-1pt]{\scriptsize (path planning: certified gains up to +15 points)}};
+\node[a, draw=cObs, fill=cObs!8] (a3) at (12.4,0) {Observable screen; internals add little.\\[-1pt]{\scriptsize where no plant model or plant data exist, an internals-only screen still rejects with 95--98\% precision}};
+\draw[->] (q1) -- node[lab, left] {no} (n1);
+\draw[->] (q1) -- node[lab, above] {yes} (q2);
+\draw[->] (q2) -- node[lab, left] {yes} (a2);
+\draw[->] (q2) -- node[lab, above] {no} (a3);
+\node[draw=cRzero, fill=cRzero!12, rounded corners=2pt, text width=105mm, align=left, inner sep=5pt] (rules) at (9.3,-5.3)
+ {\textbf{Always:} (i) set $t_{\mathrm{acc}}$ with a confidence bound, not a point estimate;
+  (ii) certify on a sealed set large enough for Eq.~\eqref{eq:mmin};
+  (iii) allow unchecked execution only for first proposals (R0);
+  (iv) recalibrate and re-certify after a change in plant or fault population.};
+\draw[->, black!60] (a2.south) -- (a2.south |- rules.north);
+\draw[->, black!60] (a3.south) -- (a3.south |- rules.north);
+\end{tikzpicture}}

@@ -1,0 +1,23 @@
+% Schematic of the bound-based accept rule (curves are illustrative, not data).
+\begin{tikzpicture}
+\begin{axis}[paperaxis, width=0.62\textwidth, height=0.36\textwidth,
+  xmin=0, xmax=0.62, ymin=0, ymax=20, domain=0.03:0.6, samples=80,
+  xlabel={accept threshold $t$ on the predicted risk $\hat r$},
+  ylabel={failure rate of $\{\hat r\le t\}$ (\%)},
+  xtick={0,0.2,0.4,0.6}, ytick={0,5,10,15,20}, ymajorgrids=false,
+  legend pos=north west, legend cell align=left, clip=false]
+\addplot[cObs, thick] {30*x^1.5};
+\addlegendentry{point estimate on development data}
+\addplot[cInt, thick, densely dashed] {30*x^1.5 + 2.5/sqrt(x)};
+\addlegendentry{one-sided Clopper--Pearson upper bound}
+\addplot[black!70, thin, domain=0:0.62] {10};
+\node[anchor=north east, font=\scriptsize] at (axis cs:0.61,10) {tolerance $X$};
+% chosen thresholds
+\draw[cInt, thin] (axis cs:0.326,0) -- (axis cs:0.326,10);
+\fill[cInt] (axis cs:0.326,10) circle (1.6pt);
+\node[anchor=north west, font=\scriptsize, text=cInt, align=left] at (axis cs:0.33,3.6) {$t_{\mathrm{acc}}$\\[-1pt](bound rule)};
+\draw[cObs, thin] (axis cs:0.481,0) -- (axis cs:0.481,10);
+\fill[cObs] (axis cs:0.481,10) circle (1.6pt);
+\node[anchor=north west, font=\scriptsize, text=cObs, align=left] at (axis cs:0.485,3.6) {point rule\\[-1pt](too loose)};
+\end{axis}
+\end{tikzpicture}

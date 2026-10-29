@@ -1,0 +1,153 @@
+\section{Offline results: how much verification can the agent's internals replace?}\label{sec:results}
+
+This section answers RQ1--RQ3 on the sealed evaluation sets, with all screens frozen beforehand. Unless stated
+otherwise, figures refer to the tolerance $X=10\%$, the path-planning fresh certification set, and the CSTR
+certification partition. Tables~\ref{tab:skip-fsm} and~\ref{tab:skip-cstr} list the share of validator calls
+skipped by every signal set and model. Figure~\ref{fig:composition} decomposes the skipped calls into unchecked
+accepts and unchecked rejects.
+
+\input{tables/skip_fsm}
+\input{tables/skip_cstr}
+
+\subsection{RQ1: internals alone, without any model of the plant}\label{sec:res-rq1}
+
+\paragraph{Path planning} The internals-only screen (all internals with grounding) skipped 38.0\%, 22.6\%, 10.8\%,
+35.8\% and 78.8\% of validator calls for Qwen2.5-1.5B, Qwen2.5-3B, Qwen2.5-7B, Llama-3.2-3B and SmolLM2-1.7B. For
+the first four models the failure rate among its unchecked accepts was \emph{certified} below 10\%: 8 failures
+among 240 accepts, 21 among 483, 12 among 303 and 13 among 371, with Bonferroni-corrected upper bounds of 6.8--7.8\%.
+For Llama-3.2-3B the internals-only screen was certified even though the observable screen was not (upper bound
+6.8\% against 12.4\%). For SmolLM2, whose proposals fail 83\% of the time, the internals-only screen accepted
+nothing and skipped its calls entirely by rejection. 95.2\% of the proposals it rejected did fail. Against the
+observable screen, internals alone skipped significantly more calls for Qwen2.5-3B (+2.0 points [0.4, 3.7]) and
+fewer for the other four models (between $-2.4$ and $-7.2$ points).
+
+\paragraph{CSTR} Without any plant reading or proposed setpoint, the internals-only screen skipped 28.3\%, 12.2\%,
+47.8\%, 52.7\% and 40.5\% of validator calls (same model order). Almost all of these were \emph{rejections}
+(Fig.~\ref{fig:composition}b). The screen accepted no proposal for four models. For SmolLM2 it accepted 39
+proposals, of which 2 failed. Its rejections were precise: 95.1--97.6\% of the proposals it returned to the agent
+without simulation would indeed have failed validation. The observable screens skipped more calls (41--86\%),
+including unchecked accepts for three models, and had similar rejection precision (92.2--97.1\%). Single internal
+families were less reliable than their combination. Hidden states alone, for example, accepted 65 SmolLM2
+proposals, of which 9 failed. Token confidence was the weakest signal in both domains: it skipped 0--56\% of calls
+in path planning and 0--34\% in the CSTR and was never certified.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/composition}
+\caption{How each screen avoids the validator ($X=10\%$). Full bar: proposals decided without simulation. Dark
+part: unchecked accepts (executed without simulation). Light part: unchecked rejects (returned to the agent
+without simulation). In the CSTR the internals-only screen, which uses no plant reading and no proposed
+setpoint, skips 12--53\% of calls almost entirely by rejection. Qwen-3B in the CSTR is an exploratory
+re-analysis.}
+\label{fig:composition}
+\end{figure}
+
+\paragraph{Answer to RQ1} The agent's internals are, on their own, a usable replacement for part of the
+verification. In a retrieval-heavy task they support certified unchecked execution. In a physics-heavy task
+they support high-precision unchecked rejection but not certifiable acceptance. One explanation consistent
+with the rest of our results (Section~\ref{sec:res-rq3}) is that internal signals detect a subset of failures:
+those accompanied by an atypical internal state, such as low confidence, diffuse or misplaced attention, or an
+unusual representation. Detecting a subset of failures suffices to reject with high precision. Accepting safely
+requires ruling out \emph{all} failure modes, including confident, well-grounded reasoning errors, and these
+leave no internal trace.
+
+\subsection{RQ2: do internals add to observable features?}\label{sec:res-rq2}
+
+\paragraph{Path planning} Adding internal signals to observables significantly increased the share of calls
+skipped for every model, with at least one combination (Fig.~\ref{fig:delta}a). The full combination added 14.0
+points [12.3, 15.6] for Qwen2.5-3B, 15.0 [13.2, 16.9] for Llama-3.2-3B and 6.2 [4.9, 7.5] for SmolLM2. Grounding
+alone added 5.1 points [3.6, 6.7] for Qwen2.5-1.5B, 15.5 [13.8, 17.2] for Llama-3.2-3B and 6.5 [5.2, 7.7] for
+Qwen2.5-7B. Most of these screens were certified. The exceptions are informative. For Qwen2.5-7B the extra calls
+skipped with grounding came with an accept set that failed certification (41 failures among 513 accepts, upper
+bound 11.6\%), and its certified combinations did not beat observables. For SmolLM2 no screen was certifiable,
+including the observable one (15 failures among 166 accepts). The gains came from both decisions: the full
+combination raised unchecked accepts from 11.2\% to 20.2\% of proposals for Qwen2.5-3B, and unchecked rejects from
+31.9\% to 40.3\% for Llama-3.2-3B (Fig.~\ref{fig:composition}a).
+
+\paragraph{CSTR} The picture differs (Fig.~\ref{fig:delta}b). Internal signals added significantly for two
+models. For SmolLM2 the gains were +3.8 points [1.4, 6.3] with grounding, +4.8 [1.4, 8.5] with all internals and
++4.6 [1.0, 8.3] with both. For Llama-3.2-3B grounding added +4.2 points [0.8, 7.8], and all internals did not
+change the share skipped but halved the good proposals rejected unchecked (from 16 to 8 of 79; difference
+$-8$ [$-15$, $-2$]). For two models adding internals \emph{reduced} the calls skipped: Qwen2.5-1.5B with
+grounding ($-2.8$ [$-5.5$, $-0.4$]) and Qwen2.5-7B with the full combination ($-5.6$ [$-8.6$, $-2.6$]). For
+Qwen2.5-3B, whose analysis is exploratory, the combination raised the share skipped from 41.2\% to 49.8\%. It
+also made unchecked accepts possible at all: 43 accepts, of which 5 failed.
+
+No CSTR screen was certified at $X=10\%$. This is the power limit of Eq.~\eqref{eq:mmin}, stated in advance. The
+largest accept set of any CSTR screen held 128 proposals, and the observed failure rates among unchecked accepts
+were 3.7--11.6\% for the observable screens that accepted anything. For two models (Qwen2.5-1.5B, 11.6\%; SmolLM2,
+10.9\%) the observed rate exceeded the tolerance. The certificate correctly refused these screens. This is
+the safeguard working as intended: a threshold chosen on development data does not by itself guarantee the
+tolerance on new data.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/delta}
+\caption{Change in validator calls skipped when grounding, all internal signals, or both are added to the
+observable screen ($X=10\%$; paired bootstrap 95\% CI). An interval above zero means the internals let the agent
+skip significantly more simulations at the same tolerance. Qwen-3B in the CSTR is an exploratory re-analysis
+without intervals.}
+\label{fig:delta}
+\end{figure}
+
+\paragraph{Answer to RQ2} Internals complement observables strongly in path planning (all five models) and
+weakly in the CSTR (two of four confirmatory models, with losses for two). Where internals do not add, the
+observable state together with the proposed action already carries the information. In the CSTR on development
+data, the observable probe reached an AUROC of 0.93 in the stratum where doing nothing would have passed, so
+whether a proposed change breaks a recovering plant is largely readable from the change and the plant state.
+
+\subsection{RQ3: why internals help in one domain and not in the other}\label{sec:res-rq3}
+
+The region-based grounding signal allows a direct test of the mechanism. If failures in a domain are retrieval
+failures, low attention on the deciding region should predict failure. If they are reasoning failures over
+correctly retrieved information, it should not. The expected contrast between the domains was written into the
+CSTR grounding pre-registration before any CSTR grounding value was computed.
+
+\paragraph{Path planning: retrieval failures} Low grounding predicted failure strongly for every model
+(Fig.~\ref{fig:mechanism}): the AUROC of $-g_{\min}$ for an invalid answer was 0.72--0.88. The effect is visible at
+the level of individual steps. An illegal step received markedly less attention on its source node's adjacency
+line than a legal one (step-level AUROC 0.64--0.81 on development data and 0.67--0.81 on test data, four models).
+For Llama-3.2-3B the deciding line was the most-attended line for 51\% of legal steps but only 20\% of illegal
+ones. As a feature, grounding raised the AUROC of the observable probe by 0.03--0.05 on the test partitions
+(four models, all intervals above zero), whereas the coarse internal features did so for only one model.
+
+\paragraph{CSTR: reasoning failures} The same signal was absent for three models (AUROC 0.48--0.52) and weak to
+moderate for the two smallest (0.66 for SmolLM2, 0.72 for Qwen2.5-1.5B). A pre-registered test for Qwen2.5-3B
+makes the contrast concrete. 339 of 3954 development proposals raised the feed while cooling was saturated and the
+reactor was hot. The physics stated in the prompt rules out this move, and only 5.9\% of these proposals passed.
+The hypothesis was that such proposals would attend \emph{less} to the physics section. They attended slightly
+\emph{more}: the AUROC in the predicted direction was 0.31, that is, 0.69 in the opposite direction. The model reads
+the relevant physics and still moves the feed the wrong way.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/mechanism}
+\caption{Does low attention on the deciding prompt region predict failure? AUROC of the negative minimum
+grounding share $-g_{\min}$ for a failing answer (training and development data; 0.5 = no signal). In path
+planning, where errors are retrieval errors, grounding is predictive for every model. In the CSTR, where models
+consult the relevant physics and reason incorrectly, it is weak or absent. The CSTR value for Qwen-3B comes from
+the exploratory freeze.}
+\label{fig:mechanism}
+\end{figure}
+
+\paragraph{Answer to RQ3} Attention-based internals detect the first kind of failure and not the second. This
+explains the domain dependence of RQ2: internals add most where the agent's errors are failures to consult
+information it was given. The finding is consistent with the view that attention is a useful predictive signal
+without being a complete explanation of model behaviour \citep{jain2019attention,wiegreffe2019attention}. It
+also gives practitioners a test they can run before deployment: compute the grounding AUROC on development
+data. If it is near 0.5, internal signals are unlikely to add to a good observable screen.
+
+\subsection{Robustness to plant and fault shift}\label{sec:res-shift}
+A screen is only useful if it remains valid when the population of plants or faults changes. In a pre-registered
+shift analysis (Table~\ref{tab:shift}) we fitted probes on one part of the plant and fault space and evaluated
+them on another, without recalibration. Three shifts were tested: from low to high nominal feed rate (visible in
+the prompt), from low to high heat-transfer coefficient (not visible), and each fault family held out in turn.
+All signals degraded under the feed and fault-family shifts. The observable screen lost 0.04--0.27 AUROC, whereas
+the cooling shift was nearly harmless. Contrary to our pre-registered expectation, internal signals did not
+degrade less than observables. For Qwen2.5-7B, the internals-only probe fell from 0.80 to 0.52 under the feed
+shift. An earlier and larger shift, from one training plant to a varied population under a different prompt
+version, had favoured internal signals. We report both results and conclude that, in our data, internal signals
+offer no special robustness. A screen must be recalibrated, and re-certified, when the plant or fault population
+changes.
+
+\input{tables/shift}

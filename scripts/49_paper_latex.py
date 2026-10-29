@@ -31,6 +31,7 @@ SIGNALS = ["Observables", "Obs. + grounding", "Obs. + all internals", "Obs. + in
            "Token confidence"]
 SHORT = {"Qwen2.5-1.5B": "Qwen-1.5B", "Qwen2.5-3B": "Qwen-3B", "Qwen2.5-3B*": "Qwen-3B$^\\dagger$",
          "Qwen2.5-7B (4-bit)": "Qwen-7B", "Llama-3.2-3B": "Llama-3B", "SmolLM2-1.7B": "SmolLM-1.7B"}
+DOMAIN = {"FSM": "Path planning"}  # repository name -> name used in the manuscript
 CL_RUNS = {  # model -> run directory suffixes merged by episode (main run first)
     "Qwen2.5-1.5B": ["_qwen25-15b", "_qwen25-15b_internals"],
     "Qwen2.5-3B": ["_qwen25-3b", "_qwen25-3b_internals"],
@@ -46,10 +47,13 @@ CL_POLICIES = [("always_validate", "Always validate"), ("observables_probe", "Ob
 
 
 def esc(s):
-    return s.replace("%", "\\%").replace("&", "\\&").replace("#", "\\#")
+    return s.replace("%", "\\%").replace("&", "\\&").replace("#", "\\#").replace("_", "\\_")
 
 
 def write(name, body):
+    if "\\begin{table*}" in body:  # wide tables are scaled to the text width
+        body = body.replace("\\begin{tabular}", "\\resizebox{\\textwidth}{!}{%\n\\begin{tabular}").replace(
+            "\\end{tabular}", "\\end{tabular}}")
     (PAPER / "tables" / f"{name}.tex").write_text(body, encoding="utf-8")
 
 
@@ -57,7 +61,7 @@ def table_skip(domain, models, caption, label):
     T = pd.read_csv(TAB / f"skip_{domain}_cert.csv")
     T = T[(T.tolerance - 0.10).abs() < 1e-9]
     models = [m for m in models if m in set(T.model)]
-    lines = ["\\begin{table*}[t]", "\\centering", "\\small", f"\\caption{{{caption}}}", f"\\label{{{label}}}",
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small", f"\\caption{{{caption}}}", f"\\label{{{label}}}",
              "\\begin{tabular}{l" + "r" * len(models) + "}", "\\toprule",
              "Signal & " + " & ".join(SHORT[m] for m in models) + " \\\\", "\\midrule"]
     for sig in SIGNALS:
@@ -83,23 +87,23 @@ def table_skip(domain, models, caption, label):
 
 def table_datasets():
     D = pd.read_csv(TAB / "datasets.csv")
-    lines = ["\\begin{table}[t]", "\\centering", "\\small",
+    lines = ["\\begin{table}[!htbp]", "\\centering", "\\small",
              "\\caption{Evaluation sets used for the confirmatory results (one candidate per graph or episode). "
-             "FSM: fresh certification set, never used before evaluation. CSTR: sealed test and certification "
+             "Path planning: fresh certification set, never used before evaluation. CSTR: sealed test and certification "
              "partitions, each evaluated once.}", "\\label{tab:datasets}",
              "\\begin{tabular}{llrrr}", "\\toprule", "Domain & Model & Set & Eligible & Failure rate \\\\", "\\midrule"]
     for _, r in D.iterrows():
-        lines.append(f"{r.domain} & {SHORT.get(r.model, r.model)} & {esc(str(r.set))} & {r.eligible} & {r.failure_rate:.2f} \\\\")
+        lines.append(f"{DOMAIN.get(r.domain, r.domain)} & {SHORT.get(r.model, r.model)} & {esc(str(r.set))} & {r.eligible} & {r.failure_rate:.2f} \\\\")
     lines += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
     write("datasets", "\n".join(lines))
 
 
 def table_mechanism():
     M = pd.read_csv(TAB / "mechanism_grounding_auroc.csv")
-    lines = ["\\begin{table}[t]", "\\centering", "\\small",
+    lines = ["\\begin{table}[!htbp]", "\\centering", "\\small",
              "\\caption{Does low attention on the prompt region that decides the answer predict failure? AUROC of the "
              "negative minimum grounding share for answer failure (train + development data; 0.5 = no signal).}",
-             "\\label{tab:mechanism}", "\\begin{tabular}{lrr}", "\\toprule", "Model & FSM & CSTR \\\\", "\\midrule"]
+             "\\label{tab:mechanism}", "\\begin{tabular}{lrr}", "\\toprule", "Model & Path planning & CSTR \\\\", "\\midrule"]
     for m in FSM_MODELS:
         f = M[(M.domain == "FSM") & (M.model == m)].auroc_low_grounding_predicts_failure
         c = M[(M.domain == "CSTR") & (M.model.isin([m, m + "*"]))].auroc_low_grounding_predicts_failure
@@ -125,7 +129,7 @@ def closed_loop_frames():
 
 def table_closed_loop(frames):
     rng = np.random.default_rng(0)
-    lines = ["\\begin{table*}[t]", "\\centering", "\\small",
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
              "\\caption{Closed-loop CSTR recovery on 400 fresh episodes per model. $\\Delta$: paired difference to "
              "always-validate (percentage points, bootstrap 95\\% CI over episodes). Unsafe: failing actions executed "
              "without validation. Calls: validator calls avoided relative to always-validate. R0: the probe may skip "
@@ -161,7 +165,7 @@ def table_costs():
     keep = ["Observables probe", "Obs. + internals + grounding probe", "Internals-only probe",
             "Observables probe, first-proposal-only", "Obs. + internals + grounding, first-proposal-only",
             "Internals-only, first-proposal-only"]
-    lines = ["\\begin{table*}[t]", "\\centering", "\\small",
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
              "\\caption{Compute per episode relative to always-validate (positive = saving). The logged closed-loop "
              "decisions do not depend on validator latency (the plant is paused during decisions), so the same "
              "decisions are re-costed exactly for a validator taking 30\\,s or 60\\,s per call. Break-even: validator "
@@ -187,7 +191,7 @@ def table_shift():
     R = R[(R.tolerance - 0.10).abs() < 1e-9]
     sigs = ["Observables", "Obs. + all internals", "All internals", "Token confidence"]
     shifts = ["control", "feed", "cooling", "family (pooled)"]
-    lines = ["\\begin{table}[t]", "\\centering", "\\small",
+    lines = ["\\begin{table}[!htbp]", "\\centering", "\\small",
              "\\caption{AUROC for failure on the target part of each pre-registered shift (probes fitted on the "
              "source part only). Control: random split of the same size.}", "\\label{tab:shift}",
              "\\begin{tabular}{llrrrr}", "\\toprule", "Model & Signal & Control & Feed & Cooling & Fault family \\\\", "\\midrule"]
@@ -212,7 +216,7 @@ def main():
     for f in FIG.glob("*.pdf"):
         shutil.copy2(f, PAPER / "figures" / f.name)
     table_datasets()
-    table_skip("fsm", FSM_MODELS, "FSM: share of validator calls skipped (\\%) per signal on the fresh certification "
+    table_skip("fsm", FSM_MODELS, "Path planning: share of validator calls skipped (\\%) per signal on the fresh certification "
                "set (tolerance $X=10\\%$). Bold: failure rate among unchecked accepts certified $\\le 10\\%$ "
                "(one-sided Clopper--Pearson, Bonferroni over signals). $^{+}$/$^{-}$: significantly more/fewer calls "
                "skipped than observables (paired bootstrap 95\\% CI).", "tab:skip-fsm")

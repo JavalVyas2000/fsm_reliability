@@ -1,0 +1,124 @@
+\section{Closed-loop results: safety, recovery and compute}\label{sec:closedloop}
+
+Offline evaluation scores one proposal per episode. A deployed screen acts inside the propose--validate--retry
+loop. There its rejections create new proposals, its decisions change which feedback the agent sees, and the
+cost of a skipped call depends on what replaces it. This section answers RQ4 on 400 fresh CSTR episodes per
+model (100 per fault family), disjoint from all data used to build the screens.
+
+\subsection{Policies and protocol}
+Every policy was run on the same 400 episodes with the frozen probes of each model. The policies are listed
+below.
+\begin{itemize}
+\item \emph{Always validate} (AV), the conventional loop and the reference.
+\item \emph{Never validate}, which executes the first proposal.
+\item \emph{Random routing}, which accepts, rejects or validates at random with the combined probe's development
+rates (a control for the skip rate itself).
+\item \emph{Observables}, the observable screen.
+\item \emph{Combined}, the screen on observables, all internals and grounding.
+\item \emph{Internals only}, the screen on all internals and grounding, without plant readings or proposed
+setpoints.
+\end{itemize}
+The probe-based policies were also run under the first-proposal-only rule (R0) wherever R0 could change the
+outcome (below). An unchecked rejection returns the fixed message ``the previous proposal was rejected by a risk
+screen before validation; propose a different set of setpoints'', which contains no measured metric. A
+validated failure returns the validator's measured outcome. A proposal that repeats an earlier one keeps its
+earlier verdict and costs no new call. Executing a proposal means applying its setpoints to the plant from the
+snapshot, with the plant's own future disturbances. The executed outcome is the simulator's verdict on that
+trajectory, so the validator doubles as the plant. Its decision-time calls are charged as compute, while the
+executed trajectory is not.
+
+\subsection{Safety: trained screens versus skipping at random}
+Figure~\ref{fig:plane} places every policy in the plane of validator calls avoided against failing actions
+executed without validation. Table~\ref{tab:closedloop} gives the numbers. Validating every proposal recovered
+34.0--53.8\% of episodes and, by construction, never executed a failing action. Never validating executed a
+failing action in 63.5--79.5\% of episodes. Random routing at the screens' rates executed 107--186 failing actions
+per 400 episodes. The exception was Llama-3.2-3B, whose development accept rate, and hence the random policy's,
+was zero. The trained screens avoided 29--90\% of validator calls. On first proposals they behaved as they had
+offline: the observable screens executed 0--13 failing actions unchecked per 400 episodes. The difference to
+random routing at the same skip rates shows that the screens' safety comes from \emph{which} proposals they skip,
+not from how many.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/plane}
+\caption{Closed-loop safety--savings plane (400 fresh CSTR episodes per model; one marker per model and
+policy). Ideal policies lie at the bottom right. Random routing at the screens' rates executes many failing
+actions; trained screens skip as many calls with few failures. Two internals-based screens (Qwen-7B combined,
+SmolLM2 combined and internals-only) accepted failing \emph{retries}; the arrows show the effect of the
+first-proposal-only rule R0, which moves them to the bottom of the plane. Panel~(b) enlarges the dashed region of
+panel~(a); rings mark R0 variants.}
+\label{fig:plane}
+\end{figure}
+
+\input{tables/closed_loop}
+
+\subsection{A failure mode: internals-based probes on retries}
+Two models showed a failure that offline evaluation could not reveal. The combined screen of Qwen2.5-7B executed
+165 failing actions, 161 of them on retries. SmolLM2's combined and internals-only screens executed 237 and 243,
+nearly all on retries. The observable screens of the same models were largely unaffected: they executed 8 and
+13 failing actions, and only 4 of Qwen2.5-7B's 8 were on retries.
+Remark~\ref{rem:retries} explains this. The probes were fitted and certified on first proposals, and a retry
+prompt contains feedback that a first prompt never contains. The internal state that the probe reads therefore
+shifts: the same forward-pass statistics mean something different after the model has been told it failed. The
+probe misreads failing retries as safe. Observable features of the plant state and the proposed change do not
+depend on the feedback in the same way, so the observable probes largely kept their calibration. For the other three models the probes
+accepted no failing retries, so the shift was present but harmless there.
+
+\paragraph{The first-proposal-only rule restores the guarantee's premise} Under R0 a retry that the probe would
+accept is validated instead (Algorithm~\ref{alg:episode}). Every unchecked execution is then a first proposal,
+which is the population covered by Proposition~\ref{prop:cert}. The rule was pre-registered after the failure
+was observed and before any run with it, and it was run for the two affected models.
+\begin{itemize}
+\item \textbf{SmolLM2:} failing executions fell from 237 to 11 (combined) and from 243 to 2 (internals only).
+Recovery was within 1 point of always-validate ($-1.0$ [$-2.0$, $-0.2$] and $-0.5$ [$-1.2$, $0.0$]), and 65\% and
+42\% of validator calls were still avoided.
+\item \textbf{Qwen2.5-7B:} failing executions of the combined screen fell from 165 to 4. Recovery was unchanged
+within uncertainty ($-1.5$ [$-4.2$, $+1.2$] points) while 41\% of calls were avoided. Its internals-only screen had
+accepted no failing retry and was unchanged by the rule (0 failing executions, 44\% of calls avoided).
+\end{itemize}
+For the other three models R0 does not change safety. In 400 episodes their probes accepted only five retries
+(Qwen2.5-3B, combined screen), and all five passed; R0 would have validated them at the cost of five extra
+calls. With R0, the \textbf{internals-only screens executed 0, 0, 0, 0 and 2 failing actions unchecked in the
+2000 closed-loop episodes} of the five models, while avoiding 35\%, 65\%, 44\%, 29\% and 42\% of validator calls.
+This screen uses no plant measurement and no model of the plant. Its safety comes from the agent's own forward
+pass and the first-proposal-only rule.
+
+\subsection{Where recovery is lost}
+The screens' recovery cost ranged from $-0.5$ to $-18.5$ points against always-validate. It came almost entirely
+from unchecked \emph{rejects}, not from unsafe accepts. Each rejection consumes one of the six proposals and
+returns feedback without measurements. Some rejected proposals were good: up to 0.45 per episode for Qwen2.5-3B's
+internals-only screen, whose recovery fell by 13.8 points. Llama-3.2-3B's proposals rarely passed and none of its
+screens accepted anything, so every skipped call was a rejection. Its recovery fell by 4.0 points (internals
+only) to 18.5 points (observables). For the two smallest models validation did not improve recovery at all:
+never-validate recovered as often as always-validate (34.5\% versus 34.5\% for Qwen2.5-1.5B, 36.0\% versus 36.5\%
+for SmolLM2), because these models mostly repeat their proposals. For them the validator, and the screens, serve
+only to prevent the execution of failing actions.
+
+\subsection{Compute and the break-even validator cost}
+Because the plant is paused during decisions and both decoding and validation are deterministic, the logged
+decisions can be re-costed exactly for any validator cost (Section~\ref{sec:costmodel}).
+Figure~\ref{fig:cost} plots Eq.~\eqref{eq:cost} for each model, using the R0 variant wherever it was run, and
+Table~\ref{tab:costs} gives the savings and break-even costs. On our hardware generation dominated the
+per-episode compute (17--167\,s per episode under always-validate), and the extra passes needed for internal
+signals added 2--14\,s per episode. At the measured validator cost (8--12\,s per call), the screens saved little
+or cost time. Every unchecked rejection triggers a regeneration that costs about as much as the validation it
+replaces. As the validator becomes more expensive, the savings grow. Excluding Llama-3.2-3B, the deployed screens
+saved 11--47\% of total compute at 30\,s per validation and 21--62\% at 60\,s, with break-even validator costs
+of 3--18\,s per call. As $\cval$ grows, the relative saving approaches the fraction of calls avoided
+(Section~\ref{sec:costmodel}). Llama-3.2-3B is the exception. It is screened only by rejection and generates
+slowly, so its break-even lies at 73--107\,s, and its timings were further inflated by GPU memory pressure in our
+runs.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/tikz/cost}
+\caption{Compute per closed-loop episode as a function of the validator's cost per call, from exact re-costing of
+the logged decisions (Eq.~\ref{eq:cost}). Dots mark the break-even cost with always-validate (Eq.~\ref{eq:breakeven});
+the dashed line marks the measured validator cost. $^{\ast}$First-proposal-only (R0) variant for Qwen-7B and
+SmolLM2. For the other three models R0 was not run separately, because it does not change their unchecked
+executions. The screen's cost is fixed, whereas the validator's grows with simulation horizon and fidelity, so
+the advantage of screening widens to the right.}
+\label{fig:cost}
+\end{figure}
+
+\input{tables/costs}

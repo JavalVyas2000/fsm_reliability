@@ -1,0 +1,20 @@
+\section{Conclusion}\label{sec:conclusion}
+
+LLM agents for process operations need not pay for a full simulation of every proposal, because the forward pass
+that produces a proposal already estimates how likely it is to fail. Across two domains, five open-weight models
+and a pre-registered protocol with sealed test sets, a screen that reads the agent's internals, with no model of
+the plant, removed 11--79\% of validator calls in graph path planning, with certified accepts for four models,
+and 12--53\% in CSTR fault recovery, almost entirely through rejections that were 95--98\% precise. Combined with
+observable features, internals added up to 15 points of skipped calls where the agent's errors were failures to
+consult the relevant information. They added little where the agent consulted the right information and
+reasoned incorrectly, a distinction that region-based attention grounding measures directly. In closed loop,
+internals-based screens accepted failing retries, a distribution shift outside the certificate; allowing
+unchecked execution only for first proposals restored the certificate's premise and kept unsafe executions at
+0--2 per 400 episodes while 29--65\% of validator calls were avoided. Because the screen's cost is fixed and the
+simulator's grows with fidelity and horizon, these avoided calls translated into compute savings of 21--62\% at
+60\,s per validation for four of five models.
+
+Future work should train and certify screens on retries rather than excluding them, certify CSTR screens on larger
+partitions, test larger and API-served models through whatever internal signals they expose, and evaluate the
+approach on plants with richer fault libraries, real-time constraints and model mismatch between the digital twin
+and the plant.

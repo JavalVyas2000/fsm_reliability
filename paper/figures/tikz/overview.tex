@@ -1,0 +1,86 @@
+% Overview: the agent's own forward pass supplies the signals that decide whether the digital twin is run.
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize, >={Latex[length=2mm]},
+  blk/.style={draw=black!70, rounded corners=2pt, align=center, inner sep=3pt},
+  reg/.style={draw=black!50, fill=black!4, text width=28mm, minimum height=6.2mm, align=center, font=\scriptsize, inner sep=2pt},
+  layer/.style={draw=black!60, fill=black!6, minimum width=22mm, minimum height=5mm, font=\scriptsize},
+  sig/.style={draw=cInt, fill=cInt!8, rounded corners=2pt, minimum width=28mm, minimum height=6mm, font=\scriptsize, align=center},
+  outbox/.style={blk, minimum width=27mm, minimum height=9mm},
+  lab/.style={font=\scriptsize, inner sep=1.5pt, align=center},
+]
+% ---------------- prompt
+\node[font=\small\bfseries] at (1.5,4.55) {prompt $x$};
+\node[reg] (r1) at (1.5,3.75) {instructions};
+\node[reg] (r2) at (1.5,3.05) {plant or graph data};
+\node[reg, fill=cGrd!25, draw=cGrd, thick] (r3) at (1.5,2.35) {deciding region $R^{\star}$};
+\node[reg] (r4) at (1.5,1.65) {task state / snapshot};
+\node[reg] (r5) at (1.5,0.95) {feedback (retries)};
+\node[draw=black!40, dashed, rounded corners=3pt, fit=(r1)(r5), inner sep=3pt] (prompt) {};
+
+% ---------------- LLM
+\node[draw=black!70, rounded corners=3pt, minimum width=27mm, minimum height=44mm] (llm) at (5.0,2.35) {};
+\node[font=\small\bfseries, anchor=north] at (llm.north) {LLM agent};
+\node[layer] (l4) at (5.0,3.55) {layer $L$};
+\node[layer] (l3) at (5.0,2.85) {layer $0.75L$};
+\node[layer] (l2) at (5.0,2.15) {layer $0.5L$};
+\node[layer] (l1) at (5.0,1.45) {layer $0.25L$};
+\node[font=\scriptsize, black!60] at (5.0,0.75) {(frozen weights)};
+\draw[->, black!70] (prompt.east |- l1) -- (llm.west |- l1);
+
+% attention from the answer tokens back to the deciding region
+\draw[->, cGrd, thick, densely dashed] (llm.west |- l3) .. controls (3.1,2.85) .. (r3.east);
+\node[lab, text=cGrd] at (3.33,3.12) {$\alpha$};
+
+% proposal
+\node[outbox, fill=black!3] (prop) at (5.0,5.3) {proposal $a$\\[-1pt]{\scriptsize setpoints or path}};
+\draw[->] (llm.north) -- (prop.south);
+
+% ---------------- internal signals
+\node[font=\small\bfseries, text=cInt] at (8.5,4.4) {internal signals $z_{\mathrm{int}}$};
+\node[sig] (s1) at (8.5,3.75) {token confidence};
+\node[sig] (s2) at (8.5,3.05) {attention by region};
+\node[sig] (s3) at (8.5,2.35) {hidden states (PCA)};
+\node[sig, draw=cGrd, fill=cGrd!10] (s4) at (8.5,1.65) {region grounding $g$};
+\draw[->, cInt] (l4.east) -- (s1.west);
+\draw[->, cInt] (l3.east) -- (s2.west);
+\draw[->, cInt] (l2.east) -- (s3.west);
+\draw[->, cGrd] (l1.east) -- (s4.west);
+\node[font=\scriptsize, black!60, align=center] at (8.6,0.85) {same forward pass,\\[-1pt]no plant model};
+
+% observables (baseline)
+\node[blk, draw=cObs, dashed, fill=cObs!6, font=\scriptsize, minimum width=28mm] (obs) at (8.5,5.3)
+  {observables $z_{\mathrm{obs}}$ (baseline)\\[-1pt]task state + proposed change};
+\draw[->, cObs, dashed] (prop.east) -- (obs.west);
+
+% ---------------- probe
+\node[blk, minimum width=21mm, minimum height=13mm, fill=black!3] (probe) at (11.4,2.7)
+  {calibrated probe\\[1pt]$\hat r=\hat P(\mathrm{fail}\mid z)$};
+\foreach \s in {s1,s2,s3,s4} \draw[->, black!55] (\s.east) -- (probe.west);
+\draw[->, cObs, dashed] (obs.east) -| (probe.north);
+
+% ---------------- router and outcomes
+\node[draw, diamond, aspect=1.3, inner sep=1.5pt, fill=black!3, font=\scriptsize] (route) at (13.35,2.7) {route};
+\draw[->] (probe) -- (route);
+
+\node[outbox, fill=black!3] (exec) at (16.75,4.6) {execute on plant\\[-1pt]{\scriptsize no simulation}};
+\node[outbox, draw=cTwin!90!black, fill=cTwin!15] (twin) at (16.75,2.7) {digital-twin rollout\\[-1pt]{\scriptsize cost $c_{\mathrm{val}}$ per call}};
+\node[outbox, fill=black!3] (regen) at (16.75,0.8) {return to agent\\[-1pt]{\scriptsize no simulation}};
+
+\draw[->] (route.north) |- (exec.west);
+\node[lab, anchor=east] at (13.3,3.95) {\ACC\\$\hat r\le t_{\mathrm{acc}}$};
+\draw[->] (route.east) -- (twin.west);
+\node[lab, anchor=north] at (14.55,2.64) {\VAL};
+\draw[->] (route.south) |- (regen.west);
+\node[lab, anchor=east] at (13.3,1.45) {\REJ\\$\hat r\ge t_{\mathrm{rej}}$};
+\draw[->] (twin.north) -- node[lab, right] {pass} (exec.south);
+\draw[->] (twin.south) -- node[lab, right] {fail} (regen.north);
+
+% feedback loop to the agent
+\draw[->, black!60] (regen.south) -- ++(0,-0.5) -| (llm.south);
+\node[lab, black!70, fill=white] at (10.6,-0.12) {retry with feedback (at most 6 proposals per episode)};
+
+% R0 annotation
+\node[draw=cRzero, fill=cRzero!12, rounded corners=2pt, font=\scriptsize, align=center] (r0) at (16.75,5.75)
+  {\textbf{R0 rule:} \ACC{} allowed only for\\[-1pt]first proposals; retries are validated};
+\end{tikzpicture}}
