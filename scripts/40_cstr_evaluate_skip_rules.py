@@ -57,7 +57,7 @@ def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--frozen_dir", type=str, required=True)
     p.add_argument("--aug_dir", type=str, required=True)
-    p.add_argument("--partition", choices=["test_iid", "cert", "dev_thr"], required=True,
+    p.add_argument("--partition", choices=["test_iid", "cert", "cert2", "dev_thr"], required=True,
                    help="dev_thr = dry run on open data (in-sample for the thresholds; no marker written)")
     p.add_argument("--n_boot", type=int, default=2000)
     return p.parse_args()
