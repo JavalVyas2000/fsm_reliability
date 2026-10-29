@@ -29,3 +29,11 @@ Revised 2026-10-29 with the internals-centred rewrite: C2, C3 and C4 corrected a
 - That grounding never helps in CSTR.
 - Any result from the earlier CAR traces (they were served by gpt-4o-mini; repo audit F5).
 - Time savings at the measured validator cost for Llama.
+
+## Sensitivity analysis 3a (2026-10-29; `docs/probe_sensitivity_results.md`; not confirmatory)
+
+| # | Claim | Evidence | Caveats to state |
+|---|---|---|---|
+| C17 | In path planning the internals' gain survives a flexible (gradient-boosting) probe for 4 of 5 models. | `outputs/sensitivity/20261029_104001_probe_class/deltas.csv`, C1 gbm: Llama +15.9, Qwen-3B +5.8, Qwen-1.5B +3.0, SmolLM +2.4; Qwen-7B −2.5. | Gains shrink for Qwen-3B and SmolLM; certification sets had been examined before. |
+| C18 | The path-planning observable screen relies on validator-derived features; without them, internals add 11–37 points (gbm, all 5 models) and internals alone beat the observables for every model. | Same run, C3/C4 and results.csv. | Under logistic, the gain holds for 4 of 5 models (+1.1 to +11.6). |
+| C19 | In the CSTR, a flexible observable probe absorbs the internals' contribution: no combined gbm screen beats gbm observables, and 3 are significantly worse. | `outputs/sensitivity/20261029_104322_probe_class/deltas.csv`. | This **narrows C3**: the confirmatory CSTR gains are specific to the linear probe. |

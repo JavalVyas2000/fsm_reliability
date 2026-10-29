@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-29 10:39 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `aff92ac Paper: rewrite around model internals replacing simulator verification, with TikZ/pgfplots figures`._
+_Generated 2026-10-29 10:47 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `2703c9f Pre-register the probe-class and validator-derived-observables sensitivity analysis (paper item 3a)`._
 
 ## Campaign status
 

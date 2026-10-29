@@ -1,0 +1,101 @@
+domain,model,comparison,tolerance,a,b,delta_pts,ci_lo,ci_hi
+fsm,Qwen2.5-1.5B,C1,0.1,combined [logistic],observables [logistic],-0.4414261460101867,-2.0033955857385397,1.2903225806451613
+fsm,Qwen2.5-1.5B,C1,0.1,combined [gbm],observables [gbm],3.0220713073005094,1.3242784380305603,4.855687606112054
+fsm,Qwen2.5-1.5B,C2,0.1,observables [gbm],observables [logistic],4.4142614601018675,2.886247877758913,6.010186757215619
+fsm,Qwen2.5-1.5B,C2,0.1,combined [gbm],combined [logistic],7.877758913412563,6.247877758913412,9.439728353140916
+fsm,Qwen2.5-1.5B,C3,0.1,validator-free observables [logistic],observables [logistic],-6.9949066213921895,-7.911714770797963,-6.044142614601019
+fsm,Qwen2.5-1.5B,C3,0.1,observables without BFS [logistic],observables [logistic],1.7657045840407468,0.9507640067911713,2.513582342954155
+fsm,Qwen2.5-1.5B,C4,0.1,validator-free combined [logistic],validator-free observables [logistic],-1.2563667232597622,-2.7504244482173172,0.30560271646859083
+fsm,Qwen2.5-1.5B,C3,0.1,validator-free observables [gbm],observables [gbm],-12.461799660441427,-13.921901528013583,-11.103565365025467
+fsm,Qwen2.5-1.5B,C3,0.1,observables without BFS [gbm],observables [gbm],-6.146010186757215,-7.572156196943973,-4.786926994906626
+fsm,Qwen2.5-1.5B,C4,0.1,validator-free combined [gbm],validator-free observables [gbm],10.594227504244483,8.998302207130731,12.258064516129032
+fsm,Qwen2.5-1.5B,C1,0.05,combined [logistic],observables [logistic],-6.213921901528013,-7.979626485568761,-4.549235993208834
+fsm,Qwen2.5-1.5B,C1,0.05,combined [gbm],observables [gbm],6.349745331069609,4.65195246179966,8.082342954159587
+fsm,Qwen2.5-1.5B,C2,0.05,observables [gbm],observables [logistic],-0.4753820033955857,-1.9015280135823427,1.0526315789473684
+fsm,Qwen2.5-1.5B,C2,0.05,combined [gbm],combined [logistic],12.088285229202038,10.390492359932088,13.752122241086587
+fsm,Qwen2.5-1.5B,C3,0.05,validator-free observables [logistic],observables [logistic],-13.446519524617997,-14.702886247877759,-12.224108658743633
+fsm,Qwen2.5-1.5B,C3,0.05,observables without BFS [logistic],observables [logistic],-4.65195246179966,-5.806451612903226,-3.4974533106960948
+fsm,Qwen2.5-1.5B,C4,0.05,validator-free combined [logistic],validator-free observables [logistic],0.3395585738539898,-1.0865874363327674,1.731748726655348
+fsm,Qwen2.5-1.5B,C3,0.05,validator-free observables [gbm],observables [gbm],-14.261460101867574,-15.755517826825127,-12.767402376910017
+fsm,Qwen2.5-1.5B,C3,0.05,observables without BFS [gbm],observables [gbm],-7.606112054329371,-9.066213921901529,-6.146010186757215
+fsm,Qwen2.5-1.5B,C4,0.05,validator-free combined [gbm],validator-free observables [gbm],17.792869269949065,15.992359932088286,19.524617996604416
+fsm,Qwen2.5-3B,C1,0.1,combined [logistic],observables [logistic],13.970588235294118,12.366310160427807,15.541443850267381
+fsm,Qwen2.5-3B,C1,0.1,combined [gbm],observables [gbm],5.815508021390374,4.311497326203209,7.286096256684492
+fsm,Qwen2.5-3B,C2,0.1,observables [gbm],observables [logistic],6.550802139037433,5.247326203208556,7.821691176470583
+fsm,Qwen2.5-3B,C2,0.1,combined [gbm],combined [logistic],-1.6042780748663104,-3.1091243315508024,-0.06684491978609625
+fsm,Qwen2.5-3B,C3,0.1,validator-free observables [logistic],observables [logistic],-2.306149732620321,-2.840909090909091,-1.7379679144385027
+fsm,Qwen2.5-3B,C3,0.1,observables without BFS [logistic],observables [logistic],-0.2339572192513369,-0.4344919786096257,-0.06684491978609625
+fsm,Qwen2.5-3B,C4,0.1,validator-free combined [logistic],validator-free observables [logistic],6.885026737967914,5.3810160427807485,8.355614973262032
+fsm,Qwen2.5-3B,C3,0.1,validator-free observables [gbm],observables [gbm],-14.605614973262032,-15.975935828877006,-13.268716577540108
+fsm,Qwen2.5-3B,C3,0.1,observables without BFS [gbm],observables [gbm],-10.72860962566845,-11.864973262032086,-9.558823529411764
+fsm,Qwen2.5-3B,C4,0.1,validator-free combined [gbm],validator-free observables [gbm],15.073529411764705,13.73663101604278,16.511530748663098
+fsm,Qwen2.5-3B,C1,0.05,combined [logistic],observables [logistic],1.9385026737967916,0.53475935828877,3.342245989304813
+fsm,Qwen2.5-3B,C1,0.05,combined [gbm],observables [gbm],-4.846256684491978,-6.18399064171123,-3.5427807486631018
+fsm,Qwen2.5-3B,C2,0.05,observables [gbm],observables [logistic],0.5013368983957219,-0.53475935828877,1.5048462566844873
+fsm,Qwen2.5-3B,C2,0.05,combined [gbm],combined [logistic],-6.283422459893048,-7.553475935828876,-4.979946524064171
+fsm,Qwen2.5-3B,C3,0.05,validator-free observables [logistic],observables [logistic],-2.941176470588235,-3.5762032085561493,-2.306149732620321
+fsm,Qwen2.5-3B,C3,0.05,observables without BFS [logistic],observables [logistic],-0.8021390374331552,-1.1363636363636365,-0.4679144385026738
+fsm,Qwen2.5-3B,C4,0.05,validator-free combined [logistic],validator-free observables [logistic],-8.455882352941178,-9.893048128342247,-7.1524064171122985
+fsm,Qwen2.5-3B,C3,0.05,validator-free observables [gbm],observables [gbm],-9.358288770053475,-10.394385026737968,-8.287934491978614
+fsm,Qwen2.5-3B,C3,0.05,observables without BFS [gbm],observables [gbm],-5.949197860962567,-6.8181818181818175,-5.112800802139042
+fsm,Qwen2.5-3B,C4,0.05,validator-free combined [gbm],validator-free observables [gbm],-3.509358288770054,-4.846256684491978,-2.1724598930481283
+fsm,Qwen2.5-7B (4-bit),C1,0.1,combined [logistic],observables [logistic],-0.5045408678102926,-1.6153716784392869,0.6054490413723511
+fsm,Qwen2.5-7B (4-bit),C1,0.1,combined [gbm],observables [gbm],-2.4890682811974436,-3.733602421796166,-1.3118062563067607
+fsm,Qwen2.5-7B (4-bit),C2,0.1,observables [gbm],observables [logistic],0.10090817356205853,-0.8072653884964682,1.0427177934746048
+fsm,Qwen2.5-7B (4-bit),C2,0.1,combined [gbm],combined [logistic],-1.8836192398250924,-2.8590649175916583,-0.9081735620585267
+fsm,Qwen2.5-7B (4-bit),C3,0.1,validator-free observables [logistic],observables [logistic],-4.002690884628322,-4.742684157416751,-3.3299697275479314
+fsm,Qwen2.5-7B (4-bit),C3,0.1,observables without BFS [logistic],observables [logistic],-1.2781701984527414,-1.7154389505549947,-0.8409014463504878
+fsm,Qwen2.5-7B (4-bit),C4,0.1,validator-free combined [logistic],validator-free observables [logistic],1.1436259670366633,0.20181634712411706,2.0854355869492096
+fsm,Qwen2.5-7B (4-bit),C3,0.1,validator-free observables [gbm],observables [gbm],-6.895391860073999,-7.837201479986546,-5.953582240161452
+fsm,Qwen2.5-7B (4-bit),C3,0.1,observables without BFS [gbm],observables [gbm],-3.4645139589640093,-4.272620248906828,-2.6908846283215606
+fsm,Qwen2.5-7B (4-bit),C4,0.1,validator-free combined [gbm],validator-free observables [gbm],16.044399596367306,14.799024554322234,17.457114026236127
+fsm,Qwen2.5-7B (4-bit),C1,0.05,combined [logistic],observables [logistic],5.751765893037336,4.406323578876556,7.064413050790443
+fsm,Qwen2.5-7B (4-bit),C1,0.05,combined [gbm],observables [gbm],-3.733602421796166,-4.641775983854692,-2.8590649175916583
+fsm,Qwen2.5-7B (4-bit),C2,0.05,observables [gbm],observables [logistic],4.406323578876556,3.3299697275479314,5.482677430205181
+fsm,Qwen2.5-7B (4-bit),C2,0.05,combined [gbm],combined [logistic],-5.079044735956946,-5.987218298015472,-4.204507231752438
+fsm,Qwen2.5-7B (4-bit),C3,0.05,validator-free observables [logistic],observables [logistic],-4.1035990581903805,-4.843592330978809,-3.4308779011099895
+fsm,Qwen2.5-7B (4-bit),C3,0.05,observables without BFS [logistic],observables [logistic],-1.3790783720147999,-1.8163471241170535,-0.9754456777665658
+fsm,Qwen2.5-7B (4-bit),C4,0.05,validator-free combined [logistic],validator-free observables [logistic],7.366296670030273,6.18903464513959,8.509922637066936
+fsm,Qwen2.5-7B (4-bit),C3,0.05,validator-free observables [gbm],observables [gbm],-9.989909182643794,-11.032626976118399,-8.91355533131517
+fsm,Qwen2.5-7B (4-bit),C3,0.05,observables without BFS [gbm],observables [gbm],-6.861755802219979,-7.837201479986546,-5.9199461823074335
+fsm,Qwen2.5-7B (4-bit),C4,0.05,validator-free combined [gbm],validator-free observables [gbm],10.763538513286242,9.61991254624958,11.839892364614867
+fsm,Llama-3.2-3B,C1,0.1,combined [logistic],observables [logistic],15.025041736227045,13.187813021702839,16.86143572621035
+fsm,Llama-3.2-3B,C1,0.1,combined [gbm],observables [gbm],15.926544240400666,14.122704507512521,17.83055091819699
+fsm,Llama-3.2-3B,C2,0.1,observables [gbm],observables [logistic],6.51085141903172,5.008347245409015,8.013355592654424
+fsm,Llama-3.2-3B,C2,0.1,combined [gbm],combined [logistic],7.412353923205342,5.909849749582638,8.982470784641064
+fsm,Llama-3.2-3B,C3,0.1,validator-free observables [logistic],observables [logistic],-21.068447412353926,-22.604340567612688,-19.59933222036728
+fsm,Llama-3.2-3B,C3,0.1,observables without BFS [logistic],observables [logistic],-10.617696160267112,-11.853088480801336,-9.449081803005008
+fsm,Llama-3.2-3B,C4,0.1,validator-free combined [logistic],validator-free observables [logistic],11.585976627712855,9.715358931552588,13.48914858096828
+fsm,Llama-3.2-3B,C3,0.1,validator-free observables [gbm],observables [gbm],-36.327212020033386,-38.09682804674458,-34.624373956594326
+fsm,Llama-3.2-3B,C3,0.1,observables without BFS [gbm],observables [gbm],-22.070116861435725,-23.60601001669449,-20.500000000000004
+fsm,Llama-3.2-3B,C4,0.1,validator-free combined [gbm],validator-free observables [gbm],36.59432387312187,34.82470784641068,38.363939899833056
+fsm,Llama-3.2-3B,C1,0.05,combined [logistic],observables [logistic],13.121869782971618,11.285475792988315,14.958263772954924
+fsm,Llama-3.2-3B,C1,0.05,combined [gbm],observables [gbm],8.681135225375627,6.877295492487479,10.518363939899828
+fsm,Llama-3.2-3B,C2,0.05,observables [gbm],observables [logistic],7.6794657762938225,6.143572621035059,9.248747913188646
+fsm,Llama-3.2-3B,C2,0.05,combined [gbm],combined [logistic],3.2387312186978297,1.7687813021702838,4.708681135225371
+fsm,Llama-3.2-3B,C3,0.05,validator-free observables [logistic],observables [logistic],-16.193656093489146,-17.595993322203675,-14.858096828046744
+fsm,Llama-3.2-3B,C3,0.05,observables without BFS [logistic],observables [logistic],-5.742904841402337,-6.74457429048414,-4.774624373956595
+fsm,Llama-3.2-3B,C4,0.05,validator-free combined [logistic],validator-free observables [logistic],7.913188647746244,6.076794657762939,9.68280467445743
+fsm,Llama-3.2-3B,C3,0.05,validator-free observables [gbm],observables [gbm],-32.62103505843072,-34.29048414023372,-30.884808013355592
+fsm,Llama-3.2-3B,C3,0.05,observables without BFS [gbm],observables [gbm],-18.363939899833053,-19.76711185308848,-16.89482470784641
+fsm,Llama-3.2-3B,C4,0.05,validator-free combined [gbm],validator-free observables [gbm],28.347245409015027,26.6110183639399,30.05008347245409
+fsm,SmolLM2-1.7B,C1,0.1,combined [logistic],observables [logistic],6.1778682959945685,4.820095044127631,7.502545824847247
+fsm,SmolLM2-1.7B,C1,0.1,combined [gbm],observables [gbm],2.3761031907671417,1.3577732518669383,3.360488798370672
+fsm,SmolLM2-1.7B,C2,0.1,observables [gbm],observables [logistic],9.402579769178548,8.04480651731161,10.692464358452138
+fsm,SmolLM2-1.7B,C2,0.1,combined [gbm],combined [logistic],5.6008146639511205,4.51459606245757,6.619144602851323
+fsm,SmolLM2-1.7B,C3,0.1,validator-free observables [logistic],observables [logistic],-13.475899524779361,-14.867617107942973,-12.18601493550577
+fsm,SmolLM2-1.7B,C3,0.1,observables without BFS [logistic],observables [logistic],-5.7026476578411405,-6.8567549219280375,-4.480651731160896
+fsm,SmolLM2-1.7B,C4,0.1,validator-free combined [logistic],validator-free observables [logistic],9.843856076035303,8.418194161575016,11.304310930074674
+fsm,SmolLM2-1.7B,C3,0.1,validator-free observables [gbm],observables [gbm],-21.52070604209097,-23.01510522742702,-19.95926680244399
+fsm,SmolLM2-1.7B,C3,0.1,observables without BFS [gbm],observables [gbm],-16.463000678886626,-17.88951120162933,-15.105227427019688
+fsm,SmolLM2-1.7B,C4,0.1,validator-free combined [gbm],validator-free observables [gbm],14.562118126272914,13.034623217922606,16.158350305498974
+fsm,SmolLM2-1.7B,C1,0.05,combined [logistic],observables [logistic],6.8567549219280375,5.634758995247793,8.078750848608282
+fsm,SmolLM2-1.7B,C1,0.05,combined [gbm],observables [gbm],-2.104548540393754,-3.2586558044806515,-1.052274270196877
+fsm,SmolLM2-1.7B,C2,0.05,observables [gbm],observables [logistic],14.596062457569586,13.068567549219281,16.157501697216563
+fsm,SmolLM2-1.7B,C2,0.05,combined [gbm],combined [logistic],5.634758995247793,4.5485403937542435,6.7549219280380175
+fsm,SmolLM2-1.7B,C3,0.05,validator-free observables [logistic],observables [logistic],-7.841140529531568,-9.02919212491514,-6.7549219280380175
+fsm,SmolLM2-1.7B,C3,0.05,observables without BFS [logistic],observables [logistic],-0.0678886625933469,-0.8825526137135099,0.7476238968092282
+fsm,SmolLM2-1.7B,C4,0.05,validator-free combined [logistic],validator-free observables [logistic],9.843856076035303,8.418194161575016,11.304310930074674
+fsm,SmolLM2-1.7B,C3,0.05,validator-free observables [gbm],observables [gbm],-21.079429735234214,-22.573828920570268,-19.551934826883908
+fsm,SmolLM2-1.7B,C3,0.05,observables without BFS [gbm],observables [gbm],-16.021724372029873,-17.447386286490158,-14.697046843177192
+fsm,SmolLM2-1.7B,C4,0.05,validator-free combined [gbm],validator-free observables [gbm],9.572301425661914,8.214528173794976,10.9979633401222

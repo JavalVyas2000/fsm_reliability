@@ -1,0 +1,61 @@
+domain,model,signal,probe,tolerance,n,skipped_pct,accepted,accepted_failures,cp_upper,certified,rejected,rejected_good
+cstr,Qwen2.5-1.5B,observables,logistic,0.1,492,62.80487804878049,121,14,0.20300121914504207,False,188,6
+cstr,Qwen2.5-1.5B,observables,logistic,0.05,492,54.268292682926834,79,3,0.12440641681452506,False,188,6
+cstr,Qwen2.5-1.5B,observables,gbm,0.1,492,71.7479674796748,135,17,0.20969945350932512,False,218,4
+cstr,Qwen2.5-1.5B,observables,gbm,0.05,492,66.05691056910568,107,9,0.17023979497920816,False,218,4
+cstr,Qwen2.5-1.5B,internals only,logistic,0.1,492,28.252032520325205,0,0,1.0,False,139,4
+cstr,Qwen2.5-1.5B,internals only,logistic,0.05,492,28.252032520325205,0,0,1.0,False,139,4
+cstr,Qwen2.5-1.5B,internals only,gbm,0.1,492,27.64227642276423,0,0,1.0,False,136,3
+cstr,Qwen2.5-1.5B,internals only,gbm,0.05,492,27.64227642276423,0,0,1.0,False,136,3
+cstr,Qwen2.5-1.5B,combined,logistic,0.1,492,60.56910569105691,111,14,0.22027516751412698,False,187,6
+cstr,Qwen2.5-1.5B,combined,logistic,0.05,492,44.3089430894309,31,0,0.14310099760414258,False,187,6
+cstr,Qwen2.5-1.5B,combined,gbm,0.1,492,70.9349593495935,125,15,0.20649948339827326,False,224,7
+cstr,Qwen2.5-1.5B,combined,gbm,0.05,492,67.07317073170732,106,10,0.18375330523260516,False,224,7
+cstr,Qwen2.5-3B*,observables,logistic,0.1,498,41.164658634538156,0,0,1.0,False,205,16
+cstr,Qwen2.5-3B*,observables,logistic,0.05,498,41.164658634538156,0,0,1.0,False,205,16
+cstr,Qwen2.5-3B*,observables,gbm,0.1,498,81.52610441767068,122,12,0.18132005174789678,False,284,12
+cstr,Qwen2.5-3B*,observables,gbm,0.05,498,74.29718875502009,86,5,0.14820346896377795,False,284,12
+cstr,Qwen2.5-3B*,internals only,logistic,0.1,498,12.248995983935743,0,0,1.0,False,61,3
+cstr,Qwen2.5-3B*,internals only,logistic,0.05,498,12.248995983935743,0,0,1.0,False,61,3
+cstr,Qwen2.5-3B*,internals only,gbm,0.1,498,22.48995983935743,0,0,1.0,False,112,2
+cstr,Qwen2.5-3B*,internals only,gbm,0.05,498,22.48995983935743,0,0,1.0,False,112,2
+cstr,Qwen2.5-3B*,combined,logistic,0.1,498,49.79919678714859,43,5,0.28206370727240404,False,205,15
+cstr,Qwen2.5-3B*,combined,logistic,0.05,498,41.164658634538156,0,0,1.0,False,205,15
+cstr,Qwen2.5-3B*,combined,gbm,0.1,498,73.69477911646585,105,9,0.17332245780593827,False,262,4
+cstr,Qwen2.5-3B*,combined,gbm,0.05,498,64.05622489959839,57,4,0.19425900586707756,False,262,4
+cstr,Qwen2.5-7B (4-bit),observables,logistic,0.1,498,85.54216867469879,54,2,0.15041402881446184,False,372,14
+cstr,Qwen2.5-7B (4-bit),observables,logistic,0.05,498,83.73493975903614,45,2,0.1783013178236527,False,372,14
+cstr,Qwen2.5-7B (4-bit),observables,gbm,0.1,498,87.34939759036145,54,3,0.1781442315105958,False,381,19
+cstr,Qwen2.5-7B (4-bit),observables,gbm,0.05,498,76.50602409638554,0,0,1.0,False,381,19
+cstr,Qwen2.5-7B (4-bit),internals only,logistic,0.1,498,47.791164658634536,0,0,1.0,False,238,9
+cstr,Qwen2.5-7B (4-bit),internals only,logistic,0.05,498,47.791164658634536,0,0,1.0,False,238,9
+cstr,Qwen2.5-7B (4-bit),internals only,gbm,0.1,498,49.39759036144578,0,0,1.0,False,246,11
+cstr,Qwen2.5-7B (4-bit),internals only,gbm,0.05,498,49.39759036144578,0,0,1.0,False,246,11
+cstr,Qwen2.5-7B (4-bit),combined,logistic,0.1,498,79.91967871485943,35,2,0.2244898090561333,False,363,19
+cstr,Qwen2.5-7B (4-bit),combined,logistic,0.05,498,78.91566265060241,30,2,0.25782445156067524,False,363,19
+cstr,Qwen2.5-7B (4-bit),combined,gbm,0.1,498,84.13654618473896,40,2,0.19875742893003479,False,379,16
+cstr,Qwen2.5-7B (4-bit),combined,gbm,0.05,498,76.10441767068274,0,0,1.0,False,379,16
+cstr,Llama-3.2-3B,observables,logistic,0.1,474,70.67510548523207,0,0,1.0,False,335,16
+cstr,Llama-3.2-3B,observables,logistic,0.05,474,70.67510548523207,0,0,1.0,False,335,16
+cstr,Llama-3.2-3B,observables,gbm,0.1,474,89.45147679324894,31,1,0.2011757070925231,False,393,15
+cstr,Llama-3.2-3B,observables,gbm,0.05,474,82.91139240506328,0,0,1.0,False,393,15
+cstr,Llama-3.2-3B,internals only,logistic,0.1,474,52.742616033755276,0,0,1.0,False,250,6
+cstr,Llama-3.2-3B,internals only,logistic,0.05,474,52.742616033755276,0,0,1.0,False,250,6
+cstr,Llama-3.2-3B,internals only,gbm,0.1,474,54.219409282700425,0,0,1.0,False,257,9
+cstr,Llama-3.2-3B,internals only,gbm,0.05,474,54.219409282700425,0,0,1.0,False,257,9
+cstr,Llama-3.2-3B,combined,logistic,0.1,474,74.0506329113924,0,0,1.0,False,351,10
+cstr,Llama-3.2-3B,combined,logistic,0.05,474,74.0506329113924,0,0,1.0,False,351,10
+cstr,Llama-3.2-3B,combined,gbm,0.1,474,83.33333333333334,0,0,1.0,False,395,13
+cstr,Llama-3.2-3B,combined,gbm,0.05,474,83.33333333333334,0,0,1.0,False,395,13
+cstr,SmolLM2-1.7B,observables,logistic,0.1,496,61.08870967741935,128,14,0.19243384263092608,False,175,5
+cstr,SmolLM2-1.7B,observables,logistic,0.05,496,51.00806451612904,78,2,0.10611387940412922,False,175,5
+cstr,SmolLM2-1.7B,observables,gbm,0.1,496,69.35483870967742,133,15,0.19467002850382106,False,211,5
+cstr,SmolLM2-1.7B,observables,gbm,0.05,496,60.08064516129033,87,4,0.13036359009263712,False,211,5
+cstr,SmolLM2-1.7B,internals only,logistic,0.1,496,40.524193548387096,39,2,0.20342285706377317,False,162,8
+cstr,SmolLM2-1.7B,internals only,logistic,0.05,496,37.903225806451616,26,1,0.23563305477629307,False,162,8
+cstr,SmolLM2-1.7B,internals only,gbm,0.1,496,43.54838709677419,42,4,0.25714281717221454,False,174,8
+cstr,SmolLM2-1.7B,internals only,gbm,0.05,496,41.53225806451613,32,3,0.28692295124410927,False,174,8
+cstr,SmolLM2-1.7B,combined,logistic,0.1,496,65.7258064516129,109,11,0.19045172040878983,False,217,11
+cstr,SmolLM2-1.7B,combined,logistic,0.05,496,57.45967741935484,68,6,0.20462437235235686,False,217,11
+cstr,SmolLM2-1.7B,combined,gbm,0.1,496,67.54032258064517,119,12,0.1856693158798501,False,216,4
+cstr,SmolLM2-1.7B,combined,gbm,0.05,496,63.306451612903224,98,7,0.15857272843333922,False,216,4
