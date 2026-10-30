@@ -56,14 +56,20 @@ S25 = importlib.import_module("scripts.25_cstr_collect")
 VERSION = "cstr_prompt_v3.1"
 POLICIES = ["always_validate", "never_validate", "observables_probe", "combined_probe", "random_matched", "internals_probe",
             # Amendment 4: same probes, but a retry (round > 0) is never accepted unchecked; it is validated instead
-            "observables_probe_r0", "combined_probe_r0", "internals_probe_r0"]
+            "observables_probe_r0", "combined_probe_r0", "internals_probe_r0",
+            # Revision item 2b (docs/revision_prereg.md): R0, and a REJECT is validated instead of discarded, so the
+            # agent keeps the validator's measured feedback; only first-proposal accepts skip the validator
+            "observables_probe_r0v", "combined_probe_r0v", "internals_probe_r0v"]
 PROBE_SIGNAL = {"observables_probe": "plant readings + proposed change",
                 "combined_probe": "readings + change + all internals + grounding",
                 # Amendment 2 of docs/cstr_closed_loop_prereg.md: model internals only, no plant readings or action
                 "internals_probe": "all internals + grounding",
                 "observables_probe_r0": "plant readings + proposed change",
                 "combined_probe_r0": "readings + change + all internals + grounding",
-                "internals_probe_r0": "all internals + grounding"}
+                "internals_probe_r0": "all internals + grounding",
+                "observables_probe_r0v": "plant readings + proposed change",
+                "combined_probe_r0v": "readings + change + all internals + grounding",
+                "internals_probe_r0v": "all internals + grounding"}
 REJECT_MSG = "The previous proposal was rejected by a risk screen before validation."
 
 
@@ -283,8 +289,10 @@ def main():
                         ta, tr = R.rules[lab][R.tkey], R.rules[lab]["t_reject"]
                         decision = "accept" if ta is not None and risk <= ta else (
                             "reject" if tr is not None and risk >= tr else "validate")
-                        if p.endswith("_r0") and rnd > 0 and decision == "accept":
+                        if p.endswith(("_r0", "_r0v")) and rnd > 0 and decision == "accept":
                             decision = "validate"  # first-proposal-only rule: retries are always validated
+                        if p.endswith("_r0v") and decision == "reject":
+                            decision = "validate"  # rejections are validated, keeping the measured feedback
                         step["risk"] = risk
                     else:
                         u = np.random.default_rng([args.seed, ei, rnd]).random()

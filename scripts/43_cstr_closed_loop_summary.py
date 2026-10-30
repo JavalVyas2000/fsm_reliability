@@ -18,8 +18,9 @@ import pandas as pd
 
 from src.utils.manifest import REPO_ROOT, write_json
 
-ORDER = ["always_validate", "observables_probe", "observables_probe_r0", "combined_probe", "combined_probe_r0",
-         "internals_probe", "internals_probe_r0", "random_matched", "never_validate"]
+ORDER = ["always_validate", "observables_probe", "observables_probe_r0", "observables_probe_r0v", "combined_probe",
+         "combined_probe_r0", "combined_probe_r0v",
+         "internals_probe", "internals_probe_r0", "internals_probe_r0v", "random_matched", "never_validate"]
 BASE = "always_validate"
 
 

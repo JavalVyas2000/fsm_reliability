@@ -43,6 +43,41 @@ was tested only on the episodes that motivated it).
 
 ---
 
+## Item 2b: validating rejections instead of discarding them (registered 2026-10-30, before any run)
+
+**Why.** Item 2 (results in `paper/claims.md` C23, C24) passed P2a for every R0 screen and P2b for SmolLM2, but
+failed P2b for Qwen2.5-7B (combined −3.5 [−6.2, −1.0], internals only −3.5 [−5.8, −1.5]). Every lost recovery
+contained an unchecked rejection, and in most of them always-validate had recovered only after a failed
+validation. Hypothesis: an unchecked rejection withholds the validator's measured feedback, which an agent that
+repairs from feedback needs. The paper's deployment guide now recommends validating rejected proposals for such
+agents; this item tests that recommendation.
+
+**Policy (`scripts/42`, new).** `<screen>_r0v`: as `<screen>_r0` (retries are never accepted unchecked), and a
+REJECT decision is validated instead of discarded. Only first-proposal accepts skip the validator. Frozen probes
+and thresholds unchanged.
+
+**Data and models.** The same 400 `closedloop2_v4` episodes as item 2. Qwen2.5-7B (4-bit) (primary) and
+SmolLM2-1.7B (secondary). Policies: `always_validate` (re-run as a determinism check against item 2),
+`observables_probe_r0v`, `combined_probe_r0v`, `internals_probe_r0v`.
+
+**Primary criteria (Qwen2.5-7B; for each of `combined_probe_r0v` and `internals_probe_r0v`):**
+- P2c (recovery, non-inferiority): lower end of the paired bootstrap 95% CI (episodes, 2000 resamples) of
+  recovered(r0v) − recovered(always_validate) > −5 points.
+- P2d (safety): one-sided 95% Clopper–Pearson upper bound on the share of episodes with an unchecked failing
+  action ≤ 5%.
+
+**Secondary.**
+- S2c: recovery of `r0v` minus recovery of `r0` (item 2), paired by episode, with CI; expected ≥ 0.
+- S2d: calls avoided relative to always-validate, and the compute saving at 60 s per call (scripts/47 re-costing).
+  Expected smaller than under `r0`, because rejections no longer avoid calls.
+- S2e: SmolLM2, same quantities; expected little recovery change (it rarely repairs from feedback).
+- Determinism: `always_validate` outcomes identical to item 2 per episode; any mismatch is reported.
+
+**Reporting.** All outcomes, whatever they are, in the closed-loop section, the deployment-guide rule (iv) and
+the ledger. If P2c fails, rule (iv) is reworded or withdrawn.
+
+---
+
 ## Item 1: a larger, fresh CSTR certification set (cert2)
 
 **Why.** With 500 certification episodes no CSTR screen could be certified at X = 10% (power limit,

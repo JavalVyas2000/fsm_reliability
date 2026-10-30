@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-30 09:39 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `053cb0a Revision item 4: split stability over 10 random development splits; appendix table and RQ2 paragraph`._
+_Generated 2026-10-30 11:20 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b91c93c Revision item 2: pre-registered R0 replication on 400 new episodes`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
@@ -14,6 +14,8 @@ _Generated 2026-10-30 09:39 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Item 1: cert2 (2000 episodes), Qwen2.5-3B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), Llama-3.2-3B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), Qwen2.5-7B | 🕓 waiting |
+| Item 2b: R0 + validate rejections, Qwen2.5-7B | 🕓 waiting |
+| Item 2b: R0 + validate rejections, SmolLM2-1.7B | 🕓 waiting |
 
 ```
 2026-10-29T12:15:53 START closedloop2_smollm2-17b

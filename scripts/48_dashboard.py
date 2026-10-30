@@ -223,7 +223,9 @@ REV_STEPS = [  # (label, start marker, end marker) in outputs/revision_queue.log
     ("Item 2: fresh R0 test, Qwen2.5-7B", "START closedloop2_qwen25-7b", "END   closedloop2_qwen25-7b"),
 ] + [(f"Item 1: cert2 (2000 episodes), {m}", f"START cert2_collect_{k}", f"END   cert2_eval_{k}")
      for k, m in [("smollm2-17b", "SmolLM2-1.7B"), ("qwen25-15b", "Qwen2.5-1.5B"), ("qwen25-3b", "Qwen2.5-3B"),
-                  ("llama-32-3b", "Llama-3.2-3B"), ("qwen25-7b", "Qwen2.5-7B")]]
+                  ("llama-32-3b", "Llama-3.2-3B"), ("qwen25-7b", "Qwen2.5-7B")]] + [
+    ("Item 2b: R0 + validate rejections, Qwen2.5-7B", "START closedloop2v_qwen25-7b", "END   closedloop2v_qwen25-7b"),
+    ("Item 2b: R0 + validate rejections, SmolLM2-1.7B", "START closedloop2v_smollm2-17b", "END   closedloop2v_smollm2-17b")]
 
 
 def revision_section():

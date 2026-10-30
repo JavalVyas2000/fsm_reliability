@@ -1,7 +1,7 @@
-"""
+﻿"""
 Live status of the revision queue (docs/revision_prereg.md): every --every minutes, print one block with a
 progress bar per step (parsed from the job logs), ETA, GPU load and the last queue-log lines. The same block is
-written to outputs/revision_status.txt. Stops by itself once the queue log says REVISION QUEUE DONE.
+written to outputs/revision_status.txt. Stops by itself once the queue log says ITEM 2B DONE.
 
 Example (opens nothing; run it in a terminal you keep open):
     python -m scripts.54_watch_revision --every 10
@@ -25,7 +25,10 @@ STEPS = ([("build 400 fresh closed-loop episodes", "build_closedloop2"),
           ("item 2  fresh R0 test   SmolLM2-1.7B", "closedloop2_smollm2-17b"),
           ("item 2  fresh R0 test   Qwen2.5-7B", "closedloop2_qwen25-7b")]
          + [(f"item 1  cert2 {stage:<9} {name}", f"cert2_{stage}_{key}")
-            for key, name in MODELS for stage in ("collect", "grounding", "eval")])
+            for key, name in MODELS for stage in ("collect", "grounding", "eval")]
+         + [("item 2b R0 + validate rejections Qwen2.5-7B", "closedloop2v_qwen25-7b"),
+            ("item 2b R0 + validate rejections SmolLM2-1.7B", "closedloop2v_smollm2-17b")])
+DONE = "ITEM 2B DONE"  # last line written by outputs/revision_queue_2b.ps1, which runs after the main queue
 
 
 def read(p: Path) -> str:
@@ -106,7 +109,7 @@ def main():
         s = snapshot()
         print(s + "\n", flush=True)
         (OUT / "revision_status.txt").write_text(s + "\n", encoding="utf-8")
-        if "REVISION QUEUE DONE" in read(QLOG):
+        if DONE in read(QLOG):
             print("Queue finished.", flush=True)
             break
         time.sleep(60 * a.every)
