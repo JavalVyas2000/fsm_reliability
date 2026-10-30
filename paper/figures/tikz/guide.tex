@@ -14,11 +14,12 @@
 \draw[->] (q1) -- node[lab, above] {yes} (q2);
 \draw[->] (q2) -- node[lab, left] {yes} (a2);
 \draw[->] (q2) -- node[lab, above] {no} (a3);
-\node[draw=cRzero, fill=cRzero!12, rounded corners=2pt, text width=105mm, align=left, inner sep=5pt] (rules) at (9.3,-5.3)
+\node[draw=cRzero, fill=cRzero!12, rounded corners=2pt, text width=105mm, align=left, inner sep=5pt] (rules) at (9.3,-5.75)
  {\textbf{Always:} (i) set $t_{\mathrm{acc}}$ with a confidence bound, not a point estimate;
   (ii) certify on a sealed set large enough for Eq.~\eqref{eq:mmin};
   (iii) allow unchecked execution only for first proposals (R0);
-  (iv) recalibrate and re-certify after a change in plant or fault population.};
+  (iv) if the agent repairs proposals from the validator's feedback, validate rejections rather than discard them;
+  (v) recalibrate and re-certify after a change in plant or fault population.};
 \draw[->, black!60] (a2.south) -- (a2.south |- rules.north);
 \draw[->, black!60] (a3.south) -- (a3.south |- rules.north);
 \end{tikzpicture}}

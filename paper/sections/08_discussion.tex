@@ -45,8 +45,15 @@ data, and the certificate caught them. Certification is therefore not a formalit
 optimistic thresholds.
 \item \emph{Retries are a different population.} A screen certified on first proposals must not accept retries
 unchecked, because feedback changes the agent's internal state. The first-proposal-only rule turns this
-observation into a one-line safeguard. It removed 95--99\% of the unsafe executions of the affected screens with
-no measurable loss of recovery.
+observation into a one-line safeguard. It removed 95--100\% of the unsafe executions of the affected screens,
+on the episodes that revealed the failure and again on new ones.
+\item \emph{A rejection withholds the validator's feedback.} The validator returns not only a verdict but a measured
+outcome, and an agent that can use it repairs its next proposal. An unchecked rejection replaces that outcome with
+a bare request to try again. For SmolLM2, which almost never repaired from feedback, this cost at most 1.2 points
+of recovery; for Qwen2.5-7B, which recovered one episode in six only after a failed validation, it cost 3.5 points
+and failed the pre-registered non-inferiority margin. The more capable the agent, the more a screen should spend its
+budget on accepts and the less on rejects: a practical variant validates rejected proposals instead of discarding
+them, which keeps the feedback and gives up only the rejection's share of the saving.
 \item \emph{Savings depend on what replaces a skipped call.} An unchecked accept saves a full validation. An
 unchecked rejection of a good proposal forces a regeneration. Screening therefore pays when a validation costs
 more than the break-even $c^{\ast}$, which was 3--18\,s for four of five models. This is the regime that motivates
@@ -67,7 +74,9 @@ screen (Section~\ref{sec:res-rq3}). The rules at the bottom apply to every scree
 \paragraph{Internal validity} All hypotheses, rules and amendments were pre-registered, and sealed partitions
 were evaluated once. Two analyses are exploratory and labelled as such: the offline CSTR result of Qwen2.5-3B
 and the closed-loop probes of that model. The first-proposal-only rule was introduced after observing the retry
-failure. We therefore re-tested it on 400 new episodes (Section~\ref{sec:closedloop}). Teacher-forced re-runs
+failure. We therefore re-tested it, under pre-registered criteria, on 400 new episodes per affected model: its
+safety criterion held for all six screens, its recovery criterion only for SmolLM2
+(Section~\ref{sec:closedloop}). Teacher-forced re-runs
 agreed with greedy generation for 92.8--99.9\% of answer tokens for the bfloat16 models but only 84--91\% for the
 4-bit Qwen2.5-7B. For that model the internal features describe a closely related, not identical, decoding path.
 This may contribute to its weaker gains from internals.

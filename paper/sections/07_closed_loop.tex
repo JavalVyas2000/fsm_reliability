@@ -31,7 +31,8 @@ with its confidence interval.
 
 \finding{With the first-proposal-only rule, the internals-only screen, which has no plant model, executed 0--2
 failing actions unchecked in 400 episodes per model while avoiding 29--65\% of simulator calls. Random skipping
-at the same rates executed up to 186.}
+at the same rates executed up to 186. In a pre-registered replication on 400 new episodes per model it executed
+none. The price is paid in recovery, and only by agents that learn from the validator's feedback.}
 
 Figure~\ref{fig:closedloop} shows the three quantities that matter for each policy and model. The first is the
 number of failing actions executed without validation. The second is the share of validator calls avoided. The
@@ -74,9 +75,37 @@ always-validate, and 41--65\% of calls were still avoided. For the other three m
 in 400 episodes their probes accepted only five retries unchecked, all of which passed. With R0, the internals-only
 screen executed 0, 0, 0, 0 and 2 failing actions in the 2000 episodes of the five models.
 
+\paragraph{Replication on new episodes} Because R0 was designed after seeing the episodes above, those episodes
+cannot test it. We therefore built 400 new episodes per model (new seed, same generator) after the rule was fixed
+and pre-registered two criteria: the one-sided 95\% upper bound on the share of episodes with an unchecked failing
+action must not exceed 5\% (P2a, safety), and the lower end of the 95\% interval of the recovery difference to
+always-validate must lie above $-5$ points (P2b, non-inferiority). Both models that had shown the retry failure were
+re-run with all three screens, with and without R0 (Table~\ref{tab:freshr0}).
+
+\begin{itemize}
+\item \emph{The failure replicated.} Without R0, the combined screens executed 152 (Qwen2.5-7B) and 243
+(SmolLM2) failing actions, and SmolLM2's internals-only screen 252. The failure is a property of internals-based
+probes on retries, not of the episodes on which it was first seen.
+\item \emph{R0 passed the safety criterion for all six screens.} The internals-only screens executed no failing
+action in 800 episodes (upper bound 0.7\% per model). The worst screen, SmolLM2 combined, executed 9 (bound 3.9\%).
+\item \emph{Non-inferiority of recovery held for SmolLM2 and failed for Qwen2.5-7B.} SmolLM2 lost at most 1.2 points
+with every screen. Qwen2.5-7B lost 3.5 points with the combined and internals-only screens, with interval lower
+ends of $-6.2$ and $-5.8$, and 13.0 points with the observable screen. The original episodes had suggested a loss
+within 1.5 points for its combined screen; the new estimate is larger and is the one we report.
+\end{itemize}
+
+\input{tables/fresh_r0}
+
 \paragraph{Where recovery is lost} The recovery cost of the screens came almost entirely from unchecked rejections,
 not from unsafe accepts (Fig.~\ref{fig:closedloop}, right). Each rejection consumes one of the six proposals and
-returns feedback without measurements, and some rejected proposals were good. The cost was within 1.5 points of
+returns feedback without measurements, and some rejected proposals were good. The replication shows which of these
+matters. For Qwen2.5-7B, every one of the episodes that always-validate recovered and a screen lost contained an
+unchecked rejection, yet the rejected proposal was itself good in only 3 of 21 such episodes (combined screen) and
+8 of 16 (internals only). In most of them, 18 of 21 for the combined screen, always-validate had needed a failed
+validation before it recovered: the agent repaired its proposal \emph{from the validator's measured outcome}.
+Qwen2.5-7B recovered 62 of 400 episodes this way, SmolLM2 one. A screen can replace the validator's verdict but
+not its feedback. Agents that cannot use feedback lose almost nothing to rejection; agents that can lose the
+episodes they would have repaired. Over the original episodes, the cost was within 1.5 points of
 always-validate for every screen of Qwen2.5-1.5B and SmolLM2 and for the combined R0 screen of Qwen2.5-7B. It was
 larger for the Qwen2.5-7B observable screen ($-8.5$), the Qwen2.5-3B combined and internals-only screens ($-6.8$
 and $-13.8$; the latter rejected 0.45 good proposals per episode), and Llama-3.2-3B. Llama's proposals rarely pass and its screens

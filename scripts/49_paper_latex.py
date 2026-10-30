@@ -160,6 +160,49 @@ def table_closed_loop(frames):
     write("closed_loop", "\n".join(lines))
 
 
+FRESH_R0 = {"Qwen2.5-7B (4-bit)": "_qwen25-7b_fresh_r0", "SmolLM2-1.7B": "_smollm2-17b_fresh_r0"}
+
+
+def table_fresh_r0():
+    """Pre-registered replication of the R0 rule on 400 new episodes (docs/revision_prereg.md, item 2)."""
+    from scipy.stats import beta
+    rng = np.random.default_rng(0)
+    lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
+             "\\caption{Pre-registered replication of the first-proposal-only rule (R0) on 400 new CSTR episodes per "
+             "model, built after the rule was fixed. Unsafe: failing actions executed without validation, with the "
+             "one-sided 95\\% Clopper--Pearson upper bound on their share (criterion P2a: $\\le 5\\%$). Before R0: the "
+             "same screen without the rule on the same episodes. $\\Delta$ recovered: paired difference to "
+             "always-validate (points, bootstrap 95\\% CI; criterion P2b: lower end $> -5$).}",
+             "\\label{tab:freshr0}", "\\begin{tabular}{llrrrrr}", "\\toprule",
+             "Model & Screen (R0) & Unsafe & Bound (\\%) & Before R0 & $\\Delta$ recovered & Calls avoided \\\\",
+             "\\midrule"]
+    for model, suf in FRESH_R0.items():
+        run = sorted(p for p in CL.glob(f"*{suf}") if p.name.endswith(suf))[-1]
+        e = pd.read_json(run / "episodes.jsonl", lines=True)
+        e["unsafe"] = e.outcome.str.startswith("executed_failure")
+        base = e[e.policy == "always_validate"].set_index("episode_id")
+        idx = rng.integers(0, len(base), (2000, len(base)))
+        first = True
+        for p, name in [("observables_probe", "Observables"), ("combined_probe", "Obs.+int.+grd."),
+                        ("internals_probe", "Internals only")]:
+            sub = e[e.policy == f"{p}_r0"].set_index("episode_id").reindex(base.index)
+            pre = e[e.policy == p]
+            k, n = int(sub.unsafe.sum()), len(sub)
+            ub = 100 * beta.ppf(0.95, k + 1, n - k)
+            dv = (sub.recovered.astype(float) - base.recovered.astype(float)).to_numpy()
+            b = dv[idx].mean(1) * 100
+            calls = 100 * (1 - sub.validator_calls.mean() / base.validator_calls.mean())
+            lines.append(f"{SHORT[model] if first else ''} & {name} & {k} & {ub:.1f} & "
+                         f"{int(pre.unsafe.sum()) if len(pre) else '--'} & "
+                         f"{100 * dv.mean():+.1f} [{np.percentile(b, 2.5):+.1f}, {np.percentile(b, 97.5):+.1f}] & "
+                         f"{calls:.0f}\\% \\\\")
+            first = False
+        lines.append("\\midrule")
+    lines[-1] = "\\bottomrule"
+    lines += ["\\end{tabular}", "\\end{table*}", ""]
+    write("fresh_r0", "\n".join(lines))
+
+
 def table_costs():
     C = pd.read_csv(TAB / "closed_loop_costs_all.csv")
     keep = ["Observables probe", "Obs. + internals + grounding probe", "Internals-only probe",
@@ -291,6 +334,7 @@ def main():
     table_mechanism()
     frames = closed_loop_frames()
     table_closed_loop(frames)
+    table_fresh_r0()
     table_costs()
     table_shift()
     table_sensitivity()

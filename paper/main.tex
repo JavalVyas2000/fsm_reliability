@@ -93,23 +93,23 @@ digital-twin validation of large language model agents in process control}
 \address[ic]{\todo{Department}, Imperial College London, London, United Kingdom}
 
 \begin{abstract}
-Large language model (LLM) agents that propose corrective actions for industrial processes are usually guarded
-by a digital twin that simulates every proposal before execution. Simulation cost grows with horizon and
+Large language model (LLM) agents that propose corrective actions for industrial processes are guarded by a
+digital twin that simulates every proposal before execution. Simulation cost grows with horizon and
 fidelity, whereas the agent's forward pass, which already computes token probabilities, attention and hidden
 states, costs a fixed amount. We ask whether these model-internal signals can replace part of the simulation. A
-calibrated probe on the agent's internals estimates each proposal's failure risk and routes it to execution,
-rejection or simulation, with a Clopper--Pearson guarantee on the failure rate of unchecked executions. In a
-pre-registered study of five open-weight models and two domains (graph path planning;
-fault recovery of a continuous stirred-tank reactor), internals alone, with no plant model, removed 11--79\% of
-validator calls in path planning, with certified accepts for four models, and 12--53\% in the reactor, almost
-entirely through rejections that were 95--98\% precise. In path planning, internals added to observable features
-under a flexible probe, and against observables that do not reuse the validator's logic they added 11--37
-points; in the reactor, a flexible surrogate of the plant absorbed their contribution. Attention on the prompt
-region that decides the answer explains why: it predicts failures caused by not consulting relevant
-information (AUROC 0.72--0.88), but not failures of reasoning over correctly consulted information (0.48--0.72).
-In 2000 closed-loop episodes, internals-based probes accepted failing retries, a shift outside the guarantee.
-Restricting unchecked execution to first proposals restored safety (0--2 unsafe executions per 400 episodes)
-while avoiding 29--65\% of validator calls.
+calibrated probe on the agent's internals routes each proposal to execution, rejection or simulation, with a
+Clopper--Pearson guarantee on the failure rate of unchecked executions. In a pre-registered study of five
+open-weight models and two domains (graph path planning; fault recovery of a continuous stirred-tank reactor),
+internals alone, with no plant model, removed 11--79\% of validator calls in path planning and 12--53\% in the
+reactor, mostly through rejections that were 95--98\% precise. In path planning, internals added 11--37
+points to observables that do not reuse the validator's logic; in the reactor, a flexible surrogate of the plant
+absorbed their contribution. Attention on the prompt region that decides the answer explains why: it predicts
+failures to consult relevant information (AUROC 0.72--0.88), not failures of reasoning over consulted information
+(0.48--0.72). In closed loop, internals-based probes accepted failing retries, a shift outside the guarantee.
+Allowing unchecked execution only for first proposals restored safety (internals-only screens: 0--2 unsafe
+executions per 400 episodes, none in a pre-registered replication) while avoiding 29--65\% of validator calls.
+A screen cannot replace the simulator's feedback, though: an agent that repairs from it lost 3.5 points of
+recovery.
 \end{abstract}
 
 \begin{keyword}
