@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-30 11:20 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `b91c93c Revision item 2: pre-registered R0 replication on 400 new episodes`._
+_Generated 2026-10-31 00:10 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `ae304de Pre-register revision item 2b: R0 + validate rejections (before any run)`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
@@ -9,8 +9,8 @@ _Generated 2026-10-30 11:20 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Build 400 fresh closed-loop episodes | ✅ done |
 | Item 2: fresh R0 test, SmolLM2-1.7B | ✅ done |
 | Item 2: fresh R0 test, Qwen2.5-7B | ✅ done |
-| Item 1: cert2 (2000 episodes), SmolLM2-1.7B | ⏳ running |
-| Item 1: cert2 (2000 episodes), Qwen2.5-1.5B | 🕓 waiting |
+| Item 1: cert2 (2000 episodes), SmolLM2-1.7B | ✅ done |
+| Item 1: cert2 (2000 episodes), Qwen2.5-1.5B | ⏳ running |
 | Item 1: cert2 (2000 episodes), Qwen2.5-3B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), Llama-3.2-3B | 🕓 waiting |
 | Item 1: cert2 (2000 episodes), Qwen2.5-7B | 🕓 waiting |
@@ -18,12 +18,12 @@ _Generated 2026-10-30 11:20 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Item 2b: R0 + validate rejections, SmolLM2-1.7B | 🕓 waiting |
 
 ```
-2026-10-29T12:15:53 START closedloop2_smollm2-17b
-2026-10-29T14:45:54 END   closedloop2_smollm2-17b (exit 0)
-2026-10-29T14:45:54 START closedloop2_qwen25-7b
-2026-10-30T03:02:24 END   closedloop2_qwen25-7b (exit 0)
-2026-10-30T03:02:24 ITEM 2 DONE
-2026-10-30T03:02:24 START cert2_collect_smollm2-17b
+2026-10-30T22:27:52 END   cert2_eval_smollm2-17b (exit 0)
+2026-10-30T22:27:52 START cert2_collect_qwen25-15b
+2026-10-30T23:08:49 STOPPED BY USER (main queue and item 2b queue killed during cert2_collect_qwen25-15b)
+2026-10-31T00:09:01 RESUMED BY USER
+2026-10-31T00:09:02 REVISION QUEUE START
+2026-10-31T00:09:02 START cert2_collect_qwen25-15b_resume
 ```
 
 ## Campaign status

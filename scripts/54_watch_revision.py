@@ -1,4 +1,4 @@
-﻿"""
+"""
 Live status of the revision queue (docs/revision_prereg.md): every --every minutes, print one block with a
 progress bar per step (parsed from the job logs), ETA, GPU load and the last queue-log lines. The same block is
 written to outputs/revision_status.txt. Stops by itself once the queue log says ITEM 2B DONE.
@@ -43,7 +43,7 @@ def bar(i, n, width=28):
 
 def job_progress(key: str):
     """(done, total, eta-string) parsed from a job log: closed-loop '[i/n] ... | m min' lines or the last tqdm bar."""
-    text = read(OUT / f"queue_rev_{key}.log")
+    text = read(OUT / f"queue_rev_{key}_resume.log") or read(OUT / f"queue_rev_{key}.log")
     if not text:
         return None
     cl = re.findall(r"^\[(\d+)/(\d+)\].*\|\s*([\d.]+) min", text, flags=re.M)
@@ -62,8 +62,9 @@ def job_progress(key: str):
 
 
 def started(log: str, key: str):
-    m = re.search(rf"^(\S+) START {re.escape(key)}$", log, flags=re.M)
-    return dt.datetime.fromisoformat(m.group(1)) if m else None
+    """Start time of the latest attempt (a restart logs the job again as <key>_resume)."""
+    m = re.findall(rf"^(\S+) START {re.escape(key)}(?:_resume)?$", log, flags=re.M)
+    return dt.datetime.fromisoformat(m[-1]) if m else None
 
 
 def gpu():

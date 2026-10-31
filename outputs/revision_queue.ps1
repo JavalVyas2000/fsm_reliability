@@ -43,8 +43,9 @@ if (-not (Test-Path "data\cstr\closedloop2_v4\dataset_manifest.json")) {
         "--splits", "closedloop2", "--replace_seed", "20261030", "--workers", "8") | Out-Null
 }
 
-# ---- 1. item 2: R0 on fresh episodes (SmolLM2 first, then Qwen2.5-7B)
-foreach ($m in @($models[0], $models[4])) {
+# ---- 1. item 2: R0 on fresh episodes (SmolLM2 first, then Qwen2.5-7B); skipped on restart once done
+$item2Done = Select-String -Path $log -Pattern "ITEM 2 DONE" -Quiet
+foreach ($m in $(if ($item2Done) { @() } else { @($models[0], $models[4]) })) {
     $args42 = @("-m", "scripts.42_cstr_closed_loop", "--dataset_dir", "data/cstr/closedloop2_v4", "--frozen_dir", $m.frozen,
                 "--model", $m.hf, "--policies", "always_validate", "combined_probe", "internals_probe",
                 "observables_probe_r0", "combined_probe_r0", "internals_probe_r0",
@@ -55,7 +56,7 @@ foreach ($m in @($models[0], $models[4])) {
         if ($rd) { Run "closedloop2_$($m.key)_resume" ($args42 + @("--run_dir", "outputs/cstr_closed_loop/$rd")) | Out-Null }
     }
 }
-Note "ITEM 2 DONE"
+if (-not $item2Done) { Note "ITEM 2 DONE" }
 
 # ---- 2. item 1: cert2 (wait for the parallel build)
 while (-not (Test-Path "data\cstr\cert2_v4\dataset_manifest.json")) { Start-Sleep -Seconds 300 }
@@ -63,7 +64,11 @@ foreach ($m in $models) {
     $collect = @("-m", "scripts.25_cstr_collect", "--model", $m.hf, "--dataset_dir", "data/cstr/cert2_v4", "--partitions", "cert2",
                  "--max_reprompts", "0", "--prompt", "v3.1", "--max_new_tokens", "512", "--tag", "cert2_v31_r0",
                  "--local_files_only") + $m.quant
-    $code = Run "cert2_collect_$($m.key)" $collect
+    # restart after a stop: skip finished models; resume a partial collection into its own directory
+    if (Select-String -Path $log -Pattern "END   cert2_eval_$($m.key) \(exit 0\)" -Quiet) { continue }
+    $cd = LatestDir "outputs\cstr_collect" "_$($m.slug)_cert2_v31_r0$"
+    if ($cd) { $code = Run "cert2_collect_$($m.key)_resume" ($collect + @("--run_dir", "outputs/cstr_collect/$cd")) }
+    else { $code = Run "cert2_collect_$($m.key)" $collect }
     $cd = LatestDir "outputs\cstr_collect" "_$($m.slug)_cert2_v31_r0$"
     if ($code -ne 0 -and $cd) {
         $code = Run "cert2_collect_$($m.key)_resume" ($collect + @("--run_dir", "outputs/cstr_collect/$cd"))
