@@ -1,0 +1,358 @@
+﻿python.exe : 
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\revision_queue.ps1:15 char:5
++     & $py @pyArgs 2>&1 | Out-File -Append -Encoding utf8 "outputs\que ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/338 [00:00<01:40,  3.35it/s]
+Loading weights:   8%|Γûè         | 27/338 [00:00<00:03, 82.78it/s]
+Loading weights:  15%|ΓûêΓûî        | 51/338 [00:00<00:02, 126.79it/s]
+Loading weights:  22%|ΓûêΓûêΓûÅ       | 74/338 [00:00<00:01, 150.75it/s]
+Loading weights:  29%|ΓûêΓûêΓûë       | 99/338 [00:00<00:01, 172.90it/s]
+Loading weights:  35%|ΓûêΓûêΓûêΓûî      | 119/338 [00:00<00:01, 180.16it/s]
+Loading weights:  41%|ΓûêΓûêΓûêΓûê      | 139/338 [00:00<00:01, 173.22it/s]
+Loading weights:  47%|ΓûêΓûêΓûêΓûêΓûï     | 158/338 [00:01<00:01, 170.26it/s]
+Loading weights:  52%|ΓûêΓûêΓûêΓûêΓûêΓûÅ    | 176/338 [00:01<00:01, 136.48it/s]
+Loading weights:  57%|ΓûêΓûêΓûêΓûêΓûêΓûï    | 192/338 [00:01<00:01, 134.48it/s]
+Loading weights:  61%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 207/338 [00:01<00:01, 119.97it/s]
+Loading weights:  65%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûî   | 220/338 [00:01<00:00, 122.12it/s]
+Loading weights:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 233/338 [00:01<00:00, 113.21it/s]
+Loading weights:  74%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ  | 249/338 [00:01<00:00, 123.56it/s]
+Loading weights:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 262/338 [00:02<00:00, 124.88it/s]
+Loading weights:  82%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ | 278/338 [00:02<00:00, 126.46it/s]
+Loading weights:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 292/338 [00:02<00:00, 122.49it/s]
+Loading weights:  90%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê | 305/338 [00:02<00:00, 118.46it/s]
+Loading weights:  96%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî| 323/338 [00:02<00:00, 133.15it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë| 337/338 [00:02<00:00, 134.55it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 338/338 [00:02<00:00, 130.36it/s]
+
+first proposals:   0%|          | 0/2000 [00:00<?, ?ep/s]
+first proposals:   0%|          | 1/2000 [00:33<18:30:56, 33.35s/ep]
+first proposals:   0%|          | 2/2000 [00:54<14:29:21, 26.11s/ep, cand 1 | r0 pass 0/1 | episodes solved 0 | queue 
+r0 1996 reprompt 0 | verifying 3 | 8.3 s/proposal]
+first proposals:   0%|          | 4/2000 [01:13<8:42:40, 15.71s/ep, cand 3 | r0 pass 0/3 | episodes solved 0 | queue 
+r0 1994 reprompt 0 | verifying 3 | 9.0 s/proposal] 
+first proposals:   0%|          | 8/2000 [01:22<3:56:49,  7.13s/ep, cand 7 | r0 pass 0/7 | episodes solved 0 | queue 
+r0 1992 reprompt 0 | verifying 1 | 9.1 s/proposal]
+first proposals:   0%|          | 9/2000 [01:35<3:56:42,  7.13s/ep, cand 9 | r0 pass 0/9 | episodes solved 0 | queue 
+r0 1990 reprompt 0 | verifying 1 | 9.1 s/proposal]
+first proposals:   0%|          | 10/2000 [01:49<5:01:27,  9.09s/ep, cand 9 | r0 pass 0/9 | episodes solved 0 | queue 
+r0 1990 reprompt 0 | verifying 1 | 9.1 s/proposal]
+first proposals:   1%|          | 11/2000 [01:58<5:02:07,  9.11s/ep, cand 10 | r0 pass 0/10 | episodes solved 0 | 
+queue r0 1988 reprompt 0 | verifying 2 | 9.1 s/proposal]
+first proposals:   1%|          | 11/2000 [02:10<5:02:07,  9.11s/ep, cand 11 | r0 pass 0/11 | episodes solved 0 | 
+queue r0 1987 reprompt 0 | verifying 2 | 9.1 s/proposal]
+first proposals:   1%|          | 12/2000 [02:14<5:48:02, 10.50s/ep, cand 11 | r0 pass 0/11 | episodes solved 0 | 
+queue r0 1987 reprompt 0 | verifying 2 | 9.1 s/proposal]
+first proposals:   1%|          | 14/2000 [02:34<5:41:40, 10.32s/ep, cand 13 | r0 pass 0/13 | episodes solved 0 | 
+queue r0 1985 reprompt 0 | verifying 2 | 8.9 s/proposal]
+first proposals:   1%|          | 16/2000 [02:45<4:46:39,  8.67s/ep, cand 15 | r0 pass 0/15 | episodes solved 0 | 
+queue r0 1983 reprompt 0 | verifying 2 | 9.1 s/proposal]
+first proposals:   1%|          | 17/2000 [03:06<6:04:59, 11.04s/ep, cand 16 | r0 pass 0/16 | episodes solved 0 | 
+queue r0 1982 reprompt 0 | verifying 2 | 9.2 s/proposal]
+first proposals:   1%|          | 19/2000 [03:15<4:46:07,  8.67s/ep, cand 18 | r0 pass 0/18 | episodes solved 0 | 
+queue r0 1980 reprompt 0 | verifying 2 | 9.3 s/proposal]
+first proposals:   1%|          | 19/2000 [03:25<4:46:07,  8.67s/ep, cand 19 | r0 pass 0/19 | episodes solved 0 | 
+queue r0 1979 reprompt 0 | verifying 2 | 9.3 s/proposal]
+first proposals:   1%|          | 20/2000 [03:27<5:11:14,  9.43s/ep, cand 19 | r0 pass 0/19 | episodes solved 0 | 
+queue r0 1979 reprompt 0 | verifying 2 | 9.3 s/proposal]
+first proposals:   1%|          | 21/2000 [03:51<7:02:24, 12.81s/ep, cand 20 | r0 pass 1/20 | episodes solved 1 | 
+queue r0 1978 reprompt 0 | verifying 2 | 9.4 s/proposal]
+first proposals:   1%|          | 23/2000 [04:03<5:29:30, 10.00s/ep, cand 22 | r0 pass 1/22 | episodes solved 1 | 
+queue r0 1976 reprompt 0 | verifying 2 | 9.6 s/proposal]
+first proposals:   1%|          | 24/2000 [04:17<5:58:46, 10.89s/ep, cand 23 | r0 pass 1/23 | episodes solved 1 | 
+queue r0 1975 reprompt 0 | verifying 2 | 9.7 s/proposal]
+first proposals:   1%|ΓûÅ         | 25/2000 [04:29<6:06:34, 11.14s/ep, cand 24 | r0 pass 2/24 | episodes solved 2 | 
+queue r0 1974 reprompt 0 | verifying 2 | 9.9 s/proposal]
+first proposals:   1%|ΓûÅ         | 26/2000 [04:52<7:43:48, 14.10s/ep, cand 25 | r0 pass 2/25 | episodes solved 2 | 
+queue r0 1973 reprompt 0 | verifying 2 | 9.9 s/proposal]
+first proposals:   1%|ΓûÅ         | 28/2000 [05:03<5:44:07, 10.47s/ep, cand 27 | r0 pass 3/27 | episodes solved 3 | 
+queue r0 1971 reprompt 0 | verifying 2 | 10.0 s/proposal]
+first proposals:   1%|ΓûÅ         | 29/2000 [05:14<5:52:57, 10.74s/ep, cand 28 | r0 pass 4/28 | episodes solved 4 | 
+queue r0 1970 reprompt 0 | verifying 2 | 10.1 s/proposal]
+first proposals:   2%|ΓûÅ         | 31/2000 [05:40<6:20:52, 11.61s/ep, cand 30 | r0 pass 4/30 | episodes solved 4 | 
+queue r0 1969 reprompt 0 | verifying 1 | 10.1 s/proposal]
+first proposals:   2%|ΓûÅ         | 34/2000 [06:09<5:51:08, 10.72s/ep, cand 33 | r0 pass 4/33 | episodes solved 4 | 
+queue r0 1966 reprompt 0 | verifying 1 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 35/2000 [06:19<5:49:22, 10.67s/ep, cand 34 | r0 pass 5/34 | episodes solved 5 | 
+queue r0 1963 reprompt 0 | verifying 3 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 36/2000 [06:30<5:50:42, 10.71s/ep, cand 35 | r0 pass 6/35 | episodes solved 6 | 
+queue r0 1962 reprompt 0 | verifying 3 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 38/2000 [06:38<4:28:46,  8.22s/ep, cand 37 | r0 pass 7/37 | episodes solved 7 | 
+queue r0 1961 reprompt 0 | verifying 2 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 38/2000 [06:50<4:28:46,  8.22s/ep, cand 38 | r0 pass 7/38 | episodes solved 7 | 
+queue r0 1960 reprompt 0 | verifying 2 | 9.9 s/proposal] 
+first proposals:   2%|ΓûÅ         | 39/2000 [06:51<5:01:42,  9.23s/ep, cand 38 | r0 pass 7/38 | episodes solved 7 | 
+queue r0 1960 reprompt 0 | verifying 2 | 9.9 s/proposal]
+first proposals:   2%|ΓûÅ         | 40/2000 [07:13<6:32:43, 12.02s/ep, cand 39 | r0 pass 7/39 | episodes solved 7 | 
+queue r0 1959 reprompt 0 | verifying 2 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 41/2000 [07:24<6:22:20, 11.71s/ep, cand 40 | r0 pass 8/40 | episodes solved 8 | 
+queue r0 1957 reprompt 0 | verifying 3 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 42/2000 [07:32<5:57:47, 10.96s/ep, cand 41 | r0 pass 9/41 | episodes solved 9 | 
+queue r0 1956 reprompt 0 | verifying 3 | 10.1 s/proposal]
+first proposals:   2%|ΓûÅ         | 44/2000 [07:42<4:33:13,  8.38s/ep, cand 43 | r0 pass 10/43 | episodes solved 10 | 
+queue r0 1955 reprompt 0 | verifying 2 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 45/2000 [08:11<7:10:21, 13.21s/ep, cand 44 | r0 pass 10/44 | episodes solved 10 | 
+queue r0 1954 reprompt 0 | verifying 2 | 10.0 s/proposal]
+first proposals:   2%|ΓûÅ         | 48/2000 [08:48<6:56:42, 12.81s/ep, cand 47 | r0 pass 11/46 | episodes solved 11 | 
+queue r0 1953 reprompt 0 | verifying 0 | 10.4 s/proposal]
+first proposals:   2%|ΓûÄ         | 50/2000 [09:06<6:12:02, 11.45s/ep, cand 49 | r0 pass 12/48 | episodes solved 12 | 
+queue r0 1949 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 52/2000 [09:18<5:17:13,  9.77s/ep, cand 51 | r0 pass 12/50 | episodes solved 12 | 
+queue r0 1947 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 53/2000 [09:35<6:02:47, 11.18s/ep, cand 52 | r0 pass 12/51 | episodes solved 12 | 
+queue r0 1946 reprompt 0 | verifying 2 | 10.5 s/proposal]
+first proposals:   3%|ΓûÄ         | 55/2000 [09:45<4:53:18,  9.05s/ep, cand 54 | r0 pass 12/53 | episodes solved 12 | 
+queue r0 1944 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 56/2000 [09:53<4:45:03,  8.80s/ep, cand 55 | r0 pass 12/54 | episodes solved 12 | 
+queue r0 1943 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 57/2000 [10:14<6:11:13, 11.46s/ep, cand 56 | r0 pass 12/55 | episodes solved 12 | 
+queue r0 1942 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 59/2000 [10:26<5:03:11,  9.37s/ep, cand 58 | r0 pass 13/57 | episodes solved 13 | 
+queue r0 1940 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   3%|ΓûÄ         | 60/2000 [10:50<6:41:17, 12.41s/ep, cand 59 | r0 pass 14/58 | episodes solved 14 | 
+queue r0 1939 reprompt 0 | verifying 2 | 10.5 s/proposal]
+first proposals:   3%|ΓûÄ         | 62/2000 [11:00<5:13:29,  9.71s/ep, cand 61 | r0 pass 14/60 | episodes solved 14 | 
+queue r0 1937 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   3%|ΓûÄ         | 63/2000 [11:12<5:28:46, 10.18s/ep, cand 62 | r0 pass 14/61 | episodes solved 14 | 
+queue r0 1936 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   3%|ΓûÄ         | 64/2000 [11:22<5:22:53, 10.01s/ep, cand 63 | r0 pass 14/62 | episodes solved 14 | 
+queue r0 1935 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   3%|ΓûÄ         | 65/2000 [11:40<6:33:14, 12.19s/ep, cand 64 | r0 pass 14/63 | episodes solved 14 | 
+queue r0 1934 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   3%|ΓûÄ         | 66/2000 [11:53<6:36:24, 12.30s/ep, cand 65 | r0 pass 15/64 | episodes solved 15 | 
+queue r0 1932 reprompt 0 | verifying 3 | 10.7 s/proposal]
+first proposals:   3%|ΓûÄ         | 67/2000 [12:15<7:59:48, 14.89s/ep, cand 66 | r0 pass 16/65 | episodes solved 16 | 
+queue r0 1931 reprompt 0 | verifying 3 | 10.7 s/proposal]
+first proposals:   3%|ΓûÄ         | 69/2000 [12:27<5:54:27, 11.01s/ep, cand 68 | r0 pass 17/67 | episodes solved 17 | 
+queue r0 1929 reprompt 0 | verifying 3 | 10.8 s/proposal]
+first proposals:   4%|ΓûÄ         | 71/2000 [12:36<4:32:58,  8.49s/ep, cand 70 | r0 pass 18/69 | episodes solved 18 | 
+queue r0 1928 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   4%|ΓûÄ         | 72/2000 [12:49<5:03:54,  9.46s/ep, cand 71 | r0 pass 18/70 | episodes solved 18 | 
+queue r0 1927 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   4%|ΓûÄ         | 73/2000 [12:57<4:51:41,  9.08s/ep, cand 72 | r0 pass 19/71 | episodes solved 19 | 
+queue r0 1926 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   4%|ΓûÄ         | 74/2000 [13:21<6:56:29, 12.97s/ep, cand 73 | r0 pass 20/72 | episodes solved 20 | 
+queue r0 1925 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 75/2000 [13:32<6:38:40, 12.43s/ep, cand 74 | r0 pass 20/73 | episodes solved 20 | 
+queue r0 1923 reprompt 0 | verifying 3 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 77/2000 [13:49<5:46:35, 10.81s/ep, cand 76 | r0 pass 22/75 | episodes solved 22 | 
+queue r0 1922 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 79/2000 [14:12<5:51:20, 10.97s/ep, cand 78 | r0 pass 22/77 | episodes solved 22 | 
+queue r0 1920 reprompt 0 | verifying 2 | 10.5 s/proposal]
+first proposals:   4%|Γûì         | 80/2000 [14:23<5:51:36, 10.99s/ep, cand 79 | r0 pass 23/78 | episodes solved 23 | 
+queue r0 1918 reprompt 0 | verifying 3 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 82/2000 [14:33<4:40:41,  8.78s/ep, cand 81 | r0 pass 24/80 | episodes solved 24 | 
+queue r0 1917 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 83/2000 [14:43<4:44:46,  8.91s/ep, cand 82 | r0 pass 24/81 | episodes solved 24 | 
+queue r0 1916 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 84/2000 [14:54<5:06:51,  9.61s/ep, cand 83 | r0 pass 25/82 | episodes solved 25 | 
+queue r0 1915 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   4%|Γûì         | 85/2000 [15:05<5:16:02,  9.90s/ep, cand 84 | r0 pass 25/83 | episodes solved 25 | 
+queue r0 1914 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   4%|Γûì         | 86/2000 [15:19<5:46:42, 10.87s/ep, cand 85 | r0 pass 26/84 | episodes solved 26 | 
+queue r0 1913 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   4%|Γûì         | 87/2000 [15:29<5:41:13, 10.70s/ep, cand 86 | r0 pass 26/85 | episodes solved 26 | 
+queue r0 1912 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   4%|Γûì         | 88/2000 [15:39<5:31:50, 10.41s/ep, cand 87 | r0 pass 27/86 | episodes solved 27 | 
+queue r0 1911 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   4%|Γûì         | 90/2000 [16:08<6:34:21, 12.39s/ep, cand 89 | r0 pass 28/88 | episodes solved 28 | 
+queue r0 1910 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:   5%|Γûì         | 92/2000 [16:20<5:10:11,  9.75s/ep, cand 91 | r0 pass 29/90 | episodes solved 29 | 
+queue r0 1907 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   5%|Γûì         | 93/2000 [16:29<5:06:27,  9.64s/ep, cand 92 | r0 pass 29/91 | episodes solved 29 | 
+queue r0 1906 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   5%|Γûì         | 94/2000 [16:52<6:49:10, 12.88s/ep, cand 93 | r0 pass 29/92 | episodes solved 29 | 
+queue r0 1905 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   5%|Γûì         | 95/2000 [17:03<6:35:49, 12.47s/ep, cand 94 | r0 pass 30/93 | episodes solved 30 | 
+queue r0 1903 reprompt 0 | verifying 3 | 10.4 s/proposal]
+first proposals:   5%|Γûì         | 96/2000 [17:14<6:22:39, 12.06s/ep, cand 95 | r0 pass 31/94 | episodes solved 31 | 
+queue r0 1902 reprompt 0 | verifying 3 | 10.4 s/proposal]
+first proposals:   5%|Γûì         | 98/2000 [17:25<4:51:55,  9.21s/ep, cand 97 | r0 pass 32/96 | episodes solved 32 | 
+queue r0 1901 reprompt 0 | verifying 2 | 10.5 s/proposal]
+first proposals:   5%|Γûî         | 100/2000 [17:46<5:03:42,  9.59s/ep, cand 99 | r0 pass 33/98 | episodes solved 33 | 
+queue r0 1900 reprompt 0 | verifying 1 | 10.5 s/proposal]
+first proposals:   5%|Γûî         | 101/2000 [18:07<6:20:53, 12.03s/ep, cand 100 | r0 pass 33/99 | episodes solved 33 
+| queue r0 1898 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   5%|Γûî         | 102/2000 [18:17<6:06:55, 11.60s/ep, cand 101 | r0 pass 34/100 | episodes solved 34 
+| queue r0 1896 reprompt 0 | verifying 3 | 10.5 s/proposal]
+first proposals:   5%|Γûî         | 104/2000 [18:27<4:42:32,  8.94s/ep, cand 103 | r0 pass 34/102 | episodes solved 34 
+| queue r0 1895 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   5%|Γûî         | 105/2000 [18:38<4:59:37,  9.49s/ep, cand 104 | r0 pass 34/103 | episodes solved 34 
+| queue r0 1894 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   5%|Γûî         | 106/2000 [18:48<5:04:12,  9.64s/ep, cand 105 | r0 pass 34/104 | episodes solved 34 
+| queue r0 1893 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   5%|Γûî         | 107/2000 [19:19<7:52:42, 14.98s/ep, cand 106 | r0 pass 34/105 | episodes solved 34 
+| queue r0 1892 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   6%|Γûî         | 110/2000 [19:37<5:22:38, 10.24s/ep, cand 109 | r0 pass 34/107 | episodes solved 34 
+| queue r0 1891 reprompt 0 | verifying 0 | 11.1 s/proposal]
+first proposals:   6%|Γûî         | 111/2000 [20:07<7:30:57, 14.32s/ep, cand 110 | r0 pass 34/108 | episodes solved 34 
+| queue r0 1889 reprompt 0 | verifying 1 | 11.0 s/proposal]
+first proposals:   6%|Γûî         | 114/2000 [20:23<5:19:54, 10.18s/ep, cand 113 | r0 pass 34/111 | episodes solved 34 
+| queue r0 1886 reprompt 0 | verifying 1 | 10.9 s/proposal]
+first proposals:   6%|Γûî         | 115/2000 [20:35<5:27:19, 10.42s/ep, cand 114 | r0 pass 34/112 | episodes solved 34 
+| queue r0 1884 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   6%|Γûî         | 117/2000 [21:07<6:26:11, 12.31s/ep, cand 116 | r0 pass 35/114 | episodes solved 35 
+| queue r0 1883 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:   6%|Γûî         | 120/2000 [21:32<5:33:56, 10.66s/ep, cand 119 | r0 pass 37/117 | episodes solved 37 
+| queue r0 1880 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:   6%|Γûî         | 121/2000 [21:41<5:24:02, 10.35s/ep, cand 120 | r0 pass 37/118 | episodes solved 37 
+| queue r0 1878 reprompt 0 | verifying 2 | 10.9 s/proposal]
+first proposals:   6%|Γûî         | 122/2000 [21:50<5:19:56, 10.22s/ep, cand 121 | r0 pass 38/119 | episodes solved 38 
+| queue r0 1877 reprompt 0 | verifying 2 | 10.9 s/proposal]
+first proposals:   6%|Γûî         | 123/2000 [22:00<5:13:08, 10.01s/ep, cand 122 | r0 pass 39/120 | episodes solved 39 
+| queue r0 1876 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   6%|Γûî         | 124/2000 [22:19<6:22:54, 12.25s/ep, cand 123 | r0 pass 39/121 | episodes solved 39 
+| queue r0 1875 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   6%|Γûï         | 125/2000 [22:31<6:22:18, 12.23s/ep, cand 124 | r0 pass 39/122 | episodes solved 39 
+| queue r0 1873 reprompt 0 | verifying 3 | 10.7 s/proposal]
+first proposals:   6%|Γûï         | 126/2000 [22:41<6:01:37, 11.58s/ep, cand 125 | r0 pass 40/123 | episodes solved 40 
+| queue r0 1872 reprompt 0 | verifying 3 | 10.8 s/proposal]
+first proposals:   6%|Γûï         | 128/2000 [22:55<4:57:08,  9.52s/ep, cand 127 | r0 pass 41/125 | episodes solved 41 
+| queue r0 1871 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   6%|Γûï         | 130/2000 [23:12<4:45:06,  9.15s/ep, cand 129 | r0 pass 41/127 | episodes solved 41 
+| queue r0 1870 reprompt 0 | verifying 1 | 10.9 s/proposal]
+first proposals:   7%|Γûï         | 131/2000 [23:22<4:53:07,  9.41s/ep, cand 130 | r0 pass 41/128 | episodes solved 41 
+| queue r0 1868 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   7%|Γûï         | 132/2000 [23:32<4:57:35,  9.56s/ep, cand 131 | r0 pass 41/129 | episodes solved 41 
+| queue r0 1867 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:   7%|Γûï         | 133/2000 [23:42<5:02:52,  9.73s/ep, cand 132 | r0 pass 41/130 | episodes solved 41 
+| queue r0 1866 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 135/2000 [24:04<5:13:46, 10.09s/ep, cand 134 | r0 pass 42/132 | episodes solved 42 
+| queue r0 1865 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:   7%|Γûï         | 136/2000 [24:12<4:59:43,  9.65s/ep, cand 135 | r0 pass 42/133 | episodes solved 42 
+| queue r0 1863 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 138/2000 [24:40<5:55:18, 11.45s/ep, cand 137 | r0 pass 42/135 | episodes solved 42 
+| queue r0 1862 reprompt 0 | verifying 1 | 10.6 s/proposal]
+first proposals:   7%|Γûï         | 139/2000 [24:53<6:01:08, 11.64s/ep, cand 138 | r0 pass 42/136 | episodes solved 42 
+| queue r0 1859 reprompt 0 | verifying 3 | 10.6 s/proposal]
+first proposals:   7%|Γûï         | 141/2000 [25:06<4:59:10,  9.66s/ep, cand 140 | r0 pass 43/138 | episodes solved 43 
+| queue r0 1858 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 143/2000 [25:14<3:59:02,  7.72s/ep, cand 142 | r0 pass 43/140 | episodes solved 43 
+| queue r0 1857 reprompt 0 | verifying 1 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 144/2000 [25:35<5:20:32, 10.36s/ep, cand 143 | r0 pass 43/141 | episodes solved 43 
+| queue r0 1856 reprompt 0 | verifying 1 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 145/2000 [25:47<5:30:09, 10.68s/ep, cand 144 | r0 pass 43/142 | episodes solved 43 
+| queue r0 1854 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 146/2000 [25:59<5:40:59, 11.04s/ep, cand 145 | r0 pass 44/143 | episodes solved 44 
+| queue r0 1853 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 147/2000 [26:09<5:36:53, 10.91s/ep, cand 146 | r0 pass 44/144 | episodes solved 44 
+| queue r0 1852 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 148/2000 [26:19<5:26:10, 10.57s/ep, cand 147 | r0 pass 44/145 | episodes solved 44 
+| queue r0 1851 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   7%|Γûï         | 149/2000 [26:36<6:20:07, 12.32s/ep, cand 148 | r0 pass 44/146 | episodes solved 44 
+| queue r0 1850 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:   8%|Γûè         | 151/2000 [26:53<5:28:20, 10.65s/ep, cand 150 | r0 pass 44/148 | episodes solved 44 
+| queue r0 1849 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:   8%|Γûè         | 152/2000 [27:11<6:22:28, 12.42s/ep, cand 151 | r0 pass 44/149 | episodes solved 44 
+| queue r0 1847 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   8%|Γûè         | 153/2000 [27:22<6:14:00, 12.15s/ep, cand 152 | r0 pass 44/150 | episodes solved 44 
+| queue r0 1845 reprompt 0 | verifying 3 | 10.6 s/proposal]
+first proposals:   8%|Γûè         | 155/2000 [27:44<5:59:41, 11.70s/ep, cand 154 | r0 pass 44/152 | episodes solved 44 
+| queue r0 1844 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:   8%|Γûè         | 156/2000 [27:55<5:49:21, 11.37s/ep, cand 155 | r0 pass 44/153 | episodes solved 44 
+| queue r0 1842 reprompt 0 | verifying 3 | 10.7 s/proposal]
+first proposals:   8%|Γûè         | 157/2000 [28:03<5:22:16, 10.49s/ep, cand 156 | r0 pass 44/154 | episodes solved 44 
+| queue r0 1841 reprompt 0 | verifying 3 | 10.3 s/proposal]
+first proposals:   8%|Γûè         | 159/2000 [28:12<4:06:45,  8.04s/ep, cand 158 | r0 pass 44/156 | episodes solved 44 
+| queue r0 1840 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   8%|Γûè         | 160/2000 [28:35<5:50:21, 11.42s/ep, cand 159 | r0 pass 45/157 | episodes solved 45 
+| queue r0 1839 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   8%|Γûè         | 161/2000 [28:49<6:14:29, 12.22s/ep, cand 160 | r0 pass 46/158 | episodes solved 46 
+| queue r0 1837 reprompt 0 | verifying 3 | 10.3 s/proposal]
+first proposals:   8%|Γûè         | 163/2000 [28:58<4:33:15,  8.93s/ep, cand 162 | r0 pass 48/160 | episodes solved 48 
+| queue r0 1836 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   8%|Γûè         | 165/2000 [29:25<5:27:32, 10.71s/ep, cand 164 | r0 pass 49/162 | episodes solved 49 
+| queue r0 1835 reprompt 0 | verifying 1 | 10.4 s/proposal]
+first proposals:   8%|Γûè         | 166/2000 [29:34<5:13:16, 10.25s/ep, cand 165 | r0 pass 50/163 | episodes solved 50 
+| queue r0 1832 reprompt 0 | verifying 3 | 10.4 s/proposal]
+first proposals:   8%|Γûè         | 168/2000 [29:54<5:13:37, 10.27s/ep, cand 167 | r0 pass 50/165 | episodes solved 50 
+| queue r0 1831 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   8%|Γûè         | 169/2000 [30:04<5:08:25, 10.11s/ep, cand 168 | r0 pass 51/166 | episodes solved 51 
+| queue r0 1829 reprompt 0 | verifying 3 | 10.3 s/proposal]
+first proposals:   9%|Γûè         | 172/2000 [30:31<4:53:55,  9.65s/ep, cand 171 | r0 pass 51/169 | episodes solved 51 
+| queue r0 1828 reprompt 0 | verifying 1 | 10.2 s/proposal]
+first proposals:   9%|Γûè         | 173/2000 [30:42<4:59:40,  9.84s/ep, cand 172 | r0 pass 51/170 | episodes solved 51 
+| queue r0 1825 reprompt 0 | verifying 3 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 175/2000 [30:54<4:22:05,  8.62s/ep, cand 174 | r0 pass 51/172 | episodes solved 51 
+| queue r0 1824 reprompt 0 | verifying 2 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 176/2000 [31:06<4:37:21,  9.12s/ep, cand 175 | r0 pass 52/173 | episodes solved 52 
+| queue r0 1823 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   9%|Γûë         | 178/2000 [31:23<4:33:42,  9.01s/ep, cand 177 | r0 pass 53/175 | episodes solved 53 
+| queue r0 1822 reprompt 0 | verifying 1 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 179/2000 [31:44<5:45:38, 11.39s/ep, cand 178 | r0 pass 54/176 | episodes solved 54 
+| queue r0 1820 reprompt 0 | verifying 2 | 10.1 s/proposal]
+first proposals:   9%|Γûë         | 180/2000 [31:57<5:54:57, 11.70s/ep, cand 179 | r0 pass 54/177 | episodes solved 54 
+| queue r0 1818 reprompt 0 | verifying 3 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 181/2000 [32:06<5:38:57, 11.18s/ep, cand 180 | r0 pass 55/178 | episodes solved 55 
+| queue r0 1817 reprompt 0 | verifying 3 | 10.3 s/proposal]
+first proposals:   9%|Γûë         | 182/2000 [32:17<5:33:31, 11.01s/ep, cand 181 | r0 pass 55/179 | episodes solved 55 
+| queue r0 1816 reprompt 0 | verifying 3 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 183/2000 [32:29<5:46:48, 11.45s/ep, cand 182 | r0 pass 55/180 | episodes solved 55 
+| queue r0 1815 reprompt 0 | verifying 3 | 10.2 s/proposal]
+first proposals:   9%|Γûë         | 185/2000 [32:38<4:13:45,  8.39s/ep, cand 184 | r0 pass 56/182 | episodes solved 56 
+| queue r0 1814 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   9%|Γûë         | 186/2000 [33:02<6:02:03, 11.98s/ep, cand 185 | r0 pass 56/183 | episodes solved 56 
+| queue r0 1813 reprompt 0 | verifying 2 | 10.3 s/proposal]
+first proposals:   9%|Γûë         | 188/2000 [33:14<4:47:52,  9.53s/ep, cand 187 | r0 pass 57/185 | episodes solved 57 
+| queue r0 1811 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:   9%|Γûë         | 189/2000 [33:24<4:51:16,  9.65s/ep, cand 188 | r0 pass 57/186 | episodes solved 57 
+| queue r0 1810 reprompt 0 | verifying 2 | 10.5 s/proposal]
+first proposals:  10%|Γûë         | 190/2000 [33:47<6:32:56, 13.03s/ep, cand 189 | r0 pass 57/187 | episodes solved 57 
+| queue r0 1809 reprompt 0 | verifying 2 | 10.4 s/proposal]
+first proposals:  10%|Γûë         | 191/2000 [34:18<8:48:26, 17.53s/ep, cand 190 | r0 pass 58/188 | episodes solved 58 
+| queue r0 1807 reprompt 0 | verifying 3 | 10.4 s/proposal]
+first proposals:  10%|Γûë         | 195/2000 [34:34<4:46:55,  9.54s/ep, cand 194 | r0 pass 59/191 | episodes solved 59 
+| queue r0 1806 reprompt 0 | verifying 0 | 10.8 s/proposal]
+first proposals:  10%|Γûë         | 195/2000 [34:47<4:46:55,  9.54s/ep, cand 195 | r0 pass 59/192 | episodes solved 59 
+| queue r0 1804 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:  10%|Γûë         | 196/2000 [34:53<5:35:16, 11.15s/ep, cand 195 | r0 pass 59/192 | episodes solved 59 
+| queue r0 1804 reprompt 0 | verifying 1 | 10.8 s/proposal]
+first proposals:  10%|Γûë         | 197/2000 [35:12<6:24:41, 12.80s/ep, cand 196 | r0 pass 59/193 | episodes solved 59 
+| queue r0 1802 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:  10%|Γûë         | 198/2000 [35:24<6:15:44, 12.51s/ep, cand 197 | r0 pass 59/194 | episodes solved 59 
+| queue r0 1800 reprompt 0 | verifying 3 | 10.6 s/proposal]
+first proposals:  10%|Γûë         | 199/2000 [35:32<5:41:52, 11.39s/ep, cand 198 | r0 pass 60/195 | episodes solved 60 
+| queue r0 1799 reprompt 0 | verifying 3 | 10.5 s/proposal]
+first proposals:  10%|Γûê         | 200/2000 [35:42<5:33:31, 11.12s/ep, cand 199 | r0 pass 60/196 | episodes solved 60 
+| queue r0 1798 reprompt 0 | verifying 3 | 10.5 s/proposal]
+first proposals:  10%|Γûê         | 201/2000 [35:51<5:16:37, 10.56s/ep, cand 200 | r0 pass 60/197 | episodes solved 60 
+| queue r0 1797 reprompt 0 | verifying 3 | 10.5 s/proposal]
+first proposals:  10%|Γûê         | 204/2000 [36:12<4:21:22,  8.73s/ep, cand 203 | r0 pass 60/200 | episodes solved 60 
+| queue r0 1796 reprompt 0 | verifying 1 | 10.5 s/proposal]
+first proposals:  10%|Γûê         | 205/2000 [36:26<4:49:54,  9.69s/ep, cand 204 | r0 pass 60/201 | episodes solved 60 
+| queue r0 1794 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:  10%|Γûê         | 206/2000 [36:37<5:01:25, 10.08s/ep, cand 205 | r0 pass 61/202 | episodes solved 61 
+| queue r0 1793 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:  10%|Γûê         | 207/2000 [37:00<6:29:41, 13.04s/ep, cand 206 | r0 pass 61/203 | episodes solved 61 
+| queue r0 1792 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:  10%|Γûê         | 209/2000 [37:11<4:59:01, 10.02s/ep, cand 208 | r0 pass 62/205 | episodes solved 62 
+| queue r0 1790 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  10%|Γûê         | 210/2000 [37:31<6:07:02, 12.30s/ep, cand 209 | r0 pass 62/206 | episodes solved 62 
+| queue r0 1789 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  11%|Γûê         | 212/2000 [37:42<4:46:32,  9.62s/ep, cand 211 | r0 pass 62/208 | episodes solved 62 
+| queue r0 1787 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  11%|Γûê         | 213/2000 [37:52<4:50:24,  9.75s/ep, cand 212 | r0 pass 63/209 | episodes solved 63 
+| queue r0 1786 reprompt 0 | verifying 2 | 10.6 s/proposal]
+first proposals:  11%|Γûê         | 214/2000 [38:03<5:00:19, 10.09s/ep, cand 213 | r0 pass 64/210 | episodes solved 64 
+| queue r0 1785 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  11%|Γûê         | 215/2000 [38:15<5:09:47, 10.41s/ep, cand 214 | r0 pass 64/211 | episodes solved 64 
+| queue r0 1784 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  11%|Γûê         | 216/2000 [38:26<5:17:53, 10.69s/ep, cand 215 | r0 pass 65/212 | episodes solved 65 
+| queue r0 1783 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 217/2000 [38:46<6:29:33, 13.11s/ep, cand 216 | r0 pass 65/213 | episodes solved 65 
+| queue r0 1782 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 219/2000 [38:54<4:33:13,  9.20s/ep, cand 218 | r0 pass 66/215 | episodes solved 66 
+| queue r0 1780 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 220/2000 [39:04<4:34:47,  9.26s/ep, cand 219 | r0 pass 66/216 | episodes solved 66 
+| queue r0 1779 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 221/2000 [39:12<4:25:35,  8.96s/ep, cand 220 | r0 pass 66/217 | episodes solved 66 
+| queue r0 1778 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 222/2000 [39:20<4:21:02,  8.81s/ep, cand 221 | r0 pass 66/218 | episodes solved 66 
+| queue r0 1777 reprompt 0 | verifying 2 | 10.8 s/proposal]
+first proposals:  11%|Γûê         | 223/2000 [39:48<6:53:53, 13.97s/ep, cand 222 | r0 pass 66/219 | episodes solved 66 
+| queue r0 1776 reprompt 0 | verifying 2 | 10.7 s/proposal]
+first proposals:  11%|Γûê         | 224/2000 [39:58<6:22:46, 12.93s/ep, cand 223 | r0 pass 66/220 | episodes solved 66 
+| queue r0 1774 reprompt 0 | verifying 3 | 10.9 s/proposal]

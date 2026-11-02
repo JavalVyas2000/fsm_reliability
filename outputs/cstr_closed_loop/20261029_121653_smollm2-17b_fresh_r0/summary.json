@@ -1,0 +1,288 @@
+{
+  "n_episodes": 400,
+  "by_policy": [
+    {
+      "policy": "always_validate",
+      "episodes": 400,
+      "recovered": 0.3225,
+      "executed_failure": 0.0,
+      "unresolved": 0.6775,
+      "validator_calls": 0.9925,
+      "proposals": 4.28,
+      "unchecked_rejects": 0.0,
+      "good_rejected": 0.0,
+      "t_generation_s": 16.762810309749476,
+      "t_internals_s": 0.0,
+      "t_grounding_s": 0.0,
+      "t_validator_s": 11.136780886001507,
+      "t_total_s": 27.899591195750983
+    },
+    {
+      "policy": "observables_probe_r0",
+      "episodes": 400,
+      "recovered": 0.31,
+      "executed_failure": 0.02,
+      "unresolved": 0.67,
+      "validator_calls": 0.3925,
+      "proposals": 4.0975,
+      "unchecked_rejects": 1.9825,
+      "good_rejected": 0.0225,
+      "t_generation_s": 23.558837444000964,
+      "t_internals_s": 0.0,
+      "t_grounding_s": 0.0,
+      "t_validator_s": 4.832442400000582,
+      "t_total_s": 28.391279844001545
+    },
+    {
+      "policy": "combined_probe",
+      "episodes": 400,
+      "recovered": 0.31,
+      "executed_failure": 0.6075,
+      "unresolved": 0.0825,
+      "validator_calls": 0.335,
+      "proposals": 1.675,
+      "unchecked_rejects": 0.46,
+      "good_rejected": 0.0175,
+      "t_generation_s": 10.451005576750322,
+      "t_internals_s": 1.107617766749463,
+      "t_grounding_s": 0.8349194975008141,
+      "t_validator_s": 4.228730565000587,
+      "t_total_s": 16.622273406001185
+    },
+    {
+      "policy": "combined_probe_r0",
+      "episodes": 400,
+      "recovered": 0.3125,
+      "executed_failure": 0.0225,
+      "unresolved": 0.665,
+      "validator_calls": 0.3375,
+      "proposals": 3.975,
+      "unchecked_rejects": 0.47,
+      "good_rejected": 0.0175,
+      "t_generation_s": 19.058748428750697,
+      "t_internals_s": 1.5565942472493044,
+      "t_grounding_s": 1.659180278247368,
+      "t_validator_s": 4.239643776250595,
+      "t_total_s": 26.514166730497962
+    },
+    {
+      "policy": "internals_probe",
+      "episodes": 400,
+      "recovered": 0.3125,
+      "executed_failure": 0.63,
+      "unresolved": 0.0575,
+      "validator_calls": 0.56,
+      "proposals": 1.6925,
+      "unchecked_rejects": 0.345,
+      "good_rejected": 0.025,
+      "t_generation_s": 9.30244711249994,
+      "t_internals_s": 0.8914445892492949,
+      "t_grounding_s": 0.8579194962499606,
+      "t_validator_s": 6.98816287850088,
+      "t_total_s": 18.039974076500076
+    },
+    {
+      "policy": "internals_probe_r0",
+      "episodes": 400,
+      "recovered": 0.315,
+      "executed_failure": 0.0,
+      "unresolved": 0.685,
+      "validator_calls": 0.565,
+      "proposals": 4.17,
+      "unchecked_rejects": 0.345,
+      "good_rejected": 0.025,
+      "t_generation_s": 18.555063305499353,
+      "t_internals_s": 1.380702244998247,
+      "t_grounding_s": 1.8128537329971732,
+      "t_validator_s": 7.025473227250914,
+      "t_total_s": 28.774092510745685
+    }
+  ],
+  "paired_vs_always": {
+    "observables_probe_r0": {
+      "recovered": {
+        "delta": -0.0125,
+        "ci95": [
+          -0.025,
+          -0.0025
+        ]
+      },
+      "validator_calls": {
+        "delta": -0.6,
+        "ci95": [
+          -0.6450625,
+          -0.5475
+        ]
+      },
+      "t_total_s": {
+        "delta": 0.4916886482505652,
+        "ci95": [
+          -0.8792004100622762,
+          1.9154925317018516
+        ]
+      },
+      "t_validator_s": {
+        "delta": -6.304338486000924,
+        "ci95": [
+          -6.880367431332532,
+          -5.6915159121874135
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.02,
+        "ci95": [
+          0.0075,
+          0.035
+        ]
+      }
+    },
+    "combined_probe": {
+      "recovered": {
+        "delta": -0.0125,
+        "ci95": [
+          -0.025,
+          -0.0025
+        ]
+      },
+      "validator_calls": {
+        "delta": -0.6575,
+        "ci95": [
+          -0.705,
+          -0.6074375000000004
+        ]
+      },
+      "t_total_s": {
+        "delta": -11.277317789749794,
+        "ci95": [
+          -12.415248498768928,
+          -10.163170604823783
+        ]
+      },
+      "t_validator_s": {
+        "delta": -6.908050321000919,
+        "ci95": [
+          -7.510653708743634,
+          -6.28063496898145
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.6075,
+        "ci95": [
+          0.5599375000000001,
+          0.6575
+        ]
+      }
+    },
+    "combined_probe_r0": {
+      "recovered": {
+        "delta": -0.01,
+        "ci95": [
+          -0.02,
+          -0.0025
+        ]
+      },
+      "validator_calls": {
+        "delta": -0.655,
+        "ci95": [
+          -0.705,
+          -0.605
+        ]
+      },
+      "t_total_s": {
+        "delta": -1.3854244652530179,
+        "ci95": [
+          -2.19802409328083,
+          -0.5571207323419878
+        ]
+      },
+      "t_validator_s": {
+        "delta": -6.897137109750911,
+        "ci95": [
+          -7.500871519807497,
+          -6.268132537762951
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.0225,
+        "ci95": [
+          0.01,
+          0.04
+        ]
+      }
+    },
+    "internals_probe": {
+      "recovered": {
+        "delta": -0.01,
+        "ci95": [
+          -0.02,
+          -0.0025
+        ]
+      },
+      "validator_calls": {
+        "delta": -0.4325,
+        "ci95": [
+          -0.4825,
+          -0.3825
+        ]
+      },
+      "t_total_s": {
+        "delta": -9.859617119250906,
+        "ci95": [
+          -10.908413968662193,
+          -8.877736162134175
+        ]
+      },
+      "t_validator_s": {
+        "delta": -4.148618007500627,
+        "ci95": [
+          -4.681237793044663,
+          -3.596388045038188
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.63,
+        "ci95": [
+          0.5825,
+          0.68
+        ]
+      }
+    },
+    "internals_probe_r0": {
+      "recovered": {
+        "delta": -0.0075,
+        "ci95": [
+          -0.0175,
+          0.0
+        ]
+      },
+      "validator_calls": {
+        "delta": -0.4275,
+        "ci95": [
+          -0.4775,
+          -0.3775
+        ]
+      },
+      "t_total_s": {
+        "delta": 0.8745013149947044,
+        "ci95": [
+          0.2572273271606246,
+          1.4564993009083331
+        ]
+      },
+      "t_validator_s": {
+        "delta": -4.111307658750593,
+        "ci95": [
+          -4.634789975205334,
+          -3.571363442212209
+        ]
+      },
+      "executed_failure": {
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  }
+}

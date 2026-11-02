@@ -1,0 +1,14 @@
+{
+  "updated": "2026-11-01 16:10:17",
+  "hours_this_session": 22.05,
+  "first_proposals_done": 2000,
+  "first_proposals_total": 2000,
+  "candidates": 2000,
+  "round0_pass": 346,
+  "round0_labelled": 1903,
+  "episodes_solved": 346,
+  "queue_round0": 0,
+  "queue_reprompt": 0,
+  "verifying": 0,
+  "sec_per_proposal_recent": 61.43
+}

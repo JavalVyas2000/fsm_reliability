@@ -1,0 +1,13 @@
+cert2: 1485/2000 usable this pass, 515 redrawn, 4119 s
+cert2: 239/515 usable this pass, 276 redrawn, 5316 s
+cert2: 121/276 usable this pass, 155 redrawn, 5990 s
+cert2: 52/155 usable this pass, 103 redrawn, 6425 s
+cert2: 45/103 usable this pass, 58 redrawn, 6712 s
+cert2: 22/58 usable this pass, 36 redrawn, 6885 s
+cert2: 14/36 usable this pass, 22 redrawn, 7026 s
+cert2: 12/22 usable this pass, 10 redrawn, 7103 s
+cert2: 5/10 usable this pass, 5 redrawn, 7176 s
+cert2: 3/5 usable this pass, 2 redrawn, 7245 s
+cert2: 0/2 usable this pass, 2 redrawn, 7287 s
+cert2: 2/2 usable this pass, 0 redrawn, 7318 s
+{"out_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\data\\cstr\\cert2_v4", "sizes": {"cert2": 2000}, "redraws": 1184}

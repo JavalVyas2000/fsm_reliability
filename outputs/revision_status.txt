@@ -1,0 +1,26 @@
+=== revision queue status 2026-11-02 14:01 | GPU 0% | 0.0/8.0 GB ===
+  [done ] build 400 fresh closed-loop episodes
+  [done ] item 2  fresh R0 test   SmolLM2-1.7B
+  [done ] item 2  fresh R0 test   Qwen2.5-7B
+  [done ] item 1  cert2 collect   SmolLM2-1.7B
+  [done ] item 1  cert2 grounding SmolLM2-1.7B
+  [done ] item 1  cert2 eval      SmolLM2-1.7B
+  [done ] item 1  cert2 collect   Qwen2.5-1.5B
+  [done ] item 1  cert2 grounding Qwen2.5-1.5B
+  [done ] item 1  cert2 eval      Qwen2.5-1.5B
+  [done ] item 1  cert2 collect   Qwen2.5-3B
+  [done ] item 1  cert2 grounding Qwen2.5-3B
+  [done ] item 1  cert2 eval      Qwen2.5-3B
+  [done ] item 1  cert2 collect   Llama-3.2-3B
+  [done ] item 1  cert2 grounding Llama-3.2-3B
+  [done ] item 1  cert2 eval      Llama-3.2-3B
+  [done ] item 1  cert2 collect   Qwen2.5-7B
+  [done ] item 1  cert2 grounding Qwen2.5-7B
+  [done ] item 1  cert2 eval      Qwen2.5-7B
+  [done ] item 2b R0 + validate rejections Qwen2.5-7B
+  [done ] item 2b R0 + validate rejections SmolLM2-1.7B
+  [done ] build 2000 cert2 episodes (parallel)
+  last queue lines:
+    2026-11-02T10:31:00 START closedloop2v_smollm2-17b
+    2026-11-02T12:04:44 END   closedloop2v_smollm2-17b (exit 0)
+    2026-11-02T12:04:44 ITEM 2B DONE

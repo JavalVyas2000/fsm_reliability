@@ -1,0 +1,108 @@
+﻿python.exe : W1102 09:33:19.809000 23656 site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting 
+will not work for triton kernels
+At C:\Users\jv624\Desktop\fsm_reliability\outputs\revision_queue_2b.ps1:13 char:5
++     & $py @pyArgs 2>&1 | Out-File -Append -Encoding utf8 "outputs\que ...
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (W1102 09:33:19.... triton kernels:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/339 [00:00<02:17,  2.46it/s]
+Loading weights:   1%|          | 2/339 [00:00<02:13,  2.52it/s]
+Loading weights:   1%|ΓûÅ         | 5/339 [00:00<00:49,  6.79it/s]
+Loading weights:   5%|Γûì         | 16/339 [00:01<00:12, 24.93it/s]
+Loading weights:   6%|Γûî         | 21/339 [00:01<00:10, 29.83it/s]
+Loading weights:   9%|Γûè         | 29/339 [00:01<00:07, 38.90it/s]
+Loading weights:  12%|ΓûêΓûÅ        | 40/339 [00:01<00:05, 52.04it/s]
+Loading weights:  14%|ΓûêΓûì        | 47/339 [00:01<00:05, 54.43it/s]
+Loading weights:  16%|ΓûêΓûî        | 54/339 [00:01<00:05, 50.41it/s]
+Loading weights:  19%|ΓûêΓûë        | 65/339 [00:01<00:04, 60.57it/s]
+Loading weights:  22%|ΓûêΓûêΓûÅ       | 76/339 [00:01<00:03, 68.38it/s]
+Loading weights:  25%|ΓûêΓûêΓûì       | 84/339 [00:02<00:03, 66.75it/s]
+Loading weights:  27%|ΓûêΓûêΓûï       | 91/339 [00:02<00:04, 59.93it/s]
+Loading weights:  30%|ΓûêΓûêΓûë       | 101/339 [00:02<00:03, 64.99it/s]
+Loading weights:  33%|ΓûêΓûêΓûêΓûÄ      | 112/339 [00:02<00:03, 70.50it/s]
+Loading weights:  35%|ΓûêΓûêΓûêΓûî      | 120/339 [00:02<00:03, 68.11it/s]
+Loading weights:  37%|ΓûêΓûêΓûêΓûï      | 127/339 [00:02<00:03, 60.23it/s]
+Loading weights:  40%|ΓûêΓûêΓûêΓûê      | 137/339 [00:02<00:03, 65.09it/s]
+Loading weights:  44%|ΓûêΓûêΓûêΓûêΓûÄ     | 148/339 [00:03<00:02, 70.75it/s]
+Loading weights:  46%|ΓûêΓûêΓûêΓûêΓûî     | 156/339 [00:03<00:02, 68.76it/s]
+Loading weights:  48%|ΓûêΓûêΓûêΓûêΓûè     | 163/339 [00:03<00:02, 60.37it/s]
+Loading weights:  51%|ΓûêΓûêΓûêΓûêΓûê     | 173/339 [00:03<00:02, 65.21it/s]
+Loading weights:  54%|ΓûêΓûêΓûêΓûêΓûêΓûì    | 184/339 [00:03<00:02, 70.82it/s]
+Loading weights:  57%|ΓûêΓûêΓûêΓûêΓûêΓûï    | 192/339 [00:03<00:02, 68.44it/s]
+Loading weights:  59%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 199/339 [00:03<00:02, 60.21it/s]
+Loading weights:  62%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ   | 209/339 [00:03<00:02, 64.61it/s]
+Loading weights:  65%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûì   | 220/339 [00:04<00:01, 69.58it/s]
+Loading weights:  67%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûï   | 228/339 [00:04<00:01, 66.94it/s]
+Loading weights:  69%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûë   | 235/339 [00:04<00:01, 58.62it/s]
+Loading weights:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 245/339 [00:04<00:01, 63.29it/s]
+Loading weights:  76%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî  | 256/339 [00:04<00:01, 69.08it/s]
+Loading weights:  78%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè  | 264/339 [00:04<00:01, 66.91it/s]
+Loading weights:  80%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 271/339 [00:04<00:01, 59.46it/s]
+Loading weights:  83%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ | 281/339 [00:05<00:00, 64.97it/s]
+Loading weights:  86%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî | 292/339 [00:05<00:00, 71.05it/s]
+Loading weights:  88%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè | 300/339 [00:05<00:00, 69.05it/s]
+Loading weights:  91%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê | 307/339 [00:05<00:00, 61.03it/s]
+Loading weights:  94%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ| 317/339 [00:05<00:00, 65.70it/s]
+Loading weights:  97%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï| 328/339 [00:05<00:00, 71.27it/s]
+Loading weights:  99%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë| 336/339 [00:05<00:00, 67.84it/s]
+Loading weights: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 339/339 [00:05<00:00, 57.35it/s]
+[345/400] cstr_closedloop2_00344 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 1.8 min
+[346/400] cstr_closedloop2_00345 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 2.6 min
+[347/400] cstr_closedloop2_00346 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 3.4 min
+[348/400] cstr_closedloop2_00347 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 4.4 min
+[349/400] cstr_closedloop2_00348 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 5.8 min
+[350/400] cstr_closedloop2_00349 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 6.7 min
+[351/400] cstr_closedloop2_00350 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 7.5 min
+[352/400] cstr_closedloop2_00351 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 7.9 min
+[353/400] cstr_closedloop2_00352 fouling: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 8.1 min
+[354/400] cstr_closedloop2_00353 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 8.5 min
+[355/400] cstr_closedloop2_00354 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 8.8 min
+[356/400] cstr_closedloop2_00355 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 9.6 min
+[357/400] cstr_closedloop2_00356 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 10.7 min
+[358/400] cstr_closedloop2_00357 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 2 gens | 11.3 min
+[359/400] cstr_closedloop2_00358 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 13.0 min
+[360/400] cstr_closedloop2_00359 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 14.4 min
+[361/400] cstr_closedloop2_00360 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 16.0 min
+[362/400] cstr_closedloop2_00361 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 17.1 min
+[363/400] cstr_closedloop2_00362 pump_degrade: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 18.3 min
+[364/400] cstr_closedloop2_00363 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 19.0 min
+[365/400] cstr_closedloop2_00364 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 19.8 min
+[366/400] cstr_closedloop2_00365 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 20.8 min
+[367/400] cstr_closedloop2_00366 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 22.7 min
+[368/400] cstr_closedloop2_00367 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 24.0 min
+[369/400] cstr_closedloop2_00368 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 24.4 min
+[370/400] cstr_closedloop2_00369 pump_degrade: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 25.4 min
+[371/400] cstr_closedloop2_00370 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 26.6 min
+[372/400] cstr_closedloop2_00371 cool_stuck_closed: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 27.3 min
+[373/400] cstr_closedloop2_00372 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 3 gens | 28.3 min
+[374/400] cstr_closedloop2_00373 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 30.5 min
+[375/400] cstr_closedloop2_00374 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 30.9 min
+[376/400] cstr_closedloop2_00375 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 31.2 min
+[377/400] cstr_closedloop2_00376 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 2 gens | 31.6 min
+[378/400] cstr_closedloop2_00377 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 32.4 min
+[379/400] cstr_closedloop2_00378 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 33.8 min
+[380/400] cstr_closedloop2_00379 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 4 gens | 34.8 min
+[381/400] cstr_closedloop2_00380 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 36.0 min
+[382/400] cstr_closedloop2_00381 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 36.7 min
+[383/400] cstr_closedloop2_00382 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 37.6 min
+[384/400] cstr_closedloop2_00383 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 39.0 min
+[385/400] cstr_closedloop2_00384 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 2 gens | 39.7 min
+[386/400] cstr_closedloop2_00385 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 40.7 min
+[387/400] cstr_closedloop2_00386 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 41.1 min
+[388/400] cstr_closedloop2_00387 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 3 gens | 42.2 min
+[389/400] cstr_closedloop2_00388 outlet_block: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 43.1 min
+[390/400] cstr_closedloop2_00389 outlet_block: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 43.7 min
+[391/400] cstr_closedloop2_00390 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 45.6 min
+[392/400] cstr_closedloop2_00391 cool_stuck_closed: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 1 gens | 46.0 min
+[393/400] cstr_closedloop2_00392 pump_degrade: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 4 gens | 47.4 min
+[394/400] cstr_closedloop2_00393 fouling: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 49.5 min
+[395/400] cstr_closedloop2_00394 fouling: recovered {'always_validate': 1, 'observables_probe_r0v': 1, 'combined_probe_r0v': 1, 'internals_probe_r0v': 1} | cache 2 gens | 50.1 min
+[396/400] cstr_closedloop2_00395 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 51.1 min
+[397/400] cstr_closedloop2_00396 pump_degrade: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 5 gens | 52.8 min
+[398/400] cstr_closedloop2_00397 pump_degrade: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 54.8 min
+[399/400] cstr_closedloop2_00398 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 3 gens | 55.7 min
+[400/400] cstr_closedloop2_00399 cool_stuck_closed: recovered {'always_validate': 0, 'observables_probe_r0v': 0, 'combined_probe_r0v': 0, 'internals_probe_r0v': 0} | cache 6 gens | 57.4 min
+{"run_dir": "C:\\Users\\jv624\\Desktop\\fsm_reliability\\outputs\\cstr_closed_loop\\20261102_014936_qwen25-7b_fresh_r0v", "hours": 0.96}

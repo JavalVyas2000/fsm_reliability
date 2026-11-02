@@ -1,0 +1,52 @@
+﻿2026-10-29T11:37:44 REVISION QUEUE START
+2026-10-29T11:37:44 START build_closedloop2
+2026-10-29T12:15:53 END   build_closedloop2 (exit 0)
+2026-10-29T12:15:53 START closedloop2_smollm2-17b
+2026-10-29T14:45:54 END   closedloop2_smollm2-17b (exit 0)
+2026-10-29T14:45:54 START closedloop2_qwen25-7b
+2026-10-30T03:02:24 END   closedloop2_qwen25-7b (exit 0)
+2026-10-30T03:02:24 ITEM 2 DONE
+2026-10-30T03:02:24 START cert2_collect_smollm2-17b
+2026-10-30T20:42:46 END   cert2_collect_smollm2-17b (exit 0)
+2026-10-30T20:42:46 START cert2_grounding_smollm2-17b
+2026-10-30T22:27:39 END   cert2_grounding_smollm2-17b (exit 0)
+2026-10-30T22:27:39 START cert2_eval_smollm2-17b
+2026-10-30T22:27:52 END   cert2_eval_smollm2-17b (exit 0)
+2026-10-30T22:27:52 START cert2_collect_qwen25-15b
+2026-10-30T23:08:49 STOPPED BY USER (main queue and item 2b queue killed during cert2_collect_qwen25-15b)
+2026-10-31T00:09:01 RESUMED BY USER
+2026-10-31T00:09:02 REVISION QUEUE START
+2026-10-31T00:09:02 START cert2_collect_qwen25-15b_resume
+2026-10-31T06:31:17 END   cert2_collect_qwen25-15b_resume (exit 0)
+2026-10-31T06:31:17 START cert2_grounding_qwen25-15b
+2026-10-31T06:41:02 END   cert2_grounding_qwen25-15b (exit 0)
+2026-10-31T06:41:02 START cert2_eval_qwen25-15b
+2026-10-31T06:41:15 END   cert2_eval_qwen25-15b (exit 0)
+2026-10-31T06:41:15 START cert2_collect_qwen25-3b
+2026-10-31T17:49:01 END   cert2_collect_qwen25-3b (exit 0)
+2026-10-31T17:49:01 START cert2_grounding_qwen25-3b
+2026-10-31T18:06:37 END   cert2_grounding_qwen25-3b (exit 0)
+2026-10-31T18:06:37 START cert2_eval_qwen25-3b
+2026-10-31T18:06:50 END   cert2_eval_qwen25-3b (exit 0)
+2026-10-31T18:06:50 START cert2_collect_llama-32-3b
+2026-11-01T16:10:21 END   cert2_collect_llama-32-3b (exit 0)
+2026-11-01T16:10:21 START cert2_grounding_llama-32-3b
+2026-11-01T17:46:36 END   cert2_grounding_llama-32-3b (exit 0)
+2026-11-01T17:46:36 START cert2_eval_llama-32-3b
+2026-11-01T17:46:54 END   cert2_eval_llama-32-3b (exit 0)
+2026-11-01T17:46:54 START cert2_collect_qwen25-7b
+2026-11-02T01:13:09 END   cert2_collect_qwen25-7b (exit 0)
+2026-11-02T01:13:09 START cert2_grounding_qwen25-7b
+2026-11-02T01:45:14 END   cert2_grounding_qwen25-7b (exit 0)
+2026-11-02T01:45:14 START cert2_eval_qwen25-7b
+2026-11-02T01:45:37 END   cert2_eval_qwen25-7b (exit 0)
+2026-11-02T01:45:37 REVISION QUEUE DONE
+2026-11-02T01:49:13 ITEM 2B START
+2026-11-02T01:49:13 START closedloop2v_qwen25-7b
+2026-11-02T08:03:59 STOPPED BY USER (during closedloop2v_qwen25-7b)
+2026-11-02T09:32:30 RESUMED BY USER
+2026-11-02T09:32:31 START closedloop2v_qwen25-7b_resume
+2026-11-02T10:31:00 END   closedloop2v_qwen25-7b_resume (exit 0)
+2026-11-02T10:31:00 START closedloop2v_smollm2-17b
+2026-11-02T12:04:44 END   closedloop2v_smollm2-17b (exit 0)
+2026-11-02T12:04:44 ITEM 2B DONE

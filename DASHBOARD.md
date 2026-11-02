@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-11-02 14:02 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `4516dec Item 2b queue: restart-safe (skip finished models, resume partial run)`._
+_Generated 2026-11-02 15:32 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `f74d6f5 Revision item 2b: R0 + validated rejections restores recovery but removes the saving`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
