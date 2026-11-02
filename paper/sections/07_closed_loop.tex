@@ -114,6 +114,23 @@ accept nothing, so every skipped call was a rejection; its recovery fell by 4.0 
 recovered as often as always-validate, because these models mostly repeat their proposals. For them the
 validator, and the screens, serve only to prevent the execution of failing actions.
 
+\paragraph{Validating rejections instead of discarding them} If rejections cost recovery because they withhold
+feedback, validating the rejected proposal should restore it. We pre-registered this variant (R0+V) after the
+replication and before any run, and tested it on the same 400 new episodes (Table~\ref{tab:freshr0}, rows R0+V).
+Its recovery criterion (P2c) and safety criterion (P2d) held for every screen of both models. Recovery was
+identical to always-validate in every one of the 800 episodes, and the always-validate re-run reproduced the
+earlier run episode for episode. The restoration was complete, but so was the loss of savings. For Qwen2.5-7B,
+the screens avoided 0--5\% of calls under R0+V against 43--88\% under R0, and the compute saving at 60\,s per call
+fell from 26--62\% to between $-3$ and $+4$\%. For SmolLM2 the calls avoided fell from 43--66\% to 8--23\%. The
+reason is the same finding seen from the other side: in the CSTR, the screens skip the validator almost entirely
+by rejecting (Section~\ref{sec:res-rq1}), and Qwen2.5-7B's screens accepted almost no first proposal unchecked.
+A rejection saves a call \emph{precisely by} withholding the feedback, so for an agent that repairs from feedback
+the call saved and the recovery lost are one and the same decision. Neither variant dominates. The choice between
+them is an engineering trade-off between the price of a simulation and the value of a recovered episode: for
+Qwen2.5-7B's combined screen, R0 buys 26\% of the compute at 60\,s per call for 3.5 points of recovery, and R0+V
+buys back the 3.5 points for almost all of the saving. For SmolLM2, which rarely repairs from feedback, R0 is
+nearly free and is the better choice.
+
 \subsection{When does reading the agent pay off?}
 
 \finding{Because the screen's cost is fixed while the simulator's grows with fidelity and horizon, screening saves

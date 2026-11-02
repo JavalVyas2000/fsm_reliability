@@ -51,9 +51,12 @@ on the episodes that revealed the failure and again on new ones.
 outcome, and an agent that can use it repairs its next proposal. An unchecked rejection replaces that outcome with
 a bare request to try again. For SmolLM2, which almost never repaired from feedback, this cost at most 1.2 points
 of recovery; for Qwen2.5-7B, which recovered one episode in six only after a failed validation, it cost 3.5 points
-and failed the pre-registered non-inferiority margin. The more capable the agent, the more a screen should spend its
-budget on accepts and the less on rejects: a practical variant validates rejected proposals instead of discarding
-them, which keeps the feedback and gives up only the rejection's share of the saving.
+and failed the pre-registered non-inferiority margin. Validating rejected proposals restored recovery exactly, but
+in the CSTR nearly all of the saving came from rejections, so it also removed nearly all of the saving. A rejection
+saves a call by withholding the feedback; for an agent that repairs from feedback, the two cannot be separated. The
+screen's operator must therefore price both: the cost of a simulation and the value of a recovered episode. A
+screen whose savings come from certified \emph{accepts}, as in path planning, does not face this trade-off, which
+makes accept-side certification the more valuable target for capable agents.
 \item \emph{Savings depend on what replaces a skipped call.} An unchecked accept saves a full validation. An
 unchecked rejection of a good proposal forces a regeneration. Screening therefore pays when a validation costs
 more than the break-even $c^{\ast}$, which was 3--18\,s for four of five models. This is the regime that motivates

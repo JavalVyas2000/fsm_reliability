@@ -14,12 +14,15 @@ unchecked execution only for first proposals restored the certificate's premise 
 0--2 per 400 episodes while 29--65\% of validator calls were avoided. A pre-registered replication on new
 episodes confirmed the safety of the rule but showed its limit: a screen can replace the simulator's verdict, not
 its feedback, so an agent that repairs its proposals from that feedback loses recovery to unchecked rejections.
+Validating the rejected proposals restored that recovery exactly but, because the reactor screens saved calls
+mainly by rejecting, also gave up most of the saving: for such agents the saved call and the lost recovery are the
+same decision, to be priced by the operator.
 Because the screen's cost is fixed and the
 simulator's grows with fidelity and horizon, these avoided calls translated into compute savings of 21--62\% at
 60\,s per validation for four of five models.
 
-Future work should train and certify screens on retries rather than excluding them, test screens that validate
-rather than discard rejected proposals for agents that learn from feedback, certify CSTR screens on larger
+Future work should train and certify screens on retries rather than excluding them, raise the accept-side
+coverage of screens for agents that learn from feedback, where an unchecked accept costs no feedback, certify CSTR screens on larger
 partitions, test larger and API-served models through whatever internal signals they expose, and evaluate the
 approach on plants with richer fault libraries, real-time constraints and model mismatch between the digital twin
 and the plant.

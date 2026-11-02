@@ -161,42 +161,56 @@ def table_closed_loop(frames):
 
 
 FRESH_R0 = {"Qwen2.5-7B (4-bit)": "_qwen25-7b_fresh_r0", "SmolLM2-1.7B": "_smollm2-17b_fresh_r0"}
+SAVE_AT = 60.0  # simulator cost (s per call) at which the compute saving is reported
 
 
 def table_fresh_r0():
-    """Pre-registered replication of the R0 rule on 400 new episodes (docs/revision_prereg.md, item 2)."""
+    """Pre-registered R0 replication (item 2) and R0 + validated rejections (item 2b) on the same 400 new episodes."""
     from scipy.stats import beta
     rng = np.random.default_rng(0)
     lines = ["\\begin{table*}[!tbp]", "\\centering", "\\small",
-             "\\caption{Pre-registered replication of the first-proposal-only rule (R0) on 400 new CSTR episodes per "
-             "model, built after the rule was fixed. Unsafe: failing actions executed without validation, with the "
-             "one-sided 95\\% Clopper--Pearson upper bound on their share (criterion P2a: $\\le 5\\%$). Before R0: the "
-             "same screen without the rule on the same episodes. $\\Delta$ recovered: paired difference to "
-             "always-validate (points, bootstrap 95\\% CI; criterion P2b: lower end $> -5$).}",
-             "\\label{tab:freshr0}", "\\begin{tabular}{llrrrrr}", "\\toprule",
-             "Model & Screen (R0) & Unsafe & Bound (\\%) & Before R0 & $\\Delta$ recovered & Calls avoided \\\\",
-             "\\midrule"]
+             "\\caption{Pre-registered tests of the first-proposal-only rule on 400 new CSTR episodes per model, built "
+             "after the rule was fixed. R0: retries are always validated; unchecked rejections are discarded (item 2). "
+             "R0+V: as R0, but rejected proposals are validated, so the agent keeps the validator's feedback (item 2b). "
+             "Unsafe: failing actions executed without validation, with the one-sided 95\\% Clopper--Pearson upper "
+             "bound on their share (criteria P2a, P2d: $\\le 5\\%$). Before R0: the same screen without the rule. "
+             "$\\Delta$ recovered: paired difference to always-validate (points, bootstrap 95\\% CI; criteria P2b, "
+             "P2c: lower end $> -5$). Saving: compute saved relative to always-validate at 60\\,s per validator call "
+             "(Eq.~\\ref{eq:cost}).}",
+             "\\label{tab:freshr0}", "\\begin{tabular}{lllrrrrrr}", "\\toprule",
+             "Model & Screen & Rule & Unsafe & Bound (\\%) & Before R0 & $\\Delta$ recovered & Calls avoided & "
+             "Saving \\\\", "\\midrule"]
     for model, suf in FRESH_R0.items():
-        run = sorted(p for p in CL.glob(f"*{suf}") if p.name.endswith(suf))[-1]
-        e = pd.read_json(run / "episodes.jsonl", lines=True)
+        frames = []
+        for s in (suf, suf + "v"):
+            run = sorted(p for p in CL.glob(f"*{s}") if p.name.endswith(s))[-1]
+            frames.append(pd.read_json(run / "episodes.jsonl", lines=True))
+        e = pd.concat([frames[0], frames[1][frames[1].policy != "always_validate"]])
         e["unsafe"] = e.outcome.str.startswith("executed_failure")
         base = e[e.policy == "always_validate"].set_index("episode_id")
         idx = rng.integers(0, len(base), (2000, len(base)))
+
+        def compute(d):  # Eq. (cost): fixed agent-side compute plus calls at the reference simulator cost
+            return (d.t_generation_s + d.t_internals_s + d.t_grounding_s).mean() + SAVE_AT * d.validator_calls.mean()
+
         first = True
         for p, name in [("observables_probe", "Observables"), ("combined_probe", "Obs.+int.+grd."),
                         ("internals_probe", "Internals only")]:
-            sub = e[e.policy == f"{p}_r0"].set_index("episode_id").reindex(base.index)
             pre = e[e.policy == p]
-            k, n = int(sub.unsafe.sum()), len(sub)
-            ub = 100 * beta.ppf(0.95, k + 1, n - k)
-            dv = (sub.recovered.astype(float) - base.recovered.astype(float)).to_numpy()
-            b = dv[idx].mean(1) * 100
-            calls = 100 * (1 - sub.validator_calls.mean() / base.validator_calls.mean())
-            lines.append(f"{SHORT[model] if first else ''} & {name} & {k} & {ub:.1f} & "
-                         f"{int(pre.unsafe.sum()) if len(pre) else '--'} & "
-                         f"{100 * dv.mean():+.1f} [{np.percentile(b, 2.5):+.1f}, {np.percentile(b, 97.5):+.1f}] & "
-                         f"{calls:.0f}\\% \\\\")
-            first = False
+            for rule, tag in [("_r0", "R0"), ("_r0v", "R0+V")]:
+                sub = e[e.policy == f"{p}{rule}"].set_index("episode_id").reindex(base.index)
+                k, n = int(sub.unsafe.sum()), len(sub)
+                ub = 100 * beta.ppf(0.95, k + 1, n - k)
+                dv = (sub.recovered.astype(float) - base.recovered.astype(float)).to_numpy()
+                b = dv[idx].mean(1) * 100
+                calls = 100 * (1 - sub.validator_calls.mean() / base.validator_calls.mean())
+                save = 100 * (1 - compute(sub) / compute(base))
+                before = (int(pre.unsafe.sum()) if len(pre) else "--") if rule == "_r0" else ""
+                lines.append(f"{SHORT[model] if first else ''} & {name if rule == '_r0' else ''} & {tag} & {k} & "
+                             f"{ub:.1f} & {before} & "
+                             f"{100 * dv.mean():+.1f} [{np.percentile(b, 2.5):+.1f}, {np.percentile(b, 97.5):+.1f}] & "
+                             f"{calls + 0:.0f}\\% & {round(save) + 0:.0f}\\% \\\\")
+                first = False
         lines.append("\\midrule")
     lines[-1] = "\\bottomrule"
     lines += ["\\end{tabular}", "\\end{table*}", ""]

@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-11-02 08:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `2e8c624 Revision queue: restart-safe (skip finished steps, resume partial cert2 collection); monitor follows resumed jobs`._
+_Generated 2026-11-02 14:02 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `4516dec Item 2b queue: restart-safe (skip finished models, resume partial run)`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
@@ -14,16 +14,16 @@ _Generated 2026-11-02 08:04 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Item 1: cert2 (2000 episodes), Qwen2.5-3B | ✅ done |
 | Item 1: cert2 (2000 episodes), Llama-3.2-3B | ✅ done |
 | Item 1: cert2 (2000 episodes), Qwen2.5-7B | ✅ done |
-| Item 2b: R0 + validate rejections, Qwen2.5-7B | ⏳ running — episode 344/400, ETA Mon 02 Nov 09:01 |
-| Item 2b: R0 + validate rejections, SmolLM2-1.7B | 🕓 waiting |
+| Item 2b: R0 + validate rejections, Qwen2.5-7B | ✅ done |
+| Item 2b: R0 + validate rejections, SmolLM2-1.7B | ✅ done |
 
 ```
-2026-11-02T01:45:14 START cert2_eval_qwen25-7b
-2026-11-02T01:45:37 END   cert2_eval_qwen25-7b (exit 0)
-2026-11-02T01:45:37 REVISION QUEUE DONE
-2026-11-02T01:49:13 ITEM 2B START
-2026-11-02T01:49:13 START closedloop2v_qwen25-7b
-2026-11-02T08:03:59 STOPPED BY USER (during closedloop2v_qwen25-7b)
+2026-11-02T09:32:30 RESUMED BY USER
+2026-11-02T09:32:31 START closedloop2v_qwen25-7b_resume
+2026-11-02T10:31:00 END   closedloop2v_qwen25-7b_resume (exit 0)
+2026-11-02T10:31:00 START closedloop2v_smollm2-17b
+2026-11-02T12:04:44 END   closedloop2v_smollm2-17b (exit 0)
+2026-11-02T12:04:44 ITEM 2B DONE
 ```
 
 ## Campaign status

@@ -1,20 +1,26 @@
 \begin{table*}[!tbp]
 \centering
 \small
-\caption{Pre-registered replication of the first-proposal-only rule (R0) on 400 new CSTR episodes per model, built after the rule was fixed. Unsafe: failing actions executed without validation, with the one-sided 95\% Clopper--Pearson upper bound on their share (criterion P2a: $\le 5\%$). Before R0: the same screen without the rule on the same episodes. $\Delta$ recovered: paired difference to always-validate (points, bootstrap 95\% CI; criterion P2b: lower end $> -5$).}
+\caption{Pre-registered tests of the first-proposal-only rule on 400 new CSTR episodes per model, built after the rule was fixed. R0: retries are always validated; unchecked rejections are discarded (item 2). R0+V: as R0, but rejected proposals are validated, so the agent keeps the validator's feedback (item 2b). Unsafe: failing actions executed without validation, with the one-sided 95\% Clopper--Pearson upper bound on their share (criteria P2a, P2d: $\le 5\%$). Before R0: the same screen without the rule. $\Delta$ recovered: paired difference to always-validate (points, bootstrap 95\% CI; criteria P2b, P2c: lower end $> -5$). Saving: compute saved relative to always-validate at 60\,s per validator call (Eq.~\ref{eq:cost}).}
 \label{tab:freshr0}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{llrrrrr}
+\begin{tabular}{lllrrrrrr}
 \toprule
-Model & Screen (R0) & Unsafe & Bound (\%) & Before R0 & $\Delta$ recovered & Calls avoided \\
+Model & Screen & Rule & Unsafe & Bound (\%) & Before R0 & $\Delta$ recovered & Calls avoided & Saving \\
 \midrule
-Qwen-7B & Observables & 0 & 0.7 & -- & -13.0 [-16.8, -9.2] & 88\% \\
- & Obs.+int.+grd. & 0 & 0.7 & 152 & -3.5 [-6.2, -1.0] & 43\% \\
- & Internals only & 0 & 0.7 & 0 & -3.5 [-5.8, -1.5] & 46\% \\
+Qwen-7B & Observables & R0 & 0 & 0.7 & -- & -13.0 [-16.8, -9.2] & 88\% & 62\% \\
+ &  & R0+V & 0 & 0.7 &  & +0.0 [+0.0, +0.0] & 5\% & 4\% \\
+ & Obs.+int.+grd. & R0 & 0 & 0.7 & 152 & -3.5 [-6.2, -1.0] & 43\% & 26\% \\
+ &  & R0+V & 0 & 0.7 &  & +0.0 [+0.0, +0.0] & 3\% & 0\% \\
+ & Internals only & R0 & 0 & 0.7 & 0 & -3.5 [-5.8, -1.5] & 46\% & 29\% \\
+ &  & R0+V & 0 & 0.7 &  & +0.0 [+0.0, +0.0] & 0\% & -3\% \\
 \midrule
-SmolLM-1.7B & Observables & 8 & 3.6 & -- & -1.2 [-2.5, -0.2] & 60\% \\
- & Obs.+int.+grd. & 9 & 3.9 & 243 & -1.0 [-2.0, -0.2] & 66\% \\
- & Internals only & 0 & 0.7 & 252 & -0.8 [-1.8, +0.0] & 43\% \\
+SmolLM-1.7B & Observables & R0 & 8 & 3.6 & -- & -1.2 [-2.5, -0.2] & 60\% & 38\% \\
+ &  & R0+V & 8 & 3.6 &  & +0.0 [+0.0, +0.0] & 23\% & 22\% \\
+ & Obs.+int.+grd. & R0 & 9 & 3.9 & 243 & -1.0 [-2.0, -0.2] & 66\% & 44\% \\
+ &  & R0+V & 9 & 3.9 &  & +0.0 [+0.0, +0.0] & 21\% & 18\% \\
+ & Internals only & R0 & 0 & 0.7 & 252 & -0.8 [-1.8, +0.0] & 43\% & 27\% \\
+ &  & R0+V & 0 & 0.7 &  & +0.0 [+0.0, +0.0] & 8\% & 8\% \\
 \bottomrule
 \end{tabular}}
 \end{table*}

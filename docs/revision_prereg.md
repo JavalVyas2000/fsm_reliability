@@ -139,3 +139,10 @@ definitions:
 - the whole snapshot block (`_snap_share`).
 
 For each definition, report the AUROC of the negative minimum over setpoints for a failing first proposal (train + dev). The paper's claim that CSTR grounding is weak survives if **no** definition reaches AUROC >= 0.70 for the three models whose primary AUROC is near 0.5 (Qwen-3B, Qwen-7B, Llama-3B).
+
+## Outcome log
+
+- **Item 2b (2026-11-02).** P2c and P2d passed for every screen of both models; recovery equal to always-validate
+  in all 800 episodes; determinism check passed (0 mismatches). S2d: savings almost vanish for Qwen2.5-7B (calls
+  avoided 0–5%, compute saving at 60 s −3 to +4%), because its CSTR screens save calls almost only by rejecting.
+  Guide rule (iv) reworded from "validate rejections" to a priced trade-off (paper/claims.md C25).
