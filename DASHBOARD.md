@@ -1,6 +1,6 @@
 # Selective verification — campaign dashboard
 
-_Generated 2026-10-31 00:10 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `ae304de Pre-register revision item 2b: R0 + validate rejections (before any run)`._
+_Generated 2026-11-02 08:04 by `scripts/48_dashboard.py` (git pre-commit hook). Previous commit: `2e8c624 Revision queue: restart-safe (skip finished steps, resume partial cert2 collection); monitor follows resumed jobs`._
 
 ## Revision runs (`docs/revision_prereg.md`)
 
@@ -10,20 +10,20 @@ _Generated 2026-10-31 00:10 by `scripts/48_dashboard.py` (git pre-commit hook). 
 | Item 2: fresh R0 test, SmolLM2-1.7B | ✅ done |
 | Item 2: fresh R0 test, Qwen2.5-7B | ✅ done |
 | Item 1: cert2 (2000 episodes), SmolLM2-1.7B | ✅ done |
-| Item 1: cert2 (2000 episodes), Qwen2.5-1.5B | ⏳ running |
-| Item 1: cert2 (2000 episodes), Qwen2.5-3B | 🕓 waiting |
-| Item 1: cert2 (2000 episodes), Llama-3.2-3B | 🕓 waiting |
-| Item 1: cert2 (2000 episodes), Qwen2.5-7B | 🕓 waiting |
-| Item 2b: R0 + validate rejections, Qwen2.5-7B | 🕓 waiting |
+| Item 1: cert2 (2000 episodes), Qwen2.5-1.5B | ✅ done |
+| Item 1: cert2 (2000 episodes), Qwen2.5-3B | ✅ done |
+| Item 1: cert2 (2000 episodes), Llama-3.2-3B | ✅ done |
+| Item 1: cert2 (2000 episodes), Qwen2.5-7B | ✅ done |
+| Item 2b: R0 + validate rejections, Qwen2.5-7B | ⏳ running — episode 344/400, ETA Mon 02 Nov 09:01 |
 | Item 2b: R0 + validate rejections, SmolLM2-1.7B | 🕓 waiting |
 
 ```
-2026-10-30T22:27:52 END   cert2_eval_smollm2-17b (exit 0)
-2026-10-30T22:27:52 START cert2_collect_qwen25-15b
-2026-10-30T23:08:49 STOPPED BY USER (main queue and item 2b queue killed during cert2_collect_qwen25-15b)
-2026-10-31T00:09:01 RESUMED BY USER
-2026-10-31T00:09:02 REVISION QUEUE START
-2026-10-31T00:09:02 START cert2_collect_qwen25-15b_resume
+2026-11-02T01:45:14 START cert2_eval_qwen25-7b
+2026-11-02T01:45:37 END   cert2_eval_qwen25-7b (exit 0)
+2026-11-02T01:45:37 REVISION QUEUE DONE
+2026-11-02T01:49:13 ITEM 2B START
+2026-11-02T01:49:13 START closedloop2v_qwen25-7b
+2026-11-02T08:03:59 STOPPED BY USER (during closedloop2v_qwen25-7b)
 ```
 
 ## Campaign status
